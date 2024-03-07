@@ -1,9 +1,8 @@
-import { InnerContainer } from "@/components/atoms";
+import { InnerContainer, SectionHeader } from "@/components/atoms";
 import { CountryBox } from "@/components/molecules";
 import React from "react";
 
 export const CountrySection = () => {
-
   const countries = [
     {
       name: "USA",
@@ -29,16 +28,12 @@ export const CountrySection = () => {
 
   return (
     <InnerContainer>
-      <div className="mt-20 mb-10">
+      <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
-          <div className="flex flex-col gap-2.5 justify-center items-center self-stretch relative bg-transparent">
-            <h1 className="font-semibold text-3xl text-black/80">
-              Which Country Do You Prefer?
-            </h1>
-            <h5 className="text-center text-base text-black/60">
-              Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est.
-            </h5>
-          </div>
+          <SectionHeader
+            title="Which Country Do You Prefer?"
+            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+          />
 
           <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-10 w-full">
             {countries.map((country, index) => (

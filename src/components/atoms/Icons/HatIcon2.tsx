@@ -1,37 +1,33 @@
 import React, { ReactElement } from "react";
 
-type HatIconProps = {
-  size?: number;
-};
-
-export const HatIcon = ({ size = 39 }: HatIconProps): ReactElement => (
+export const HatIcon2 = (): ReactElement => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size-9}
+    width="24"
+    height="24"
     fill="none"
-    viewBox={`0 0 ${size} ${size-9}`}
+    viewBox="0 0 24 24"
   >
     <path
-      stroke="url(#paint0_linear_1036_314)"
+      stroke="url(#paint0_linear_1134_1246)"
       strokeLinejoin="round"
-      strokeWidth="3.333"
-      d="M2.167 9.5l17.518-7 17.518 7-17.518 7-17.518-7z"
+      strokeWidth="2"
+      d="M1 8.7l10.511-4.2 10.511 4.2-10.511 4.2L1 8.7z"
     ></path>
     <path
-      stroke="url(#paint1_linear_1036_314)"
+      stroke="url(#paint1_linear_1134_1246)"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="3.333"
-      d="M37.203 9.592v7.685m-27.073-4.09v10.369s4.008 3.944 9.555 3.944c5.548 0 9.556-3.944 9.556-3.944V13.187"
+      strokeWidth="2"
+      d="M22.022 8.755v4.611M5.778 10.912v6.222S8.183 19.5 11.511 19.5c3.329 0 5.733-2.366 5.733-2.366v-6.222"
     ></path>
     <defs>
       <linearGradient
-        id="paint0_linear_1036_314"
-        x1="1.903"
-        x2="37.203"
-        y1="9.486"
-        y2="9.486"
+        id="paint0_linear_1134_1246"
+        x1="0.842"
+        x2="22.022"
+        y1="8.692"
+        y2="8.692"
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#1C37C1"></stop>
@@ -39,11 +35,11 @@ export const HatIcon = ({ size = 39 }: HatIconProps): ReactElement => (
         <stop offset="1" stopColor="#089EA2"></stop>
       </linearGradient>
       <linearGradient
-        id="paint1_linear_1036_314"
-        x1="9.926"
-        x2="37.203"
-        y1="18.528"
-        y2="18.528"
+        id="paint1_linear_1134_1246"
+        x1="5.656"
+        x2="22.022"
+        y1="14.117"
+        y2="14.117"
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#1C37C1"></stop>

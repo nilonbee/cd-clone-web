@@ -1,6 +1,6 @@
 import { ContainerLayout } from "@/components/atoms";
 import { BannerCarousel, SearchBar } from "@/components/molecules";
-import { CountrySection } from "@/components/organisms";
+import { CountrySection, CoursesSection } from "@/components/organisms";
 import React from "react";
 
 export default function Home() {
@@ -22,6 +22,7 @@ export default function Home() {
       <ContainerLayout>
         <SearchBar />
         <CountrySection />
+        <CoursesSection />
       </ContainerLayout>
     </>
   );

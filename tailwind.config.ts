@@ -21,12 +21,15 @@ const config: Config = {
     },
     colors: {
       primary: "#065DA8",
+      primaryDark: "#0d3b66",
       secondary: "#ecc94b",
       textColor: "#393939",
       white: "#ffffff",
       borderGray: "#e5e5e5",
       gray: "#4a5568",
       black: "#000000",
+      grayLight: "#f3f3f3",
+      grayMedium: "#999",
     },
     extend: {
       spacing: {
