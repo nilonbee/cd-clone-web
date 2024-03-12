@@ -16,7 +16,7 @@ const Home = () => {
           router.push(`/${country}`);
         } else {
           console.error("Router is not defined, redirecting to /LK");
-          router.push("/LK");
+          // router.push("/LK");
         }
       } catch (error) {
         console.error("Error fetching location:", error);
