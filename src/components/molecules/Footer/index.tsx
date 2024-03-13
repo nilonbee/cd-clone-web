@@ -4,7 +4,7 @@ import {
   PhoneIcon,
   FacebookIcon,
   LinkedinIcon,
-  SkypeIcon,
+  TwitterIcon,
   InstagramIcon,
   EmailIcon,
   NavigationIcon,
@@ -173,7 +173,7 @@ export const Footer = () => {
             <div className="flex space-x-4">
               <FacebookIcon />
               <LinkedinIcon />
-              <SkypeIcon />
+              <TwitterIcon />
               <InstagramIcon />
             </div>
           </div>
