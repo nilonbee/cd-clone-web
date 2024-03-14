@@ -14,7 +14,8 @@ const config: Config = {
       },
     },
     screens: {
-      sm: "480px",
+      xs: "0px",
+      sm: "412px",
       md: "768px",
       lg: "976px",
       xl: "1440px",
@@ -30,7 +31,11 @@ const config: Config = {
       black: "#000000",
       grayLight: "#f3f3f3",
       grayMedium: "#999",
-      whiteGray:"#E0E0E0"
+      whiteGray:"#E0E0E0",
+      grayText: "#b2b2b2",
+      red: "#ff0000",
+      border: "#cccccc",
+      transparent: "transparent",
     },
     extend: {
       spacing: {

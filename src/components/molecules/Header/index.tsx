@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { ContainerLayout, MenuItem } from "@/components/atoms";
+import { ContainerLayout, MainButton, MenuItem } from "@/components/atoms";
 import { Dialog, Menu } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
@@ -50,18 +50,18 @@ export const Header = () => {
             <a href="#" className="text-sm text-primary">
               Register
             </a>
-            <div className="px-4 py-2 items-center relative h-18 bg-primary">
-              <p className="text-base font-semibold text-white">
-                Find My Course
-              </p>
-            </div>
+            <MainButton
+              label="Find My Course"
+              btnStyle="Primary"
+              btnSize="Medium"
+            />
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center xl:hidden">
-            <div className="px-4 py-2 items-center relative h-18 bg-primary">
-              <p className="text-base font-semibold text-white">
-                Find My Course
-              </p>
-            </div>
+            <MainButton
+              label="Find My Course"
+              btnStyle="Primary"
+              btnSize="Medium"
+            />
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className="text-primary">

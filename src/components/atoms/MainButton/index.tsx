@@ -4,12 +4,23 @@ interface MainButtonProps {
   label: string;
   btnStyle: "Primary" | "Secondary";
   btnSize: "Large" | "Small" | "Medium";
+  fullWith?: boolean;
+  icon?: React.ReactNode;
+  customStyle?: string;
 }
 
-export const MainButton = ({ label, btnStyle, btnSize }: MainButtonProps) => {
+export const MainButton = ({
+  label,
+  btnStyle,
+  btnSize,
+  fullWith,
+  icon,
+  customStyle,
+}: MainButtonProps) => {
   // Define primary and secondary styles
   const primaryStyles = "bg-primary text-white hover:bg-primaryDark";
-  const secondaryStyles = "bg-white text-primary border border-primary hover:font-semibold";
+  const secondaryStyles =
+    "bg-transparent text-primary border border-primary hover:font-semibold";
 
   // Determine which styles to apply based on btnStyle prop
   const buttonStyles = btnStyle === "Primary" ? primaryStyles : secondaryStyles;
@@ -24,11 +35,17 @@ export const MainButton = ({ label, btnStyle, btnSize }: MainButtonProps) => {
     sizeClasses = "h-8 px-3 text-sm";
   }
 
+  // If fullWith prop is true, add full width class
+  if (fullWith) {
+    sizeClasses += " w-full";
+  }
+
   return (
     <div
-      className={`flex justify-center items-center relative w-full text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out`}
+      className={`flex justify-center items-center relative  text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out rounded-sm cursor-pointer ${customStyle}`}
     >
       <p>{label}</p>
+      {icon && <div className="ml-2">{icon}</div>}
     </div>
   );
 };

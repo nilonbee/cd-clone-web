@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { MainButton } from "@/components/atoms";
+import { MainButton, Rating } from "@/components/atoms";
 import { HatIcon2, PinIcon, UniversityIcon } from "@/components/atoms/Icons";
 import { TimeIcon } from "@/components/atoms/Icons/TimeIcon";
 import Link from "next/link";
 import React from "react";
+import { CardWrapper } from "..";
 
 interface CourseBoxProps {
   university: string;
@@ -26,7 +27,7 @@ export const CourseBox = ({
 }: CourseBoxProps) => {
   return (
     <Link href="/lk">
-      <div className="flex flex-col  bg-white rounded-md p-6 shadow">
+      <CardWrapper>
         <div className="w-full h-24 overflow-hidden border-b border-grayLight pb-2">
           <img src={logo} alt="logo" className="w-full h-full object-contain" />
         </div>
@@ -42,30 +43,44 @@ export const CourseBox = ({
             <div className="flex gap-2 items-center relative bg-transparent">
               <UniversityIcon />
               <p className="text-sm text-black/60">
-                Nottingham Trent University
+                {university}
               </p>
             </div>
             <div className="flex gap-2 items-center relative bg-transparent">
               <PinIcon />
-              <p className="text-sm text-black/60">United Kindom</p>
+              <p className="text-sm text-black/60">{country}</p>
             </div>
             <div className="flex gap-2 items-center relative bg-transparent">
               <TimeIcon />
-              <p className="text-sm text-black/60">4 Years & 8 Semester</p>
+              <p className="text-sm text-black/60">{duration}</p>
             </div>
-            <div className="flex gap-2 items-end relative bg-transparent">
-              <h2 className="font-semibold text-3xl text-primary">$6000</h2>
-              <p className="font-semibold text-sm text-[#b2b2b2]">
+            <div className="mt-2">
+              <Rating rateNumber={rating} />
+            </div>
+
+            <div className="flex gap-2 items-end relative bg-transparent mb-2 mt-2">
+              <h2 className="font-semibold text-3xl text-primary">{tuitionFee}</h2>
+              <p className="font-semibold text-sm text-grayText">
                 (Total Amount)
               </p>
             </div>
             <div className="flex gap-2  justify-between items-center w-full">
-              <MainButton label="Apply" btnStyle="Primary" btnSize="Medium" />
-              <MainButton label="More" btnStyle="Secondary" btnSize="Medium" />
+              <MainButton
+                label="Apply"
+                btnStyle="Primary"
+                btnSize="Medium"
+                fullWith={true}
+              />
+              <MainButton
+                label="More"
+                btnStyle="Secondary"
+                btnSize="Medium"
+                fullWith={true}
+              />
             </div>
           </div>
         </div>
-      </div>
+      </CardWrapper>
     </Link>
   );
 };
