@@ -1,0 +1,81 @@
+import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
+import { InputField, InputTextArea } from "@/components/molecules";
+
+export const ContactSection = () => {
+  return (
+    <InnerContainer>
+      <div className="pt-20 pb-20">
+        <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
+          <SectionHeader
+            title="Interested? Let's talk!"
+            description="Send us a message with what we can help you."
+          />
+          <form className="w-full mt-10 px-20">
+            <div className="flex justify-center items-center gap-4 flex-row">
+              <div className="w-full">
+                <InputField
+                  label="Name"
+                  placeholder="Enter your name"
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                />
+              </div>
+              <div className="w-full">
+                <InputField
+                  label="Email"
+                  placeholder="Enter your email"
+                  type="email"
+                  id="name"
+                  name="name"
+                  required
+                />
+              </div>
+            </div>
+            <div className="flex justify-center items-center gap-4 flex-row">
+              <div className="w-full">
+                <InputField
+                  label="Subject"
+                  placeholder="Enter your subject"
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                />
+              </div>
+              <div className="w-full">
+                <InputField
+                  label="Phone Number"
+                  placeholder="Enter your phone number"
+                  type="text"
+                  id="number"
+                  name="number"
+                  required
+                />
+              </div>
+            </div>
+            <div className="flex justify-center items-center gap-4 flex-row">
+              <div className="w-full">
+                <InputTextArea
+                  label="Message"
+                  placeholder="Enter your message"
+                  id="message"
+                  name="message"
+                />
+              </div>
+            </div>
+            <div className="flex justify-center items-center mt-5">
+              <MainButton
+                label="Send"
+                btnStyle="Secondary"
+                btnSize="Medium"
+                customStyle="w-[200px]"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </InnerContainer>
+  );
+};

@@ -1,6 +1,16 @@
 import { ContainerLayout } from "@/components/atoms";
 import { BannerCarousel, SearchBar } from "@/components/molecules";
-import { CountrySection, CoursesSection } from "@/components/organisms";
+import {
+  BlogSection,
+  ContactSection,
+  CountrySection,
+  CoursesSection,
+  FAQSection,
+  NewsLetterSection,
+  StudentsSaysSection,
+  SubjectSection,
+  UniversitySection,
+} from "@/components/organisms";
 import React from "react";
 
 export default function Home() {
@@ -23,6 +33,19 @@ export default function Home() {
         <SearchBar />
         <CountrySection />
         <CoursesSection />
+        <SubjectSection />
+      </ContainerLayout>
+      <div className="relative w-full bg-[#d4ebff]">
+        <ContainerLayout>
+          <UniversitySection />
+        </ContainerLayout>
+      </div>
+      <ContainerLayout>
+        <StudentsSaysSection />
+        <FAQSection />
+        <BlogSection />
+        <ContactSection />
+        <NewsLetterSection />
       </ContainerLayout>
     </>
   );

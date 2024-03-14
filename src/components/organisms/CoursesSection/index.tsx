@@ -1,43 +1,44 @@
-import { InnerContainer, SectionHeader } from "@/components/atoms";
-import { CountryBox, CourseBox } from "@/components/molecules";
+import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
+import { RightArrowIcon } from "@/components/atoms/Icons";
+import { CourseBox } from "@/components/molecules";
 import React from "react";
 
 export const CoursesSection = () => {
   const courses = [
     {
-      university: "University of Example",
+      university: "Nottingham Trent University",
       courseTitle: "Computer Science",
       country: "United States",
       duration: "4 years & 8 semester",
       rating: 4.5,
-      tuitionFee: "$ 20000",
+      tuitionFee: "$20000",
       logo: "/images/Frame 19.png",
     },
     {
-      university: "Example Tech Institute",
+      university: "Nottingham Trent University",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
       rating: 4.2,
-      tuitionFee: "$ 18000",
+      tuitionFee: "$18000",
       logo: "/images/Frame 19.png",
     },
     {
-      university: "University of Example",
+      university: "Nottingham Trent University",
       courseTitle: "Computer Science",
       country: "United States",
       duration: "4 years & 8 semester",
       rating: 4.5,
-      tuitionFee: "$ 20000",
+      tuitionFee: "$20000",
       logo: "/images/Frame 19.png",
     },
     {
-      university: "Example Tech Institute",
+      university: "Nottingham Trent University",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
       rating: 4.2,
-      tuitionFee: "$ 18000",
+      tuitionFee: "$18000",
       logo: "/images/Frame 19.png",
     },
     // Add more mock data as needed
@@ -63,9 +64,18 @@ export const CoursesSection = () => {
                 key={index}
                 logo={item.logo}
                 university={item.university}
-                // url={item.url}
               />
             ))}
+          </div>
+          {/* See More Butn */}
+          <div className="flex justify-center items-center mt-10">
+            <MainButton
+              label="See More"
+              btnStyle="Secondary"
+              btnSize="Medium"
+              icon={<RightArrowIcon />}
+              customStyle="w-[200px]"
+            />
           </div>
         </div>
       </div>
