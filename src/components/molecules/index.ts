@@ -9,3 +9,5 @@ export * from "./SubjectBox";
 export * from "./BlogPost";
 export * from "./InputField";
 export * from "./InputTextArea";
+export * from "./GridWrapper";
+export * from "./GridWrapperTwo";

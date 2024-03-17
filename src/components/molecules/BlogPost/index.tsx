@@ -29,7 +29,7 @@ export const BlogPost = ({
         className="object-cover w-full h-[200px] rounded"
       />
       <div className="pt-4">
-        <h4 className="text-sm font-semibold text-textColor line-clamp-2 h-12">
+        <h4 className="text-sm font-semibold text-textColor line-clamp-2 h-11">
           {title}
         </h4>
         <div className="flex justify-between items-center">
@@ -39,15 +39,15 @@ export const BlogPost = ({
               src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt=""
             />
-            <p className="text-xs text-gray">{author}</p>
+            <p className="text-xs text-gray line-clamp-1">{author}</p>
           </div>
           <div className="flex items-center gap-2">
             <DateIcon />
-            <p className="text-xs text-gray">{date}</p>
+            <p className="text-xs text-gray line-clamp-1">{date}</p>
           </div>
           <div className="flex items-center gap-2">
             <EyeIcon />
-            <p className="text-xs text-gray">{viewCount}</p>
+            <p className="text-xs text-gray line-clamp-1">{viewCount}</p>
           </div>
         </div>
         <p className="text-xs text-gray mt-2 line-clamp-4">{description}</p>

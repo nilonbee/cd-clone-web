@@ -54,7 +54,9 @@ export const FAQSection = () => {
                   <p className="font-semibold leading-[26px] text-base text-textColor">
                     {faq.question}
                   </p>
-                  {activeIndex === index ? <MinusIcon /> : <PlusIcon />}
+                  <div className="flex justify-center items-center">
+                    {activeIndex === index ? <MinusIcon /> : <PlusIcon />}
+                  </div>
                 </div>
                 <p
                   className="text-sm text-textColor pt-5"

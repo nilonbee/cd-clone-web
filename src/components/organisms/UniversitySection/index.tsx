@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { InnerContainer, SectionHeader } from "@/components/atoms";
+import { GridWrapperTwo } from "@/components/molecules";
 
 export const UniversitySection = () => {
   const uniImages = [
@@ -38,9 +39,9 @@ export const UniversitySection = () => {
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
 
-          <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-10 w-full">
+          <GridWrapperTwo>
             {uniImages.map((item, index) => (
-              <div className="w-full h-[150px]" key={index}>
+              <div className="w-full h-[150px] sm:h-[100px] xs:h-[80px]" key={index} >
                 <img
                   src={item.imgUri}
                   alt="uni"
@@ -48,7 +49,7 @@ export const UniversitySection = () => {
                 />
               </div>
             ))}
-          </div>
+          </GridWrapperTwo>
         </div>
       </div>
     </InnerContainer>

@@ -1,6 +1,6 @@
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
-import { CourseBox } from "@/components/molecules";
+import { CourseBox, GridWrapper } from "@/components/molecules";
 import React from "react";
 
 export const CoursesSection = () => {
@@ -53,7 +53,7 @@ export const CoursesSection = () => {
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
 
-          <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-10 w-full">
+          <GridWrapper>
             {courses.map((item, index) => (
               <CourseBox
                 courseTitle={item.courseTitle}
@@ -66,7 +66,7 @@ export const CoursesSection = () => {
                 university={item.university}
               />
             ))}
-          </div>
+          </GridWrapper>
           {/* See More Butn */}
           <div className="flex justify-center items-center mt-10">
             <MainButton
