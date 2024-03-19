@@ -28,13 +28,13 @@ export const CourseBox = ({
   return (
     <Link href="/lk">
       <CardWrapper>
-        <div className="w-full h-24 overflow-hidden border-b border-grayLight pb-2">
+        <div className="w-full h-24 sm:h-20 overflow-hidden border-b border-grayLight pb-2">
           <img src={logo} alt="logo" className="w-full h-full object-contain" />
         </div>
         <div className="flex flex-col mt-5">
-          <div className="flex gap-2.5 items-center relative bg-transparent">
+          <div className="flex gap-2.5 items-center relative bg-transparent h-12">
             <HatIcon2 />
-            <h5 className="font-semibold text-base text-primary">
+            <h5 className="font-semibold text-base text-primary line-clamp-2">
               {courseTitle}
             </h5>
           </div>
@@ -42,25 +42,25 @@ export const CourseBox = ({
           <div className="flex flex-col gap-2 items-start relative bg-transparent mt-4">
             <div className="flex gap-2 items-center relative bg-transparent">
               <UniversityIcon />
-              <p className="text-sm text-black/60">
+              <p className="text-sm text-black/60 line-clamp-1">
                 {university}
               </p>
             </div>
             <div className="flex gap-2 items-center relative bg-transparent">
               <PinIcon />
-              <p className="text-sm text-black/60">{country}</p>
+              <p className="text-sm text-black/60 line-clamp-1">{country}</p>
             </div>
             <div className="flex gap-2 items-center relative bg-transparent">
               <TimeIcon />
-              <p className="text-sm text-black/60">{duration}</p>
+              <p className="text-sm text-black/60 line-clamp-1">{duration}</p>
             </div>
             <div className="mt-2">
               <Rating rateNumber={rating} />
             </div>
 
-            <div className="flex gap-2 items-end relative bg-transparent mb-2 mt-2">
-              <h2 className="font-semibold text-3xl text-primary">{tuitionFee}</h2>
-              <p className="font-semibold text-sm text-grayText">
+            <div className="flex gap-2 items-end relative bg-transparent mb-2 mt-2 xs:flex-col md:flex-row ">
+              <h2 className="font-semibold text-2xl text-primary">{tuitionFee}</h2>
+              <p className="font-medium text-xs text-grayText">
                 (Total Amount)
               </p>
             </div>

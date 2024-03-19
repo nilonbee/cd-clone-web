@@ -14,11 +14,11 @@ const config: Config = {
       },
     },
     screens: {
-      xs: "0px",
-      sm: "412px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
+      xs: "0px", // 0-412
+      sm: "512px", // 412-768
+      md: "768px", // 768-1024
+      lg: "1024px", // 1024-1440
+      xl: "1440px", // 1440-1920
     },
     colors: {
       primary: "#065DA8",

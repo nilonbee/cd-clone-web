@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
+import { GridWrapper, GridWrapperTwo } from "@/components/molecules";
 
 export const StudentsSaysSection = () => {
   const uniImages = [
@@ -27,13 +28,13 @@ export const StudentsSaysSection = () => {
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
 
-          <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-10 w-full">
+          <GridWrapperTwo>
             {uniImages.map((item, index) => (
               <div className="w-full h-auto" key={index}>
-                <img src={item.imgUri} alt="uni" className="object-cover" />
+                <img src={item.imgUri} alt="uni" className="object-cover w-full" />
               </div>
             ))}
-          </div>
+          </GridWrapperTwo>
           {/* See More Butn */}
           <div className="flex justify-center items-center mt-10">
             <MainButton

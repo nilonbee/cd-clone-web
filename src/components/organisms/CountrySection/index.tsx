@@ -1,5 +1,5 @@
 import { InnerContainer, SectionHeader } from "@/components/atoms";
-import { CountryBox } from "@/components/molecules";
+import { CountryBox, GridWrapper, GridWrapperTwo } from "@/components/molecules";
 import React from "react";
 
 export const CountrySection = () => {
@@ -35,7 +35,7 @@ export const CountrySection = () => {
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
 
-          <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-10 w-full">
+          <GridWrapperTwo>
             {countries.map((country, index) => (
               <CountryBox
                 key={index}
@@ -44,7 +44,7 @@ export const CountrySection = () => {
                 url={country.url}
               />
             ))}
-          </div>
+          </GridWrapperTwo>
         </div>
       </div>
     </InnerContainer>

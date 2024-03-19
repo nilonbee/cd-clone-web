@@ -1,6 +1,6 @@
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
-import { BlogPost } from "@/components/molecules";
+import { BlogPost, GridWrapper } from "@/components/molecules";
 
 export const BlogSection = () => {
   const blogPost = [
@@ -50,7 +50,7 @@ export const BlogSection = () => {
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
 
-          <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-10 w-full">
+          <GridWrapper>
             {blogPost.map((item, index) => (
               <BlogPost
                 key={index}
@@ -62,7 +62,7 @@ export const BlogSection = () => {
                 viewCount={item.viewCount}
               />
             ))}
-          </div>
+          </GridWrapper>
           <div className="flex justify-center items-center mt-10">
             <MainButton
               label="See More"
