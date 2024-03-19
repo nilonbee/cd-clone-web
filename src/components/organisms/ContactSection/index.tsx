@@ -1,5 +1,9 @@
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
-import { InputField, InputTextArea } from "@/components/molecules";
+import {
+  InputField,
+  InputTextArea,
+  PhoneInputField,
+} from "@/components/molecules";
 
 export const ContactSection = () => {
   return (
@@ -44,15 +48,8 @@ export const ContactSection = () => {
                   required
                 />
               </div>
-              <div className="w-full">
-                <InputField
-                  label="Phone Number"
-                  placeholder="Enter your phone number"
-                  type="text"
-                  id="number"
-                  name="number"
-                  required
-                />
+              <div className="w-full mt-0 pt-0">
+                <PhoneInputField />
               </div>
             </div>
             <div className="flex justify-center items-center gap-4 flex-row">
