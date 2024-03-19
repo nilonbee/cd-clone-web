@@ -2,7 +2,7 @@
 import React from "react";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
-import "./phone.module.css";
+import "./Phone.module.css";
 
 export const PhoneInputField: React.FC = () => {
   const [phone, setPhone] = React.useState("");
@@ -24,12 +24,14 @@ export const PhoneInputField: React.FC = () => {
         }}
         className="border border-border first-letter:rounded text-gray leading-tight focus:outline-none focus:shadow-outline rounded h-[46px] mt-2"
       />
+      {/* this needs to be replaced to somewhere */}
       <style>
         {`
           .react-international-phone-country-selector-button {
             border: none;
             height: 41px;
             margin-top: 2px;
+            margin-left: 2px;
           }
         `}
       </style>
