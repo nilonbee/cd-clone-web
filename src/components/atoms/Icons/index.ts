@@ -10,7 +10,7 @@ export * from './EmailIcon';
 export * from './FacebookIcon';
 export * from './InstagramIcon';
 export * from './TwitterIcon';
-export * from './linkedinIcon';
+export * from './LinkedinIcon';
 export * from './PhoneIcon';
 export * from './NavigationIcon';
 export * from './StarIconFull';
@@ -20,3 +20,6 @@ export * from './PlusIcon';
 export * from './MinusIcon';
 export * from './EyeIcon';
 export * from './DateIcon';
+export * from './LightIcon';
+export * from './TargetIcon';
+export * from "./PeopleIcon"

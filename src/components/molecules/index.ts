@@ -12,3 +12,5 @@ export * from "./InputTextArea";
 export * from "./PhoneInput"
 export * from "./GridWrapper";
 export * from "./GridWrapperTwo";
+export * from "./Paragraph";
+export * from "./PurposeBox";
