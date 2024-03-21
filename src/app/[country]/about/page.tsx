@@ -55,8 +55,7 @@ const segments = [
 const AboutPage = () => {
   return (
     <>
-      <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r -mt-2 h-12 w-full">
-      </div>
+      <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r -mt-2 h-12 w-full"></div>
       <ContainerLayout>
         <div className="pt-12 pb-12">
           <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
@@ -66,34 +65,41 @@ const AboutPage = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col m-auto w-full justify-center">
-          {articles.map((article) => (
-            <AboutParagraph
-              key={article.id}
-              image={article.image}
-              description={article.description}
-            />
-          ))}
-        </div>
-        <div className="block md:grid md:gap-6 grid-cols-2 m-auto w-5/6 mt-12">
-          {segments.slice(0, 2).map((segment, index) => (
-            <PurposeBox
-              key={index}
-              icon={segment.icon}
-              description={segment.description}
-              title={segment.title}
-            />
-          ))}
-        </div>
-        <div className="block md:grid md:gap-6 grid-cols-1 m-auto w-5/6 mt-12">
-          {segments.slice(2).map((segment) => (
-            <PurposeBox
-              icon={segment.icon}
-              description={segment.description}
-              title={segment.title}
-            />
-          ))}
-        </div>
+        <InnerContainer>
+          <div className="flex flex-col m-auto w-full justify-center">
+            {articles.map((article) => (
+              <AboutParagraph
+                key={article.id}
+                image={article.image}
+                description={article.description}
+              />
+            ))}
+          </div>
+        </InnerContainer>
+
+        <InnerContainer>
+          <div className="block md:grid md:gap-6 grid-cols-2 m-auto  mt-12">
+            {segments.slice(0, 2).map((segment, index) => (
+              <PurposeBox
+                key={index}
+                icon={segment.icon}
+                description={segment.description}
+                title={segment.title}
+              />
+            ))}
+          </div>
+        </InnerContainer>
+        <InnerContainer>
+          <div className="block md:grid md:gap-6 grid-cols-1 m-auto mt-12">
+            {segments.slice(2).map((segment) => (
+              <PurposeBox
+                icon={segment.icon}
+                description={segment.description}
+                title={segment.title}
+              />
+            ))}
+          </div>
+        </InnerContainer>
       </ContainerLayout>
     </>
   );
