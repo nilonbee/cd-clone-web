@@ -27,6 +27,7 @@ export const InputTextArea = ({
         placeholder={placeholder}
         name={name}
         required={required}
+        rows={4}
         {...rest}
       />
     </div>

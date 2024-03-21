@@ -50,3 +50,9 @@
     }
   }
 }
+
+.react-international-phone-country-selector-button {
+  border: none !important;
+  height: 41px !important;
+  margin-left: 5px !important;
+}

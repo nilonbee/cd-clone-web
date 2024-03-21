@@ -5,5 +5,5 @@ export const ContainerLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <div className="xl:container lg:px-4 md:px-4 sm:px-4">{children}</div>;
+  return <div className="xl:container lg:px-4 md:px-4 sm:px-4 xs:px-3">{children}</div>;
 };
