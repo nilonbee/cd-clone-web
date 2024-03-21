@@ -93,7 +93,7 @@ export const Footer = () => {
   return (
     <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r">
       <InnerContainer>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-1 py-12 gap-4">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-1 gap-4 pt-[120px] pb-3">
           <div className="">
             <img
               src="https://campusdirect.io/static/media/logo-white.35991b1b.png"

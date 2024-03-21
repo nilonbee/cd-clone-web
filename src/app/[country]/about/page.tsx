@@ -56,7 +56,6 @@ const AboutPage = () => {
   return (
     <>
       <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r -mt-2 h-12 w-full">
-        .
       </div>
       <ContainerLayout>
         <div className="pt-12 pb-12">
@@ -67,7 +66,7 @@ const AboutPage = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col m-auto w-5/6 justify-center">
+        <div className="flex flex-col m-auto w-full justify-center">
           {articles.map((article) => (
             <AboutParagraph
               key={article.id}

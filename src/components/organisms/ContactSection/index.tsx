@@ -14,8 +14,8 @@ export const ContactSection = () => {
             title="Interested? Let's talk!"
             description="Send us a message with what we can help you."
           />
-          <form className="w-full mt-10 px-20">
-            <div className="flex justify-center items-center gap-4 flex-row">
+          <form className="w-full mt-10 lg:px-20 md:px-0">
+            <div className="flex justify-center items-center md:gap-3 sm:gap-0 md:flex-row sm:flex-col xs:flex-col ">
               <div className="w-full">
                 <InputField
                   label="Name"
@@ -37,7 +37,7 @@ export const ContactSection = () => {
                 />
               </div>
             </div>
-            <div className="flex justify-center items-center gap-4 flex-row">
+            <div className="flex justify-center items-center md:gap-3 sm:gap-0 md:flex-row sm:flex-col xs:flex-col">
               <div className="w-full">
                 <InputField
                   label="Subject"
@@ -48,8 +48,14 @@ export const ContactSection = () => {
                   required
                 />
               </div>
-              <div className="w-full mt-0 pt-0">
-                <PhoneInputField />
+              <div className="w-full">
+                <PhoneInputField
+                  label="Phone Number"
+                  placeholder="Enter your phone number"
+                  id="number"
+                  name="number"
+                  required
+                />
               </div>
             </div>
             <div className="flex justify-center items-center gap-4 flex-row">

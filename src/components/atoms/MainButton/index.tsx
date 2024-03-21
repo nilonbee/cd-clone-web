@@ -20,7 +20,7 @@ export const MainButton = ({
   // Define primary and secondary styles
   const primaryStyles = "bg-primary text-white hover:bg-primaryDark";
   const secondaryStyles =
-    "bg-transparent text-primary border border-primary hover:font-semibold";
+    "bg-transparent text-primary border border-primary hover:bg-primary hover:text-white";
 
   // Determine which styles to apply based on btnStyle prop
   const buttonStyles = btnStyle === "Primary" ? primaryStyles : secondaryStyles;
