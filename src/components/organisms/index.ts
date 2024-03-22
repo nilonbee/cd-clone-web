@@ -7,3 +7,5 @@ export * from "./FAQSection";
 export * from "./BlogSection";
 export * from "./ContactSection";
 export * from "./NewsLetterSection";
+export * from "./Courses";
+export * from "./InterestedSection";

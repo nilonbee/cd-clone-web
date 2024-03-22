@@ -36,6 +36,7 @@ const config: Config = {
       red: "#ff0000",
       border: "#cccccc",
       transparent: "transparent",
+      whiteSmoke: "#F5F5F5"
     },
     extend: {
       spacing: {

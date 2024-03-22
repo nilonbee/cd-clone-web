@@ -14,3 +14,6 @@ export * from "./GridWrapper";
 export * from "./GridWrapperTwo";
 export * from "./Paragraph";
 export * from "./PurposeBox";
+export * from "./FilterSideBar";
+export * from "./FilterOptionBox";
+export * from "./Pagination";
