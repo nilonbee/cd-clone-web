@@ -36,7 +36,7 @@ export const SingleEventBox = ({
       <div className="col-span-2 mt-6 ml-4">
         <div className="pb-4 text-lg font-semibold">{subtitle}</div>
         <div className="pb-4 text-sm">{description}</div>
-        <div className="grid grid-cols-3 gap-2 pb-4">
+        <div className="grid grid-cols-3 gap-2 pb-4 mt-8">
           <SingleEventDetailBox
             label={location}
             value=" Campus Direct, Kandy"
@@ -59,7 +59,7 @@ export const SingleEventBox = ({
           label="Register Now"
           btnStyle="Primary"
           btnSize="Medium"
-          customStyle="w-[200px]"
+          customStyle="w-[200px] mt-12"
         />
       </div>
     </div>
