@@ -31,39 +31,42 @@ const SingleEventPage = () => {
   const { title, subtitle, image, startDate, endDate, location, description } =
     singleEventMockData;
   return (
-    <ContainerLayout>
+    <>
       <Hero />
-      <div className="my-12">
-        <SectionHeader
-          title="Canada Application Week"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+      <ContainerLayout>
+        <div className="my-12">
+          <SectionHeader
+            title="Canada Application Week"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
           architecto placeat non"
-        />
-      </div>
-      <InnerContainer>
-        <SingleEventBox
-          title={title}
-          subtitle={subtitle}
-          image={image}
-          startDate={startDate}
-          endDate={endDate}
-          location={location}
-          description={description}
-        />
-      </InnerContainer>
-      <div className="my-12">
-        <SectionHeader
-          title="Location Map"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+          />
+        </div>
+        <InnerContainer>
+          <SingleEventBox
+            title={title}
+            subtitle={subtitle}
+            image={image}
+            startDate={startDate}
+            endDate={endDate}
+            location={location}
+            description={description}
+          />
+        </InnerContainer>
+        <div className="my-12">
+          <SectionHeader
+            title="Location Map"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
           architecto placeat non"
-        />
-      </div>
-
-      <div className="p-4 mx-auto w-[64rem] my-12 bg-lightBlue bg-opacity-40">
-        <GMap mapData={mapData} />
-      </div>
+          />
+        </div>
+        <InnerContainer>
+          <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40">
+            <GMap mapData={mapData} />
+          </div>
+        </InnerContainer>
+      </ContainerLayout>
       <SecondaryFooter />
-    </ContainerLayout>
+    </>
   );
 };
 

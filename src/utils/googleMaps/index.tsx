@@ -54,7 +54,7 @@ function GMap({ mapData }: MapProps): JSX.Element {
         <GoogleMap
           onLoad={onLoad}
           onClick={() => setActiveMarker(null)}
-          mapContainerStyle={{ width: "100%", height: "500px" }}
+          mapContainerStyle={{ height: "500px" }}
         >
           {markers.map(({ id, name, position }) => (
             <Marker

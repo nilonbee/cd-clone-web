@@ -3,7 +3,7 @@ import { MainButton, SectionHeader } from "@/components/atoms";
 
 export const SecondaryFooter = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-screen bg-[#D4EBFF] bg-opacity-40 m-auto py-8 mt-6">
+    <div className="flex flex-col justify-center items-center w-full bg-[#D4EBFF] bg-opacity-40 py-8 mt-6">
       <SectionHeader
         title="Interested? Let's talk!"
         description="Send us a message with what we can help you."
