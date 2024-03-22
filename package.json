@@ -11,10 +11,12 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
+    "@react-google-maps/api": "^2.19.3",
     "next": "14.1.2",
     "node-ipinfo": "^3.5.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-google-maps": "^9.4.5",
     "react-international-phone": "^4.2.6",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"

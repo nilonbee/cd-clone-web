@@ -3,7 +3,7 @@ import Image from "next/image";
 
 interface ImageWrapperProps {
   src: string;
-  margin: string;
+  margin?: string;
   width: number;
   height: number;
 }
