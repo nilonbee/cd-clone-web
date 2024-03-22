@@ -38,8 +38,8 @@ export const SingleEventBox = ({
         <div className="pb-4 text-sm">{description}</div>
         <div className="grid grid-cols-3 gap-2 pb-4 mt-8">
           <SingleEventDetailBox
-            label={location}
-            value=" Campus Direct, Kandy"
+            label="Location"
+            value={location}
             icon={<CarbonLocationIcon />}
           />
 
