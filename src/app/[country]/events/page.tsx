@@ -68,7 +68,7 @@ const AboutPage = () => {
         </div>
         <InnerContainer>
           <div className="mb-12">
-            <GridWrapper>
+            <GridWrapper gap="6">
               {events.map((event) => (
                 <EventBox title={event.eventTitle} image={event.src} />
               ))}
