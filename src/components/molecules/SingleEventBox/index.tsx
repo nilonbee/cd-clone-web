@@ -26,10 +26,10 @@ export const SingleEventBox = ({
   description,
 }: SingleEventBoxProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mb-6 w-full">
       <div className="col-span-1 flex justify-center py-4">
         <div className="p-4 bg-lightBlue bg-opacity-40 h-max">
-          <Image height={24} width={280} src={image} alt="event-img" />
+          <Image height={24} width={480} src={image} alt="event-img" />
           <p className="ml-6 py-3 font-semibold">{title}</p>
         </div>
       </div>
