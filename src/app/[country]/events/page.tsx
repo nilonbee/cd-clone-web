@@ -3,7 +3,6 @@ import {
   InnerContainer,
   SectionHeader,
   Hero,
-  SecondaryFooter,
 } from "@/components/atoms";
 import React from "react";
 import { PeopleIcon, TargetIcon, LightIcon } from "@/components/atoms/Icons";
@@ -76,7 +75,6 @@ const AboutPage = () => {
           </div>
         </InnerContainer>
       </ContainerLayout>
-      <SecondaryFooter />
     </>
   );
 };

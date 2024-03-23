@@ -4,7 +4,6 @@ import GMap from "@/components/molecules/Maps";
 
 import {
   MainButton,
-  SecondaryFooter,
   SectionHeader,
   ContainerLayout,
   InnerContainer,
@@ -65,7 +64,6 @@ const SingleEventPage = () => {
           </div>
         </InnerContainer>
       </ContainerLayout>
-      <SecondaryFooter />
     </>
   );
 };

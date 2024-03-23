@@ -3,7 +3,7 @@ import React from "react";
 
 interface PurposeBox {
   title: string;
-  description: string;
+  description: string[];
   icon: React.ReactElement;
 }
 
@@ -13,10 +13,16 @@ export const PurposeBox: React.FC<PurposeBox> = ({
   icon,
 }) => {
   return (
-    <div className="block p-4 rounded-md mb-12 bg-whiteGray bg-opacity-30">
+    <div className="block p-4 rounded-md mb-12 bg-[#F8F8F8] bg-opacity-30 shadow">
       {icon}
       <p className="font-semibold text-base my-3">{title}</p>
-      <p className="text-sm leading-6">{description}</p>
+      <div>
+        {description.map((section, index) => (
+          <p className="text-sm leading-6 text-textColor mb-4 text-justify" key={index}>
+            {section}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
