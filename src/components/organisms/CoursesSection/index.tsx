@@ -7,6 +7,7 @@ export const CoursesSection = () => {
   const courses = [
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Computer Science",
       country: "United States",
       duration: "4 years & 8 semester",
@@ -16,6 +17,7 @@ export const CoursesSection = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -25,6 +27,7 @@ export const CoursesSection = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Computer Science",
       country: "United States",
       duration: "4 years & 8 semester",
@@ -34,6 +37,7 @@ export const CoursesSection = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -56,6 +60,7 @@ export const CoursesSection = () => {
           <GridWrapper>
             {courses.map((item, index) => (
               <CourseBox
+                slug={item.slug}
                 courseTitle={item.courseTitle}
                 tuitionFee={item.tuitionFee}
                 country={item.country}
