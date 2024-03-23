@@ -12,7 +12,7 @@ export * from "./InputTextArea";
 export * from "./PhoneInput"
 export * from "./GridWrapper";
 export * from "./GridWrapperTwo";
-export * from "./Paragraph";
+export * from "./AboutParagraph";
 export * from "./PurposeBox";
 export * from "./FilterSideBar";
 export * from "./FilterOptionBox";
