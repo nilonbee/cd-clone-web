@@ -17,3 +17,5 @@ export * from "./PurposeBox";
 export * from "./FilterSideBar";
 export * from "./FilterOptionBox";
 export * from "./Pagination";
+export * from "./EventBox"
+export * from "./SingleEventBox"

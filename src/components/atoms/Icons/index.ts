@@ -22,5 +22,7 @@ export * from './EyeIcon';
 export * from './DateIcon';
 export * from './LightIcon';
 export * from './TargetIcon';
-export * from "./PeopleIcon";
+export * from "./PeopleIcon"
 export * from "./FilterIcon";
+export * from "./CarbonLocationIcon"
+export * from "./FormKitDateTimeIcon";

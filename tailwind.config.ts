@@ -30,6 +30,7 @@ const config: Config = {
       gray: "#4a5568",
       black: "#000000",
       grayLight: "#f3f3f3",
+      lightBlue:"#D4EBFF",
       grayMedium: "#999",
       whiteGray:"#E0E0E0",
       grayText: "#b2b2b2",

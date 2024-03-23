@@ -5,9 +5,10 @@ import {
   Hero,
   SecondaryFooter,
 } from "@/components/atoms";
-import { AboutParagraph, PurposeBox } from "@/components/molecules";
 import React from "react";
-import { PeopleIcon, TargetIcon, LightIcon } from "@components/atoms/Icons";
+import { PeopleIcon, TargetIcon, LightIcon } from "@/components/atoms/Icons";
+import { events } from "@/mockData/events";
+import { EventBox, GridWrapper } from "@/components/molecules/";
 
 const articles = [
   {
@@ -59,47 +60,19 @@ const AboutPage = () => {
     <>
       <Hero />
       <ContainerLayout>
-        <div className="pt-12 pb-12">
-          <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
-            <SectionHeader
-              title="About Us"
-              description="Welcome to Campus Direct."
-            />
-          </div>
+        <div className="my-12">
+          <SectionHeader
+            title="Events"
+            description="Campus Direct is passionate about empowering students"
+          />
         </div>
         <InnerContainer>
-          <div className="flex flex-col m-auto w-full justify-center">
-            {articles.map((article) => (
-              <AboutParagraph
-                key={article.id}
-                image={article.image}
-                description={article.description}
-              />
-            ))}
-          </div>
-        </InnerContainer>
-
-        <InnerContainer>
-          <div className="block md:grid md:gap-6 grid-cols-2 m-auto  mt-12">
-            {segments.slice(0, 2).map((segment, index) => (
-              <PurposeBox
-                key={index}
-                icon={segment.icon}
-                description={segment.description}
-                title={segment.title}
-              />
-            ))}
-          </div>
-        </InnerContainer>
-        <InnerContainer>
-          <div className="block md:grid md:gap-6 grid-cols-1 m-auto mt-12">
-            {segments.slice(2).map((segment) => (
-              <PurposeBox
-                icon={segment.icon}
-                description={segment.description}
-                title={segment.title}
-              />
-            ))}
+          <div className="mb-12">
+            <GridWrapper gap="6">
+              {events.map((event) => (
+                <EventBox title={event.eventTitle} image={event.src} />
+              ))}
+            </GridWrapper>
           </div>
         </InnerContainer>
       </ContainerLayout>
