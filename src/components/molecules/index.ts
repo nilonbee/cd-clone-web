@@ -14,3 +14,5 @@ export * from "./GridWrapper";
 export * from "./GridWrapperTwo";
 export * from "./Paragraph";
 export * from "./PurposeBox";
+export * from "./EventBox"
+export * from "./SingleEventBox"

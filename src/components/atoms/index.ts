@@ -5,3 +5,8 @@ export * from "./SectionHeader";
 export * from "./MainButton";
 export * from "./ListItem";
 export * from "./Rating";
+export * from "./ImageWrapper";
+export * from "./Hero";
+export * from "./SecondaryFooter";
+export * from "./EventWrapper"
+export * from "./SingleEventDetailBox"
