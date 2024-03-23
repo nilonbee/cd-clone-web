@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import GMap from "@/utils/googleMaps";
+import GMap from "@/components/molecules/Maps";
 
 import {
   MainButton,
