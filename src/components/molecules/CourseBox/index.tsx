@@ -7,6 +7,7 @@ import React from "react";
 import { CardWrapper } from "..";
 
 interface CourseBoxProps {
+  slug: string;
   university: string;
   logo?: string;
   country: string;
@@ -17,6 +18,7 @@ interface CourseBoxProps {
 }
 
 export const CourseBox = ({
+  slug,
   university,
   logo,
   courseTitle,
@@ -26,7 +28,7 @@ export const CourseBox = ({
   rating,
 }: CourseBoxProps) => {
   return (
-    <Link href="/lk">
+    <Link href={`{country}/courses/${slug}`}>
       <CardWrapper>
         <div className="w-full h-24 sm:h-20 overflow-hidden border-b border-grayLight pb-2">
           <img src={logo} alt="logo" className="w-full h-full object-contain" />

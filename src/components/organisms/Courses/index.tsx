@@ -5,6 +5,7 @@ export const Courses = () => {
   const courses = [
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Computer Science",
       country: "United States",
       duration: "4 years & 8 semester",
@@ -14,6 +15,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -23,6 +25,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Computer Science",
       country: "United States",
       duration: "4 years & 8 semester",
@@ -32,6 +35,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -41,6 +45,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -50,6 +55,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -59,6 +65,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -68,6 +75,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -77,6 +85,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -86,6 +95,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -95,6 +105,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "computer-science",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -104,6 +115,7 @@ export const Courses = () => {
     },
     {
       university: "Nottingham Trent University",
+      slug: "electrical-engineering",
       courseTitle: "Electrical Engineering",
       country: "Canada",
       duration: "3 years & 6 semester",
@@ -114,7 +126,7 @@ export const Courses = () => {
     // Add more mock data as needed
   ];
   return (
-    <div className="-mt-10">
+    <div className="-mt-10 w-full">
       {/* <div className="flex gap-2 items-center relative w-full mt-2 flex-wrap">
         <FilterOptionBox itemName={"New Zealand"} />
         <FilterOptionBox itemName={"Australia"} />
@@ -124,6 +136,7 @@ export const Courses = () => {
       <GridWrapper>
         {courses.map((item, index) => (
           <CourseBox
+            slug={item.slug}
             courseTitle={item.courseTitle}
             tuitionFee={item.tuitionFee}
             country={item.country}

@@ -2,7 +2,7 @@ import { ContainerLayout } from "@/components/atoms";
 import { FilterSideBar, SearchBar } from "@/components/molecules";
 import { Courses, InterestedSection } from "@/components/organisms";
 
-const AboutPage = () => {
+const CoursePage = () => {
   return (
     <>
       <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r -mt-2">
@@ -20,7 +20,9 @@ const AboutPage = () => {
       <ContainerLayout>
         <SearchBar />
         <div className="w-full flex flex-row my-10 gap-4">
+          <div className="md:hidden sm:hidden xs:hidden lg:block xl:block 2xl:block">
           <FilterSideBar />
+          </div>
           <Courses />
         </div>
       </ContainerLayout>
@@ -29,4 +31,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default CoursePage;
