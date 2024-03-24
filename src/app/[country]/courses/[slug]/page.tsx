@@ -79,18 +79,18 @@ const CourseSinglePage = () => {
                 </p>
                 <p className="text-textColor text-sm my-4 leading-6">
                   Students must have completed Sri Lankan GCE A levels by
-                  passing in 3 Academic subjects with 3 'S' passes. Applications
-                  are based on comparisons with Australian Year 12 level
-                  examinations. English Language Requirements: IELTS (Academic
-                  only) score of 6.0 (or better) (no component lower than 5.5);
-                  TOEFL (paper based) score of 550 (or better) (with a minimum
-                  Test of Written English Score of TWE 4.5); TOEFL (electronic
-                  or computer based) score of 213 (or better) (with essay rating
-                  of at least 4.5); TOEFL (internet based) score of 80 (or
-                  better) (with 19 minimum in all bands); Pearson (PTE Academic)
-                  score of 50 (or better) (with no communicative score less than
-                  50); Cambridge English: First (FCE)/ B2 First with a score of
-                  169 or above. No less than 162 in each skill.
+                  passing in 3 Academic subjects with 3 &lsquo;S&rsquo; passes.
+                  Applications are based on comparisons with Australian Year 12
+                  level examinations. English Language Requirements: IELTS
+                  (Academic only) score of 6.0 (or better) (no component lower
+                  than 5.5); TOEFL (paper based) score of 550 (or better) (with
+                  a minimum Test of Written English Score of TWE 4.5); TOEFL
+                  (electronic or computer based) score of 213 (or better) (with
+                  essay rating of at least 4.5); TOEFL (internet based) score of
+                  80 (or better) (with 19 minimum in all bands); Pearson (PTE
+                  Academic) score of 50 (or better) (with no communicative score
+                  less than 50); Cambridge English: First (FCE)/ B2 First with a
+                  score of 169 or above. No less than 162 in each skill.
                 </p>
                 <p className="font-semibold text-textColor text-sm my-4">
                   For international students

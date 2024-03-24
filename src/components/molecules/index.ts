@@ -23,3 +23,5 @@ export * from "./SingleEventDetailBox";
 export * from "./CareerRow";
 export * from "./UniRow";
 export * from "./CoursePriceBox";
+export * from "./ContactBox";
+export * from "./AddressBox";

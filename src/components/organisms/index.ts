@@ -11,3 +11,4 @@ export * from "./Courses";
 export * from "./InterestedSection";
 export * from "./CareersForm";
 export * from "./ApplicationForm";
+export * from "./AddressSection";

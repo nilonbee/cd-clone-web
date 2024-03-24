@@ -1,4 +1,8 @@
-import { CalenderIcon, FeeIcon, LocationIcon2 } from "@/components/atoms/Icons";
+import {
+  CalenderIcon,
+  FeeIcon,
+  CarbonLocationIcon,
+} from "@/components/atoms/Icons";
 import React from "react";
 
 export const CoursePriceBox = () => {
@@ -45,7 +49,7 @@ export const CoursePriceBox = () => {
 
         <div className="flex gap-4 items-start w-full">
           <div className="flex gap-2.5 items-center relative bg-transparent w-1/4">
-            <LocationIcon2 />
+            <CarbonLocationIcon />
             <p className="tracking-[0.064em] font-medium leading-8 text-sm text-[#065da8]">
               Venue
             </p>
