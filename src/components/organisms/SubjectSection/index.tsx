@@ -51,16 +51,17 @@ export const SubjectSection = () => {
             title="Subjects You Can Study"
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
-
-          <GridWrapper>
-            {subjects.map((item, index) => (
-              <SubjectBox
-                key={index}
-                title={item.title}
-                subjects={item.subjects}
-              />
-            ))}
-          </GridWrapper>
+          <div className="mt-10">
+            <GridWrapper>
+              {subjects.map((item, index) => (
+                <SubjectBox
+                  key={index}
+                  title={item.title}
+                  subjects={item.subjects}
+                />
+              ))}
+            </GridWrapper>
+          </div>
           {/* See More Butn */}
           <div className="flex justify-center items-center mt-10">
             <MainButton

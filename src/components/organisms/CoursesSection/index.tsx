@@ -56,22 +56,23 @@ export const CoursesSection = () => {
             title="Trending Courses"
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
-
-          <GridWrapper>
-            {courses.map((item, index) => (
-              <CourseBox
-                slug={item.slug}
-                courseTitle={item.courseTitle}
-                tuitionFee={item.tuitionFee}
-                country={item.country}
-                duration={item.duration}
-                rating={item.rating}
-                key={index}
-                logo={item.logo}
-                university={item.university}
-              />
-            ))}
-          </GridWrapper>
+          <div className="mt-10">
+            <GridWrapper>
+              {courses.map((item, index) => (
+                <CourseBox
+                  slug={item.slug}
+                  courseTitle={item.courseTitle}
+                  tuitionFee={item.tuitionFee}
+                  country={item.country}
+                  duration={item.duration}
+                  rating={item.rating}
+                  key={index}
+                  logo={item.logo}
+                  university={item.university}
+                />
+              ))}
+            </GridWrapper>
+          </div>
           {/* See More Butn */}
           <div className="flex justify-center items-center mt-10">
             <MainButton

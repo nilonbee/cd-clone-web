@@ -2,7 +2,11 @@ import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { BlogPost, GridWrapper } from "@/components/molecules";
 
-export const BlogSection = () => {
+interface BlogSectionProps {
+  seeMoreBtn?: boolean;
+}
+
+export const BlogSection = ({ seeMoreBtn = true }: BlogSectionProps) => {
   const blogPost = [
     {
       title: "The Evolution of Higher Education: Trends in Modern Universities",
@@ -49,29 +53,32 @@ export const BlogSection = () => {
             title="Read Our Latest Blogs"
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
-
-          <GridWrapper>
-            {blogPost.map((item, index) => (
-              <BlogPost
-                key={index}
-                title={item.title}
-                description={item.description}
-                date={item.date}
-                image={item.image}
-                author={item.author}
-                viewCount={item.viewCount}
-              />
-            ))}
-          </GridWrapper>
-          <div className="flex justify-center items-center mt-10">
-            <MainButton
-              label="See More"
-              btnStyle="Secondary"
-              btnSize="Medium"
-              icon={<RightArrowIcon />}
-              customStyle="w-[200px]"
-            />
+          <div className="mt-10">
+            <GridWrapper>
+              {blogPost.map((item, index) => (
+                <BlogPost
+                  key={index}
+                  title={item.title}
+                  description={item.description}
+                  date={item.date}
+                  image={item.image}
+                  author={item.author}
+                  viewCount={item.viewCount}
+                />
+              ))}
+            </GridWrapper>
           </div>
+          {seeMoreBtn && (
+            <div className="flex justify-center items-center mt-10">
+              <MainButton
+                label="See More"
+                btnStyle="Secondary"
+                btnSize="Medium"
+                icon={<RightArrowIcon />}
+                customStyle="w-[200px]"
+              />
+            </div>
+          )}
         </div>
       </div>
     </InnerContainer>

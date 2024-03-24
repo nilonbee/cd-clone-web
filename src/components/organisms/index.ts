@@ -9,3 +9,5 @@ export * from "./ContactSection";
 export * from "./NewsLetterSection";
 export * from "./Courses";
 export * from "./InterestedSection";
+export * from "./CareersForm";
+export * from "./ApplicationForm";

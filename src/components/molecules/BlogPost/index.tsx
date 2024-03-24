@@ -3,6 +3,7 @@ import React from "react";
 import { CardWrapper } from "..";
 import { MainButton } from "@/components/atoms";
 import { DateIcon, EyeIcon, RightArrowIcon } from "@/components/atoms/Icons";
+import Link from "next/link";
 
 type Props = {
   title: string;
@@ -52,13 +53,15 @@ export const BlogPost = ({
         </div>
         <p className="text-xs text-gray mt-2 line-clamp-4">{description}</p>
         <div className="flex gap-2  justify-between items-center w-full mt-4">
-          <MainButton
-            label="Read More"
-            btnStyle="Secondary"
-            btnSize="Medium"
-            fullWith={true}
-            icon={<RightArrowIcon />}
-          />
+          <Link href="/lk/blogs/slug" className="w-full">
+            <MainButton
+              label="Read More"
+              btnStyle="Secondary"
+              btnSize="Medium"
+              fullWith={true}
+              icon={<RightArrowIcon />}
+            />
+          </Link>
         </div>
       </div>
     </CardWrapper>

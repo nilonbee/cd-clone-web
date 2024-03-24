@@ -19,10 +19,10 @@ export const InputTextArea = ({
   return (
     <div className="mb-4">
       <label className="block text-gray text-sm mb-2 font-medium" htmlFor={id}>
-        {label} {required && (<span className="text-red">*</span>)}
+        {label} {required && <span className="text-red">*</span>}
       </label>
       <textarea
-        className="appearance-none border border-border first-letter:rounded w-full py-3 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline rounded"
+        className="block w-full focus:shadow-md rounded  py-2 pl-4 pr-20 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none  text-sm leading-6"
         id={id}
         placeholder={placeholder}
         name={name}

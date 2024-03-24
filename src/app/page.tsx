@@ -13,6 +13,7 @@ const Home = () => {
           url: `https://ipinfo.io/json?token=${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
         });
         if (router) {
+          localStorage.setItem("country", country);
           router.push(`/${country.toLowerCase()}`);
         } else {
           console.error("Router is not defined, redirecting to /LK");

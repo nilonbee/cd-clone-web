@@ -7,6 +7,8 @@ interface MainButtonProps {
   fullWith?: boolean;
   icon?: React.ReactNode;
   customStyle?: string;
+  iconPosition?: "Left" | "Right";
+  onClick?: () => void;
 }
 
 export const MainButton = ({
@@ -16,6 +18,8 @@ export const MainButton = ({
   fullWith,
   icon,
   customStyle,
+  iconPosition = "Right",
+  onClick,
 }: MainButtonProps) => {
   // Define primary and secondary styles
   const primaryStyles = "bg-primary text-white hover:bg-primaryDark";
@@ -43,9 +47,11 @@ export const MainButton = ({
   return (
     <div
       className={`flex justify-center items-center relative  text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out rounded-sm cursor-pointer ${customStyle}`}
+      onClick={onClick}
     >
+      {icon && iconPosition === "Left" && <div className="mr-2">{icon}</div>}
       <p>{label}</p>
-      {icon && <div className="ml-2">{icon}</div>}
+      {icon && iconPosition === "Right" && <div className="ml-2">{icon}</div>}
     </div>
   );
 };

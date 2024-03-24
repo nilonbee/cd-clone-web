@@ -6,6 +6,7 @@ import {
   Marker,
   useJsApiLoader,
 } from "@react-google-maps/api";
+import { Loading } from "@/components/atoms";
 
 interface MapProps {
   mapData: {
@@ -49,7 +50,7 @@ function GMap({ mapData }: MapProps): JSX.Element {
   return (
     <>
       {!isLoaded ? (
-        <h1>Loading...</h1>
+        <Loading />
       ) : (
         <GoogleMap
           onLoad={onLoad}

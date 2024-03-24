@@ -9,7 +9,7 @@ export * from "./SubjectBox";
 export * from "./BlogPost";
 export * from "./InputField";
 export * from "./InputTextArea";
-export * from "./PhoneInput"
+export * from "./PhoneInput";
 export * from "./GridWrapper";
 export * from "./GridWrapperTwo";
 export * from "./AboutParagraph";
@@ -17,5 +17,9 @@ export * from "./PurposeBox";
 export * from "./FilterSideBar";
 export * from "./FilterOptionBox";
 export * from "./Pagination";
-export * from "./EventBox"
-export * from "./SingleEventBox"
+export * from "./EventBox";
+export * from "./SingleEventBox";
+export * from "./SingleEventDetailBox";
+export * from "./CareerRow";
+export * from "./UniRow";
+export * from "./CoursePriceBox";

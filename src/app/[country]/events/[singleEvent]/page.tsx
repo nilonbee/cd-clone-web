@@ -1,13 +1,9 @@
-import Image from "next/image";
-import React from "react";
 import GMap from "@/components/molecules/Maps";
-
 import {
-  MainButton,
-  SectionHeader,
   ContainerLayout,
-  InnerContainer,
   Hero,
+  InnerContainer,
+  SectionHeader,
 } from "@/components/atoms";
 import { SingleEventBox } from "@/components/molecules";
 
@@ -50,16 +46,14 @@ const SingleEventPage = () => {
             location={location}
             description={description}
           />
-        </InnerContainer>
-        <div className="my-12">
-          <SectionHeader
-            title="Location Map"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+          <div className="my-12">
+            <SectionHeader
+              title="Location Map"
+              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
           architecto placeat non"
-          />
-        </div>
-        <InnerContainer>
-          <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40">
+            />
+          </div>
+          <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded shadow">
             <GMap mapData={mapData} />
           </div>
         </InnerContainer>

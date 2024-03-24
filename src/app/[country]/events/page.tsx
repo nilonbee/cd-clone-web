@@ -1,13 +1,13 @@
 import {
   ContainerLayout,
+  Hero,
   InnerContainer,
   SectionHeader,
-  Hero,
 } from "@/components/atoms";
-import React from "react";
-import { PeopleIcon, TargetIcon, LightIcon } from "@/components/atoms/Icons";
-import { events } from "@/mockData/events";
+import { LightIcon, PeopleIcon, TargetIcon } from "@/components/atoms/Icons";
 import { EventBox, GridWrapper } from "@/components/molecules/";
+import { InterestedSection } from "@/components/organisms";
+import { events } from "@/mockData/events";
 
 const articles = [
   {
@@ -68,13 +68,18 @@ const AboutPage = () => {
         <InnerContainer>
           <div className="mb-12">
             <GridWrapper gap="6">
-              {events.map((event) => (
-                <EventBox title={event.eventTitle} image={event.src} />
+              {events.map((event, index) => (
+                <EventBox
+                  key={index}
+                  title={event.eventTitle}
+                  image={event.src}
+                />
               ))}
             </GridWrapper>
           </div>
         </InnerContainer>
       </ContainerLayout>
+      <InterestedSection />
     </>
   );
 };

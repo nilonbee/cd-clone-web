@@ -37,15 +37,15 @@
     &.slick-active button {
       &:before {
         opacity: 1 !important;
-        background-color: #065DA8 !important;
-        color: #065DA8 !important;
+        background-color: #065da8 !important;
+        color: #065da8 !important;
       }
     }
 
     button:hover {
       &:before {
-        background-color: #065DA8 !important;
-        color: #065DA8 !important;
+        background-color: #065da8 !important;
+        color: #065da8 !important;
       }
     }
   }
@@ -55,4 +55,24 @@
   border: none !important;
   height: 41px !important;
   margin-left: 5px !important;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
 }

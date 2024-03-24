@@ -6,5 +6,7 @@ export * from "./MainButton";
 export * from "./ListItem";
 export * from "./Rating";
 export * from "./Hero";
-export * from "./EventWrapper"
-export * from "./SingleEventDetailBox"
+export * from "./EventWrapper";
+export * from "./Loading";
+export * from "./CourseSubHeader";
+export * from "./CourseSubHeader";

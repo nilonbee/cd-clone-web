@@ -1,4 +1,9 @@
-import { CourseBox, FilterOptionBox, GridWrapper, Pagination } from "@/components/molecules";
+import {
+  CourseBox,
+  FilterOptionBox,
+  GridWrapper,
+  Pagination,
+} from "@/components/molecules";
 import React from "react";
 
 export const Courses = () => {
@@ -126,7 +131,7 @@ export const Courses = () => {
     // Add more mock data as needed
   ];
   return (
-    <div className="-mt-10 w-full">
+    <div className="w-full">
       {/* <div className="flex gap-2 items-center relative w-full mt-2 flex-wrap">
         <FilterOptionBox itemName={"New Zealand"} />
         <FilterOptionBox itemName={"Australia"} />

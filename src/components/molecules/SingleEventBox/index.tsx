@@ -1,10 +1,11 @@
-import { MainButton, SingleEventDetailBox } from "@/components/atoms";
+import { MainButton } from "@/components/atoms";
 import {
   CarbonLocationIcon,
   FormKitDateTimeIcon,
 } from "@/components/atoms/Icons";
 import Image from "next/image";
 import React from "react";
+import { SingleEventDetailBox } from "@/components/molecules";
 
 interface SingleEventBoxProps {
   title: string;
@@ -28,9 +29,15 @@ export const SingleEventBox = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mb-6 w-full">
       <div className="col-span-1 flex justify-center py-4">
-        <div className="p-4 bg-lightBlue bg-opacity-40 h-max">
-          <Image height={24} width={480} src={image} alt="event-img" />
-          <p className="ml-6 py-3 font-semibold">{title}</p>
+        <div className="p-4 bg-lightBlue bg-opacity-40 h-max rounded shadow">
+          <Image
+            height={24}
+            width={480}
+            src={image}
+            alt="event-img"
+            className="rounded"
+          />
+          <p className="ml-6 py-3 font-semibold text-center">{title}</p>
         </div>
       </div>
       <div className="col-span-2 mt-6 ml-4">

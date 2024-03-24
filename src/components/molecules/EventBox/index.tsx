@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
@@ -18,9 +17,9 @@ export const EventBox = ({ image, title }: EventBoxProps) => {
           alt={`event-image-${title}`}
           width={300}
           height={300}
-          objectFit="contain"
+          objectFit="cover"
         />
-        <p className="text-base font-semibold mt-3 text-center line-clamp-1">
+        <p className="text-base font-semibold mt-3 text-center line-clamp-2">
           {title}
         </p>
       </EventWrapper>
