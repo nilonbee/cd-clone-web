@@ -11,7 +11,7 @@ export * from "./EmailIcon";
 export * from "./FacebookIcon";
 export * from "./InstagramIcon";
 export * from "./TwitterIcon";
-export * from "./LinkedinIcon";
+export * from "./LinkedinNewIcon";
 export * from "./PhoneIcon";
 export * from "./NavigationIcon";
 export * from "./StarIconFull";
