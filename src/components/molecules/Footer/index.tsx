@@ -4,7 +4,7 @@ import {
   TimeIcon,
   PhoneIcon,
   FacebookIcon,
-  LinkedinIcon,
+  LinkedinNewIcon,
   TwitterIcon,
   InstagramIcon,
   EmailIcon,
@@ -157,7 +157,7 @@ export const Footer = () => {
 
             <div className="flex gap-6 items-start relative bg-transparent mt-4">
               <FacebookIcon />
-              <LinkedinIcon />
+              <LinkedinNewIcon />
               <TwitterIcon />
               <InstagramIcon />
             </div>

@@ -21,6 +21,7 @@ const Home = () => {
         }
       } catch (error) {
         console.error("Error fetching location:", error);
+        // router?.push("/LK");
       }
     };
 
