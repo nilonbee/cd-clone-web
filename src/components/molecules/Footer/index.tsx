@@ -9,8 +9,10 @@ import {
   InstagramIcon,
   EmailIcon,
   NavigationIcon,
+  WhatsappIcon,
+  ScrollUpIcon
 } from "@components/atoms/Icons";
-import { InnerContainer, ListItem } from "@components/atoms";
+import { InnerContainer, ListItem, IconButton } from "@components/atoms";
 
 const openingTimesColombo = [
   {
@@ -91,8 +93,10 @@ const listItems = [
 ];
 export const Footer = () => {
   return (
-    <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r">
+    <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r relative">
       <InnerContainer>
+        <IconButton icon={<ScrollUpIcon />} customStyle="fixed bottom-20 end-5" />
+        <IconButton icon={<WhatsappIcon />} customStyle="fixed bottom-5 end-5" />
         <div className="grid lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-1 gap-4 pt-[120px] pb-3">
           <div className="">
             <img
