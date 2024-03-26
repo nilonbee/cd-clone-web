@@ -91,7 +91,7 @@ const listItems = [
 ];
 export const Footer = () => {
   return (
-    <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r relative">
+    <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r">
       <InnerContainer>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-1 gap-4 pt-[120px] pb-3">
           <div className="">
