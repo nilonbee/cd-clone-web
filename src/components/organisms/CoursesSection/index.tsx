@@ -1,53 +1,13 @@
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { CourseBox, GridWrapper } from "@/components/molecules";
-import React from "react";
+import axiosInstance from "@/utils/axiosInstance";
+import { ApiResponse } from "@/types"
 
-export const CoursesSection = () => {
-  const courses = [
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Computer Science",
-      country: "United States",
-      duration: "4 years & 8 semester",
-      rating: 4.5,
-      tuitionFee: "$20000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Computer Science",
-      country: "United States",
-      duration: "4 years & 8 semester",
-      rating: 4.5,
-      tuitionFee: "$20000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    // Add more mock data as needed
-  ];
-
+export const CoursesSection = async () => {
+  const response = await axiosInstance.post<ApiResponse>('/v1/user/courses', { limit: 4 });
+  const courseData = response.data.data.data;
+  console.log(courseData)
   return (
     <InnerContainer>
       <div className="mt-20 mb-20">
@@ -58,16 +18,16 @@ export const CoursesSection = () => {
           />
           <div className="mt-10">
             <GridWrapper>
-              {courses.map((item, index) => (
+              {courseData?.map((item) => (
                 <CourseBox
-                  slug={item.slug}
-                  courseTitle={item.courseTitle}
-                  tuitionFee={item.tuitionFee}
+                  slug={item.id}
+                  courseTitle={item.course_name}
+                  tuitionFee={item.course_fee}
                   country={item.country}
-                  duration={item.duration}
-                  rating={item.rating}
-                  key={index}
-                  logo={item.logo}
+                  duration={item.level_name}
+                  rating={4.5}
+                  key={item.id}
+                  logo={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${item.uni_logo}`}
                   university={item.university}
                 />
               ))}
