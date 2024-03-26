@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header, Footer } from "@/components/molecules";
+import { IconButton } from "@/components/atoms";
+import { ScrollUpIcon, WhatsappIcon } from "@/components/atoms/Icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +26,14 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <IconButton
+          icon={<ScrollUpIcon />}
+          customStyle="fixed bottom-20 end-5 z-1000"
+        />
+        <IconButton
+          icon={<WhatsappIcon />}
+          customStyle="fixed bottom-5 end-5 z-1000"
+        />
       </body>
     </html>
   );
