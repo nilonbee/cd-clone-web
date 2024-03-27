@@ -6,26 +6,27 @@ import {
 import Image from "next/image";
 import React from "react";
 import { SingleEventDetailBox } from "@/components/molecules";
+import { IMapLocation, IDateLocation } from "@/types/events"
+
 
 interface SingleEventBoxProps {
   title: string;
   subtitle: string;
   image: string;
-  startDate: string;
-  endDate: string;
-  location: string;
   description: string;
+  dates: IDateLocation[];
+  mapDetails: IMapLocation[];
 }
 
 export const SingleEventBox = ({
   title,
   subtitle,
   image,
-  startDate,
-  endDate,
-  location,
+  dates,
+  mapDetails,
   description,
 }: SingleEventBoxProps) => {
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mb-6 w-full">
       <div className="col-span-1 flex justify-center py-4">
@@ -46,19 +47,19 @@ export const SingleEventBox = ({
         <div className="grid grid-cols-3 gap-2 pb-4 mt-8">
           <SingleEventDetailBox
             label="Location"
-            value={location}
+            value={mapDetails.map((item) => (item.location_name))}
             icon={<CarbonLocationIcon />}
           />
 
           <SingleEventDetailBox
             label="Start Date"
-            value={startDate}
+            value={dates.map((item) => (item.start_date))}
             icon={<FormKitDateTimeIcon />}
           />
 
           <SingleEventDetailBox
             label="End Date"
-            value={endDate}
+            value={dates.map((item) => (item.end_date))}
             icon={<FormKitDateTimeIcon />}
           />
         </div>

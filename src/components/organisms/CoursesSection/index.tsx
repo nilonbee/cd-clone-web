@@ -9,7 +9,7 @@ export const CoursesSection = async () => {
     limit: 4,
   });
   const courseData = response.data.data.data;
-  console.log(courseData);
+
   return (
     <InnerContainer>
       <div className="mt-20 mb-20">

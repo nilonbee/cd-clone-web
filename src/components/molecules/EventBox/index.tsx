@@ -6,11 +6,12 @@ import { EventWrapper } from "@/components/atoms";
 interface EventBoxProps {
   image: string;
   title: string;
+  slug: string;
 }
 
-export const EventBox = ({ image, title }: EventBoxProps) => {
+export const EventBox = ({ image, title, slug }: EventBoxProps) => {
   return (
-    <Link href={`/lk/events/${title}`}>
+    <Link href={`/lk/events/${slug}`}>
       <EventWrapper>
         <Image
           src={image}
@@ -19,7 +20,7 @@ export const EventBox = ({ image, title }: EventBoxProps) => {
           height={300}
           objectFit="cover"
         />
-        <p className="text-base font-semibold mt-3 text-center line-clamp-2">
+        <p className="text-base font-semibold mt-3 text-center">
           {title}
         </p>
       </EventWrapper>

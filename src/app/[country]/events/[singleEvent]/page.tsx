@@ -5,26 +5,19 @@ import {
   InnerContainer,
   SectionHeader,
 } from "@/components/atoms";
+import axiosInstance from "@/utils/axiosInstance";
+import convertArrayToObjectArray from "@/utils/convertArray";
+
 import { SingleEventBox } from "@/components/molecules";
+import { IEvent, ISingleEventResponse, IMapLocation, IDateLocation } from "@/types/events";
 
-const mapData = [
-  { location_name: "Campus Direct", lat: "6.8937533", lng: "79.8708282" },
-];
+const SingleEventPage = async ({ params }: any) => {
+  const response = await axiosInstance.get<ISingleEventResponse>(`/v1/user/event-contents/${params.singleEvent}`);
+  const event: IEvent = response.data.data.event;
+  const { title, description, cover_url, map_locations, dates_n_locations, meta_description } = event;
+  const mapDetails: IMapLocation[] = convertArrayToObjectArray(map_locations);
+  const dates: IDateLocation[] = convertArrayToObjectArray(dates_n_locations);
 
-const singleEventMockData = {
-  title: "Canada Application week",
-  subtitle: "   Ready to live your Canadian Dream?",
-  image: "/images/events/events-1.png",
-  startDate: " 2024/10/23-10:00:00am",
-  endDate: "2024/10/23 05:00:00 pm",
-  location: "Campus Direct, Kandy",
-  description:
-    "Join us Canada Application week.where you can apply for january, May and September 2024 intakes from October 23th to 27th, make your dreamsa reality",
-};
-
-const SingleEventPage = () => {
-  const { title, subtitle, image, startDate, endDate, location, description } =
-    singleEventMockData;
   return (
     <>
       <Hero />
@@ -39,11 +32,10 @@ const SingleEventPage = () => {
         <InnerContainer>
           <SingleEventBox
             title={title}
-            subtitle={subtitle}
-            image={image}
-            startDate={startDate}
-            endDate={endDate}
-            location={location}
+            subtitle={meta_description}
+            image={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${cover_url}`}
+            dates={dates}
+            mapDetails={mapDetails}
             description={description}
           />
           <div className="my-12">
@@ -54,7 +46,7 @@ const SingleEventPage = () => {
             />
           </div>
           <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded shadow">
-            <GMap mapData={mapData} />
+            <GMap mapData={mapDetails} />
           </div>
         </InnerContainer>
       </ContainerLayout>
