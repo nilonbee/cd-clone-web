@@ -29,3 +29,5 @@ export * from "./CarbonLocationIcon";
 export * from "./FormKitDateTimeIcon";
 export * from "./FeeIcon";
 export * from "./CalenderIcon";
+export * from "./ScrollUpIcon";
+export * from "./WhatsappIcon";
