@@ -15,6 +15,6 @@ export default async function fetchLocation({ url }: UrlProps) {
     return country;
   } catch (error) {
     console.error('Error fetching location:', error);
-    throw error; // rethrow the error to propagate it to the caller if needed
+    throw error;
   }
 }

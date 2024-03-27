@@ -10,4 +10,4 @@ export * from "./EventWrapper";
 export * from "./Loading";
 export * from "./CourseSubHeader";
 export * from "./CourseSubHeader";
-export * from './IconButton';
+export * from "./IconButton";
