@@ -2,10 +2,10 @@ import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { CourseBox, GridWrapper } from "@/components/molecules";
 import axiosInstance from "@/utils/axiosInstance";
-import { ApiResponse } from "@/types/trendingCourses";
+import { ICourseResponse } from "@/types/courses";
 
 export const CoursesSection = async () => {
-  const response = await axiosInstance.post<ApiResponse>("/v1/user/courses", {
+  const response = await axiosInstance.post<ICourseResponse>("/v1/user/courses", {
     limit: 4,
   });
   const courseData = response.data.data.data;
