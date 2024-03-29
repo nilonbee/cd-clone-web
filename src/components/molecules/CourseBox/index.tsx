@@ -16,7 +16,8 @@ export const CourseBox = ({
   country,
   course_fee,
   level_name,
-  rating
+  rating,
+  currency
 }: ICourse) => {
   return (
     <Link href={`/lk/courses/${id}`}>
@@ -52,7 +53,7 @@ export const CourseBox = ({
             </div>
             <div className="flex gap-2 items-end relative bg-transparent mb-2 mt-2 xs:flex-col md:flex-row ">
               <h2 className="font-semibold text-2xl text-primary">
-                {course_fee}
+                {currency ? currency : "$"}{" "} {`${course_fee}`}
               </h2>
               <p className="font-medium text-xs text-grayText">
                 (Total Amount)

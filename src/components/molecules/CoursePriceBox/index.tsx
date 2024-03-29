@@ -24,7 +24,7 @@ export const CoursePriceBox = ({ created_at, currency, course_fee, uni_address, 
           <div className="w-3/4">
             <p className="tracking-[0.064em] text-sm text-textColor">
               {/* A$32,000.00 (US$ 20,849) per year */}
-              {`${currency} ${course_fee} ${course_fee_additional}`}
+              {`${currency ? currency : 'USD'} ${course_fee} ${course_fee_additional ? course_fee_additional : 'Per Year'}`}
             </p>
             <span className="text-xs text-grayMedium">
               *Price shown is for indicative purposes, please check with

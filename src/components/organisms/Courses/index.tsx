@@ -37,6 +37,7 @@ export const Courses = async () => {
             key={item.id}
             uni_logo={item.uni_logo}
             university={item.university}
+            currency={item.currency}
           />
         ))}
       </GridWrapper>
