@@ -1,135 +1,22 @@
+import axiosInstance from "@/utils/axiosInstance";
+
 import {
   CourseBox,
-  FilterOptionBox,
   GridWrapper,
   Pagination,
 } from "@/components/molecules";
-import React from "react";
+import { ICourseRequest, ICourseResponse, ICourse } from "@/types/courses";
 
-export const Courses = () => {
-  const courses = [
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Computer Science",
-      country: "United States",
-      duration: "4 years & 8 semester",
-      rating: 4.5,
-      tuitionFee: "$20000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Computer Science",
-      country: "United States",
-      duration: "4 years & 8 semester",
-      rating: 4.5,
-      tuitionFee: "$20000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "computer-science",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    {
-      university: "Nottingham Trent University",
-      slug: "electrical-engineering",
-      courseTitle: "Electrical Engineering",
-      country: "Canada",
-      duration: "3 years & 6 semester",
-      rating: 4.2,
-      tuitionFee: "$18000",
-      logo: "/images/Frame 19.png",
-    },
-    // Add more mock data as needed
-  ];
+export const Courses = async () => {
+  const filterData: ICourseRequest = {
+    limit: 20,
+    max_fee: 0,
+    min_fee: 0,
+    page: 1,
+  }
+  const response = await axiosInstance.post('/v1/user/courses', filterData);
+  const courseData = response.data;
+
   return (
     <div className="w-full">
       {/* <div className="flex gap-2 items-center relative w-full mt-2 flex-wrap">
@@ -139,16 +26,16 @@ export const Courses = () => {
         <FilterOptionBox itemName={"USA"} />
       </div> */}
       <GridWrapper>
-        {courses.map((item, index) => (
+        {courseData.data.data.map((item: ICourse) => (
           <CourseBox
-            slug={item.slug}
-            courseTitle={item.courseTitle}
-            tuitionFee={item.tuitionFee}
+            id={item.id}
+            course_name={item.course_name}
+            course_fee={item.course_fee}
             country={item.country}
-            duration={item.duration}
-            rating={item.rating}
-            key={index}
-            logo={item.logo}
+            level_name={item.level_name}
+            rating={4.6}
+            key={item.id}
+            uni_logo={item.uni_logo}
             university={item.university}
           />
         ))}

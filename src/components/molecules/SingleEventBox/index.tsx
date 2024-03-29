@@ -1,13 +1,16 @@
+import Image from "next/image";
+
 import { MainButton } from "@/components/atoms";
 import {
   CarbonLocationIcon,
   FormKitDateTimeIcon,
 } from "@/components/atoms/Icons";
-import Image from "next/image";
-import React from "react";
 import { SingleEventDetailBox } from "@/components/molecules";
 import { IMapLocation, IDateLocation } from "@/types/events"
 
+const removePTags = (htmlString: string) => {
+  return htmlString.replace(/<p>/g, '').replace(/<\/p>/g, '');
+};
 
 interface SingleEventBoxProps {
   title: string;
@@ -43,7 +46,13 @@ export const SingleEventBox = ({
       </div>
       <div className="col-span-2 mt-6 ml-4">
         <div className="pb-4 text-lg font-semibold">{subtitle}</div>
-        <div className="pb-4 text-sm">{description}</div>
+        <div className="pb-4 text-sm">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: removePTags(description), // Call removePTags to sanitize the description
+            }}
+          />
+        </div>
         <div className="grid grid-cols-3 gap-2 pb-4 mt-8">
           <SingleEventDetailBox
             label="Location"

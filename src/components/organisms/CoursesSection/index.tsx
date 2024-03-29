@@ -1,7 +1,8 @@
+import axiosInstance from "@/utils/axiosInstance";
+
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { CourseBox, GridWrapper } from "@/components/molecules";
-import axiosInstance from "@/utils/axiosInstance";
 import { ICourseResponse } from "@/types/courses";
 
 export const CoursesSection = async () => {
@@ -22,14 +23,14 @@ export const CoursesSection = async () => {
             <GridWrapper>
               {courseData?.map((item) => (
                 <CourseBox
-                  slug={item.id}
-                  courseTitle={item.course_name}
-                  tuitionFee={item.course_fee}
+                  id={item.id}
+                  course_name={item.course_name}
+                  course_fee={item.course_fee}
                   country={item.country}
-                  duration={item.level_name}
+                  level_name={item.level_name}
                   rating={4.5}
                   key={item.id}
-                  logo={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${item.uni_logo}`}
+                  uni_logo={item.uni_logo}
                   university={item.university}
                 />
               ))}
