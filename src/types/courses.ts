@@ -13,6 +13,6 @@ export interface ICourse {
 export interface ICourseResponse {
   current_page: number;
   data: {
-      data: ICourse[];
+    data: ICourse[];
   };
 }

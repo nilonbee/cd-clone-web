@@ -2,7 +2,7 @@ import React from "react";
 
 type SingleEventDetailBoxProps = {
   icon: React.ReactElement;
-  value: string;
+  value: string[];
   label: string;
 };
 
