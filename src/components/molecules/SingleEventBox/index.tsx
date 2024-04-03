@@ -1,15 +1,16 @@
 import Image from "next/image";
+import parse from "html-react-parser";
+import { SingleEventDetailBox } from "@/components/molecules";
+import { IMapLocation, IDateLocation } from "@/types/events";
 
 import { MainButton } from "@/components/atoms";
 import {
   CarbonLocationIcon,
   FormKitDateTimeIcon,
 } from "@/components/atoms/Icons";
-import { SingleEventDetailBox } from "@/components/molecules";
-import { IMapLocation, IDateLocation } from "@/types/events"
 
 const removePTags = (htmlString: string) => {
-  return htmlString.replace(/<p>/g, '').replace(/<\/p>/g, '');
+  return htmlString.replace(/<p>/g, "").replace(/<\/p>/g, "");
 };
 
 interface SingleEventBoxProps {
@@ -29,7 +30,6 @@ export const SingleEventBox = ({
   mapDetails,
   description,
 }: SingleEventBoxProps) => {
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mb-6 w-full">
       <div className="col-span-1 flex justify-center py-4">
@@ -47,28 +47,29 @@ export const SingleEventBox = ({
       <div className="col-span-2 mt-6 ml-4">
         <div className="pb-4 text-lg font-semibold">{subtitle}</div>
         <div className="pb-4 text-sm">
-          <div
+          {/* <div
             dangerouslySetInnerHTML={{
               __html: removePTags(description), // Call removePTags to sanitize the description
             }}
-          />
+          /> */}
+          {parse(description)}
         </div>
         <div className="grid grid-cols-3 gap-2 pb-4 mt-8">
           <SingleEventDetailBox
             label="Location"
-            value={mapDetails.map((item) => (item.location_name))}
+            value={mapDetails.map((item) => item.location_name)}
             icon={<CarbonLocationIcon />}
           />
 
           <SingleEventDetailBox
             label="Start Date"
-            value={dates.map((item) => (item.start_date))}
+            value={dates.map((item) => item.start_date)}
             icon={<FormKitDateTimeIcon />}
           />
 
           <SingleEventDetailBox
             label="End Date"
-            value={dates.map((item) => (item.end_date))}
+            value={dates.map((item) => item.end_date)}
             icon={<FormKitDateTimeIcon />}
           />
         </div>

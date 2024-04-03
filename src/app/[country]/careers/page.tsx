@@ -1,3 +1,4 @@
+import axiosInstance from "@/utils/axiosInstance";
 import {
   ContainerLayout,
   Hero,
@@ -7,8 +8,12 @@ import {
 import { LocationIcon2 } from "@/components/atoms/Icons";
 import { CareerRow } from "@/components/molecules";
 import { InterestedSection } from "@/components/organisms";
+import { ICareer } from "@/types/careers";
 
-const CareersPage = () => {
+const CareersPage = async () => {
+  const response = await axiosInstance.get("/v1/user/careers/lk");
+  const careersData = response.data.data.data;
+
   return (
     <>
       <Hero />
@@ -57,9 +62,16 @@ const CareersPage = () => {
               />
             </div>
             <div className="mt-10 flex flex-col gap-4">
-              <CareerRow />
-              <CareerRow />
-              <CareerRow />
+              {careersData.map((item: ICareer) => (
+                <CareerRow
+                  title={item.title}
+                  end_date={item.end_date}
+                  key={item.id}
+                  created_at={item.created_at}
+                  description={item.description}
+                  slug={item.slug}
+                />
+              ))}
             </div>
           </div>
         </InnerContainer>

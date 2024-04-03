@@ -1,11 +1,7 @@
 import axiosInstance from "@/utils/axiosInstance";
 
-import {
-  CourseBox,
-  GridWrapper,
-  Pagination,
-} from "@/components/molecules";
-import { ICourseRequest, ICourseResponse, ICourse } from "@/types/courses";
+import { CourseBox, GridWrapper, Pagination } from "@/components/molecules";
+import { ICourseRequest, ICourse } from "@/types/courses";
 
 export const Courses = async () => {
   const filterData: ICourseRequest = {
@@ -13,8 +9,8 @@ export const Courses = async () => {
     max_fee: 0,
     min_fee: 0,
     page: 1,
-  }
-  const response = await axiosInstance.post('/v1/user/courses', filterData);
+  };
+  const response = await axiosInstance.post("/v1/user/courses", filterData);
   const courseData = response.data;
 
   return (
