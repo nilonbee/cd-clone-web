@@ -31,3 +31,5 @@ export * from "./FeeIcon";
 export * from "./CalenderIcon";
 export * from "./ScrollUpIcon";
 export * from "./WhatsappIcon";
+export * from "./FbIcon";
+export * from "./GoogleIcon";
