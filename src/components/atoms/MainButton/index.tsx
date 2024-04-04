@@ -2,7 +2,7 @@ import React from "react";
 
 interface MainButtonProps {
   label: string;
-  btnStyle: "Primary" | "Secondary";
+  btnStyle?: "Primary" | "Secondary";
   btnSize: "Large" | "Small" | "Medium";
   fullWith?: boolean;
   icon?: React.ReactNode;

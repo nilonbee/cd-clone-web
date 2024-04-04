@@ -18,6 +18,7 @@ const CareerSinglePage = async ({ params }: any) => {
     end_date,
     status,
   }: ICareer = career;
+
   return (
     <>
       <Hero />

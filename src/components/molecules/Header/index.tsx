@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import Link from "next/link";
+
 import { ContainerLayout, MainButton, MenuItem } from "@/components/atoms";
 import { Dialog, Menu } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -16,13 +18,13 @@ export const Header = () => {
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
-            <a href="/">
+            <Link href="/">
               <img
                 className="h-12 w-auto"
                 src="/images/Logo-Clr.png"
                 alt="Logo of Campus Direct"
               />
-            </a>
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -45,12 +47,12 @@ export const Header = () => {
             <MenuItem menuName="Contact Us" uri="/lk/contact" />
           </div>
           <div className="hidden xl:flex xl:flex-1 lg:justify-end gap-4 items-center">
-            <a href="#" className="text-sm text-primary">
+            <Link href="/auth/login" className="text-sm text-primary">
               Login
-            </a>
-            <a href="#" className="text-sm text-primary">
+            </Link>
+            <Link href="/auth/register" className="text-sm text-primary">
               Register
-            </a>
+            </Link>
             <MainButton
               label="Find My Course"
               btnStyle="Primary"
@@ -75,20 +77,20 @@ export const Header = () => {
               >
                 <div className="px-1 py-1 ">
                   <Menu.Item>
-                    <a
-                      href="#"
+                    <Link
+                      href="/auth/login"
                       className="block px-4 py-2 text-sm text-primary"
                     >
                       Login
-                    </a>
+                    </Link>
                   </Menu.Item>
                   <Menu.Item>
-                    <a
-                      href="#"
+                    <Link
+                      href="/auth/register"
                       className="block px-4 py-2 text-sm text-primary"
                     >
                       Register
-                    </a>
+                    </Link>
                   </Menu.Item>
                 </div>
               </Menu.Items>
