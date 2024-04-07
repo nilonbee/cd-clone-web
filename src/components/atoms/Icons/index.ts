@@ -33,3 +33,4 @@ export * from "./ScrollUpIcon";
 export * from "./WhatsappIcon";
 export * from "./FbIcon";
 export * from "./GoogleIcon";
+export * from "./CloseIcon";
