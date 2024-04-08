@@ -28,7 +28,8 @@ const Home = () => {
     fetchData();
   }, [router]);
 
-  return <></>;
+  return <>
+  </>;
 };
 
 export default Home;

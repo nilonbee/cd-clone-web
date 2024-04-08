@@ -1,12 +1,5 @@
 import React from 'react'
-import { ContainerLayout, InnerContainer, MainButton, SectionHeader } from '@/components/atoms'
-import {
-    InputField,
-    PhoneInputField,
-} from "@/components/molecules";
-import Link from 'next/link';
-import Image from 'next/image';
-import { FBIcon, GoogleIcon } from '@/components/atoms/Icons';
+import { ContainerLayout, InnerContainer } from '@/components/atoms'
 import { LoginForm } from '@/components/organisms';
 import { AuthHeader } from '@/components/molecules/AuthHeader';
 
