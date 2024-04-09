@@ -4,7 +4,7 @@ interface MainButtonProps {
   id?: string;
   label: string;
   btnStyle?: "Primary" | "Secondary";
-  btnSize: "Large" | "Small" | "Medium" | "Block";
+  btnSize: "Large" | "Small" | "Medium";
   fullWith?: boolean;
   icon?: React.ReactNode;
   customStyle?: string;

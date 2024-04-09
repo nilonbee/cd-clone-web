@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Devider, MainButton } from "@/components/atoms";
 import { InputField, PhoneInputField } from "@/components/molecules";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { SocialMediaAuthForm } from "@/components/molecules/SocialMediaAuthForm";
+import { SocialMediaAuthForm } from "@/components/molecules";
 
 type FormValues = {
     first_name: string;

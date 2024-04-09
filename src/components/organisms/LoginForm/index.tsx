@@ -10,7 +10,7 @@ import { Devider } from '@/components/atoms';
 import { MainButton } from '@/components/atoms';
 import { InputField } from '@/components/molecules';
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { SocialMediaAuthForm } from '@/components/molecules/SocialMediaAuthForm';
+import { SocialMediaAuthForm } from '@/components/molecules';
 
 type FormValues = {
     email: string;
