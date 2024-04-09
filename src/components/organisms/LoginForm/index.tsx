@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import axios from 'axios';
 import validationSchema from '@/utils/validationSchema';
+import axiosInstance from '@/utils/axiosInstance';
 
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
@@ -24,6 +25,7 @@ export const LoginForm = () => {
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}v1/user/login`, data);
+            // const response = await axiosInstance.post('/vi/user/login');
             const userData = response.data;
 
             if (userData.status === "success") {
@@ -51,7 +53,7 @@ export const LoginForm = () => {
     return (
         <form className="w-full mt-3 lg:px-20 md:px-0" onSubmit={handleSubmit(onSubmit)}>
             {/* Render error message if it exists */}
-            {errorMessage && <span className="text-red">{errorMessage}</span>}
+            {/* {errorMessage && <span className="text-red">{errorMessage}</span>} */}
             <div className="flex justify-center items-center gap-1 sm:flex-col xs:flex-col">
                 <div className="w-full">
                     <Controller
@@ -102,7 +104,8 @@ export const LoginForm = () => {
             <MainButton
                 customStyle=""
                 label="Sign In"
-                btnSize="Block"
+                btnSize="Medium"
+                fullWith
                 btnStyle='Primary'
                 submit
             />
@@ -113,7 +116,8 @@ export const LoginForm = () => {
                 <MainButton
                     customStyle="mt-3 mb-12"
                     label="Register"
-                    btnSize="Block"
+                    btnSize="Medium"
+                    fullWith
                     btnStyle='Secondary'
                 />
             </Link>

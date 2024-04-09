@@ -23,21 +23,6 @@ export const RegisterForm = () => {
     const router = useRouter();
     const [errorMessage, setErrorMessage] = useState<string>("");
 
-
-    // const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    //     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}v1/user/register`, data);
-    //     const userData = response.data;
-
-    //     if (userData.status === "success") {
-    //         router.push("/");
-    //     } else {
-    //         setErrorMessage(userData.message); // Set the error message
-    //         console.error("Login failed:", userData.message);
-    //         reset();
-    //     }
-
-    // };
-
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
             // This triggers validation for all fields
@@ -158,7 +143,8 @@ export const RegisterForm = () => {
                 <MainButton
                     customStyle=""
                     label="Register"
-                    btnSize="Block"
+                    btnSize="Medium"
+                    fullWith
                     btnStyle='Primary'
                     submit
                 />
@@ -167,7 +153,8 @@ export const RegisterForm = () => {
                     <MainButton
                         customStyle="mt-3 mb-12"
                         label="Sign In"
-                        btnSize="Block"
+                        btnSize="Medium"
+                        fullWith
                         btnStyle='Secondary'
                     />
                 </Link>

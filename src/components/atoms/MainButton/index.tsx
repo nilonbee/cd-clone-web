@@ -39,8 +39,6 @@ export const MainButton = ({
     sizeClasses = "h-12 px-6 text-lg";
   } else if (btnSize === "Medium") {
     sizeClasses = "h-10 px-4 text-base";
-  } else if (btnSize === "Block") {
-    sizeClasses = "h-10 block w-full";
   } else {
     sizeClasses = "h-8 px-3 text-sm";
   }
