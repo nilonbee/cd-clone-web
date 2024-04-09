@@ -26,5 +26,4 @@ export * from "./CoursePriceBox";
 export * from "./ContactBox";
 export * from "./AddressBox";
 export * from "./SocialMediaAuthForm";
-export * from "./OrdinalyAuthForm";
 export * from "./AuthHeader";
