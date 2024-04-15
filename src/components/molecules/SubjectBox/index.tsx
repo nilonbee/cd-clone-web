@@ -1,5 +1,5 @@
 import { MainButton } from "@/components/atoms";
-import { HatIcon2, RightArrowIcon } from "@/components/atoms/Icons";
+import { HatIcon, RightArrowIcon } from "@/components/atoms/Icons";
 import Link from "next/link";
 import { CardWrapper } from "..";
 
@@ -13,7 +13,9 @@ export const SubjectBox = ({ title, subjects }: Props) => {
     <CardWrapper>
       <div className="flex flex-col">
         <div className="flex gap-2.5 items-center relative bg-transparent mb-2">
-          <HatIcon2 />
+          <div className="w-[24px] h-[24px] mt-1">
+            <HatIcon />
+          </div>
           <h5 className="font-semibold text-base text-primary">{title}</h5>
         </div>
         {subjects?.map((subject, index) => (

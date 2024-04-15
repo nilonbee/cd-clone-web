@@ -51,7 +51,7 @@ export const SubjectSection = () => {
             title="Subjects You Can Study"
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
-          <div className="mt-10">
+          <div className="mt-10 w-full">
             <GridWrapper>
               {subjects.map((item, index) => (
                 <SubjectBox

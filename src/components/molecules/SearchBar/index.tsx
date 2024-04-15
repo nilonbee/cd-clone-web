@@ -44,11 +44,15 @@ export const SearchBar = () => {
           {searchTypes.map((type) => (
             <div
               key={type.id}
-              className={`flex gap-4 items-center flex-1 relative w-full bg-transparent ${selectedType === type.name ? "bg-red" : ""} cursor-pointer`}
+              className={`flex gap-4 items-center flex-1 relative w-full cursor-pointer`}
               onClick={() => setSelectedType(type.name)}
             >
-              {type.Icon}
-              <p className="text-base text-textColor">{type.label}</p>
+              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                {type.Icon}
+              </div>
+              <p className="md:text-base sm:text-sm xs:text-sm  text-textColor">
+                {type.label}
+              </p>
             </div>
           ))}
         </div>
@@ -57,7 +61,9 @@ export const SearchBar = () => {
         <div className=" shadow-[0px_0px_10px_0px_rgba(0,0,0,0.25)] rounded-[5px]  py-[18px]  -mt-10 w-full bg-white px-5">
           {selectedType === "searchLevel1" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <SearchIcon />
+              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                <SearchIcon />
+              </div>
               <input
                 type="text"
                 placeholder="Search Course"
@@ -73,7 +79,9 @@ export const SearchBar = () => {
           )}
           {selectedType === "searchLevel2" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <HatIcon />
+              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                <HatIcon />
+              </div>
               <input
                 type="text"
                 placeholder="Select Study Level"
@@ -89,7 +97,9 @@ export const SearchBar = () => {
           )}
           {selectedType === "searchLevel3" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <LocationIcon />
+              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                <LocationIcon />
+              </div>
               <input
                 type="text"
                 placeholder="Select Destination"
@@ -105,7 +115,9 @@ export const SearchBar = () => {
           )}
           {selectedType === "searchLevel4" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <BookIcon />
+              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                <BookIcon />
+              </div>
               <input
                 type="text"
                 placeholder="Select Subject"

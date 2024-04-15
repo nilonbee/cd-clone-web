@@ -40,6 +40,7 @@ const config: Config = {
       transparent: "transparent",
       whiteSmoke: "#F5F5F5",
       boxBorder: "#e7e9eb",
+      errorMsg: "#ed4337",
     },
     extend: {
       spacing: {

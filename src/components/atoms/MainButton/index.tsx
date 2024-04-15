@@ -10,8 +10,9 @@ interface MainButtonProps {
   customStyle?: string;
   iconPosition?: "Left" | "Right";
   onClick?: () => void;
-  // we have to make sure weather this is a button or submit type otherwise all the buttons in the form works as submit type and do the rest
-  submit?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
+  submit?: boolean; // Make sure weather this is a button or submit type otherwise all the buttons in the form works as submit type and do the rest
 }
 
 export const MainButton = ({
@@ -24,6 +25,8 @@ export const MainButton = ({
   iconPosition = "Right",
   onClick,
   submit,
+  loading,
+  disabled,
 }: MainButtonProps) => {
   // Define primary and secondary styles
   const primaryStyles = "bg-primary text-white hover:bg-primaryDark";
@@ -31,7 +34,15 @@ export const MainButton = ({
     "bg-transparent text-primary border border-primary hover:bg-primary hover:text-white";
 
   // Determine which styles to apply based on btnStyle prop
-  const buttonStyles = btnStyle === "Primary" ? primaryStyles : secondaryStyles;
+  const disabledStyles =
+    "bg-grayLight text-primary border border-primary cursor-not-allowed";
+
+  const buttonStyles =
+    btnStyle === "Primary"
+      ? disabled
+        ? disabledStyles
+        : primaryStyles
+      : secondaryStyles;
 
   // Define size classes based on btnSize prop
   let sizeClasses = "";
@@ -54,6 +65,11 @@ export const MainButton = ({
       onClick={onClick}
       type={submit ? "submit" : "button"}
     >
+      {loading && (
+        <div className="mr-2">
+          <div className="w-6 h-6 border-t-2 border-b-2 border-primary rounded-full animate-spin"></div>
+        </div>
+      )}
       {icon && iconPosition === "Left" && <div className="mr-2">{icon}</div>}
       <p>{label}</p>
       {icon && iconPosition === "Right" && <div className="ml-2">{icon}</div>}

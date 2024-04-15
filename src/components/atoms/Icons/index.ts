@@ -3,7 +3,6 @@ export * from "./SearchIcon";
 export * from "./BookIcon";
 export * from "./LocationIcon";
 export * from "./LocationIcon2";
-export * from "./HatIcon2";
 export * from "./PinIcon";
 export * from "./UniversityIcon";
 export * from "./TimeIcon";
