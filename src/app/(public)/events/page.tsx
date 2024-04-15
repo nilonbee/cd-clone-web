@@ -7,10 +7,11 @@ import {
 import { EventBox, GridWrapper } from "@/components/molecules/";
 import { InterestedSection } from "@/components/organisms";
 import axiosInstance from "@/utils/axiosInstance";
-import { IEvent, IEventResponse } from "@/types/events"
+import { IEvent, IEventResponse } from "@/types/events";
 
 const EventsPage = async () => {
-  const response = await axiosInstance.get<IEventResponse>("/v1/user/events/lk");
+  const response =
+    await axiosInstance.get<IEventResponse>("/v1/user/events/lk");
   const events = response.data.data;
 
   return (

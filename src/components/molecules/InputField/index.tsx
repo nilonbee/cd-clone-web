@@ -25,20 +25,22 @@ export const InputField = ({
   error,
   ...rest
 }: Props) => {
+  const errorCSS = error
+    ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
+    : "";
   return (
     <div className={`mb-${noMargin ? "0" : "4"}`}>
       {label && (
         <label
-          className={`block text-sm mb-2 font-medium ${error ? "text-red" : "text-gray"}`}
+          className={`block text-sm mb-2 font-medium ${error ? "text-errorMsg" : "text-gray"}`}
           htmlFor={id}
         >
-          {label} {required && <span className="text-red">*</span>}
+          {label} {required && <span className="text-errorMsg">*</span>}
         </label>
       )}
 
       <input
-        className={`block w-full focus:shadow-md rounded py-2 pl-4 pr-20 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none text-sm leading-6 ${customStyle
-          } ${error ? "ring-red text-red" : ""}`}
+        className={`block w-full focus:shadow-md rounded py-2 pl-4 pr-20 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none text-sm leading-6 ${customStyle} ${errorCSS}`}
         id={id}
         type={type}
         placeholder={placeholder}
@@ -47,7 +49,7 @@ export const InputField = ({
       />
 
       {/* Display error message when error is present */}
-      {error && <span className="text-red">{error}</span>}
+      {error && <span className="text-errorMsg text-xs">{error}</span>}
     </div>
   );
 };

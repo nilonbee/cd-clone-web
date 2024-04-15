@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import React from "react";
 import {
   TimeIcon,
@@ -62,31 +63,31 @@ const openingTimesLondon = [
 const listItems = [
   {
     text: "Home",
-    href: "/LK/home",
+    href: "/home",
   },
   {
     text: "About Us",
-    href: "/LK/about-us",
+    href: "/about-us",
   },
   {
     text: "Courses",
-    href: "/LK/courses",
+    href: "/courses",
   },
   {
     text: "Events",
-    href: "/LK/events",
+    href: "/events",
   },
   {
     text: "Careers",
-    href: "/LK/home",
+    href: "/home",
   },
   {
     text: "Scholarships",
-    href: "/LK/scholarships",
+    href: "/scholarships",
   },
   {
     text: "Contact Us",
-    href: "/LK/contact-us",
+    href: "/contact-us",
   },
 ];
 export const Footer = () => {

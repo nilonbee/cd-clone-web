@@ -1,16 +1,11 @@
 import React, { ReactElement } from "react";
 
-type HatIconProps = {
-  size?: number;
-};
-
-export const HatIcon = ({ size = 39 }: HatIconProps): ReactElement => (
+export const HatIcon = (): ReactElement => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size-9}
+    className="w-full h-auto"
     fill="none"
-    viewBox={`0 0 ${size} ${size-9}`}
+    viewBox={`0 0 39 30`}
   >
     <path
       stroke="url(#paint0_linear_1036_314)"

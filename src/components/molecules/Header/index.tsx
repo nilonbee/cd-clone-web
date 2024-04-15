@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import Link from "next/link";
-
 import { ContainerLayout, MainButton, MenuItem } from "@/components/atoms";
 import { Dialog, Menu } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -37,20 +36,20 @@ export const Header = () => {
             </button>
           </div>
           <div className="hidden lg:flex gap-8">
-            <MenuItem menuName="Home" uri={"/lk"} />
-            <MenuItem menuName="About Us" uri="/lk/about" />
-            <MenuItem menuName="Courses" uri="/lk/courses" />
-            <MenuItem menuName="Events" uri="/lk/events" />
-            <MenuItem menuName="Scholarships" uri="/lk/scholarships" />
-            <MenuItem menuName="Careers" uri="/lk/careers" />
-            <MenuItem menuName="Blogs" uri="/lk/blogs" />
-            <MenuItem menuName="Contact Us" uri="/lk/contact" />
+            <MenuItem menuName="Home" uri={"/"} />
+            <MenuItem menuName="About Us" uri="/about" />
+            <MenuItem menuName="Courses" uri="/courses" />
+            <MenuItem menuName="Events" uri="/events" />
+            <MenuItem menuName="Scholarships" uri="/scholarships" />
+            <MenuItem menuName="Careers" uri="/careers" />
+            <MenuItem menuName="Blogs" uri="/blogs" />
+            <MenuItem menuName="Contact Us" uri="/contact" />
           </div>
           <div className="hidden xl:flex xl:flex-1 lg:justify-end gap-4 items-center">
-            <Link href="/auth/login" className="text-sm text-primary">
+            <Link href="/login" className="text-sm text-primary">
               Login
             </Link>
-            <Link href="/auth/register" className="text-sm text-primary">
+            <Link href="/register" className="text-sm text-primary">
               Register
             </Link>
             <MainButton
@@ -78,7 +77,7 @@ export const Header = () => {
                 <div className="px-1 py-1 ">
                   <Menu.Item>
                     <Link
-                      href="/auth/login"
+                      href="/login"
                       className="block px-4 py-2 text-sm text-primary"
                     >
                       Login
@@ -86,7 +85,7 @@ export const Header = () => {
                   </Menu.Item>
                   <Menu.Item>
                     <Link
-                      href="/auth/register"
+                      href="/register"
                       className="block px-4 py-2 text-sm text-primary"
                     >
                       Register
@@ -122,21 +121,57 @@ export const Header = () => {
           <div className="mt-5 flow-root">
             <div>
               <div className="space-y-5 py-6 flex flex-col border-b border-borderGray">
-                <MenuItem menuName="Home" uri={"/lk"} />
-                <MenuItem menuName="About Us" uri="/lk/about" />
-                <MenuItem menuName="Courses" uri="/lk/courses" />
-                <MenuItem menuName="Events" uri="/lk/events" />
-                <MenuItem menuName="Scholarships" uri="/lk/scholarships" />
-                <MenuItem menuName="Careers" uri="/lk/careers" />
-                <MenuItem menuName="Contact Us" uri="/lk/contact" />
+                <MenuItem
+                  menuName="Home"
+                  uri={"/"}
+                  setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                />
+                <MenuItem
+                  menuName="About Us"
+                  uri="/about"
+                  setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                />
+                <MenuItem
+                  menuName="Courses"
+                  uri="/courses"
+                  setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                />
+                <MenuItem
+                  menuName="Events"
+                  uri="/events"
+                  setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                />
+                <MenuItem
+                  menuName="Scholarships"
+                  uri="/scholarships"
+                  setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                />
+                <MenuItem
+                  menuName="Careers"
+                  uri="/careers"
+                  setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                />
+                <MenuItem
+                  menuName="Contact Us"
+                  uri="/contact"
+                  setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                />
               </div>
               <div className="pt-6 flex flex-col space-y-5">
-                <a href="#" className="text-sm text-primary">
+                <Link
+                  href="/auth/login"
+                  className="text-sm text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   Login
-                </a>
-                <a href="#" className="text-sm text-primary">
+                </Link>
+                <Link
+                  href="/auth/register"
+                  className="text-sm text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   Register
-                </a>
+                </Link>
                 <div className="px-4 py-2 items-center relative h-18 bg-primary">
                   <p className="text-base font-semibold text-white">
                     Find My Course

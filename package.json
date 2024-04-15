@@ -21,9 +21,11 @@
     "react-dom": "18",
     "react-google-maps": "9.4.5",
     "react-hook-form": "^7.51.2",
+    "react-hot-toast": "^2.4.1",
     "react-international-phone": "4.2.6",
     "react-slick": "0.30.2",
-    "slick-carousel": "1.8.1"
+    "slick-carousel": "1.8.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@commitlint/cli": "19.2.1",

@@ -9,12 +9,11 @@ import {
 import { CoursePriceBox, UniRow } from "@/components/molecules";
 import { ApplicationForm, InterestedSection } from "@/components/organisms";
 
-
 const CourseSinglePage = async ({ params }: any) => {
   const id = params.slug;
-  const response = await axiosInstance.post('/v1/user/single_course', { id });
+  const response = await axiosInstance.post("/v1/user/single_course", { id });
   const data = response.data.data;
-  console.log(typeof (params), 'TYPE')
+  console.log(typeof params, "TYPE");
 
   return (
     <>
@@ -23,7 +22,13 @@ const CourseSinglePage = async ({ params }: any) => {
         <InnerContainer>
           <div className="my-12 flex flex-row w-full gap-4 relative">
             <div className="w-[70%]">
-              <UniRow uni_logo={data.uni_logo} course_name={data.course_name} university={data.university} uni_address={data.uni_address} country={data.country} />
+              <UniRow
+                uni_logo={data.uni_logo}
+                course_name={data.course_name}
+                university={data.university}
+                uni_address={data.uni_address}
+                country={data.country}
+              />
               <div className="mt-10">
                 <CourseSubHeader title="What will I learn?" />
                 <p className="font-semibold text-textColor text-sm my-4">
@@ -35,8 +40,7 @@ const CourseSinglePage = async ({ params }: any) => {
                 <p className="font-semibold text-textColor text-sm my-5">
                   Further study
                 </p>
-                <p className="text-textColor text-sm my-5 leading-6">
-                </p>
+                <p className="text-textColor text-sm my-5 leading-6"></p>
                 <CourseSubHeader title="Which department am I in?" />
                 <p className="text-textColor text-sm my-4 leading-6">
                   School of Nursing and Midwifery
@@ -45,7 +49,13 @@ const CourseSinglePage = async ({ params }: any) => {
                 <p className="text-textColor text-sm my-4 leading-6">111902E</p>
                 <CourseSubHeader title="Study Options" />
                 <div className="my-4">
-                  <CoursePriceBox course_fee_additional={data.course_fee_additional} course_fee={data.course_fee} currency={data.currency} uni_address={data.uni_address} created_at={data.created_at} />
+                  <CoursePriceBox
+                    course_fee_additional={data.course_fee_additional}
+                    course_fee={data.course_fee}
+                    currency={data.currency}
+                    uni_address={data.uni_address}
+                    created_at={data.created_at}
+                  />
                 </div>
                 <CourseSubHeader title="Entry requirements" />
                 <p className="font-semibold text-textColor text-sm my-4">

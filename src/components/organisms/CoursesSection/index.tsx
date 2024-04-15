@@ -1,15 +1,11 @@
-import axiosInstance from "@/utils/axiosInstance";
-
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { CourseBox, GridWrapper } from "@/components/molecules";
-import { ICourseResponse } from "@/types/courses";
+import { ICourse } from "@/types/courses";
+import { getCourses } from "@/utils/api-requests";
 
 export const CoursesSection = async () => {
-  const response = await axiosInstance.post<ICourseResponse>("/v1/user/courses", {
-    limit: 4,
-  });
-  const courseData = response.data.data.data;
+  const courseData = await getCourses(4);
 
   return (
     <InnerContainer>
@@ -19,9 +15,9 @@ export const CoursesSection = async () => {
             title="Trending Courses"
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
-          <div className="mt-10">
+          <div className="mt-10 w-full">
             <GridWrapper>
-              {courseData?.map((item) => (
+              {courseData.data?.map((item: ICourse) => (
                 <CourseBox
                   id={item.id}
                   course_name={item.course_name}

@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
-import { RightArrowIcon } from "@/components/atoms/Icons";
-import { GridWrapper, GridWrapperTwo } from "@/components/molecules";
+import { InnerContainer, SectionHeader } from "@/components/atoms";
+import { GridWrapperTwo } from "@/components/molecules";
+import Image from "next/image";
 
 export const StudentsSaysSection = () => {
   const uniImages = [
@@ -22,21 +21,30 @@ export const StudentsSaysSection = () => {
   return (
     <InnerContainer>
       <div className="mt-20 mb-20">
-        <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
+        <div className="flex flex-col justify-center items-center relative w-full">
           <SectionHeader
             title="What Our Students Says"
             description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
           />
-
           <GridWrapperTwo>
             {uniImages.map((item, index) => (
-              <div className="w-full h-auto" key={index}>
-                <img src={item.imgUri} alt="uni" className="object-cover w-full" />
+              <div
+                key={index}
+                className="relative overflow-hidden rounded shadow-lg cursor-pointer"
+              >
+                <Image
+                  src={item.imgUri}
+                  alt="student"
+                  className="object-cover w-full h-[400px] rounded transition-transform duration-1000 transform hover:scale-110"
+                  layout="responsive"
+                  width={400}
+                  height={400}
+                />
               </div>
             ))}
           </GridWrapperTwo>
           {/* See More Butn */}
-          <div className="flex justify-center items-center mt-10">
+          {/* <div className="flex justify-center items-center mt-10">
             <MainButton
               label="See More"
               btnStyle="Secondary"
@@ -44,7 +52,7 @@ export const StudentsSaysSection = () => {
               icon={<RightArrowIcon />}
               customStyle="w-[200px]"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </InnerContainer>

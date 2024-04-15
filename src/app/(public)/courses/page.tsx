@@ -21,7 +21,7 @@ const CoursePage = () => {
         <SearchBar />
         <div className="w-full flex flex-row my-10 gap-4">
           <div className="md:hidden sm:hidden xs:hidden lg:block xl:block 2xl:block">
-          <FilterSideBar />
+            <FilterSideBar />
           </div>
           <Courses />
         </div>

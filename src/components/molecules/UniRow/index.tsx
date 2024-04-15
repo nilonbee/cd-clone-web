@@ -1,8 +1,14 @@
 import Image from "next/image";
 import { PinIcon, TimeIcon, UniversityIcon } from "@/components/atoms/Icons";
 import { ICourse } from "@/types/courses";
-export const UniRow = ({ country, university, uni_logo, uni_address, course_name }: ICourse) => {
 
+export const UniRow = ({
+  country,
+  university,
+  uni_logo,
+  uni_address,
+  course_name,
+}: ICourse) => {
   return (
     <div className="p-4 flex gap-5 items-center self-stretch relative w-full bg-[#eef7ff] rounded shadow border border-boxBorder">
       <div className="border-r border-grayText">

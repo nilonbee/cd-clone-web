@@ -1,27 +1,25 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-import { SectionHeader } from '@/components/atoms'
+import { SectionHeader } from "@/components/atoms";
 
 type AuthHeaderProps = {
-    title: string
-}
+  title: string;
+};
 export const AuthHeader = ({ title }: AuthHeaderProps) => {
-    return (
-        <>
-            <div className="my-3">
-                <SectionHeader title={title} description='' />
-            </div>
-            <Link href="/">
-                <Image
-                    height={110}
-                    width={100}
-                    className="h-12 w-auto m-auto object-contain mt-4 mb-8"
-                    src="/images/Logo-Clr.png"
-                    alt="Logo of Campus Direct"
-                />
-            </Link>
-        </>
-    )
-}
+  return (
+    <>
+      <SectionHeader title={title} description="" />
+      <Link href="/">
+        <Image
+          height={110}
+          width={100}
+          className="h-16 w-auto m-auto object-contain mt-2"
+          src="/images/Logo-Clr.png"
+          alt="Logo of Campus Direct"
+        />
+      </Link>
+    </>
+  );
+};

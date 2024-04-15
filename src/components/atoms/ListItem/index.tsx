@@ -21,12 +21,13 @@ export const ListItem = ({
       href={href}
       className={`flex space-x-1 my-[2px] ${topMargin ? "mt-6" : "mt-0"}`}
     >
-      {icon ? icon : null}
+      <div className="w-[22px] h-[22px]">{icon ? icon : null}</div>
+
       <p className="text-sm text-whiteGray mb-2">{text}</p>
     </Link>
   ) : (
     <div className={`flex space-x-1 my-[2px] ${topMargin ? "mt-6" : "mt-0"}`}>
-      {icon ? icon : null}
+      <div className="w-[22px] h-[22px]">{icon ? icon : null}</div>
       <p className="text-sm text-whiteGray mb-2">{text}</p>
     </div>
   );

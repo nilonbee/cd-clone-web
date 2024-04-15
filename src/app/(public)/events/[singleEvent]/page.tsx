@@ -9,12 +9,26 @@ import axiosInstance from "@/utils/axiosInstance";
 import convertArrayToObjectArray from "@/utils/convertArray";
 
 import { SingleEventBox } from "@/components/molecules";
-import { IEvent, ISingleEventResponse, IMapLocation, IDateLocation } from "@/types/events";
+import {
+  IEvent,
+  ISingleEventResponse,
+  IMapLocation,
+  IDateLocation,
+} from "@/types/events";
 
 const SingleEventPage = async ({ params }: any) => {
-  const response = await axiosInstance.get<ISingleEventResponse>(`/v1/user/event-contents/${params.singleEvent}`);
+  const response = await axiosInstance.get<ISingleEventResponse>(
+    `/v1/user/event-contents/${params.singleEvent}`,
+  );
   const event: IEvent = response.data.data.event;
-  const { title, description, cover_url, map_locations, dates_n_locations, meta_description } = event;
+  const {
+    title,
+    description,
+    cover_url,
+    map_locations,
+    dates_n_locations,
+    meta_description,
+  } = event;
   const mapDetails: IMapLocation[] = convertArrayToObjectArray(map_locations);
   const dates: IDateLocation[] = convertArrayToObjectArray(dates_n_locations);
 

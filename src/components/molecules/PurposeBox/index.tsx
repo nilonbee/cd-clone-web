@@ -14,11 +14,14 @@ export const PurposeBox: React.FC<PurposeBox> = ({
 }) => {
   return (
     <div className="block p-4 rounded-md mb-12 bg-[#F8F8F8] bg-opacity-30 shadow">
-      {icon}
+      <div className="w-20 h-20">{icon}</div>
       <p className="font-semibold text-base my-3">{title}</p>
       <div>
         {description.map((section, index) => (
-          <p className="text-sm leading-6 text-textColor mb-4 text-justify" key={index}>
+          <p
+            className="text-sm leading-6 text-textColor mb-4 text-justify"
+            key={index}
+          >
             {section}
           </p>
         ))}
