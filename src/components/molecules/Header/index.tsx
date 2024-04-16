@@ -1,27 +1,32 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import Link from "next/link";
 import { ContainerLayout, MainButton, MenuItem } from "@/components/atoms";
 import { Dialog, Menu } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import Image from "next/image";
+import { useUserStore } from "@/store";
+import { ProfileBtn } from "..";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { authUser, user } = useUserStore();
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-10">
       <ContainerLayout>
         <nav
-          className="mx-auto flex w-full justify-between items-center  py-4"
+          className="mx-auto flex w-full justify-between items-center  py-3"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
             <Link href="/">
-              <img
-                className="h-12 w-auto"
+              <Image
+                className="h-14 w-auto"
                 src="/images/Logo-Clr.png"
-                alt="Logo of Campus Direct"
+                alt="Campus Direct"
+                width={150}
+                height={50}
               />
             </Link>
           </div>
@@ -46,54 +51,65 @@ export const Header = () => {
             <MenuItem menuName="Contact Us" uri="/contact" />
           </div>
           <div className="hidden xl:flex xl:flex-1 lg:justify-end gap-4 items-center">
-            <Link href="/login" className="text-sm text-primary">
-              Login
-            </Link>
-            <Link href="/register" className="text-sm text-primary">
-              Register
-            </Link>
+            {authUser ? (
+              <ProfileBtn />
+            ) : (
+              <Link href="/login" className="text-sm text-primary">
+                Login
+              </Link>
+            )}
+
+            {!authUser && (
+              <Link href="/register" className="text-sm text-primary">
+                Register
+              </Link>
+            )}
             <MainButton
               label="Find My Course"
               btnStyle="Primary"
               btnSize="Medium"
             />
           </div>
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center xl:hidden">
+            {authUser && <ProfileBtn />}
             <MainButton
               label="Find My Course"
               btnStyle="Primary"
               btnSize="Medium"
             />
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <Menu.Button className="text-primary">
-                  <Bars3Icon className="h-8 w-8" aria-hidden="true" />
-                </Menu.Button>
-              </div>
-              <Menu.Items
-                className="absolute right-0 z-10 w-48 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border-red
-            "
-              >
-                <div className="px-1 py-1 ">
-                  <Menu.Item>
-                    <Link
-                      href="/login"
-                      className="block px-4 py-2 text-sm text-primary"
-                    >
-                      Login
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <Link
-                      href="/register"
-                      className="block px-4 py-2 text-sm text-primary"
-                    >
-                      Register
-                    </Link>
-                  </Menu.Item>
+            {!authUser && (
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="text-primary">
+                    <Bars3Icon className="h-8 w-8" aria-hidden="true" />
+                  </Menu.Button>
                 </div>
-              </Menu.Items>
-            </Menu>
+                <Menu.Items
+                  className="absolute right-0 z-10 w-48 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border-red
+            "
+                >
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 text-sm text-primary"
+                      >
+                        Login
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link
+                        href="/register"
+                        className="block px-4 py-2 text-sm text-primary"
+                      >
+                        Register
+                      </Link>
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Menu>
+            )}
           </div>
         </nav>
       </ContainerLayout>
@@ -107,7 +123,13 @@ export const Header = () => {
           <div className="flex items-center justify-between w-full">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-12 w-auto" src="/images/Logo-Clr.png" alt="" />
+              <Image
+                className="h-14 w-auto"
+                src="/images/Logo-Clr.png"
+                alt=""
+                width={150}
+                height={50}
+              />
             </a>
             <button
               type="button"
@@ -158,21 +180,25 @@ export const Header = () => {
                 />
               </div>
               <div className="pt-6 flex flex-col space-y-5">
-                <Link
-                  href="/auth/login"
-                  className="text-sm text-primary"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/auth/register"
-                  className="text-sm text-primary"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Register
-                </Link>
-                <div className="px-4 py-2 items-center relative h-18 bg-primary">
+                {!authUser && (
+                  <Link
+                    href="/login"
+                    className="text-sm text-primary"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                )}
+                {!authUser && (
+                  <Link
+                    href="/auth/register"
+                    className="text-sm text-primary"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Register
+                  </Link>
+                )}
+                <div className="px-4 py-2 items-center relative h-18 bg-primary rounded shadow-md">
                   <p className="text-base font-semibold text-white">
                     Find My Course
                   </p>

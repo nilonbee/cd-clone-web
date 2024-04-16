@@ -47,11 +47,11 @@ export const MainButton = ({
   // Define size classes based on btnSize prop
   let sizeClasses = "";
   if (btnSize === "Large") {
-    sizeClasses = "h-12 px-6 text-lg";
+    sizeClasses = "h-12 px-8 text-base";
   } else if (btnSize === "Medium") {
-    sizeClasses = "h-10 px-4 text-base";
+    sizeClasses = "h-10 px-7 text-sm";
   } else {
-    sizeClasses = "h-8 px-3 text-sm";
+    sizeClasses = "h-8 px-5 text-xs";
   }
 
   // If fullWith prop is true, add full width class
@@ -61,7 +61,7 @@ export const MainButton = ({
 
   return (
     <button
-      className={`flex justify-center items-center relative  text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out rounded-sm cursor-pointer ${customStyle}`}
+      className={`flex justify-center items-center relative  text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out cursor-pointer ${customStyle} leading-5 rounded-md`}
       onClick={onClick}
       type={submit ? "submit" : "button"}
     >

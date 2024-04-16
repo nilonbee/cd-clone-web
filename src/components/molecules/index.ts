@@ -27,3 +27,4 @@ export * from "./ContactBox";
 export * from "./AddressBox";
 export * from "./SocialMediaAuthForm";
 export * from "./AuthHeader";
+export * from "./ProfileBtn";

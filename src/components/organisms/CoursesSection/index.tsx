@@ -17,7 +17,7 @@ export const CoursesSection = async () => {
           />
           <div className="mt-10 w-full">
             <GridWrapper>
-              {courseData.data?.map((item: ICourse) => (
+              {courseData?.data?.map((item: ICourse) => (
                 <CourseBox
                   id={item.id}
                   course_name={item.course_name}
