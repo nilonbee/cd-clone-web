@@ -1,14 +1,13 @@
 "use client";
-import Link from "next/link";
-import axios from "axios";
-import validationSchema from "@/utils/validationSchema";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Divider, MainButton } from "@/components/atoms";
-import { InputField, PhoneInputField } from "@/components/molecules";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { SocialMediaAuthForm } from "@/components/molecules";
+import { InputField, SocialMediaAuthForm } from "@/components/molecules";
+import { userRegister } from "@/utils/api-requests";
+import validationSchema from "@/utils/validationSchema";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 type FormValues = {
   first_name: string;
@@ -18,55 +17,31 @@ type FormValues = {
 };
 
 export const RegisterForm = () => {
+  const [loading, setLoading] = useState(false);
   const {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
-    trigger,
   } = useForm<FormValues>();
   const router = useRouter();
-  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    try {
-      // This triggers validation for all fields
-      const isValid = await trigger();
-
-      if (isValid) {
-        // If form data is valid, proceed with submission
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}v1/user/register`,
-          data,
-        );
-        const userData = response.data;
-
-        if (userData.status === "success") {
-          router.push("/");
-        } else {
-          setErrorMessage(userData.message); // Set the error message
-          console.error("Registration failed:", userData.message);
-          reset();
-        }
-      } else {
-        // If form data is not valid, do not submit
-        console.log("Form data is not valid");
-        reset();
-      }
-    } catch (error) {
-      console.error("Error occurred while submitting the form:", error);
+    setLoading(true);
+    const response = await userRegister(data);
+    setLoading(false);
+    if (response?.status === "success") {
+      toast.success("Successful, Please check your email! 🎉");
+      router.push("/");
+    } else {
+      toast.error(response?.message ?? "Registration failed");
     }
   };
 
   return (
     <>
-      <form
-        className="w-full mt-3 lg:px-20 md:px-0"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="w-full p-5" onSubmit={handleSubmit(onSubmit)}>
         <SocialMediaAuthForm />
         <Divider text="or" />
-        {errorMessage && <span className="text-red">{errorMessage}</span>}
         <div className="flex justify-center items-center gap-1 sm:flex-col xs:flex-col ">
           <div className="w-full">
             <Controller
@@ -95,8 +70,8 @@ export const RegisterForm = () => {
               defaultValue=""
               render={({ field }) => (
                 <InputField
-                  label="Email or Username"
-                  placeholder="Enter Your Email or Username"
+                  label="Email Address"
+                  placeholder="Enter Your Email Address"
                   type="email"
                   id="email"
                   error={errors.email?.message}
@@ -145,23 +120,20 @@ export const RegisterForm = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center">
-          <div className="text-blue text-sm my-3 hover:text-primary active:text-primary hover:font-semibold active:font-medium text focus:outline-none cursor-pointer">
-            FORGOT PASSWORD?
-          </div>
-        </div>
         <MainButton
-          customStyle=""
+          customStyle="mt-3"
           label="Register"
           btnSize="Medium"
           fullWith
           btnStyle="Primary"
           submit
+          loading={loading}
+          disabled={loading}
         />
-        <p className="text-sm flex justify-center mt-8 mb-3">
-          ALREADY HAVE AN ACCOUNT
+        <p className="text-sm text-textColor text-center my-5">
+          Already have an account?
         </p>
-        <Link href="/auth/login">
+        <Link href="/login">
           <MainButton
             customStyle="mt-3 mb-12"
             label="Sign In"

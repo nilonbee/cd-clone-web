@@ -31,3 +31,16 @@ export interface ILoginResponse {
   refresh_token: string;
   user: IUserData;
 }
+
+export interface IRegisterRequest {
+  first_name: string;
+  email: string;
+  password: string;
+  phone: string;
+}
+
+export interface IRegisterResponse {
+  status: string;
+  message: string;
+  data: IUserData;
+}

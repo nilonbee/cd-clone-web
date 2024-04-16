@@ -38,7 +38,7 @@ export const LoginForm = () => {
     setLoading(true);
     const response = await userLogin(data);
     setLoading(false);
-    if (response.status === "success") {
+    if (response?.status === "success") {
       setAccessToken(response.access_token);
       setExpiresIn(response.expires_in);
       setRefreshToken(response.refresh_token);
@@ -47,7 +47,7 @@ export const LoginForm = () => {
       toast.success(response.message);
       router.push("/");
     } else {
-      toast.error(response.message);
+      toast.error(response?.message ?? "Login failed");
     }
   };
 

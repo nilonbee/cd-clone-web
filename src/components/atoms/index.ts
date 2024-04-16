@@ -12,3 +12,4 @@ export * from "./CourseSubHeader";
 export * from "./CourseSubHeader";
 export * from "./IconButton";
 export * from "./Divider";
+export * from "./ConfirmationDialog";

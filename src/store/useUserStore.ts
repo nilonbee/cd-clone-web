@@ -17,6 +17,7 @@ interface Action {
   setRefreshToken: (refresh_token: string) => void;
   setUser: (user: IUserData) => void;
   setAuthUser: (authUser: boolean) => void;
+  reset: () => void;
 }
 
 export const useUserStore = create<Store & Action>(
@@ -51,6 +52,14 @@ export const useUserStore = create<Store & Action>(
       setRefreshToken: (refresh_token) => set({ refresh_token }),
       setUser: (user) => set({ user }),
       setAuthUser: (authUser) => set({ authUser }),
+      reset: () =>
+        set({
+          access_token: "",
+          expires_in: 0,
+          refresh_token: "",
+          user: {} as IUserData,
+          authUser: false,
+        }),
     })),
     {
       name: "CD-User",
