@@ -3,6 +3,7 @@ import {
   ICourseResponse,
   ICourseSingleResponse,
 } from "@/types/courses";
+import { IEventResponse, IEventResponseTwo } from "@/types/events";
 import {
   ILoginRequest,
   ILoginResponse,
@@ -112,7 +113,6 @@ export async function resetPassword(data: IResetPasswordRequest) {
     );
     const response = await res.json();
     return response;
-
   } catch (error) {
     console.error("Resetting Password failed:", error);
     toast.error("Resetting Password failed. API error");
@@ -156,5 +156,31 @@ export async function getCourseById(id: string) {
   } catch (error) {
     console.error("Failed to fetch course:", error);
     toast.error("Failed to fetch course. API error");
+  }
+}
+
+export async function getEvents() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/events/lk`,
+    );
+    const events = (await res.json()) as IEventResponse;
+    return events.data;
+  } catch (error) {
+    console.error("Failed to fetch events:", error);
+    toast.error("Failed to fetch events. API error");
+  }
+}
+
+export async function getEventBySlug(slug: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/event-contents/${slug}`,
+    );
+    const event = (await res.json()) as IEventResponseTwo;
+    return event.data;
+  } catch (error) {
+    console.error("Failed to fetch event:", error);
+    toast.error("Failed to fetch event. API error");
   }
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-import { EventWrapper } from "@/components/atoms";
+import { CardWrapper } from "../CardWrapper";
 
 interface EventBoxProps {
   image: string;
@@ -11,19 +11,19 @@ interface EventBoxProps {
 
 export const EventBox = ({ image, title, slug }: EventBoxProps) => {
   return (
-    <Link href={`/lk/events/${slug}`}>
-      <EventWrapper>
+    <Link href={`/events/${slug}`}>
+      <CardWrapper bgColor="bg-lightBlue" cssCustom="bg-opacity-40">
         <Image
           src={image}
           alt={`event-image-${title}`}
+          className="rounded-lg h-[300px] w-full object-cover"
           width={300}
           height={300}
-          objectFit="cover"
         />
-        <p className="text-base font-semibold mt-3 text-center">
+        <p className="text-sm font-semibold mt-3 text-center line-clamp-2 h-10 text-textColor">
           {title}
         </p>
-      </EventWrapper>
+      </CardWrapper>
     </Link>
   );
 };

@@ -6,13 +6,12 @@ import {
 } from "@/components/atoms";
 import { EventBox, GridWrapper } from "@/components/molecules/";
 import { InterestedSection } from "@/components/organisms";
-import axiosInstance from "@/utils/axiosInstance";
-import { IEvent, IEventResponse } from "@/types/events";
+import { IEvent } from "@/types/events";
+import { getEvents } from "@/utils/api-requests";
 
 const EventsPage = async () => {
-  const response =
-    await axiosInstance.get<IEventResponse>("/v1/user/events/lk");
-  const events = response.data.data;
+  const events = await getEvents();
+  console.log("events", events);
 
   return (
     <>

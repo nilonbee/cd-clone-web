@@ -1,26 +1,18 @@
-import GMap from "@/components/molecules/Maps";
 import {
   ContainerLayout,
   Hero,
   InnerContainer,
   SectionHeader,
 } from "@/components/atoms";
-import axiosInstance from "@/utils/axiosInstance";
+import GMap from "@/components/molecules/Maps";
 import convertArrayToObjectArray from "@/utils/convertArray";
 
 import { SingleEventBox } from "@/components/molecules";
-import {
-  IEvent,
-  ISingleEventResponse,
-  IMapLocation,
-  IDateLocation,
-} from "@/types/events";
+import { IDateLocation, IEvent, IMapLocation } from "@/types/events";
+import { getEventBySlug } from "@/utils/api-requests";
 
 const SingleEventPage = async ({ params }: any) => {
-  const response = await axiosInstance.get<ISingleEventResponse>(
-    `/v1/user/event-contents/${params.singleEvent}`,
-  );
-  const event: IEvent = response.data.data.event;
+  const response = await getEventBySlug(params.singleEvent);
   const {
     title,
     description,
@@ -28,7 +20,7 @@ const SingleEventPage = async ({ params }: any) => {
     map_locations,
     dates_n_locations,
     meta_description,
-  } = event;
+  } = response?.event as IEvent;
   const mapDetails: IMapLocation[] = convertArrayToObjectArray(map_locations);
   const dates: IDateLocation[] = convertArrayToObjectArray(dates_n_locations);
 
@@ -59,7 +51,7 @@ const SingleEventPage = async ({ params }: any) => {
           architecto placeat non"
             />
           </div>
-          <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded shadow">
+          <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded-md border border-boxBorder">
             <GMap mapData={mapDetails} />
           </div>
         </InnerContainer>
