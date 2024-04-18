@@ -5,6 +5,7 @@ import {
   IPasswordResetRequest,
   IRegisterRequest,
   IRegisterResponse,
+  IResetPasswordRequest,
 } from "@/types/users";
 import toast from "react-hot-toast";
 
@@ -90,6 +91,27 @@ export async function userRegister(data: IRegisterRequest) {
   } catch (error) {
     console.error("Registration failed:", error);
     toast.error("Registration failed. API error");
+  }
+}
+
+export async function resetPassword(data: IResetPasswordRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/reset-password`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
+    const response = await res.json();
+    return response;
+
+  } catch (error) {
+    console.error("Resetting Password failed:", error);
+    toast.error("Resetting Password failed. API error");
   }
 }
 

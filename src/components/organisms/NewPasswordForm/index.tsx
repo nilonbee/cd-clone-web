@@ -1,41 +1,41 @@
 "use client";
 import { MainButton } from "@/components/atoms";
 import { InputField } from "@/components/molecules";
-import { sendForgotPasswordEmail, userLogin } from "@/utils/api-requests";
+import { sendForgotPasswordEmail, userLogin, resetPassword } from "@/utils/api-requests";
 import validationSchema from "@/utils/validationSchema";
-import { useRouter } from "next/navigation";
+import { useParams } from 'next/navigation';
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 type FormValues = {
-  email: string;
   password: string;
+  password_confirmation: string;
 };
 
 export const NewPasswordForm = () => {
   const [loading, setLoading] = useState(false);
-
+  const params = useParams();
   const {
     control,
     handleSubmit,
     formState: { errors },
+    getValues
   } = useForm<FormValues>();
 
-  const router = useRouter();
+  console.log(params, 'pathName');
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log("data", data);
-
-    // setLoading(true);
-    // const response = await sendForgotPasswordEmail({ ...data, type: "WEB" });
-    // console.log("response", response);
-    // setLoading(false);
-    // if (response?.status === "success") {
-    //   toast.success(response.message);
-    // } else {
-    //   toast.error(response?.message ?? "Failed to send reset link");
-    // }
+    setLoading(true);
+    const response = await resetPassword({ ...data, type: "WEB", code: params?.id });
+    console.log("response", response);
+    setLoading(false);
+    if (response?.status === "success") {
+      toast.success(response.message);
+    } else {
+      toast.error(response?.message ?? "Failed to send reset link");
+    }
   };
 
   return (
@@ -54,7 +54,7 @@ export const NewPasswordForm = () => {
               <div>
                 <InputField
                   label="New Password"
-                  placeholder="●●●●●●●"
+                  placeholder="New Password"
                   type="password"
                   id="password"
                   error={errors.password?.message}
@@ -67,18 +67,21 @@ export const NewPasswordForm = () => {
         </div>
         <div className="w-full">
           <Controller
-            name="password"
+            name="password_confirmation"
             control={control}
             defaultValue=""
-            rules={validationSchema.passwordConfirmation}
-            render={({ field }) => (
+            //check weather it's matching password field or not 
+            rules={{
+              validate: (value) =>
+                value === getValues("password") || "The passwords do not match",
+            }} render={({ field }) => (
               <div>
                 <InputField
                   label="Confirm Password"
-                  placeholder="●●●●●●●"
+                  placeholder="Confirm Password"
                   type="password"
                   id="password_confirmation"
-                  error={errors.password?.message}
+                  error={errors.password_confirmation?.message}
                   {...field}
                 />
               </div>

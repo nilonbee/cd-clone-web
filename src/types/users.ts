@@ -18,6 +18,13 @@ export type IUserData = {
   created_at: string;
 };
 
+export interface IResetPasswordRequest {
+  password: string;
+  password_confirmation: string;
+  code: string | string[];
+  type: string;
+}
+
 export interface ILoginRequest {
   email: string;
   password: string;
