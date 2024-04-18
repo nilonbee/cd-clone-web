@@ -20,7 +20,7 @@ export const MainSearchBar = () => {
           <input
             type="text"
             placeholder="Search Course"
-            className=" w-full outline-none h-10 z-20"
+            className=" w-full outline-none h-10 z-10"
           />
           <MainButton label="Search" btnStyle="Primary" btnSize="Large" />
         </div>

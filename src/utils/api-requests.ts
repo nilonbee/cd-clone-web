@@ -1,4 +1,8 @@
-import { ICourseResponse } from "@/types/courses";
+import {
+  ICourseRequest,
+  ICourseResponse,
+  ICourseSingleResponse,
+} from "@/types/courses";
 import {
   ILoginRequest,
   ILoginResponse,
@@ -15,7 +19,7 @@ import toast from "react-hot-toast";
  * @returns - array of courses from the API response data property
  */
 
-export async function getCourses(limit: number) {
+export async function getCourses(data: ICourseRequest) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/user/courses`,
@@ -25,7 +29,7 @@ export async function getCourses(limit: number) {
           "Content-Type": "application/json",
         },
         next: { revalidate: 10 }, // 10 seconds
-        body: JSON.stringify({ limit: limit }),
+        body: JSON.stringify(data),
       },
     );
     const courses = (await res.json()) as ICourseResponse;
@@ -132,5 +136,25 @@ export async function sendForgotPasswordEmail(data: IPasswordResetRequest) {
   } catch (error) {
     console.error("Failed to send reset link:", error);
     toast.error("Failed to send reset link. API error");
+  }
+}
+
+export async function getCourseById(id: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/single_course`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      },
+    );
+    const course = (await res.json()) as ICourseSingleResponse;
+    return course.data;
+  } catch (error) {
+    console.error("Failed to fetch course:", error);
+    toast.error("Failed to fetch course. API error");
   }
 }

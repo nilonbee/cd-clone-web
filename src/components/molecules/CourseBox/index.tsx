@@ -4,6 +4,8 @@ import { TimeIcon } from "@/components/atoms/Icons/TimeIcon";
 import { ICourse } from "@/types/courses";
 import Image from "next/image";
 import { CardWrapper } from "..";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const CourseBox = ({
   id,
@@ -69,18 +71,22 @@ export const CourseBox = ({
             <p className="text-xs text-grayText">(Total Amount)</p>
           </div>
           <div className="flex gap-2  justify-between items-center w-full">
-            <MainButton
-              label="Apply"
-              btnStyle="Primary"
-              btnSize="Medium"
-              fullWith={true}
-            />
-            <MainButton
-              label="More"
-              btnStyle="Secondary"
-              btnSize="Medium"
-              fullWith={true}
-            />
+            <Link href={`/courses/${id}`} className="w-full">
+              <MainButton
+                label="Apply"
+                btnStyle="Primary"
+                btnSize="Medium"
+                fullWith={true}
+              />
+            </Link>
+            <Link href={`/courses/${id}`} className="w-full">
+              <MainButton
+                label="More"
+                btnStyle="Secondary"
+                btnSize="Medium"
+                fullWith={true}
+              />
+            </Link>
           </div>
         </div>
       </div>

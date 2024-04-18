@@ -5,8 +5,15 @@ import {
 } from "@/components/atoms/Icons";
 import { ICourse } from "@/types/courses";
 
-export const CoursePriceBox = ({ created_at, currency, course_fee, uni_address, course_fee_additional }: ICourse) => {
-  const startDate = created_at?.toString().split(' ')[0];
+export const CoursePriceBox = ({
+  created_at,
+  currency,
+  course_fee,
+  uni_address,
+  course_fee_additional,
+  id,
+}: ICourse) => {
+  const startDate = created_at?.toString().split(" ")[0];
 
   return (
     <div className="p-4 items-start self-stretch relative w-full bg-[#eef7ff] rounded">
@@ -24,7 +31,7 @@ export const CoursePriceBox = ({ created_at, currency, course_fee, uni_address, 
           <div className="w-3/4">
             <p className="tracking-[0.064em] text-sm text-textColor">
               {/* A$32,000.00 (US$ 20,849) per year */}
-              {`${currency ? currency : 'USD'} ${course_fee} ${course_fee_additional ? course_fee_additional : 'Per Year'}`}
+              {`${currency ? currency : "USD"} ${course_fee} ${course_fee_additional ? course_fee_additional : "Per Year"}`}
             </p>
             <span className="text-xs text-grayMedium">
               *Price shown is for indicative purposes, please check with
