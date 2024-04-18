@@ -28,7 +28,9 @@ export const AddressSection = () => {
   return (
     <div className="w-full p-5 bg-[#eef7ff] rounded shadow border border-boxBorder">
       <div className="flex gap-3 text-center flex-row">
-        <LocationIcon />
+        <div className="w-10 h-10">
+          <LocationIcon />
+        </div>
         <p className="text-[20px] text-primary font-semibold leading-10">
           Visit Us
         </p>
