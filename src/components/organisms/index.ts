@@ -16,3 +16,5 @@ export * from "./LoginForm";
 export * from "./RegisterForm";
 export * from "./PasswordResetForm";
 export * from "./NewPasswordForm";
+export * from "./CourseViewModel";
+export * from "./CourseViewDrawer";

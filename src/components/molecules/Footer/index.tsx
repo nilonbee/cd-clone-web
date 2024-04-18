@@ -1,17 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React from "react";
+import { ContainerLayout, ListItem } from "@components/atoms";
 import {
-  TimeIcon,
-  PhoneIcon,
-  FacebookIcon,
-  LinkedinNewIcon,
-  TwitterIcon,
-  InstagramIcon,
   EmailIcon,
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinNewIcon,
   NavigationIcon,
+  PhoneIcon,
+  TimeIcon,
+  TwitterIcon,
 } from "@components/atoms/Icons";
-import { InnerContainer, ListItem } from "@components/atoms";
 
 const openingTimesColombo = [
   {
@@ -93,7 +92,7 @@ const listItems = [
 export const Footer = () => {
   return (
     <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r">
-      <InnerContainer>
+      <ContainerLayout>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-1 gap-4 pt-[120px] pb-3">
           <div className="">
             <img
@@ -160,7 +159,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-      </InnerContainer>
+      </ContainerLayout>
     </div>
   );
 };

@@ -1,6 +1,10 @@
 import { ContainerLayout } from "@/components/atoms";
 import { FilterSideBar, MainSearchBar } from "@/components/molecules";
-import { Courses, InterestedSection } from "@/components/organisms";
+import {
+  CourseViewModel,
+  Courses,
+  InterestedSection,
+} from "@/components/organisms";
 
 const CoursePage = () => {
   return (
@@ -22,9 +26,10 @@ const CoursePage = () => {
         <div className="my-10">
           <FilterSideBar />
         </div>
-        <div className="w-full flex flex-row my-10 gap-4">
-          <div className="w-[300px]">
-            <Courses />
+        <div className="w-full flex md:flex-row  sm:flex-col my-10 gap-4 relative">
+          <Courses />
+          <div className="w-full md:block sm:hidden xs:hidden">
+            <CourseViewModel />
           </div>
         </div>
       </ContainerLayout>

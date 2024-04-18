@@ -9,10 +9,10 @@ export const ApplicationForm = () => {
       <img
         src="/images/applyNow.png"
         alt="careers-form"
-        className="w-20 h-20 absolute top-0 right-0 -mt-10 mr-5 animate-bounce"
+        className="w-20 h-20 absolute top-0 right-0 -mt-10  animate-bounce"
       />
       <h4 className="text-base font-semibold text-primary">
-        Apply for this position
+        Apply for the course
       </h4>
       <form className="flex flex-col mt-6">
         <InputField

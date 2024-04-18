@@ -28,6 +28,7 @@ const CourseSinglePage = async ({ params }: any) => {
                 university={data.university}
                 uni_address={data.uni_address}
                 country={data.country}
+                id={data.id}
               />
               <div className="mt-10">
                 <CourseSubHeader title="What will I learn?" />
@@ -55,6 +56,7 @@ const CourseSinglePage = async ({ params }: any) => {
                     currency={data.currency}
                     uni_address={data.uni_address}
                     created_at={data.created_at}
+                    id={data.id}
                   />
                 </div>
                 <CourseSubHeader title="Entry requirements" />

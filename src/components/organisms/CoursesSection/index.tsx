@@ -5,8 +5,13 @@ import { ICourse } from "@/types/courses";
 import { getCourses } from "@/utils/api-requests";
 
 export const CoursesSection = async () => {
-  const courseData = await getCourses(4);
-
+  const filterData = {
+    limit: 4,
+    max_fee: 0,
+    min_fee: 0,
+    page: 1,
+  };
+  const courseData = await getCourses(filterData);
   return (
     <InnerContainer>
       <div className="mt-20 mb-20">
