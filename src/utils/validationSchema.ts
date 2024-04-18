@@ -22,16 +22,6 @@ const validationSchema = {
     },
   },
 
-  passwordConfirmation: {
-    required: "Password Confirmation is required",
-    validate: (value: string, values: any) => {
-      if (value !== values.strongPassword) {
-        return "Passwords do not match";
-      }
-      return true;
-    },
-  },
-
   phone: {
     required: "Phone Number is required",
     pattern: {
