@@ -39,7 +39,7 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <form className="w-full p-5" onSubmit={handleSubmit(onSubmit)}>
+      <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
         <SocialMediaAuthForm />
         <Divider text="or" />
         <div className="flex justify-center items-center gap-1 sm:flex-col xs:flex-col ">

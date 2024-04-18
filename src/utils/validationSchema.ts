@@ -12,6 +12,26 @@ const validationSchema = {
   password: {
     required: "Password is required",
   },
+
+  strongPassword: {
+    required: "Password is required",
+    pattern: {
+      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+      message:
+        "Password must contain at least 8 characters, including UPPER/lowercase and numbers.",
+    },
+  },
+
+  passwordConfirmation: {
+    required: "Password Confirmation is required",
+    validate: (value: string, values: any) => {
+      if (value !== values.strongPassword) {
+        return "Passwords do not match";
+      }
+      return true;
+    },
+  },
+
   phone: {
     required: "Phone Number is required",
     pattern: {

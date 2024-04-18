@@ -52,7 +52,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className="w-full p-5" onSubmit={handleSubmit(onSubmit)}>
+    <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
       {/* Render error message if it exists */}
       {/* {errorMessage && <span className="text-red">{errorMessage}</span>} */}
       <div className="flex justify-center items-center gap-1 sm:flex-col xs:flex-col">

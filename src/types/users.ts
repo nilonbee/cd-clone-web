@@ -44,3 +44,8 @@ export interface IRegisterResponse {
   message: string;
   data: IUserData;
 }
+
+export interface IPasswordResetRequest {
+  email: string;
+  type: string;
+}

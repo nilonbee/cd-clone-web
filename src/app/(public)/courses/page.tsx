@@ -1,5 +1,5 @@
 import { ContainerLayout } from "@/components/atoms";
-import { FilterSideBar, SearchBar } from "@/components/molecules";
+import { FilterSideBar, MainSearchBar } from "@/components/molecules";
 import { Courses, InterestedSection } from "@/components/organisms";
 
 const CoursePage = () => {
@@ -18,12 +18,14 @@ const CoursePage = () => {
         </ContainerLayout>
       </div>
       <ContainerLayout>
-        <SearchBar />
+        <MainSearchBar />
+        <div className="my-10">
+          <FilterSideBar />
+        </div>
         <div className="w-full flex flex-row my-10 gap-4">
-          <div className="md:hidden sm:hidden xs:hidden lg:block xl:block 2xl:block">
-            <FilterSideBar />
+          <div className="w-[300px]">
+            <Courses />
           </div>
-          <Courses />
         </div>
       </ContainerLayout>
       <InterestedSection />

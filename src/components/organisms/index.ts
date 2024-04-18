@@ -14,3 +14,5 @@ export * from "./ApplicationForm";
 export * from "./AddressSection";
 export * from "./LoginForm";
 export * from "./RegisterForm";
+export * from "./PasswordResetForm";
+export * from "./NewPasswordForm";
