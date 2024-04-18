@@ -9,10 +9,6 @@ import {
   FormKitDateTimeIcon,
 } from "@/components/atoms/Icons";
 
-const removePTags = (htmlString: string) => {
-  return htmlString.replace(/<p>/g, "").replace(/<\/p>/g, "");
-};
-
 interface SingleEventBoxProps {
   title: string;
   subtitle: string;
@@ -33,13 +29,13 @@ export const SingleEventBox = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 mx-auto mb-6 w-full">
       <div className="col-span-1 flex justify-center py-4">
-        <div className="p-4 bg-lightBlue bg-opacity-40 h-max rounded shadow">
+        <div className="p-4 bg-lightBlue bg-opacity-40 h-max rounded-md border border-boxBorder">
           <Image
             height={24}
             width={480}
             src={image}
             alt="event-img"
-            className="rounded"
+            className="rounded-md"
           />
           <p className="ml-6 py-3 font-semibold text-center">{title}</p>
         </div>
@@ -54,7 +50,7 @@ export const SingleEventBox = ({
           /> */}
           {parse(description)}
         </div>
-        <div className="grid grid-cols-3 gap-2 pb-4 mt-8">
+        <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-2 pb-4 mt-8">
           <SingleEventDetailBox
             label="Location"
             value={mapDetails.map((item) => item.location_name)}

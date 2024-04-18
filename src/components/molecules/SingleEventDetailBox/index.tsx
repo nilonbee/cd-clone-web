@@ -12,7 +12,7 @@ export const SingleEventDetailBox = ({
   value,
 }: SingleEventDetailBoxProps) => {
   return (
-    <div className="bg-lightBlue bg-opacity-40  p-6 rounded shadow">
+    <div className="bg-lightBlue bg-opacity-40  p-6 rounded-md  border border-boxBorder">
       <div className="flex mb-6">
         {icon}
         <p className="ml-2 text-sm">{label}</p>
