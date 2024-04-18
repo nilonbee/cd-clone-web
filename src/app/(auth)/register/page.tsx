@@ -5,9 +5,11 @@ import { RegisterForm } from "@/components/organisms";
 const RegisterPage = () => {
   return (
     <ContainerLayout>
-      <div className="mx-auto md:w-[40%] sm:w-[80] mt-20">
-        <AuthHeader title="Register" />
-        <RegisterForm />
+      <div className="flex h-screen justify-center items-center">
+        <div className="mx-auto lg:w-[500px] md:w-[500px] sm:w-[100%] xs:w-[100%] pt-10">
+          <AuthHeader title="Register" />
+          <RegisterForm />
+        </div>
       </div>
     </ContainerLayout>
   );

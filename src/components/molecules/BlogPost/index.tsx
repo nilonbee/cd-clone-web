@@ -27,7 +27,7 @@ export const BlogPost = ({
       <img
         src={image}
         alt="blog"
-        className="object-cover w-full h-[200px] rounded"
+        className="object-cover w-full h-[200px] rounded-md"
       />
       <div className="pt-4">
         <h4 className="text-sm font-semibold text-textColor line-clamp-2 h-11">

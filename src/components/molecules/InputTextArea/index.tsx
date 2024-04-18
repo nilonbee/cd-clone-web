@@ -22,7 +22,7 @@ export const InputTextArea = ({
         {label} {required && <span className="text-red">*</span>}
       </label>
       <textarea
-        className="block w-full focus:shadow-md rounded  py-2 pl-4 pr-20 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none  text-sm leading-6"
+        className="block w-full focus:shadow-md rounded-md  py-2 pl-4 pr-20 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none  text-sm leading-6"
         id={id}
         placeholder={placeholder}
         name={name}

@@ -2,6 +2,7 @@ import { ICourseResponse } from "@/types/courses";
 import {
   ILoginRequest,
   ILoginResponse,
+  IPasswordResetRequest,
   IRegisterRequest,
   IRegisterResponse,
 } from "@/types/users";
@@ -89,5 +90,25 @@ export async function userRegister(data: IRegisterRequest) {
   } catch (error) {
     console.error("Registration failed:", error);
     toast.error("Registration failed. API error");
+  }
+}
+
+export async function sendForgotPasswordEmail(data: IPasswordResetRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/forgot-password`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
+    const response = await res.json();
+    return response;
+  } catch (error) {
+    console.error("Failed to send reset link:", error);
+    toast.error("Failed to send reset link. API error");
   }
 }

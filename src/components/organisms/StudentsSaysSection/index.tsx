@@ -30,12 +30,12 @@ export const StudentsSaysSection = () => {
             {uniImages.map((item, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden rounded shadow-lg cursor-pointer"
+                className="relative overflow-hidden rounded-md shadow-lg cursor-pointer"
               >
                 <Image
                   src={item.imgUri}
                   alt="student"
-                  className="object-cover w-full h-[400px] rounded transition-transform duration-1000 transform hover:scale-110"
+                  className="object-cover w-full h-[400px] rounded-md transition-transform duration-1000 transform hover:scale-110"
                   layout="responsive"
                   width={400}
                   height={400}

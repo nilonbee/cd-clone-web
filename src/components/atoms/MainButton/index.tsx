@@ -61,7 +61,7 @@ export const MainButton = ({
 
   return (
     <button
-      className={`flex justify-center items-center relative  text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out cursor-pointer ${customStyle} leading-5 rounded-md`}
+      className={`flex justify-center items-center relative  text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out cursor-pointer ${customStyle} leading-5 rounded-md hover:shadow-md`}
       onClick={onClick}
       type={submit ? "submit" : "button"}
     >
