@@ -13,7 +13,7 @@ export const FilterSideBar = () => {
 
   return (
     <div className="w-full">
-      <div className="flex lg:justify-between md:justify-around xs:hidden">
+      <div className="flex lg:justify-between md:justify-around">
         <div className="flex gap-1 flex-wrap">
           <MultiSelectDropdown
             formFieldName={"Location"}

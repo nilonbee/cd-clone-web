@@ -30,3 +30,6 @@ export * from "./ProfileBtn";
 export * from "./MainSearchBar";
 export * from "./MultiSelectDropdown";
 export * from "./CourseBoxModel";
+export * from "./ScholarshipsBox";
+export * from "./ScholarshipsBanner";
+export * from "./CareersBanner";

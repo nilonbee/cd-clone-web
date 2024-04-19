@@ -16,7 +16,7 @@ export const EventBox = ({ image, title, slug }: EventBoxProps) => {
         <Image
           src={image}
           alt={`event-image-${title}`}
-          className="rounded-lg h-[300px] w-full object-cover"
+          className="rounded-lg h-[300px] w-full object-cover border border-boxBorder"
           width={300}
           height={300}
         />

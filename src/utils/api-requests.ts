@@ -4,6 +4,7 @@ import {
   ICourseSingleResponse,
 } from "@/types/courses";
 import { IEventResponse, IEventResponseTwo } from "@/types/events";
+import { IScholarshipRequest } from "@/types/scholarship";
 import {
   ILoginRequest,
   ILoginResponse,
@@ -163,6 +164,9 @@ export async function getEvents() {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/user/events/lk`,
+      {
+        next: { revalidate: 10 }, // 10 seconds
+      },
     );
     const events = (await res.json()) as IEventResponse;
     return events.data;
@@ -182,5 +186,65 @@ export async function getEventBySlug(slug: string) {
   } catch (error) {
     console.error("Failed to fetch event:", error);
     toast.error("Failed to fetch event. API error");
+  }
+}
+
+export async function getScholarships(data: IScholarshipRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/scholarship/list`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+        next: { revalidate: 10 }, // 10 seconds
+      },
+    );
+    const scholarships = await res.json();
+    return scholarships.data;
+  } catch (error) {
+    console.error("Failed to fetch scholarships:", error);
+    toast.error("Failed to fetch scholarships. API error");
+  }
+}
+
+export async function getCareers(country: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/careers/${country}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
+      },
+    );
+    const careers = await res.json();
+    return careers.data;
+  } catch (error) {
+    console.error("Failed to fetch careers:", error);
+    toast.error("Failed to fetch careers. API error");
+  }
+}
+
+export async function getCareerBySlug(slug: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v2/admin/career/${slug}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    const career = await res.json();
+    return career.data;
+  } catch (error) {
+    console.error("Failed to fetch career:", error);
+    toast.error("Failed to fetch career. API error");
   }
 }
