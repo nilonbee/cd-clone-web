@@ -25,7 +25,7 @@ const EventsPage = async () => {
         </div>
         <InnerContainer>
           <div className="mb-12">
-            <GridWrapper gap="6">
+            <GridWrapper>
               {events?.map((item: IEvent) => (
                 <EventBox
                   key={item.id}
