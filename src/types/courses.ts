@@ -32,7 +32,6 @@ export interface ICourseSingleResponse {
   message: string;
 }
 
-
 export interface ICourseRequest {
   page: number;
   limit: number;
