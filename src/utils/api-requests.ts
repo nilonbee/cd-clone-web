@@ -1,10 +1,14 @@
+import { ICountriesRequest, ICountriesResponse } from "@/types/countries";
+import { ICourseLevelsRequest, ICourseLevelsResponse } from "@/types/courseLevels";
 import {
   ICourseRequest,
   ICourseResponse,
   ICourseSingleResponse,
 } from "@/types/courses";
 import { IEventResponse, IEventResponseTwo } from "@/types/events";
+import { IIntakesRequest, IIntakesResponse } from "@/types/intakes";
 import { IScholarshipRequest } from "@/types/scholarship";
+import { ISubjectsRequest, ISubjectsResponse } from "@/types/subjects";
 import {
   ILoginRequest,
   ILoginResponse,
@@ -39,6 +43,90 @@ export async function getCourses(data: ICourseRequest) {
   } catch (error) {
     console.error("Failed to fetch courses:", error);
     toast.error("Failed to fetch courses. API error");
+  }
+}
+
+export async function getCountries(data: ICountriesRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/countries`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
+        body: JSON.stringify(data),
+      },
+    );
+    const countries = (await res.json()) as ICountriesResponse;
+    return countries.data;
+  } catch (error) {
+    console.error("Failed to fetch countries:", error);
+    toast.error("Failed to fetch countries. API error");
+  }
+}
+
+export async function getSubjects(data: ISubjectsRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/subjects`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
+        body: JSON.stringify(data),
+      },
+    );
+    const subjects = (await res.json()) as ISubjectsResponse;
+    return subjects.data;
+  } catch (err) {
+    console.error("Failed to fetch subjects:", err);
+    toast.error("Failed to fetch subjects. API error");
+  }
+}
+
+export async function getIntakes(data: IIntakesRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/intake-months`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
+        body: JSON.stringify(data),
+      },
+    );
+    const intakes = (await res.json()) as IIntakesResponse;
+    return intakes.data;
+  } catch (err) {
+    console.error("Failed to fetch intakes:", err);
+    toast.error("Failed to fetch intakes. API error");
+  }
+}
+
+export async function getCourseLevels(data: ICourseLevelsRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/course-levels`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
+        body: JSON.stringify(data),
+      },
+    );
+    const courseLevels = (await res.json()) as ICourseLevelsResponse;
+    return courseLevels.data;
+  } catch (error) {
+    console.error("Failed to fetch course levels:", error);
+    toast.error("Failed to fetch courseLevels. API error");
   }
 }
 
