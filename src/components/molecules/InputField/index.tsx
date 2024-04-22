@@ -1,5 +1,4 @@
 import React from "react";
-import { Controller } from "react-hook-form";
 
 type Props = {
   label?: string;
@@ -47,8 +46,6 @@ export const InputField = ({
         required={required}
         {...rest}
       />
-
-      {/* Display error message when error is present */}
       {error && <span className="text-errorMsg text-xs">{error}</span>}
     </div>
   );

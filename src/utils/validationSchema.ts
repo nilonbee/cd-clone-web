@@ -29,6 +29,22 @@ const validationSchema = {
       message: "Invalid phone number.",
     },
   },
+
+  subject: {
+    required: "Subject is required",
+  },
+
+  name: {
+    required: "Name is required"
+  },
+
+  message: {
+    required: "Message is required",
+    maxLength: {
+      value: 500,
+      message: "Message must not exceed 500 characters",
+    },
+  },
 };
 
 export default validationSchema;
