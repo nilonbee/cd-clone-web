@@ -1,5 +1,5 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import {
   InputField,
@@ -8,8 +8,8 @@ import {
 } from "@/components/molecules";
 import validationSchema from "@/utils/validationSchema";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { sendEmail } from '@/utils/api-requests';
-import toast from 'react-hot-toast';
+import { sendEmail } from "@/utils/api-requests";
+import toast from "react-hot-toast";
 
 type FormValues = {
   name: string;
@@ -48,7 +48,10 @@ export const ContactSection = () => {
             title="Interested? Let's talk!"
             description="Send us a message with what we can help you."
           />
-          <form className="w-full mt-10 lg:px-20 md:px-0" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="w-full mt-10 lg:px-20 md:px-0"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="flex justify-center items-top md:gap-3 sm:gap-0 md:flex-row sm:flex-col xs:flex-col ">
               <div className="w-full">
                 <Controller
@@ -159,6 +162,7 @@ export const ContactSection = () => {
                 btnSize="Medium"
                 loading={loading}
                 submit
+                disabled={loading}
                 customStyle="w-[200px]"
               />
             </div>
