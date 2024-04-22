@@ -1,3 +1,4 @@
+import { ISendEmailRequest, ISendEmailResponse } from "@/types/contactForm";
 import { ICountriesRequest, ICountriesResponse } from "@/types/countries";
 import {
   ICourseLevelsRequest,
@@ -174,6 +175,25 @@ export async function userRegister(data: IRegisterRequest) {
     return user;
   } catch (error) {
     console.error("Registration failed:", error);
+  }
+}
+
+export async function sendEmail(data: ISendEmailRequest) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/contact-form`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
+    const responseData = (await res.json()) as ISendEmailResponse;
+    return responseData;
+  } catch (error) {
+    console.error("Email sending failed:", error);
   }
 }
 

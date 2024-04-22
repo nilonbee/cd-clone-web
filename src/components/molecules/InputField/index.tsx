@@ -1,5 +1,4 @@
 import React from "react";
-import { Controller } from "react-hook-form";
 
 type Props = {
   label?: string;
@@ -9,6 +8,7 @@ type Props = {
   name: string;
   required?: boolean;
   noMargin?: boolean;
+  aligned?: boolean;
   customStyle?: string;
   error?: string | undefined; // Add error prop
 };
@@ -23,6 +23,7 @@ export const InputField = ({
   noMargin,
   customStyle,
   error,
+  aligned,
   ...rest
 }: Props) => {
   const errorCSS = error
@@ -49,6 +50,7 @@ export const InputField = ({
       />
 
       {/* Display error message when error is present */}
+      {aligned && <div className={`h-5 ${error ? 'hidden' : 'block'}`} />}
       {error && <span className="text-errorMsg text-xs">{error}</span>}
     </div>
   );
