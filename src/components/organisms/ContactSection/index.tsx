@@ -49,7 +49,7 @@ export const ContactSection = () => {
             description="Send us a message with what we can help you."
           />
           <form className="w-full mt-10 lg:px-20 md:px-0" onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex justify-center items-center md:gap-3 sm:gap-0 md:flex-row sm:flex-col xs:flex-col ">
+            <div className="flex justify-center items-top md:gap-3 sm:gap-0 md:flex-row sm:flex-col xs:flex-col ">
               <div className="w-full">
                 <Controller
                   name="name"
@@ -62,10 +62,8 @@ export const ContactSection = () => {
                         label="Name"
                         placeholder="Enter your name"
                         type="text"
-                        noMargin
                         error={errors.name?.message}
                         id="name"
-                        aligned
                         {...field}
                       />
                     </div>
@@ -85,8 +83,6 @@ export const ContactSection = () => {
                         placeholder="Enter your email"
                         type="email"
                         id="email"
-                        aligned
-                        noMargin
                         error={errors.email?.message}
                         {...field}
                       />
@@ -95,7 +91,7 @@ export const ContactSection = () => {
                 />
               </div>
             </div>
-            <div className="flex justify-center items-center md:gap-3 sm:gap-0 md:flex-row sm:flex-col xs:flex-col">
+            <div className="flex justify-center items-top md:gap-3 sm:gap-0 md:flex-row sm:flex-col xs:flex-col">
               <div className="w-full">
                 <Controller
                   name="subject"
@@ -110,14 +106,11 @@ export const ContactSection = () => {
                         type="text"
                         error={errors.subject?.message}
                         id="subject"
-                        noMargin
-                        aligned
                         {...field}
                       />
                     </div>
                   )}
                 />
-
               </div>
               <div className="w-full">
                 <Controller
@@ -130,15 +123,12 @@ export const ContactSection = () => {
                         label="Phone Number"
                         placeholder="Enter your phone number"
                         id="phone"
-                        aligned
-                        noMargin
                         error={errors.phone?.message}
                         {...field}
                       />
                     </div>
                   )}
                 />
-
               </div>
             </div>
             <div className="flex justify-center items-center gap-4 flex-row">

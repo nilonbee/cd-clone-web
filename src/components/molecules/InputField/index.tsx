@@ -8,7 +8,6 @@ type Props = {
   name: string;
   required?: boolean;
   noMargin?: boolean;
-  aligned?: boolean;
   customStyle?: string;
   error?: string | undefined; // Add error prop
 };
@@ -23,14 +22,13 @@ export const InputField = ({
   noMargin,
   customStyle,
   error,
-  aligned,
   ...rest
 }: Props) => {
   const errorCSS = error
     ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
     : "";
   return (
-    <div className={`mb-${noMargin ? "0" : "4"}`}>
+    <div className={`mb-${noMargin ? "0" : "4"} min-h-10`}>
       {label && (
         <label
           className={`block text-sm mb-2 font-medium ${error ? "text-errorMsg" : "text-gray"}`}
@@ -48,9 +46,6 @@ export const InputField = ({
         required={required}
         {...rest}
       />
-
-      {/* Display error message when error is present */}
-      {aligned && <div className={`h-5 ${error ? 'hidden' : 'block'}`} />}
       {error && <span className="text-errorMsg text-xs">{error}</span>}
     </div>
   );
