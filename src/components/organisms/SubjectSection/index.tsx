@@ -1,47 +1,15 @@
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { GridWrapper, SubjectBox } from "@/components/molecules";
+import { getSubjects } from "@/utils/api-requests";
 import React from "react";
 
-export const SubjectSection = () => {
-  const subjects = [
-    {
-      title: "Engineering",
-      subjects: [
-        "General Engineering and Technology",
-        "Civil Engineering Technology ",
-        "Manufacturing and Production",
-        "Mechanical Engineering",
-      ],
-    },
-    {
-      title: "Engineering",
-      subjects: [
-        "General Engineering and Technology",
-        "Civil Engineering",
-        "Manufacturing and Production",
-        "Mechanical Engineering",
-      ],
-    },
-    {
-      title: "Engineering",
-      subjects: [
-        "General Engineering and Technology",
-        "Civil Engineering",
-        "Manufacturing and Production",
-        "Mechanical Engineering",
-      ],
-    },
-    {
-      title: "Engineering",
-      subjects: [
-        "General Engineering and Technology",
-        "Civil Engineering",
-        "Manufacturing and Production",
-        "Mechanical Engineering",
-      ],
-    },
-  ];
+export const SubjectSection = async () => {
+  const filterData = {
+    status: 1,
+  };
+  const subjects = await getSubjects(filterData);
+  console.log(subjects);
 
   return (
     <InnerContainer>
@@ -53,17 +21,19 @@ export const SubjectSection = () => {
           />
           <div className="mt-10 w-full">
             <GridWrapper>
-              {subjects.map((item, index) => (
-                <SubjectBox
-                  key={index}
-                  title={item.title}
-                  subjects={item.subjects}
-                />
-              ))}
+              {subjects
+                ?.slice(1, 5)
+                .map((item) => (
+                  <SubjectBox
+                    title={item.name}
+                    key={item.id}
+                    img={item.cover_image}
+                  />
+                ))}
             </GridWrapper>
           </div>
           {/* See More Butn */}
-          <div className="flex justify-center items-center mt-10">
+          {/* <div className="flex justify-center items-center mt-10">
             <MainButton
               label="See More"
               btnStyle="Secondary"
@@ -71,7 +41,7 @@ export const SubjectSection = () => {
               icon={<RightArrowIcon />}
               customStyle="w-[200px]"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </InnerContainer>

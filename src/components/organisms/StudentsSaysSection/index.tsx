@@ -1,20 +1,33 @@
-import { InnerContainer, SectionHeader } from "@/components/atoms";
+"use client";
+import {
+  DialogBoxContainer,
+  InnerContainer,
+  SectionHeader,
+} from "@/components/atoms";
 import { GridWrapperTwo } from "@/components/molecules";
 import Image from "next/image";
+import { useState } from "react";
+import ReactPlayer from "react-player/youtube";
 
 export const StudentsSaysSection = () => {
+  const [selectedUrl, setSelectedUrl] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const uniImages = [
     {
       imgUri: "/images/students/stu1.png",
+      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
     {
       imgUri: "/images/students/stu2.png",
+      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
     {
       imgUri: "/images/students/stu3.png",
+      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
     {
       imgUri: "/images/students/stu4.png",
+      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
   ];
 
@@ -31,6 +44,10 @@ export const StudentsSaysSection = () => {
               <div
                 key={index}
                 className="relative overflow-hidden rounded-md shadow-lg cursor-pointer"
+                onClick={() => {
+                  setSelectedUrl(item.videoUri);
+                  setIsOpen(true);
+                }}
               >
                 <Image
                   src={item.imgUri}
@@ -43,18 +60,19 @@ export const StudentsSaysSection = () => {
               </div>
             ))}
           </GridWrapperTwo>
-          {/* See More Butn */}
-          {/* <div className="flex justify-center items-center mt-10">
-            <MainButton
-              label="See More"
-              btnStyle="Secondary"
-              btnSize="Medium"
-              icon={<RightArrowIcon />}
-              customStyle="w-[200px]"
-            />
-          </div> */}
         </div>
       </div>
+      {isOpen && (
+        <DialogBoxContainer
+          isOpen={isOpen}
+          closeModal={() => setIsOpen(false)}
+          actionBtn={false}
+          customStyle="w-[800px]"
+          padding="p-0"
+        >
+          <ReactPlayer url={selectedUrl} width="100%" height="500px" controls />
+        </DialogBoxContainer>
+      )}
     </InnerContainer>
   );
 };

@@ -66,18 +66,20 @@ export const MultiSelectDropdown = ({
         )}
       </button>
       {isOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white rounded-md shadow-lg max-h-60 overflow-y-auto">
-          <ul className="py-1">
+        <div className="absolute z-10 w-[300px] mt-2 bg-white rounded-md shadow-lg max-h-[300px] overflow-y-auto">
+          <ul className="py-1 ">
             {options.map((option) => (
-              <li key={option} className="px-4 py-2 hover:bg-gray-100">
-                <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="form-checkbox h-5 w-5 text-blue-500 rounded cursor-pointer transition duration-150 ease-in-out checked:bg-blue-600 checked:border-transparent"
-                    value={option}
-                    checked={selectedOptions.includes(option)}
-                    onChange={handleChange}
-                  />
+              <li key={option} className="px-4 py-2 hover:bg-grayLight">
+                <label className="flex items-center space-x-2 cursor-pointer ">
+                  <div>
+                    <input
+                      type="checkbox"
+                      className="form-checkbox h-5 w-5 text-blue-500 rounded cursor-pointer transition duration-150 ease-in-out checked:bg-blue-600 checked:border-transparent"
+                      value={option}
+                      checked={selectedOptions.includes(option)}
+                      onChange={handleChange}
+                    />
+                  </div>
                   <span className="text-gray text-sm">{option}</span>
                 </label>
               </li>

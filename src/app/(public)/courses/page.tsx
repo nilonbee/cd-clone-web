@@ -5,8 +5,31 @@ import {
   Courses,
   InterestedSection,
 } from "@/components/organisms";
+import { ICountry } from "@/types/countries";
+import { ICourseLevel } from "@/types/courseLevels";
+import { IIntake } from "@/types/intakes";
+import { ISubject } from "@/types/subjects";
+import {
+  getCountries,
+  getCourseLevels,
+  getCourses,
+  getIntakes,
+  getSubjects,
+} from "@/utils/api-requests";
 
-const CoursePage = () => {
+const CoursePage = async () => {
+  const filterData = {
+    limit: 20,
+    max_fee: 0,
+    min_fee: 0,
+    page: 1,
+  };
+  const initialCourseData = await getCourses(filterData);
+  const countries = (await getCountries({ status: 1 })) as ICountry[];
+  const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
+  const subjects = (await getSubjects({ status: 1 })) as ISubject[];
+  const intakes = (await getIntakes({ status: 1 })) as IIntake[];
+
   return (
     <>
       <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r -mt-2">
@@ -24,10 +47,15 @@ const CoursePage = () => {
       <ContainerLayout>
         <MainSearchBar />
         <div className="my-10">
-          <FilterSideBar />
+          <FilterSideBar
+            countries={countries}
+            courseLevels={courseLevels}
+            subjects={subjects}
+            intakes={intakes}
+          />
         </div>
         <div className="w-full flex md:flex-row  sm:flex-col my-10 gap-4 relative">
-          <Courses />
+          <Courses initialCourseData={initialCourseData?.data ?? []} />
           <div className="w-full md:block sm:hidden xs:hidden">
             <CourseViewModel />
           </div>

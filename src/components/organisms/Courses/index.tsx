@@ -7,7 +7,11 @@ import { getCourses } from "@/utils/api-requests";
 import { useEffect, useState } from "react";
 import { CourseViewDrawer } from "../CourseViewDrawer";
 
-export const Courses = () => {
+export const Courses = ({
+  initialCourseData,
+}: {
+  initialCourseData: ICourse[];
+}) => {
   const { setIsCourse, setSelectedCourseId } = useCourseStore();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -18,19 +22,15 @@ export const Courses = () => {
     min_fee: 0,
     page: 1,
   });
-  const [courseData, setCourseData] = useState<ICourse[]>([]);
+  const [courseData, setCourseData] = useState<ICourse[]>(initialCourseData);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    setLoading(true);
-    setIsCourse(false);
-    getCourses(filterData).then((response) => {
-      setCourseData([...courseData, ...(response?.data || [])]);
-      setSelectedCourseId(response?.data[0].id || "");
-      setLoading(false);
+    if (initialCourseData.length !== 0) {
+      setSelectedCourseId(initialCourseData[0].id || "");
       setIsCourse(true);
-    });
-  }, [filterData]);
+    }
+  }, [initialCourseData]);
 
   //choose the screen size
   const handleResize = () => {
@@ -45,6 +45,13 @@ export const Courses = () => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   });
+
+  const loadMoreCourses = async () => {
+    setLoading(true);
+    const courses = await getCourses(filterData);
+    setCourseData([...courseData, ...(courses?.data ?? [])]);
+    setLoading(false);
+  };
 
   return (
     <div className="md:w-[400px] sm:w-full relative">
@@ -80,9 +87,10 @@ export const Courses = () => {
             <MainButton
               label="Load More"
               btnSize="Small"
-              onClick={() =>
-                setFilterData({ ...filterData, page: filterData.page + 1 })
-              }
+              onClick={() => {
+                setFilterData({ ...filterData, page: filterData.page + 1 });
+                loadMoreCourses();
+              }}
               loading={loading}
               disabled={loading}
             />

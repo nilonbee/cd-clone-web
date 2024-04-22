@@ -4,8 +4,8 @@ import { TimeIcon } from "@/components/atoms/Icons/TimeIcon";
 import { ICourse } from "@/types/courses";
 import Image from "next/image";
 import { CardWrapper } from "..";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { rootImagePath } from "@/utils/rootImagePath";
 
 export const CourseBox = ({
   id,
@@ -15,14 +15,13 @@ export const CourseBox = ({
   country,
   course_fee,
   level_name,
-  rating,
   currency,
 }: ICourse) => {
   return (
     <CardWrapper>
       <div className="w-full h-24 sm:h-20 overflow-hidden border-b border-grayLight pb-2">
         <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${uni_logo}`}
+          src={`${rootImagePath(uni_logo as string)}`}
           alt="Logo"
           className="w-full h-full object-contain"
           width={300}

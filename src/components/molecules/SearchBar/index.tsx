@@ -2,12 +2,12 @@
 import { InnerContainer } from "@/components/atoms";
 import {
   BookIcon,
-  CloseIcon,
   HatIcon,
   LocationIcon,
   SearchIcon,
 } from "@/components/atoms/Icons";
 import React, { useState } from "react";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export const SearchBar = () => {
   const searchTypes = [
@@ -40,7 +40,7 @@ export const SearchBar = () => {
   return (
     <InnerContainer>
       {selectedType === null && (
-        <div className=" shadow-[0px_0px_10px_0px_rgba(0,0,0,0.25)] rounded-[5px]  py-[18px]  grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 -mt-10 w-full bg-white px-5">
+        <div className=" shadow-lg rounded-md  py-[18px]  grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 -mt-10 w-full bg-white px-5">
           {searchTypes.map((type) => (
             <div
               key={type.id}
@@ -58,7 +58,7 @@ export const SearchBar = () => {
         </div>
       )}
       {selectedType !== null && (
-        <div className=" shadow-[0px_0px_10px_0px_rgba(0,0,0,0.25)] rounded-[5px]  py-[18px]  -mt-10 w-full bg-white px-5">
+        <div className=" shadow-lg rounded-[5px]  py-[18px]  -mt-10 w-full bg-white px-5">
           {selectedType === "searchLevel1" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
               <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
@@ -73,7 +73,7 @@ export const SearchBar = () => {
                 onClick={() => setSelectedType(null)}
                 className="cursor-pointer"
               >
-                <CloseIcon />
+                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
               </div>
             </div>
           )}
@@ -91,7 +91,7 @@ export const SearchBar = () => {
                 onClick={() => setSelectedType(null)}
                 className="cursor-pointer"
               >
-                <CloseIcon />
+                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
               </div>
             </div>
           )}
@@ -109,7 +109,7 @@ export const SearchBar = () => {
                 onClick={() => setSelectedType(null)}
                 className="cursor-pointer"
               >
-                <CloseIcon />
+                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
               </div>
             </div>
           )}
@@ -127,7 +127,7 @@ export const SearchBar = () => {
                 onClick={() => setSelectedType(null)}
                 className="cursor-pointer"
               >
-                <CloseIcon />
+                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
               </div>
             </div>
           )}

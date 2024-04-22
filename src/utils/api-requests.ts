@@ -1,5 +1,8 @@
 import { ICountriesRequest, ICountriesResponse } from "@/types/countries";
-import { ICourseLevelsRequest, ICourseLevelsResponse } from "@/types/courseLevels";
+import {
+  ICourseLevelsRequest,
+  ICourseLevelsResponse,
+} from "@/types/courseLevels";
 import {
   ICourseRequest,
   ICourseResponse,
@@ -17,7 +20,6 @@ import {
   IRegisterResponse,
   IResetPasswordRequest,
 } from "@/types/users";
-import toast from "react-hot-toast";
 
 /**
  * Get courses from the API
@@ -42,49 +44,40 @@ export async function getCourses(data: ICourseRequest) {
     return courses.data;
   } catch (error) {
     console.error("Failed to fetch courses:", error);
-    toast.error("Failed to fetch courses. API error");
   }
 }
 
 export async function getCountries(data: ICountriesRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/countries`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        next: { revalidate: 10 }, // 10 seconds
-        body: JSON.stringify(data),
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/countries`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      next: { revalidate: 10 }, // 10 seconds
+      body: JSON.stringify(data),
+    });
     const countries = (await res.json()) as ICountriesResponse;
     return countries.data;
   } catch (error) {
     console.error("Failed to fetch countries:", error);
-    toast.error("Failed to fetch countries. API error");
   }
 }
 
 export async function getSubjects(data: ISubjectsRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/subjects`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        next: { revalidate: 10 }, // 10 seconds
-        body: JSON.stringify(data),
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/subjects`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      next: { revalidate: 10 }, // 10 seconds
+      body: JSON.stringify(data),
+    });
     const subjects = (await res.json()) as ISubjectsResponse;
     return subjects.data;
   } catch (err) {
     console.error("Failed to fetch subjects:", err);
-    toast.error("Failed to fetch subjects. API error");
   }
 }
 
@@ -105,7 +98,6 @@ export async function getIntakes(data: IIntakesRequest) {
     return intakes.data;
   } catch (err) {
     console.error("Failed to fetch intakes:", err);
-    toast.error("Failed to fetch intakes. API error");
   }
 }
 
@@ -126,7 +118,6 @@ export async function getCourseLevels(data: ICourseLevelsRequest) {
     return courseLevels.data;
   } catch (error) {
     console.error("Failed to fetch course levels:", error);
-    toast.error("Failed to fetch courseLevels. API error");
   }
 }
 
@@ -154,7 +145,6 @@ export async function userLogin(data: ILoginRequest) {
     return user;
   } catch (error) {
     console.error("Login failed:", error);
-    toast.error("Login failed. API error");
   }
 }
 
@@ -184,7 +174,6 @@ export async function userRegister(data: IRegisterRequest) {
     return user;
   } catch (error) {
     console.error("Registration failed:", error);
-    toast.error("Registration failed. API error");
   }
 }
 
@@ -204,7 +193,6 @@ export async function resetPassword(data: IResetPasswordRequest) {
     return response;
   } catch (error) {
     console.error("Resetting Password failed:", error);
-    toast.error("Resetting Password failed. API error");
   }
 }
 
@@ -224,7 +212,6 @@ export async function sendForgotPasswordEmail(data: IPasswordResetRequest) {
     return response;
   } catch (error) {
     console.error("Failed to send reset link:", error);
-    toast.error("Failed to send reset link. API error");
   }
 }
 
@@ -244,7 +231,6 @@ export async function getCourseById(id: string) {
     return course.data;
   } catch (error) {
     console.error("Failed to fetch course:", error);
-    toast.error("Failed to fetch course. API error");
   }
 }
 
@@ -260,7 +246,6 @@ export async function getEvents() {
     return events.data;
   } catch (error) {
     console.error("Failed to fetch events:", error);
-    toast.error("Failed to fetch events. API error");
   }
 }
 
@@ -273,7 +258,6 @@ export async function getEventBySlug(slug: string) {
     return event.data;
   } catch (error) {
     console.error("Failed to fetch event:", error);
-    toast.error("Failed to fetch event. API error");
   }
 }
 
@@ -294,7 +278,6 @@ export async function getScholarships(data: IScholarshipRequest) {
     return scholarships.data;
   } catch (error) {
     console.error("Failed to fetch scholarships:", error);
-    toast.error("Failed to fetch scholarships. API error");
   }
 }
 
@@ -314,7 +297,6 @@ export async function getCareers(country: string) {
     return careers.data;
   } catch (error) {
     console.error("Failed to fetch careers:", error);
-    toast.error("Failed to fetch careers. API error");
   }
 }
 
@@ -333,6 +315,5 @@ export async function getCareerBySlug(slug: string) {
     return career.data;
   } catch (error) {
     console.error("Failed to fetch career:", error);
-    toast.error("Failed to fetch career. API error");
   }
 }

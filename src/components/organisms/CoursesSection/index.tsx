@@ -3,6 +3,7 @@ import { RightArrowIcon } from "@/components/atoms/Icons";
 import { CourseBox, GridWrapper } from "@/components/molecules";
 import { ICourse } from "@/types/courses";
 import { getCourses } from "@/utils/api-requests";
+import Link from "next/link";
 
 export const CoursesSection = async () => {
   const filterData = {
@@ -37,15 +38,16 @@ export const CoursesSection = async () => {
               ))}
             </GridWrapper>
           </div>
-          {/* See More Butn */}
           <div className="flex justify-center items-center mt-10">
-            <MainButton
-              label="See More"
-              btnStyle="Secondary"
-              btnSize="Medium"
-              icon={<RightArrowIcon />}
-              customStyle="w-[200px]"
-            />
+            <Link href="/courses">
+              <MainButton
+                label="See More"
+                btnStyle="Secondary"
+                btnSize="Medium"
+                icon={<RightArrowIcon />}
+                customStyle="w-[200px]"
+              />
+            </Link>
           </div>
         </div>
       </div>

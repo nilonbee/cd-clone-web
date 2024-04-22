@@ -6,14 +6,10 @@ interface CountryBoxProps {
   url: string;
 }
 
-export const CountryBox: React.FC<CountryBoxProps> = ({
-  country,
-  img,
-  url,
-}) => {
+export const CountryBox: React.FC<CountryBoxProps> = ({ country, img }) => {
   return (
     <div
-      className="relative h-[150px] overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg rounded-md"
+      className="relative h-[200px] overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg rounded-md"
       style={{
         backgroundImage: img ? `url(${img})` : "none",
         backgroundSize: "cover",
