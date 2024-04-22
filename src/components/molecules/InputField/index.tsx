@@ -28,7 +28,7 @@ export const InputField = ({
     ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
     : "";
   return (
-    <div className={`mb-${noMargin ? "0" : "4"} min-h-10`}>
+    <div className={`mb-${noMargin ? "0" : "4"}`}>
       {label && (
         <label
           className={`block text-sm mb-2 font-medium ${error ? "text-errorMsg" : "text-gray"}`}
