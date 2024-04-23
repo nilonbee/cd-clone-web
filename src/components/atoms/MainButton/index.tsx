@@ -42,7 +42,9 @@ export const MainButton = ({
       ? disabled
         ? disabledStyles
         : primaryStyles
-      : secondaryStyles;
+      : disabled
+        ? disabledStyles
+        : secondaryStyles;
 
   // Define size classes based on btnSize prop
   let sizeClasses = "";

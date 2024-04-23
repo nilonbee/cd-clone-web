@@ -9,8 +9,6 @@ export const SubjectSection = async () => {
     status: 1,
   };
   const subjects = await getSubjects(filterData);
-  console.log(subjects);
-
   return (
     <InnerContainer>
       <div className="mt-20 mb-20">

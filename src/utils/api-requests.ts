@@ -178,7 +178,7 @@ export async function userRegister(data: IRegisterRequest) {
   }
 }
 
-export async function sendEmail(data: ISendEmailRequest) {
+export async function sendInquiry(data: ISendEmailRequest) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/user/contact-form`,
@@ -335,5 +335,24 @@ export async function getCareerBySlug(slug: string) {
     return career.data;
   } catch (error) {
     console.error("Failed to fetch career:", error);
+  }
+}
+
+export async function newsletterSubscribe(email: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/newsletter/subscribe`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      },
+    );
+    const response = await res.json();
+    return response;
+  } catch (error) {
+    console.error("Failed to subscribe:", error);
   }
 }
