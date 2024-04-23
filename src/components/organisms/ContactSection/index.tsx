@@ -8,7 +8,7 @@ import {
 } from "@/components/molecules";
 import validationSchema from "@/utils/validationSchema";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { sendEmail } from "@/utils/api-requests";
+import { sendInquiry } from "@/utils/api-requests";
 import toast from "react-hot-toast";
 
 type FormValues = {
@@ -31,7 +31,7 @@ export const ContactSection = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setLoading(true);
-    const response = await sendEmail(data);
+    const response = await sendInquiry(data);
     setLoading(false);
     if (response?.status === "success") {
       toast.success(response.message);
