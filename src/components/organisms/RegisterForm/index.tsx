@@ -130,8 +130,8 @@ export const RegisterForm = () => {
           loading={loading}
           disabled={loading}
         />
-        <p className="text-sm text-textColor text-center my-5">
-          Already have an account?
+        <p className="text-xs font-medium text-textColor text-center my-5">
+          ALREADY HAVE AN ACCOUNT?
         </p>
         <Link href="/login">
           <MainButton

@@ -7,7 +7,7 @@ export function SocialMediaAuthForm() {
     <>
       <MainButton
         customStyle="my-4"
-        label="Sign in with Google"
+        label="Sign In With Google"
         iconPosition="Left"
         icon={<GoogleIcon />}
         btnSize="Medium"
@@ -16,7 +16,7 @@ export function SocialMediaAuthForm() {
       />
       <MainButton
         customStyle="my-3"
-        label="Sign in with Facebook"
+        label="Sign In With Facebook"
         iconPosition="Left"
         icon={<FBIcon />}
         btnSize="Medium"
