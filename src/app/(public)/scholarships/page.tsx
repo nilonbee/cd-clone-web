@@ -30,7 +30,7 @@ const Scholarships = async () => {
                 <ScholarshipsBox
                   key={item.id}
                   title={item.title}
-                  image={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${item.cover_url}`}
+                  image={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${item.cover_url}`}
                   id={item.slug}
                   university={item.uni_name}
                   quantity={item.quantity}

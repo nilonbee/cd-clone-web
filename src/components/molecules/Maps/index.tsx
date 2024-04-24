@@ -29,7 +29,7 @@ function GMap({ mapData }: MapProps): JSX.Element {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
+    googleMapsApiKey: process.env["NEXT_PUBLIC_GOOGLE_API_KEY"] || "",
   });
 
   const handleActiveMarker = (marker: number) => {

@@ -19,7 +19,7 @@ export const UniRow = ({
     <div className="p-4 flex gap-5 items-center self-stretch relative w-full bg-[#eef7ff] rounded-md  border border-boxBorder">
       <div className="">
         <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${uni_logo}`}
+          src={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${uni_logo}`}
           alt="university-logo"
           className="h-[100px] w-[100px]  ring-1 ring-primary shadow-md object-contain rounded-md bg-white"
           width={200}

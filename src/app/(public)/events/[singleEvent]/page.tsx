@@ -39,7 +39,7 @@ const SingleEventPage = async ({ params }: any) => {
           <SingleEventBox
             title={title}
             subtitle={meta_description}
-            image={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${cover_url}`}
+            image={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${cover_url}`}
             dates={dates}
             mapDetails={mapDetails}
             description={description}

@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Campus Direct - Web | Next App
 
-## Getting Started
+## Table of Contents
 
-First, run the development server:
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Built Using](#built_using)
+- [Authors](#authors)
+- [Owner](#owner)
+
+## About <a name = "about"></a>
+
+This is the web app for Campus Direct. This app is built using [React](https://reactjs.org/) and [Ant Design](https://ant.design/). This app is used by the admin to manage the Campus Direct platform. This app is used to manage the following:
+
+## Getting Started <a name = "getting_started"></a>
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/) 
+- [npm](https://www.npmjs.com/)
+
+### Installing
+
+1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Start the app in development mode
 
-## Learn More
+```bash
+yarn run dev 
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment <a name = "Doppler Setup"></a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Flow to below link connect with Doppler and get the API key and add it to the .env file
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Doppler Install CLI](https://docs.doppler.com/docs/install-cli)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+doppler login
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+doppler setup
+
+doppler run -- yarn run dev
+
+doppler run -- yarn run build
+
+doppler run -- yarn run start
+
+doppler run -- watch -- yarn run dev
+
+```
+
+## Deployment <a name = "deployment"></a>
+
+This app is deployed on [AWS EC2](https://aws.amazon.com/ec2/) and [AWS S3](https://aws.amazon.com/s3/). The app is served using [Apache2](https://httpd.apache.org/)
+## Built Using <a name = "built_using"></a>
+
+- [React](https://reactjs.org/) - Frontend Framework
+- [Ant Design](https://ant.design/) - UI Library
+- [Axios]() - HTTP Client
+- [React Router](https://reactrouter.com/) - Routing Library
+- [React Icons](https://react-icons.github.io/react-icons/) - Icons Library
+- [React Moment](https://www.npmjs.com/package/react-moment) - Date Library
+- [React Helmet](https://www.npmjs.com/package/react-helmet) - SEO Library
+- [React Dropzone](https://www.npmjs.com/package/react-dropzone) - File Uploader Library
+- [React Quill](https://www.npmjs.com/package/react-quill) - Text Editor Library
+- [React Select](https://www.npmjs.com/package/react-select) - Select Library
+- [React Color](https://www.npmjs.com/package/react-color) - Color Picker Library
+- [React Chartjs 2](https://www.npmjs.com/package/react-chartjs-2) - Chart Library
+- [React Table](https://www.npmjs.com/package/react-table) - Table Library
+- [React CSV](https://www.npmjs.com/package/react-csv) - CSV Library
+- [React Zustand](https://www.npmjs.com/package/react-zustand) - State Management Library
+
+
+## Authors <a name = "authors"></a>
+
+- [Bhanuka Krish](https://github.com/BhanukaKrish) - Full Stack Developer
+- [Nilan Athapaththu](https://github.com/nilonbee) - Full Stack Developer
+
+## Owner <a name = "owner"></a>
+
+- [Campus Direct](http://campusdirect.io)
