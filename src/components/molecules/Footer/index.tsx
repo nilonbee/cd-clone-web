@@ -11,82 +11,95 @@ import {
   TimeIcon,
   TwitterIcon,
 } from "@components/atoms/Icons";
-
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { BsClock } from "react-icons/bs";
 const openingTimesColombo = [
   {
     text: "Monday–Friday: 9.00am – 5.00pm",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
 
   {
     text: "Saturday: 9.00am - 5.00pm",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
   {
     text: "Sun: Closed",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
 ];
 
 const openingTimesKandy = [
   {
     text: "Monday–Friday: 9.00am – 5.00pm",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
 
   {
     text: "Saturday: 9.00am - 1.00pm ",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
   {
     text: "Sun: Closed",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
 ];
 
 const openingTimesLondon = [
   {
     text: "Monday–Friday: 10.00am – 6.00pm",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
 
   {
     text: "Saturday: 10.00am - 2.00pm",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
   {
     text: "Sun: Closed",
-    icon: <TimeIcon color={"#fff"} />,
+    icon: <BsClock color={"#fff"} size={16} />,
   },
 ];
 const listItems = [
   {
     text: "Home",
-    href: "/home",
+    href: "/",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
   },
   {
     text: "About Us",
-    href: "/about-us",
+    href: "/about",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
   },
   {
     text: "Courses",
     href: "/courses",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
   },
   {
     text: "Events",
     href: "/events",
-  },
-  {
-    text: "Careers",
-    href: "/home",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
   },
   {
     text: "Scholarships",
     href: "/scholarships",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
+  },
+  {
+    text: "Careers",
+    href: "/careers",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
+  },
+  {
+    text: "Blogs",
+    href: "/blogs",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
   },
   {
     text: "Contact Us",
-    href: "/contact-us",
+    href: "/contact",
+    icon: <MdKeyboardArrowRight color={"#fff"} size={18} />,
   },
 ];
 export const Footer = () => {
@@ -101,27 +114,44 @@ export const Footer = () => {
             />
           </div>
           <div className="">
-            <h5 className="font-bold text-base text-white mb-4">Company</h5>
-            {listItems.map((listItem, index) => (
-              <ListItem key={index} text={listItem.text} href={listItem.href} />
-            ))}
+            <h5 className="font-bold text-base text-white mb-4">
+              Useful Links
+            </h5>
+            <div className="flex gap-2 flex-col">
+              {listItems.map((listItem, index) => (
+                <ListItem
+                  key={index}
+                  text={listItem.text}
+                  href={listItem.href}
+                  icon={listItem.icon}
+                />
+              ))}
+            </div>
           </div>
           <div className="">
             <h5 className="font-bold text-base text-white mb-4">
               Opening Hours
             </h5>
+
             <h5 className="text-sm text-white mb-2">Colombo Branch</h5>
-            {openingTimesColombo.map((item, index) => (
-              <ListItem key={index} text={item.text} icon={item.icon} />
-            ))}
+            <div className="flex gap-2 flex-col">
+              {openingTimesColombo.map((item, index) => (
+                <ListItem key={index} text={item.text} icon={item.icon} />
+              ))}
+            </div>
+
             <h5 className="text-sm text-white mb-2 mt-4">Kandy Branch</h5>
-            {openingTimesKandy.map((item, index) => (
-              <ListItem key={index} text={item.text} icon={item.icon} />
-            ))}
+            <div className="flex gap-2 flex-col">
+              {openingTimesKandy.map((item, index) => (
+                <ListItem key={index} text={item.text} icon={item.icon} />
+              ))}
+            </div>
             <h5 className="text-sm text-white mb-2 mt-4">London Branch</h5>
-            {openingTimesLondon.map((item, index) => (
-              <ListItem key={index} text={item.text} icon={item.icon} />
-            ))}
+            <div className="flex gap-2 flex-col">
+              {openingTimesLondon.map((item, index) => (
+                <ListItem key={index} text={item.text} icon={item.icon} />
+              ))}
+            </div>
           </div>
           <div className="">
             <h5 className="font-bold text-base text-white mb-4">Contact Us</h5>

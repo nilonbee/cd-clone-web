@@ -19,16 +19,16 @@ export const ListItem = ({
   return href ? (
     <Link
       href={href}
-      className={`flex space-x-1 my-[2px] ${topMargin ? "mt-6" : "mt-0"}`}
+      className={`flex space-x-1 ${topMargin ? "mt-6" : "mt-0"} items-center w-fit`}
     >
-      <div className="w-[22px] h-[22px]">{icon ? icon : null}</div>
+      {icon ? icon : null}
 
-      <p className="text-sm text-whiteGray mb-2">{text}</p>
+      <p className="text-sm text-whiteGray">{text}</p>
     </Link>
   ) : (
-    <div className={`flex space-x-1 my-[2px] ${topMargin ? "mt-6" : "mt-0"}`}>
-      <div className="w-[22px] h-[22px]">{icon ? icon : null}</div>
-      <p className="text-sm text-whiteGray mb-2">{text}</p>
+    <div className={`flex gap-1 ${topMargin ? "mt-6" : "mt-0"} items-center`}>
+      {icon ? icon : null}
+      <p className="text-sm text-whiteGray">{text}</p>
     </div>
   );
 };

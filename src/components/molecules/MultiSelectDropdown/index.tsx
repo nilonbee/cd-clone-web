@@ -6,15 +6,16 @@ import { IoIosArrowUp } from "react-icons/io";
 type MultiSelectDropdownProps = {
   formFieldName: string;
   options: string[];
-  onChange: (selectedOptions: string[]) => void;
+  selectedOptions: string[];
+  setSelectedOptions: (selectedOptions: string[]) => void;
 };
 
 export const MultiSelectDropdown = ({
   formFieldName,
   options,
-  onChange,
+  selectedOptions,
+  setSelectedOptions,
 }: MultiSelectDropdownProps) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -48,7 +49,7 @@ export const MultiSelectDropdown = ({
       setSelectedOptions(selectedOptions.filter((item) => item !== option));
     }
 
-    onChange(selectedOptions);
+    // onChange(selectedOptions);
   };
 
   return (

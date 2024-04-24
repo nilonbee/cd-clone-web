@@ -7,7 +7,7 @@ import {
   SearchIcon,
 } from "@/components/atoms/Icons";
 import React, { useState } from "react";
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { VscClose } from "react-icons/vsc";
 
 export const SearchBar = () => {
   const searchTypes = [
@@ -61,73 +61,81 @@ export const SearchBar = () => {
         <div className=" shadow-lg rounded-[5px]  py-[18px]  -mt-10 w-full bg-white px-5">
           {selectedType === "searchLevel1" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                <SearchIcon />
+              <div>
+                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                  <SearchIcon />
+                </div>
               </div>
               <input
                 type="text"
-                placeholder="Search Course"
-                className=" w-full outline-none h-10"
+                placeholder="Search Course Name"
+                className=" w-full outline-none h-10 z-10"
               />
               <div
                 onClick={() => setSelectedType(null)}
-                className="cursor-pointer"
+                className="cursor-pointer z-10"
               >
-                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
+                <VscClose className="text-[30px] text-textColor" />
               </div>
             </div>
           )}
           {selectedType === "searchLevel2" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                <HatIcon />
+              <div>
+                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                  <HatIcon />
+                </div>
               </div>
               <input
                 type="text"
                 placeholder="Select Study Level"
-                className=" w-full outline-none h-10"
+                className=" w-full outline-none h-10 z-10"
               />
               <div
                 onClick={() => setSelectedType(null)}
-                className="cursor-pointer"
+                className="cursor-pointer z-10"
               >
-                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
+                <VscClose className="text-[30px] text-textColor" />
               </div>
             </div>
           )}
           {selectedType === "searchLevel3" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                <LocationIcon />
+              <div>
+                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                  <LocationIcon />
+                </div>
               </div>
               <input
                 type="text"
                 placeholder="Select Destination"
-                className=" w-full outline-none h-10"
+                className=" w-full outline-none h-10 z-10"
               />
               <div
                 onClick={() => setSelectedType(null)}
-                className="cursor-pointer"
+                className="cursor-pointer z-10"
               >
-                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
+                <VscClose className="text-[30px] text-textColor" />
               </div>
             </div>
           )}
           {selectedType === "searchLevel4" && (
             <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                <BookIcon />
+              <div>
+                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                  <BookIcon />
+                </div>
               </div>
               <input
                 type="text"
                 placeholder="Select Subject"
-                className=" w-full outline-none h-10"
+                className=" w-full outline-none h-10 z-10"
               />
               <div
                 onClick={() => setSelectedType(null)}
-                className="cursor-pointer"
+                className="cursor-pointer z-10"
               >
-                <IoIosCloseCircleOutline className="text-[30px] text-textColor" />
+                <VscClose className="text-[30px] text-textColor" />
               </div>
             </div>
           )}

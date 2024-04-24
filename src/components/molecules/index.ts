@@ -33,3 +33,4 @@ export * from "./CourseBoxModel";
 export * from "./ScholarshipsBox";
 export * from "./ScholarshipsBanner";
 export * from "./CareersBanner";
+export * from "./FilterBtn";

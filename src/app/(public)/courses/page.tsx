@@ -48,10 +48,10 @@ const CoursePage = async () => {
         <MainSearchBar />
         <div className="my-10">
           <FilterSideBar
-            countries={countries}
-            courseLevels={courseLevels}
-            subjects={subjects}
-            intakes={intakes}
+            initCountries={countries}
+            initCourseLevels={courseLevels}
+            initSubjects={subjects}
+            initIntakes={intakes}
           />
         </div>
         <div className="w-full flex md:flex-row  sm:flex-col my-10 gap-4 relative">
