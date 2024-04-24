@@ -11,10 +11,10 @@ export default async function fetchLocation({ url }: UrlProps) {
     }
 
     const data = await res.json();
-    let country = data.country;
+    const country = data.country;
     return country;
   } catch (error) {
-    console.error('Error fetching location:', error);
+    console.error("Error fetching location:", error);
     throw error;
   }
 }

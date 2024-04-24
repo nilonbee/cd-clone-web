@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 interface AboutParagraphTypes {
-  image: any;
+  image: string;
   description: string[];
 }
 

@@ -59,16 +59,15 @@ export const Courses = ({
         <b>{courseData?.length} </b>courses found
       </p>
       <div className="w-full sticky top-[100px] left-0 h-[1000px] overflow-y-auto">
-        <div className="sm:grid sm:grid-cols-2 sm:gap-2 md:grid md:grid-cols-1 md:gap-2">
+        <div className="sm:grid sm:grid-cols-2 sm:gap-2 md:grid md:grid-cols-1 md:gap-2 fadeIn">
           {courseData?.map((item: ICourse) => (
-            <div className="mb-2 cursor-pointer">
+            <div className="mb-2 cursor-pointer" key={item.id}>
               <CourseBoxModel
                 id={item.id}
                 course_name={item.course_name}
                 course_fee={item.course_fee}
                 country={item.country}
                 level_name={item.level_name}
-                key={item.id}
                 uni_logo={item.uni_logo}
                 university={item.university}
                 currency={item.currency}

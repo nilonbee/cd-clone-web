@@ -15,9 +15,9 @@ export const ScholarshipsBanner = () => {
               <p className="text-textColor text-sm mb-2">
                 Welcome to the Scholarships page at Campus Direct! We understand
                 that financing your education is a significant aspect of your
-                academic journey. That's why we are dedicated to helping you
-                explore and secure various scholarship opportunities that can
-                make your dreams of studying abroad a reality.
+                academic journey. That&apos;s why we are dedicated to helping
+                you explore and secure various scholarship opportunities that
+                can make your dreams of studying abroad a reality.
               </p>
               <p className="text-textColor text-sm mb-2">
                 Scholarships provide valuable financial support, easing the
