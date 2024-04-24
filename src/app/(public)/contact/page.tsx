@@ -20,7 +20,7 @@ const ContactPage = () => {
   const { countryCode } = useIpStore(state => ({
     countryCode: state.countryCode,
   }));
-  const country = countryCode === "UAE" ? DUBAI : COLOMBO;
+  const country = countryCode === "AE" ? DUBAI : COLOMBO;
 
   return (
     <>

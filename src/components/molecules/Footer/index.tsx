@@ -26,7 +26,7 @@ export const Footer = () => {
   countryCode === "" && ipinfoWrapper.lookupIp("1.1.1.1").then((response: IPinfo) => {
     setCountryCode(response.countryCode);
   });
-  const isDubai: boolean = countryCode === "UAE";
+  const isDubai: boolean = countryCode === "AE";
 
   return (
     <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r">
