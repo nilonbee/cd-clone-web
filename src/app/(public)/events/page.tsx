@@ -11,8 +11,6 @@ import { getEvents } from "@/utils/api-requests";
 
 const EventsPage = async () => {
   const events = await getEvents();
-  console.log("events", events);
-
   return (
     <>
       <Hero />

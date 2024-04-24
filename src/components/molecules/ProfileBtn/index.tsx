@@ -14,7 +14,7 @@ export const ProfileBtn = () => {
     {
       name: "Dashboard",
       description: "Manage your applications",
-      href: "##",
+      href: "/dashboard",
       icon: IconOne,
     },
     {

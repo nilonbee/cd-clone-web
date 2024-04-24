@@ -115,7 +115,7 @@ export const LoginForm = () => {
       <Divider text="or" />
       <SocialMediaAuthForm />
       <p className="text-sm text-textColor text-center my-5">
-        Don't have an account?
+        Don&apos;t have an account?
       </p>
       <Link href="/register">
         <MainButton
