@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import IPinfoWrapper, { IPinfo } from "node-ipinfo";
 import { ContainerLayout, ListItem } from "@components/atoms";
@@ -12,9 +11,10 @@ import {
   TimeIcon,
   TwitterIcon,
 } from "@components/atoms/Icons";
-
 import { useIpStore } from '@/store/useIpStore';
-import { colomboEmail, colomboPhoneNumber, dubaiAddress, dubaiEmail, dubaiPhoneNumber, listItems, openingTimes, sriLanksAddress } from "@/mockData/footer";
+import { contactInfo } from "@/mockData/contact";
+import { listItems } from "@/mockData/footer";
+import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
 
 const ipinfoWrapper = new IPinfoWrapper(`${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`);
 
@@ -26,7 +26,21 @@ export const Footer = () => {
   countryCode === "" && ipinfoWrapper.lookupIp("1.1.1.1").then((response: IPinfo) => {
     setCountryCode(response.countryCode);
   });
-  const isDubai: boolean = countryCode === "AE";
+
+  let branch = "colombo";
+  switch (countryCode) {
+    case "AE":
+      branch = "dubai";
+      break;
+    default:
+      branch = "colombo";
+  }
+
+  const branchInfo: ILocationInfo = contactInfo[branch as keyof typeof contactInfo];
+  const openingTimes = branchInfo.openingTimes;
+  const email = branchInfo.email;
+  const phoneNumber = branchInfo.phoneNumber;
+  const address = branchInfo.address;
 
   return (
     <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r">
@@ -57,27 +71,17 @@ export const Footer = () => {
             <h5 className="font-bold text-base text-white mb-4">
               Opening Hours
             </h5>
-            {isDubai ? (
+            <h5 className="text-sm text-white mb-2 mt-4">{branch === "dubai" ? "Dubai Branch" : "Colombo Branch"}</h5>
+            <div className="flex gap-2 flex-col">
+              {openingTimes.map((item: IOpeningTime, index: number) => (
+                <ListItem key={index} text={item.text} icon={item.icon} />
+              ))}
+            </div>
+            {branch !== "dubai" && (
               <>
-                <h5 className="text-sm text-white mb-2 mt-4">Dubai Branch</h5>
-                <div className="flex gap-2 flex-col">
-                  {openingTimes.dubai.map((item, index) => (
-                    <ListItem key={index} text={item.text} icon={item.icon} />
-                  ))}
-                </div>
-              </>
-            ) : (
-              <>
-                <h5 className="text-sm text-white mb-2">Colombo Branch</h5>
-                <div className="flex gap-2 flex-col">
-                  {openingTimes.colombo.map((item, index) => (
-                    <ListItem key={index} text={item.text} icon={item.icon} />
-                  ))}
-                </div>
-
                 <h5 className="text-sm text-white mb-2 mt-4">Kandy Branch</h5>
                 <div className="flex gap-2 flex-col">
-                  {openingTimes.kandy.map((item, index) => (
+                  {contactInfo.kandy.openingTimes.map((item, index) => (
                     <ListItem key={index} text={item.text} icon={item.icon} />
                   ))}
                 </div>
@@ -85,7 +89,7 @@ export const Footer = () => {
             )}
             <h5 className="text-sm text-white mb-2 mt-4">London Branch</h5>
             <div className="flex gap-2 flex-col">
-              {openingTimes.london.map((item, index) => (
+              {contactInfo.london.openingTimes.map((item, index) => (
                 <ListItem key={index} text={item.text} icon={item.icon} />
               ))}
             </div>
@@ -98,7 +102,7 @@ export const Footer = () => {
                 Email Us
               </h5>
             </div>
-            <p className="text-sm text-[#e0e0e0]">{isDubai ? dubaiEmail : colomboEmail}</p>
+            <p className="text-sm text-[#e0e0e0]">{email}</p>
 
             <div className="flex gap-2 items-center relative bg-transparent mt-4">
               <PhoneIcon />
@@ -106,7 +110,7 @@ export const Footer = () => {
                 Call Us
               </h5>
             </div>
-            <p className="text-sm text-[#e0e0e0]">{isDubai ? dubaiPhoneNumber : colomboPhoneNumber}</p>
+            <p className="text-sm text-[#e0e0e0]">{phoneNumber}</p>
 
             <div className="flex gap-2 items-center relative bg-transparent mt-4">
               <NavigationIcon />
@@ -114,9 +118,7 @@ export const Footer = () => {
                 Visit Us
               </h5>
             </div>
-            <p className="text-sm text-[#e0e0e0]">
-              {isDubai ? dubaiAddress : sriLanksAddress}
-            </p>
+            <p className="text-sm text-[#e0e0e0]">{address}</p>
             <div className="flex gap-6 items-start relative bg-transparent mt-4">
               <FacebookIcon />
               <LinkedinNewIcon />

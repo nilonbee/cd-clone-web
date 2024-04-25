@@ -13,14 +13,13 @@ import {
   InterestedSection,
   AddressSection,
 } from "@/components/organisms";
-import { COLOMBO, DUBAI } from "@/mockData/contact"
 import { useIpStore } from '@/store/useIpStore';
+import ContactInfoSection from '@/components/organisms/ContactInfoSection';
 
 const ContactPage = () => {
   const { countryCode } = useIpStore(state => ({
     countryCode: state.countryCode,
   }));
-  const country = countryCode === "AE" ? DUBAI : COLOMBO;
 
   return (
     <>
@@ -33,11 +32,7 @@ const ContactPage = () => {
           />
         </div>
         <InnerContainer>
-          <div className="w-full mt-10 lg:px-20 md:px-0">
-            <div className="grid grid-cols-3 gap-4">
-              {country.map((item) => (<ContactBox label={item.label} value={item.value} />))}
-            </div>
-          </div>
+          <ContactInfoSection />
         </InnerContainer>
         <ContactSection />
         <InnerContainer>

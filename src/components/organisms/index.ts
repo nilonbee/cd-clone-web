@@ -18,3 +18,4 @@ export * from "./PasswordResetForm";
 export * from "./NewPasswordForm";
 export * from "./CourseViewModel";
 export * from "./CourseViewDrawer";
+export * from "./ContactInfoSection";
