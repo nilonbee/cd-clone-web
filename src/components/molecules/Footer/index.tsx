@@ -1,5 +1,6 @@
 "use client";
-import IPinfoWrapper, { IPinfo } from "node-ipinfo";
+import { useEffect } from "react";
+import fetchLocation from "@/utils/fetchLocation";
 import { ContainerLayout, ListItem } from "@components/atoms";
 import {
   EmailIcon,
@@ -8,7 +9,6 @@ import {
   LinkedinNewIcon,
   NavigationIcon,
   PhoneIcon,
-  TimeIcon,
   TwitterIcon,
 } from "@components/atoms/Icons";
 import { useIpStore } from '@/store/useIpStore';
@@ -16,16 +16,18 @@ import { contactInfo } from "@/mockData/contact";
 import { listItems } from "@/mockData/footer";
 import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
 
-const ipinfoWrapper = new IPinfoWrapper(`${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`);
-
 export const Footer = () => {
-  const { countryCode, setCountryCode } = useIpStore(state => ({
-    countryCode: state.countryCode,
-    setCountryCode: state.setCountryCode
-  }));
-  countryCode === "" && ipinfoWrapper.lookupIp("1.1.1.1").then((response: IPinfo) => {
-    setCountryCode(response.countryCode);
-  });
+  const { countryCode, setCountryCode } = useIpStore();
+
+  const fetchCountryCode = async () => {
+    const countryCode = await fetchLocation({ url: "https://ipinfo.io/?token=49803315b80360" });
+    setCountryCode(countryCode)
+  }
+
+  useEffect(() => {
+    fetchCountryCode();
+    console.log(countryCode, 'CountryCodeUse');
+  }, [])
 
   let branch = "colombo";
   switch (countryCode) {

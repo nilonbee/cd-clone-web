@@ -1,3 +1,6 @@
+import { CarbonLocationIcon } from "@/components/atoms/Icons";
+import { CarbonEmailIcon } from "@/components/atoms/Icons/CarbonEmailIcon";
+import { CarbonPhoneIcon } from "@/components/atoms/Icons/CarbonPhoneIcon";
 import { BsClock } from "react-icons/bs";
 
 export const contactInfo = {
@@ -57,12 +60,15 @@ export const contactInfo = {
         listItems: [{
             label: "Location",
             value: "Bur-Dubai, Business Tower - 1312 Victor Business Center BurJuman - Al Mankhool - Dubai - United Arab Emirates",
+            icon: <CarbonLocationIcon />,
         }, {
             label: "Email Address",
             value: "dubai@campusdirect.io",
+            icon: <CarbonEmailIcon />,
         }, {
             label: "Phone Number",
             value: "+971 58 546 9555",
+            icon: <CarbonPhoneIcon />
         }]
     },
     colombo: {
@@ -87,14 +93,17 @@ export const contactInfo = {
         listItems: [{
             label: "Location",
             value: "Campus Direct Head Office Sri Lanka 36B, Gower St, Colombo 05",
+            icon: <CarbonLocationIcon />,
         },
         {
             label: "Email Address",
             value: "info@cduk.lk",
+            icon: <CarbonEmailIcon />,
         },
         {
             label: "Phone Number",
             value: "+94 77 900 5555",
+            icon: <CarbonPhoneIcon />
         }]
     }
 }

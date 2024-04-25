@@ -1,25 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ContainerLayout,
   Hero,
   InnerContainer,
   SectionHeader,
 } from "@/components/atoms";
-import { CarbonLocationIcon } from "@/components/atoms/Icons";
-import { ContactBox } from "@/components/molecules";
 import {
   ContactSection,
   InterestedSection,
   AddressSection,
+  ContactInfoSection
 } from "@/components/organisms";
-import { useIpStore } from '@/store/useIpStore';
-import ContactInfoSection from '@/components/organisms/ContactInfoSection';
 
 const ContactPage = () => {
-  const { countryCode } = useIpStore(state => ({
-    countryCode: state.countryCode,
-  }));
 
   return (
     <>
