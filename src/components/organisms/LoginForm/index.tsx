@@ -98,8 +98,8 @@ export const LoginForm = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <Link href="/forget-password" className="text-primary text-sm mb-5">
-          Forget Password?
+        <Link href="/forget-password" className="text-primary text-xs mb-5 font-medium">
+          FORGOT PASSWORD?
         </Link>
       </div>
       <MainButton
@@ -114,8 +114,8 @@ export const LoginForm = () => {
       />
       <Divider text="or" />
       <SocialMediaAuthForm />
-      <p className="text-sm text-textColor text-center my-5">
-        Don&apos;t have an account?
+      <p className="text-textColor text-center my-5 text-xs font-medium ">
+        DON'T HAVE AN ACCOUNT?
       </p>
       <Link href="/register">
         <MainButton
