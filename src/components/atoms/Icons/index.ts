@@ -33,3 +33,6 @@ export * from "./WhatsappIcon";
 export * from "./FbIcon";
 export * from "./GoogleIcon";
 export * from "./CloseIcon";
+export * from "./CarbonPhoneIcon";
+export * from "./CarbonEmailIcon";
+

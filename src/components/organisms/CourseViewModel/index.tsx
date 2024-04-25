@@ -37,7 +37,7 @@ export const CourseViewModel = () => {
     <div className="flex xl:flex-row md:flex-col lg:flex-col w-full gap-4 relative">
       <div className="xl:w-[75%] lg:w-[100%]">
         {!loading ? (
-          <>
+          <div className="fadeIn">
             <UniRow
               uni_logo={data.uni_logo}
               course_name={data?.course_name}
@@ -98,12 +98,12 @@ export const CourseViewModel = () => {
                 than 185 in each skill.
               </p>
             </div>
-          </>
+          </div>
         ) : (
           <Loading />
         )}
       </div>
-      <div className="xl:w-[25%] lg:w-[100%] relative">
+      <div className="xl:w-[25%] lg:w-[100%] relative fadeIn">
         <ApplicationForm />
       </div>
     </div>

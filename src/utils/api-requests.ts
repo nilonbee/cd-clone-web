@@ -28,19 +28,18 @@ import {
  * @returns - array of courses from the API response data property
  */
 
+const BaseUrl = process.env["NEXT_PUBLIC_API_URL"];
+
 export async function getCourses(data: ICourseRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/courses`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        next: { revalidate: 10 }, // 10 seconds
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/user/courses`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      next: { revalidate: 10 }, // 10 seconds
+      body: JSON.stringify(data),
+    });
     const courses = (await res.json()) as ICourseResponse;
     return courses.data;
   } catch (error) {
@@ -50,7 +49,7 @@ export async function getCourses(data: ICourseRequest) {
 
 export async function getCountries(data: ICountriesRequest) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/countries`, {
+    const res = await fetch(`${BaseUrl}/v1/countries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +66,7 @@ export async function getCountries(data: ICountriesRequest) {
 
 export async function getSubjects(data: ISubjectsRequest) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/subjects`, {
+    const res = await fetch(`${BaseUrl}/v1/subjects`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,17 +83,14 @@ export async function getSubjects(data: ISubjectsRequest) {
 
 export async function getIntakes(data: IIntakesRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/intake-months`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        next: { revalidate: 10 }, // 10 seconds
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/admin/intake-months`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      next: { revalidate: 10 }, // 10 seconds
+      body: JSON.stringify(data),
+    });
     const intakes = (await res.json()) as IIntakesResponse;
     return intakes.data;
   } catch (err) {
@@ -104,17 +100,14 @@ export async function getIntakes(data: IIntakesRequest) {
 
 export async function getCourseLevels(data: ICourseLevelsRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/course-levels`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        next: { revalidate: 10 }, // 10 seconds
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/admin/course-levels`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      next: { revalidate: 10 }, // 10 seconds
+      body: JSON.stringify(data),
+    });
     const courseLevels = (await res.json()) as ICourseLevelsResponse;
     return courseLevels.data;
   } catch (error) {
@@ -132,16 +125,13 @@ export async function getCourseLevels(data: ICourseLevelsRequest) {
 
 export async function userLogin(data: ILoginRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/user/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(data),
+    });
     const user = (await res.json()) as ILoginResponse;
     return user;
   } catch (error) {
@@ -161,16 +151,13 @@ export async function userLogin(data: ILoginRequest) {
 
 export async function userRegister(data: IRegisterRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/register`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/user/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(data),
+    });
     const user = (await res.json()) as IRegisterResponse;
     return user;
   } catch (error) {
@@ -180,16 +167,13 @@ export async function userRegister(data: IRegisterRequest) {
 
 export async function sendInquiry(data: ISendEmailRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/contact-form`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/user/contact-form`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(data),
+    });
     const responseData = (await res.json()) as ISendEmailResponse;
     return responseData;
   } catch (error) {
@@ -199,16 +183,13 @@ export async function sendInquiry(data: ISendEmailRequest) {
 
 export async function resetPassword(data: IResetPasswordRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/reset-password`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/admin/reset-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(data),
+    });
     const response = await res.json();
     return response;
   } catch (error) {
@@ -218,16 +199,13 @@ export async function resetPassword(data: IResetPasswordRequest) {
 
 export async function sendForgotPasswordEmail(data: IPasswordResetRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/forgot-password`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+    const res = await fetch(`${BaseUrl}/v1/admin/forgot-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(data),
+    });
     const response = await res.json();
     return response;
   } catch (error) {
@@ -237,16 +215,13 @@ export async function sendForgotPasswordEmail(data: IPasswordResetRequest) {
 
 export async function getCourseById(id: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/single_course`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
+    const res = await fetch(`${BaseUrl}/v1/user/single_course`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({ id }),
+    });
     const course = (await res.json()) as ICourseSingleResponse;
     return course.data;
   } catch (error) {
@@ -256,12 +231,9 @@ export async function getCourseById(id: string) {
 
 export async function getEvents() {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/events/lk`,
-      {
-        next: { revalidate: 10 }, // 10 seconds
-      },
-    );
+    const res = await fetch(`${BaseUrl}/v1/user/events/lk`, {
+      next: { revalidate: 10 }, // 10 seconds
+    });
     const events = (await res.json()) as IEventResponse;
     return events.data;
   } catch (error) {
@@ -271,9 +243,7 @@ export async function getEvents() {
 
 export async function getEventBySlug(slug: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/event-contents/${slug}`,
-    );
+    const res = await fetch(`${BaseUrl}/v1/user/event-contents/${slug}`);
     const event = (await res.json()) as IEventResponseTwo;
     return event.data;
   } catch (error) {
@@ -283,17 +253,14 @@ export async function getEventBySlug(slug: string) {
 
 export async function getScholarships(data: IScholarshipRequest) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/admin/scholarship/list`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-        next: { revalidate: 10 }, // 10 seconds
+    const res = await fetch(`${BaseUrl}/v1/admin/scholarship/list`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(data),
+      next: { revalidate: 10 }, // 10 seconds
+    });
     const scholarships = await res.json();
     return scholarships.data;
   } catch (error) {
@@ -303,16 +270,13 @@ export async function getScholarships(data: IScholarshipRequest) {
 
 export async function getCareers(country: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/careers/${country}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        next: { revalidate: 10 }, // 10 seconds
+    const res = await fetch(`${BaseUrl}/v1/user/careers/${country}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      next: { revalidate: 10 }, // 10 seconds
+    });
     const careers = await res.json();
     return careers.data;
   } catch (error) {
@@ -322,15 +286,12 @@ export async function getCareers(country: string) {
 
 export async function getCareerBySlug(slug: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v2/admin/career/${slug}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const res = await fetch(`${BaseUrl}/v2/admin/career/${slug}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+    });
     const career = await res.json();
     return career.data;
   } catch (error) {
@@ -340,16 +301,13 @@ export async function getCareerBySlug(slug: string) {
 
 export async function newsletterSubscribe(email: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/newsletter/subscribe`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
+    const res = await fetch(`${BaseUrl}/v1/newsletter/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({ email }),
+    });
     const response = await res.json();
     return response;
   } catch (error) {

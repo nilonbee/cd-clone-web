@@ -11,8 +11,6 @@ import { getEvents } from "@/utils/api-requests";
 
 const EventsPage = async () => {
   const events = await getEvents();
-  console.log("events", events);
-
   return (
     <>
       <Hero />
@@ -30,7 +28,7 @@ const EventsPage = async () => {
                 <EventBox
                   key={item.id}
                   title={item.title}
-                  image={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${item.cover_url}`}
+                  image={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${item.cover_url}`}
                   slug={item.slug}
                 />
               ))}

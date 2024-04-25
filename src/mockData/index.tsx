@@ -1,1 +1,2 @@
-export * from "./events";
+export * from "./contact";
+export * from "./footer";

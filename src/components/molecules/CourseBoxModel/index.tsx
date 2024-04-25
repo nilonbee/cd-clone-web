@@ -34,7 +34,7 @@ export const CourseBoxModel = ({
     >
       <div className="w-full flex gap-3">
         <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${uni_logo}`}
+          src={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${uni_logo}`}
           alt="Logo"
           className="h-[55px] w-[55px] rounded-full ring-1 ring-primary shadow-md object-contain bg-white"
           width={300}

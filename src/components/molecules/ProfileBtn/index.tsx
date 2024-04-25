@@ -14,7 +14,7 @@ export const ProfileBtn = () => {
     {
       name: "Dashboard",
       description: "Manage your applications",
-      href: "##",
+      href: "/dashboard",
       icon: IconOne,
     },
     {
@@ -46,7 +46,7 @@ export const ProfileBtn = () => {
               <div className="cursor-pon">
                 <img
                   className="h-9 w-9 rounded-full ring-1 ring-primary shadow-md"
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_STORE}/ProfileMy.png`}
+                  src={`${process.env["NEXT_PUBLIC_IMAGE_STORE"]}/ProfileMy.png`}
                   alt=""
                 />
               </div>
