@@ -53,7 +53,6 @@ export const StudentsSaysSection = () => {
                   src={item.imgUri}
                   alt="student"
                   className="object-cover w-full h-[400px] rounded-md transition-transform duration-1000 transform hover:scale-110"
-                  layout="responsive"
                   width={400}
                   height={400}
                 />

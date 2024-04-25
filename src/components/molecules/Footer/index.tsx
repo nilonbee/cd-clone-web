@@ -44,7 +44,7 @@ export const Footer = () => {
   const address = branchInfo.address;
 
   return (
-    <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r">
+    <div className="from-[#1c37c1] to-[#089ea2] bg-gradient-to-r fadeIn">
       <ContainerLayout>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-1 gap-4 pt-[120px] pb-3">
           <div className="">
