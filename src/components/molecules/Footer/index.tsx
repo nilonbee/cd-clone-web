@@ -20,14 +20,13 @@ export const Footer = () => {
   const { countryCode, setCountryCode } = useIpStore();
 
   const fetchCountryCode = async () => {
-    const countryCode = await fetchLocation({ url: "https://ipinfo.io/?token=49803315b80360" });
+    const countryCode = await fetchLocation({ url: `${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}` });
     setCountryCode(countryCode)
   }
 
   useEffect(() => {
     fetchCountryCode();
-    console.log(countryCode, 'CountryCodeUse');
-  }, [])
+  }, [countryCode])
 
   let branch = "colombo";
   switch (countryCode) {
