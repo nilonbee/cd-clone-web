@@ -1,6 +1,4 @@
 "use client";
-import { useEffect } from "react";
-import fetchLocation from "@/utils/fetchLocation";
 import { ContainerLayout, ListItem } from "@components/atoms";
 import {
   EmailIcon,
@@ -17,18 +15,19 @@ import { listItems } from "@/mockData/footer";
 import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
 
 export const Footer = () => {
-  const { countryCode, setCountryCode } = useIpStore();
+  const { countryCode } = useIpStore();
 
-  const fetchCountryCode = async () => {
-    const countryCode = await fetchLocation({
-      url: `https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
-    });
-    setCountryCode(countryCode);
-  };
+  // const fetchCountryCode = async () => {
+  //   const countryCode = await fetchLocation({
+  //     url: `https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
+  //   });
+  //   setCountryCode(countryCode);
+  // };
 
-  useEffect(() => {
-    fetchCountryCode();
-  }, [countryCode]);
+  // useEffect(() => {
+  //   fetchCountryCode();
+  //   // eslint-disable-next-line
+  // }, [countryCode]);
 
   let branch = "colombo";
   switch (countryCode) {
