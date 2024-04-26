@@ -272,7 +272,7 @@ export async function getScholarships(data: IScholarshipRequest) {
 export async function getCareers(country: string) {
   try {
     const res = await fetch(
-      `${process.env["NEXT_PUBLIC_API_URL"]}/v1/user/careers/${country}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/careers/${country}`,
       {
         method: "GET",
         headers: {
