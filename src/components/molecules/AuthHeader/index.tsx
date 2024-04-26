@@ -13,8 +13,8 @@ export const AuthHeader = ({ title }: AuthHeaderProps) => {
       <SectionHeader title={title} description="" />
       <Link href="/">
         <Image
-          height={110}
-          width={100}
+          height={200}
+          width={200}
           className="h-16 w-auto m-auto object-contain mt-2"
           src="/images/Logo-Clr.png"
           alt="Logo of Campus Direct"

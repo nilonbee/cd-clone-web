@@ -29,7 +29,6 @@ export const LoginForm = () => {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<FormValues>();
 
   const router = useRouter();
@@ -98,7 +97,10 @@ export const LoginForm = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <Link href="/forget-password" className="text-primary text-xs mb-5 font-medium">
+        <Link
+          href="/forget-password"
+          className="text-primary text-xs mb-5 font-medium"
+        >
           FORGOT PASSWORD?
         </Link>
       </div>
@@ -115,7 +117,7 @@ export const LoginForm = () => {
       <Divider text="or" />
       <SocialMediaAuthForm />
       <p className="text-textColor text-center my-5 text-xs font-medium ">
-        DON'T HAVE AN ACCOUNT?
+        DON&apos;T HAVE AN ACCOUNT?
       </p>
       <Link href="/register">
         <MainButton
