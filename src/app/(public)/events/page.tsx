@@ -28,7 +28,7 @@ const EventsPage = async () => {
                 <EventBox
                   key={item.id}
                   title={item.title}
-                  image={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${item.cover_url}`}
+                  image={item.cover_url}
                   slug={item.slug}
                 />
               ))}

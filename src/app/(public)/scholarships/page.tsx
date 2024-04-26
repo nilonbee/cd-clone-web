@@ -6,6 +6,7 @@ import {
 } from "@/components/molecules";
 import { InterestedSection } from "@/components/organisms";
 import { getScholarships } from "@/utils/api-requests";
+import { rootImagePath } from "@/utils/rootImagePath";
 import React from "react";
 
 const Scholarships = async () => {
@@ -30,7 +31,7 @@ const Scholarships = async () => {
                 <ScholarshipsBox
                   key={item.id}
                   title={item.title}
-                  image={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${item.cover_url}`}
+                  image={rootImagePath(item.cover_url as string)}
                   id={item.slug}
                   university={item.uni_name}
                   quantity={item.quantity}

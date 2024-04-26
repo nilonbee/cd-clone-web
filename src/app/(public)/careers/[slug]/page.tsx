@@ -7,15 +7,7 @@ import { getCareerBySlug } from "@/utils/api-requests";
 const CareerSinglePage = async ({ params }: any) => {
   const careersData = await getCareerBySlug(params.slug);
 
-  const {
-    title,
-    description,
-    tags,
-    created_at,
-    created_by,
-    end_date,
-    status,
-  }: ICareer = careersData;
+  const { title, description }: ICareer = careersData;
 
   return (
     <>

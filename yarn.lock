@@ -2194,6 +2194,19 @@ ignore@^5.2.0, ignore@^5.3.1:
   resolved "https://registry.npmjs.org/ignore/-/ignore-5.3.1.tgz"
   integrity sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==
 
+imagekit-javascript@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/imagekit-javascript/-/imagekit-javascript-3.0.1.tgz#b974e2c3c1d3e4f772594cc8c88fdafcd5c40241"
+  integrity sha512-//pvycASq98lfa68y04Q0/P6lRS5HTa015fFHi91c4mOgruqssrJIrAC1W2/8fBjS8eiJtehZruDtXJVtrmT+A==
+
+imagekitio-react@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/imagekitio-react/-/imagekitio-react-4.0.0.tgz#724bdfe4d974a7004c57392fff16c14a187b9047"
+  integrity sha512-O7dsPnAb92JCtHsl8RqOAYq8uhJR98VgC+ddHXNStaS6Frj6u4pQ4ftdtISfh8AMnZj/celnsdv0qOuj81RHhw==
+  dependencies:
+    imagekit-javascript "^3.0.0"
+    prop-types "^15.7.2"
+
 import-fresh@^3.2.1, import-fresh@^3.3.0:
   version "3.3.0"
   resolved "https://registry.npmjs.org/import-fresh/-/import-fresh-3.3.0.tgz"

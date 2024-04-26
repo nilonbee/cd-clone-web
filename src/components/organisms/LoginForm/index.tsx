@@ -29,7 +29,6 @@ export const LoginForm = () => {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<FormValues>();
 
   const router = useRouter();
@@ -98,7 +97,10 @@ export const LoginForm = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <Link href="/forget-password" className="text-primary text-xs mb-5 font-medium">
+        <Link
+          href="/forget-password"
+          className="text-primary text-xs mb-5 font-medium"
+        >
           FORGOT PASSWORD?
         </Link>
       </div>

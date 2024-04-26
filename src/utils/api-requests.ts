@@ -1,3 +1,4 @@
+import { IApplication } from "@/types/application";
 import { ISendEmailRequest, ISendEmailResponse } from "@/types/contactForm";
 import { ICountriesRequest, ICountriesResponse } from "@/types/countries";
 import {
@@ -312,5 +313,24 @@ export async function newsletterSubscribe(email: string) {
     return response;
   } catch (error) {
     console.error("Failed to subscribe:", error);
+  }
+}
+
+export async function getApplicants() {
+  try {
+    const token = JSON.parse(localStorage.getItem("CD-User") || "{}").state
+      .access_token;
+
+    const res = await fetch(`${BaseUrl}/v1/user/application/dashboard-list`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const applicants = await res.json();
+    return applicants.data || ([] as IApplication[]);
+  } catch (error) {
+    console.error("Failed to fetch applicants:", error);
   }
 }
