@@ -271,13 +271,16 @@ export async function getScholarships(data: IScholarshipRequest) {
 
 export async function getCareers(country: string) {
   try {
-    const res = await fetch(`${BaseUrl}/v1/user/careers/${country}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
+    const res = await fetch(
+      `${process.env["NEXT_PUBLIC_API_URL"]}/v1/user/careers/${country}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
       },
-      next: { revalidate: 10 }, // 10 seconds
-    });
+    );
     const careers = await res.json();
     return careers.data;
   } catch (error) {
