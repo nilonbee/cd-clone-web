@@ -1,4 +1,8 @@
 "use client";
+import Link from "next/link";
+import fetchLocation from "@/utils/fetchLocation";
+
+import { useEffect } from "react";
 import { ContainerLayout, ListItem } from "@components/atoms";
 import {
   EmailIcon,
@@ -15,19 +19,16 @@ import { listItems } from "@/mockData/footer";
 import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
 
 export const Footer = () => {
-  const { countryCode } = useIpStore();
-
-  // const fetchCountryCode = async () => {
-  //   const countryCode = await fetchLocation({
-  //     url: `https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
-  //   });
-  //   setCountryCode(countryCode);
-  // };
-
-  // useEffect(() => {
-  //   fetchCountryCode();
-  //   // eslint-disable-next-line
-  // }, [countryCode]);
+  const { countryCode, setCountryCode } = useIpStore();
+  useEffect(() => {
+    const fetchCountryCode = async () => {
+      const countryCode = await fetchLocation({
+        url: `https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
+      });
+      setCountryCode(countryCode);
+    };
+    fetchCountryCode();
+  }, [countryCode]);
 
   let branch = "colombo";
   switch (countryCode) {
@@ -102,13 +103,19 @@ export const Footer = () => {
           <div className="">
             <h5 className="font-bold text-base text-white mb-4">Contact Us</h5>
             <div className="flex gap-2 items-center relative bg-transparent">
+              {/* todo: add these urls to doppler if needed */}
               <EmailIcon />
               <h5 className="text-center font-semibold text-base text-white">
                 Email Us
               </h5>
             </div>
-            <p className="text-sm text-[#e0e0e0]">{email}</p>
-
+            <Link
+              href={
+                "https://mail.google.com/mail/u/0/?tab=rm&ogbl#sent?compose=new"
+              }
+            >
+              <p className="text-sm text-[#e0e0e0]">{email}</p>
+            </Link>
             <div className="flex gap-2 items-center relative bg-transparent mt-4">
               <PhoneIcon />
               <h5 className="text-center font-semibold text-base text-white">
@@ -125,10 +132,19 @@ export const Footer = () => {
             </div>
             <p className="text-sm text-[#e0e0e0]">{address}</p>
             <div className="flex gap-6 items-start relative bg-transparent mt-4">
-              <FacebookIcon />
-              <LinkedinNewIcon />
-              <TwitterIcon />
-              <InstagramIcon />
+              {/* todo: add these urls to doppler if needed*/}
+              <Link href="https://web.facebook.com/CDUKColombo">
+                <FacebookIcon />
+              </Link>
+              <Link href="https://www.linkedin.com/company/campus-direct-pvt-ltd">
+                <LinkedinNewIcon />
+              </Link>
+              <Link href="https://twitter.com/Campus_DirectUK">
+                <TwitterIcon />
+              </Link>
+              <Link href="https://www.instagram.com/cdukl?igsh=MWY3eGl6aGU5aHl6ZA%3D%3DCDUKColombo">
+                <InstagramIcon />
+              </Link>
             </div>
           </div>
         </div>
