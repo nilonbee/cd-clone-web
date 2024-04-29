@@ -6,7 +6,7 @@ import "./Phone.module.css";
 
 type Props = {
   label?: string;
-  placeholder: string;
+  placeholder?: string;
   id: string;
   name: string;
   required?: boolean;
@@ -16,7 +16,15 @@ type Props = {
   error?: string | undefined;
 };
 
-export const PhoneInputField = ({ noMargin, label, id, required, onChange, error }: Props) => {
+export const PhoneInputField = ({
+  noMargin,
+  label,
+  id,
+  required,
+  onChange,
+  error,
+  placeholder,
+}: Props) => {
   const errorCSS = error
     ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
     : "";
@@ -32,6 +40,7 @@ export const PhoneInputField = ({ noMargin, label, id, required, onChange, error
         </label>
       )}
       <PhoneInput
+        placeholder={placeholder ? placeholder : ""}
         defaultCountry="lk"
         onChange={(value: string) => onChange(value)}
         inputStyle={{ height: "41px", border: "none", width: "100%" }}
