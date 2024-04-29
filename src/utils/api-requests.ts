@@ -29,6 +29,7 @@ import {
  */
 
 const BaseUrl = process.env["NEXT_PUBLIC_API_URL"];
+// const BaseUrl = process.env["NEXT_PUBLIC_API_URL"];
 
 export async function getCourses(data: ICourseRequest) {
   try {
