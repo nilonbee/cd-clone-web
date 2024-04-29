@@ -3,16 +3,16 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
 interface Store {
-    countryCode: string;
+  countryCode: string;
 }
 
 interface Action {
-    setCountryCode: (countryCode: string) => void;
+  setCountryCode: (countryCode: string) => void;
 }
 
 export const useIpStore = create<Store & Action>(
-    devtools((set) => ({
-        countryCode: "",
-        setCountryCode: (countryCode) => set({ countryCode }),
-    })) as StateCreator<Store & Action, [], []>,
+  devtools((set) => ({
+    countryCode: "LK",
+    setCountryCode: (countryCode) => set({ countryCode }),
+  })) as StateCreator<Store & Action, [], []>,
 );

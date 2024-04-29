@@ -1,6 +1,11 @@
 const validationSchema = {
   first_name: {
     required: "First Name is required",
+    pattern: {
+      value: /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$/,
+      message:
+        "First Name cannot start or end with spaces and cannot contain only spaces, numbers, or symbols",
+    },
   },
   email: {
     required: "Email is required",
@@ -35,7 +40,7 @@ const validationSchema = {
   },
 
   name: {
-    required: "Name is required"
+    required: "Name is required",
   },
 
   message: {

@@ -35,4 +35,7 @@ export * from "./GoogleIcon";
 export * from "./CloseIcon";
 export * from "./CarbonPhoneIcon";
 export * from "./CarbonEmailIcon";
-
+export * from "./BriefcaseIcon";
+export * from "./HomeIcon";
+export * from "./SettingsIcon";
+export * from "./ProfileIcon";

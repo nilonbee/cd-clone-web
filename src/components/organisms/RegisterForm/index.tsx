@@ -1,6 +1,10 @@
 "use client";
 import { Divider, MainButton } from "@/components/atoms";
-import { InputField, SocialMediaAuthForm } from "@/components/molecules";
+import {
+  InputField,
+  PhoneInputField,
+  SocialMediaAuthForm,
+} from "@/components/molecules";
 import { userRegister } from "@/utils/api-requests";
 import validationSchema from "@/utils/validationSchema";
 import Link from "next/link";
@@ -88,13 +92,11 @@ export const RegisterForm = () => {
               rules={validationSchema.phone}
               defaultValue=""
               render={({ field }) => (
-                <InputField
-                  label="Contact Number"
-                  placeholder="Enter Your Phone Number"
-                  type="phoneNumber"
-                  id="phoneNumber"
+                <PhoneInputField
+                  label="Phone Number"
+                  placeholder="Enter your phone number"
+                  id="phone"
                   error={errors.phone?.message}
-                  required
                   {...field}
                 />
               )}
@@ -104,7 +106,7 @@ export const RegisterForm = () => {
             <Controller
               name="password"
               control={control}
-              rules={validationSchema.password}
+              rules={validationSchema.strongPassword}
               defaultValue=""
               render={({ field }) => (
                 <InputField

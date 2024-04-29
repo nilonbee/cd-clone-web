@@ -1,5 +1,3 @@
-import axiosInstance from "@/utils/axiosInstance";
-
 import {
   ContainerLayout,
   CourseSubHeader,
@@ -8,12 +6,12 @@ import {
 } from "@/components/atoms";
 import { CoursePriceBox, UniRow } from "@/components/molecules";
 import { ApplicationForm, InterestedSection } from "@/components/organisms";
+import { getCourseById } from "@/utils/api-requests";
+import { ICourse } from "@/types/courses";
 
 const CourseSinglePage = async ({ params }: any) => {
-  const id = params.slug;
-  const response = await axiosInstance.post("/v1/user/single_course", { id });
-  const data = response.data.data;
-  console.log(typeof params, "TYPE");
+  const response = await getCourseById(params.slug);
+  const data = response as ICourse;
 
   return (
     <>
@@ -23,7 +21,7 @@ const CourseSinglePage = async ({ params }: any) => {
           <div className="my-12 flex flex-row w-full gap-4 relative">
             <div className="w-[70%]">
               <UniRow
-                uni_logo={data.uni_logo}
+                uni_logo={data?.uni_logo}
                 course_name={data.course_name}
                 university={data.university}
                 uni_address={data.uni_address}

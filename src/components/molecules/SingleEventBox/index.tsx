@@ -1,5 +1,6 @@
 import Image from "next/image";
 import parse from "html-react-parser";
+import Link from "next/link";
 import { SingleEventDetailBox } from "@/components/molecules";
 import { IMapLocation, IDateLocation } from "@/types/events";
 
@@ -16,6 +17,7 @@ interface SingleEventBoxProps {
   description: string;
   dates: IDateLocation[];
   mapDetails: IMapLocation[];
+  application_url: string;
 }
 
 export const SingleEventBox = ({
@@ -24,6 +26,7 @@ export const SingleEventBox = ({
   image,
   dates,
   mapDetails,
+  application_url,
   description,
 }: SingleEventBoxProps) => {
   return (
@@ -42,14 +45,7 @@ export const SingleEventBox = ({
       </div>
       <div className="col-span-2 mt-6 ml-4">
         <div className="pb-4 text-lg font-semibold">{subtitle}</div>
-        <div className="pb-4 text-sm">
-          {/* <div
-            dangerouslySetInnerHTML={{
-              __html: removePTags(description), // Call removePTags to sanitize the description
-            }}
-          /> */}
-          {parse(description)}
-        </div>
+        <div className="pb-4 text-sm">{parse(description)}</div>
         <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-2 pb-4 mt-8">
           <SingleEventDetailBox
             label="Location"
@@ -69,12 +65,14 @@ export const SingleEventBox = ({
             icon={<FormKitDateTimeIcon />}
           />
         </div>
-        <MainButton
-          label="Register Now"
-          btnStyle="Primary"
-          btnSize="Medium"
-          customStyle="w-[200px] mt-12"
-        />
+        <Link href={application_url}>
+          <MainButton
+            label="Register Now"
+            btnStyle="Primary"
+            btnSize="Medium"
+            customStyle="w-[200px] mt-12"
+          />
+        </Link>
       </div>
     </div>
   );

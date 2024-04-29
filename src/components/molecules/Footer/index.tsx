@@ -20,15 +20,13 @@ import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
 
 export const Footer = () => {
   const { countryCode, setCountryCode } = useIpStore();
-
-  const fetchCountryCode = async () => {
-    const countryCode = await fetchLocation({
-      url: `${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
-    });
-    setCountryCode(countryCode);
-  };
-
   useEffect(() => {
+    const fetchCountryCode = async () => {
+      const countryCode = await fetchLocation({
+        url: `https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
+      });
+      setCountryCode(countryCode);
+    };
     fetchCountryCode();
   }, [countryCode]);
 

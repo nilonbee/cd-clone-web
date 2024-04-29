@@ -1,3 +1,4 @@
+import { IApplication } from "@/types/application";
 import { ISendEmailRequest, ISendEmailResponse } from "@/types/contactForm";
 import { ICountriesRequest, ICountriesResponse } from "@/types/countries";
 import {
@@ -29,6 +30,7 @@ import {
  */
 
 const BaseUrl = process.env["NEXT_PUBLIC_API_URL"];
+// const BaseUrl = process.env["NEXT_PUBLIC_API_URL"];
 
 export async function getCourses(data: ICourseRequest) {
   try {
@@ -270,13 +272,16 @@ export async function getScholarships(data: IScholarshipRequest) {
 
 export async function getCareers(country: string) {
   try {
-    const res = await fetch(`${BaseUrl}/v1/user/careers/${country}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/user/careers/${country}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
       },
-      next: { revalidate: 10 }, // 10 seconds
-    });
+    );
     const careers = await res.json();
     return careers.data;
   } catch (error) {
@@ -312,5 +317,24 @@ export async function newsletterSubscribe(email: string) {
     return response;
   } catch (error) {
     console.error("Failed to subscribe:", error);
+  }
+}
+
+export async function getApplicants() {
+  try {
+    const token = JSON.parse(localStorage.getItem("CD-User") || "{}").state
+      .access_token;
+
+    const res = await fetch(`${BaseUrl}/v1/user/application/dashboard-list`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const applicants = await res.json();
+    return applicants.data || ([] as IApplication[]);
+  } catch (error) {
+    console.error("Failed to fetch applicants:", error);
   }
 }
