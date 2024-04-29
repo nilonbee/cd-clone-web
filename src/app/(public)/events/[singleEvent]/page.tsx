@@ -14,12 +14,12 @@ import { rootImagePath } from "@/utils/rootImagePath";
 
 const SingleEventPage = async ({ params }: any) => {
   const response = await getEventBySlug(params.singleEvent);
-  console.log("res", response);
   const {
     title,
     description,
     cover_url,
     map_locations,
+    application_url,
     dates_n_locations,
     meta_description,
     meta_title,
@@ -37,6 +37,7 @@ const SingleEventPage = async ({ params }: any) => {
         </div>
         <InnerContainer>
           <SingleEventBox
+            application_url={application_url}
             title={title}
             subtitle={meta_description}
             image={rootImagePath(cover_url as string)}
