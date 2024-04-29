@@ -3,6 +3,7 @@ import { HatIcon, PinIcon, UniversityIcon } from "@/components/atoms/Icons";
 import { TimeIcon } from "@/components/atoms/Icons/TimeIcon";
 import { useCourseStore } from "@/store";
 import { ICourse } from "@/types/courses";
+import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
 
 export const CourseBoxModel = ({
@@ -34,7 +35,7 @@ export const CourseBoxModel = ({
     >
       <div className="w-full flex gap-3">
         <Image
-          src={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${uni_logo}`}
+          src={rootImagePath(uni_logo as string)}
           alt="Logo"
           className="h-[55px] w-[55px] rounded-full ring-1 ring-primary shadow-md object-contain bg-white"
           width={300}

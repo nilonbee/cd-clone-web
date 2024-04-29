@@ -6,6 +6,7 @@ import {
   UniversityIcon,
 } from "@/components/atoms/Icons";
 import { ICourse } from "@/types/courses";
+import { rootImagePath } from "@/utils/rootImagePath";
 
 export const UniRow = ({
   country,
@@ -19,7 +20,7 @@ export const UniRow = ({
     <div className="p-4 flex gap-5 items-center self-stretch relative w-full bg-[#eef7ff] rounded-md  border border-boxBorder">
       <div className="">
         <Image
-          src={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${uni_logo}`}
+          src={rootImagePath(uni_logo as string)}
           alt="university-logo"
           className="h-[100px] w-[100px]  ring-1 ring-primary shadow-md object-contain rounded-md bg-white"
           width={200}

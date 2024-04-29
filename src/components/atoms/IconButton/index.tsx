@@ -1,14 +1,16 @@
-import React from 'react'
+import React from "react";
 
 type IconButtonProps = {
-    icon: React.ReactElement;
-    onClickHandler?: () => void;
-    customStyle?: string;
-}
-export const IconButton = ({ icon, onClickHandler, customStyle }: IconButtonProps) => {
-    return (
-        <button onClick={onClickHandler} className={`${customStyle} rounded-full max-w-["32px"] bg-transparent hover:bg-grayLight hover:bg-opacity-40`}>
-            {icon}
-        </button>
-    )
-}
+  icon: React.ReactElement;
+  onClickHandler?: () => void;
+};
+export const IconButton = ({ icon, onClickHandler }: IconButtonProps) => {
+  return (
+    <div
+      className="bg-primary w-10 h-10 rounded-full flex justify-center items-center cursor-pointer text-white hover:bg-secondary hover:text-black transition-all duration-300 ease-in-out shadow "
+      onClick={onClickHandler}
+    >
+      {icon}
+    </div>
+  );
+};

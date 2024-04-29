@@ -1,6 +1,4 @@
 "use client";
-import { useEffect } from "react";
-import fetchLocation from "@/utils/fetchLocation";
 import { ContainerLayout, ListItem } from "@components/atoms";
 import {
   EmailIcon,
@@ -11,22 +9,25 @@ import {
   PhoneIcon,
   TwitterIcon,
 } from "@components/atoms/Icons";
-import { useIpStore } from '@/store/useIpStore';
+import { useIpStore } from "@/store/useIpStore";
 import { contactInfo } from "@/mockData/contact";
 import { listItems } from "@/mockData/footer";
 import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
 
 export const Footer = () => {
-  const { countryCode, setCountryCode } = useIpStore();
+  const { countryCode } = useIpStore();
 
-  const fetchCountryCode = async () => {
-    const countryCode = await fetchLocation({ url: `${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}` });
-    setCountryCode(countryCode)
-  }
+  // const fetchCountryCode = async () => {
+  //   const countryCode = await fetchLocation({
+  //     url: `https://ipinfo.io/?token=${process.env.NEXT_PUBLIC_IP_INFO_TOKEN}`,
+  //   });
+  //   setCountryCode(countryCode);
+  // };
 
-  useEffect(() => {
-    fetchCountryCode();
-  }, [countryCode])
+  // useEffect(() => {
+  //   fetchCountryCode();
+  //   // eslint-disable-next-line
+  // }, [countryCode]);
 
   let branch = "colombo";
   switch (countryCode) {
@@ -37,7 +38,8 @@ export const Footer = () => {
       branch = "colombo";
   }
 
-  const branchInfo: ILocationInfo = contactInfo[branch as keyof typeof contactInfo];
+  const branchInfo: ILocationInfo =
+    contactInfo[branch as keyof typeof contactInfo];
   const openingTimes = branchInfo.openingTimes;
   const email = branchInfo.email;
   const phoneNumber = branchInfo.phoneNumber;
@@ -72,7 +74,9 @@ export const Footer = () => {
             <h5 className="font-bold text-base text-white mb-4">
               Opening Hours
             </h5>
-            <h5 className="text-sm text-white mb-2 mt-4">{branch === "dubai" ? "Dubai Branch" : "Colombo Branch"}</h5>
+            <h5 className="text-sm text-white mb-2 mt-4">
+              {branch === "dubai" ? "Dubai Branch" : "Colombo Branch"}
+            </h5>
             <div className="flex gap-2 flex-col">
               {openingTimes.map((item: IOpeningTime, index: number) => (
                 <ListItem key={index} text={item.text} icon={item.icon} />

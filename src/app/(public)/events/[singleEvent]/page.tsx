@@ -10,6 +10,7 @@ import convertArrayToObjectArray from "@/utils/convertArray";
 import { SingleEventBox } from "@/components/molecules";
 import { IDateLocation, IEvent, IMapLocation } from "@/types/events";
 import { getEventBySlug } from "@/utils/api-requests";
+import { rootImagePath } from "@/utils/rootImagePath";
 
 const SingleEventPage = async ({ params }: any) => {
   const response = await getEventBySlug(params.singleEvent);
@@ -39,7 +40,7 @@ const SingleEventPage = async ({ params }: any) => {
           <SingleEventBox
             title={title}
             subtitle={meta_description}
-            image={`${process.env["NEXT_PUBLIC_IMAGEKIT_URL"]}/${cover_url}`}
+            image={rootImagePath(cover_url as string)}
             dates={dates}
             mapDetails={mapDetails}
             description={description}
