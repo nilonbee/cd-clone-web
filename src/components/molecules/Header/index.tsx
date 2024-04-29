@@ -55,7 +55,7 @@ export const Header = () => {
               <ProfileBtn />
             ) : (
               <Link href="/login" className="text-sm text-primary">
-                Login
+                Sign in
               </Link>
             )}
 
