@@ -15,10 +15,11 @@ export const MenuItem = ({
   setMobileMenuOpen,
 }: MenuItemProps) => {
   const pathname = usePathname();
-  const isActive = pathname === uri;
+  const isActive = pathname.startsWith(`${uri}`);
   const activeClassName = isActive
     ? "text-primary font-semibold"
     : "text-textColor";
+  console.log(isActive);
   return (
     <Link
       href={uri}

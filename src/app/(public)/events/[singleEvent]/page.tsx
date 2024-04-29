@@ -14,7 +14,6 @@ import { rootImagePath } from "@/utils/rootImagePath";
 
 const SingleEventPage = async ({ params }: any) => {
   const response = await getEventBySlug(params.singleEvent);
-  console.log(response, "RES");
   const {
     title,
     description,
@@ -23,6 +22,8 @@ const SingleEventPage = async ({ params }: any) => {
     application_url,
     dates_n_locations,
     meta_description,
+    meta_title,
+    meta_keywords,
   } = response?.event as IEvent;
   const mapDetails: IMapLocation[] = convertArrayToObjectArray(map_locations);
   const dates: IDateLocation[] = convertArrayToObjectArray(dates_n_locations);
@@ -32,11 +33,7 @@ const SingleEventPage = async ({ params }: any) => {
       <Hero />
       <ContainerLayout>
         <div className="my-12">
-          <SectionHeader
-            title="Canada Application Week"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          architecto placeat non"
-          />
+          <SectionHeader title={meta_title} description={meta_description} />
         </div>
         <InnerContainer>
           <SingleEventBox
@@ -50,9 +47,8 @@ const SingleEventPage = async ({ params }: any) => {
           />
           <div className="my-12">
             <SectionHeader
-              title="Location Map"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          architecto placeat non"
+              title={map_locations[0].location_name}
+              description={meta_keywords}
             />
           </div>
           <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded-md border border-boxBorder">
