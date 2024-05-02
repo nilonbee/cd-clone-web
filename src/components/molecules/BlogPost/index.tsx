@@ -53,7 +53,7 @@ export const BlogPost = ({
         </div>
         <p className="text-xs text-gray mt-2 line-clamp-4">{description}</p>
         <div className="flex gap-2  justify-between items-center w-full mt-4">
-          <Link href="/lk/blogs/slug" className="w-full">
+          <Link href="/blogs/slug" className="w-full">
             <MainButton
               label="Read More"
               btnStyle="Secondary"
