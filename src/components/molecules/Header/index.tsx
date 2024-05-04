@@ -41,7 +41,7 @@ export const Header = () => {
             </button>
           </div>
           <div className="hidden lg:flex gap-8">
-            <MenuItem menuName="Home" uri={"/"} />
+            <MenuItem menuName="Home" uri={"/"} home />
             <MenuItem menuName="About Us" uri="/about" />
             <MenuItem menuName="Courses" uri="/courses" />
             <MenuItem menuName="Events" uri="/events" />

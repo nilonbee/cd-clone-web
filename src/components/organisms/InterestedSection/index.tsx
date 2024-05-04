@@ -1,5 +1,6 @@
-import { MainButton } from "@/components/atoms";
 import React from "react";
+import Link from "next/link";
+import { MainButton } from "@/components/atoms";
 
 export const InterestedSection = () => {
   return (
@@ -10,12 +11,14 @@ export const InterestedSection = () => {
       <h5 className="text-center text-base text-textColor">
         Send us a message with what we can help you.
       </h5>
-      <MainButton
-        label="Let’s Talk"
-        btnStyle="Secondary"
-        btnSize="Medium"
-        customStyle="w-[197px]"
-      />
+      <Link href="/contact">
+        <MainButton
+          label="Let’s Talk"
+          btnStyle="Secondary"
+          btnSize="Medium"
+          customStyle="w-[197px]"
+        />
+      </Link>
     </div>
   );
 };
