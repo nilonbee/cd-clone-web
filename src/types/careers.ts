@@ -23,3 +23,12 @@ export interface IApiResponse {
   message: string;
   data: IResponseData;
 }
+
+export interface ICareerApplicationRequest {
+  slug?: string;
+  resume?: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+}

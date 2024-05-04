@@ -28,7 +28,7 @@ const CareerSinglePage = async ({ params }: any) => {
               </div>
             </div>
             <div className="lg:w-[30%] md:w-full relative">
-              <CareersForm />
+              <CareersForm slug={params.slug} />
             </div>
           </div>
         </InnerContainer>

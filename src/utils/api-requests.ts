@@ -1,4 +1,5 @@
 import { IApplication } from "@/types/application";
+import { ICareerApplicationRequest } from "@/types/careers";
 import { ISendEmailRequest, ISendEmailResponse } from "@/types/contactForm";
 import { ICountriesRequest, ICountriesResponse } from "@/types/countries";
 import {
@@ -301,6 +302,22 @@ export async function getCareerBySlug(slug: string) {
     return career.data;
   } catch (error) {
     console.error("Failed to fetch career:", error);
+  }
+}
+
+export async function sendCareerApplication(data: ICareerApplicationRequest) {
+  try {
+    const res = await fetch(`${BaseUrl}/v1/admin/career/send-application`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    return result.data;
+  } catch (error) {
+    console.error("Failed to send application:", error);
   }
 }
 
