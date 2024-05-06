@@ -5,22 +5,10 @@ import {
   InnerContainer,
 } from "@/components/atoms";
 import { BriefcaseIcon } from "@/components/atoms/Icons";
-import { Stepper, SwitchSteps } from "@/components/molecules";
-import { ICountry } from "@/types/countries";
-import { ICourseLevel } from "@/types/courseLevels";
-import { IIntake } from "@/types/intakes";
-import {
-  getCountries,
-  getCourseLevels,
-  getIntakes,
-} from "@/utils/api-requests";
+import { TabsView } from "@/components/molecules";
 import React from "react";
 
-const ApplicationEditPage = async ({ params }: any) => {
-  const countries = (await getCountries({ status: 1 })) as ICountry[];
-  const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
-  const intakes = (await getIntakes({ status: 1 })) as IIntake[];
-
+const ViewApplication = () => {
   return (
     <React.Fragment>
       <Hero />
@@ -38,7 +26,7 @@ const ApplicationEditPage = async ({ params }: any) => {
                       ID : APL-71026555
                     </p>
                     <p className="text-xs text-black/60">
-                      Edit your application here
+                      View your application here
                     </p>
                   </div>
                 </div>
@@ -49,18 +37,8 @@ const ApplicationEditPage = async ({ params }: any) => {
                   />
                 </div>
               </div>
-              <div className="w-full flex gap-4 mt-5">
-                <div className="py-4 rounded-md w-1/5">
-                  <Stepper />
-                </div>
-                <div className="w-4/5">
-                  <SwitchSteps
-                    countries={countries}
-                    courseLevels={courseLevels}
-                    intakes={intakes}
-                    id={params.id}
-                  />
-                </div>
+              <div className="w-full flex gap-4 mt-5 fadeIn">
+                <TabsView />
               </div>
             </div>
           </InnerContainer>
@@ -70,4 +48,4 @@ const ApplicationEditPage = async ({ params }: any) => {
   );
 };
 
-export default ApplicationEditPage;
+export default ViewApplication;

@@ -9,4 +9,6 @@ export interface IApplication {
   uni_logo: string;
   uni_name: string;
   status: string;
+  setSelectedId: (id: string) => void;
+  setIsOpen: (isOpen: boolean) => void;
 }

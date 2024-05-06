@@ -19,7 +19,6 @@ export const MenuItem = ({
   const activeClassName = isActive
     ? "text-primary font-semibold"
     : "text-textColor";
-  console.log(isActive);
   return (
     <Link
       href={uri}
