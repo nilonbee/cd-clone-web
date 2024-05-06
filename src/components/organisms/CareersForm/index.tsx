@@ -2,12 +2,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { MainButton } from "@/components/atoms";
-import { InputField, MediaUpload, PhoneInputField } from "@/components/molecules";
+import {
+  InputField,
+  MediaUpload,
+  PhoneInputField,
+} from "@/components/molecules";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import validationSchema from "@/utils/validationSchema";
 import { sendCareerApplication } from "@/utils/api-requests";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import { on } from "events";
 
 type FormValues = {
@@ -23,7 +27,6 @@ type CareerFormProps = {
 };
 
 export const CareersForm = ({ slug }: CareerFormProps) => {
-
   const {
     control,
     handleSubmit,
@@ -40,18 +43,18 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
       resume: upFile,
     };
     if (!upFile) {
-      toast.error("Please upload your CV...")
+      toast.error("Please upload your CV...");
     }
     setLoading(true);
     const response = await sendCareerApplication(applicationRequest);
     setLoading(false);
     if (response?.status === "success") {
-      toast.success("Successfully sent application please check dashboard! 🎉");
+      toast.success("successfully applied. We will get back to you soon.");
       // router.push("/dashboard");
     } else {
       toast.error("Send Application failed");
     }
-    console.log(data, "DATA")
+    console.log(data, "DATA");
   };
 
   return (
