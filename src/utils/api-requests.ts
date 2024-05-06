@@ -312,7 +312,7 @@ export async function sendCareerApplication(data: ICareerApplicationRequest) {
       body: JSON.stringify(data),
     });
     const result = await res.json();
-    return result.data;
+    return result;
   } catch (error) {
     console.error("Failed to send application:", error);
   }

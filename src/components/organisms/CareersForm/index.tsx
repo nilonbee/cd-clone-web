@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MainButton } from "@/components/atoms";
-import { InputField, PhoneInputField } from "@/components/molecules";
+import { InputField, MediaUpload, PhoneInputField } from "@/components/molecules";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import validationSchema from "@/utils/validationSchema";
 import { sendCareerApplication } from "@/utils/api-requests";
+import { useRouter } from 'next/navigation'
+import { on } from "events";
 
 type FormValues = {
   first_name: string;
@@ -21,31 +23,35 @@ type CareerFormProps = {
 };
 
 export const CareersForm = ({ slug }: CareerFormProps) => {
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
   const [loading, setLoading] = useState(false);
+  const [upFile, setUpFile] = useState("");
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log(data, "DATA");
-    console.log(slug, "slug");
-    // console.log(resume, 'RESUME')
     const applicationRequest = {
       ...data,
       slug,
-      resume: "https://hello-world",
+      resume: upFile,
     };
+    if (!upFile) {
+      toast.error("Please upload your CV...")
+    }
     setLoading(true);
     const response = await sendCareerApplication(applicationRequest);
     setLoading(false);
     if (response?.status === "success") {
       toast.success("Successfully sent application please check dashboard! 🎉");
-      // router.push("/");
+      // router.push("/dashboard");
     } else {
-      toast.error(response?.message ?? "Send Application failed");
+      toast.error("Send Application failed");
     }
+    console.log(data, "DATA")
   };
 
   return (
@@ -72,7 +78,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
               error={errors.first_name?.message}
               id="first-name"
               customStyle="bg-transparent"
-              required
+              // required
               {...field}
             />
           )}
@@ -90,7 +96,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
               id="last-name"
               customStyle="bg-transparent"
               error={errors.last_name?.message}
-              required
+              // required
               {...field}
             />
           )}
@@ -108,7 +114,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
               id="email"
               customStyle="bg-transparent"
               error={errors.email?.message}
-              required
+              // required
               {...field}
             />
           )}
@@ -123,13 +129,21 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
               label="Phone Number"
               placeholder="Enter your phone number"
               id="phone"
-              required
+              // required
               error={errors.phone?.message}
-              // customStyle="bg-[#eef7ff]"
               backgroundColor="#eef7ff"
               {...field}
             />
           )}
+        />
+        <MediaUpload
+          type="file"
+          title="Upload CV"
+          upFile={upFile}
+          setUpFile={setUpFile}
+          accept="application/pdf"
+          prefix="CV"
+          backgroundColor="#eef7ff"
         />
         <MainButton
           label="Submit"
@@ -138,6 +152,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
           customStyle="mt-2"
           submit
           loading={loading}
+          disabled={loading}
         />
       </form>
     </div>

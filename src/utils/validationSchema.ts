@@ -50,6 +50,10 @@ const validationSchema = {
       message: "Message must not exceed 500 characters",
     },
   },
+
+  resume: {
+    required: "Please Upload your Resume..this is mandotory field"
+  }
 };
 
 export default validationSchema;
