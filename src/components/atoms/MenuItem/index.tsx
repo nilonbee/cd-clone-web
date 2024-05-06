@@ -6,18 +6,20 @@ import React from "react";
 type MenuItemProps = {
   menuName: string;
   uri: string;
-  home?: boolean;
+  isHomePage?: boolean;
   setMobileMenuOpen?: () => void;
 };
 
 export const MenuItem = ({
   menuName,
   uri,
-  home,
+  isHomePage,
   setMobileMenuOpen,
 }: MenuItemProps) => {
   const pathname = usePathname();
-  const isActive = home ? pathname === uri : pathname.startsWith(`${uri}`);
+  const isActive = isHomePage
+    ? pathname === uri
+    : pathname.startsWith(`${uri}`);
   const activeClassName = isActive
     ? "text-primary font-semibold"
     : "text-textColor";
