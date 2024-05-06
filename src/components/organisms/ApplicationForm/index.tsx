@@ -20,7 +20,6 @@ export const ApplicationForm = () => {
           placeholder="Enter your name"
           type="text"
           id="fName"
-          name="fName"
           customStyle="bg-transparent"
           required
         />
@@ -29,7 +28,6 @@ export const ApplicationForm = () => {
           placeholder="Enter your name"
           type="text"
           id="fName"
-          name="fName"
           customStyle="bg-transparent"
           required
         />
@@ -38,7 +36,6 @@ export const ApplicationForm = () => {
           placeholder="Enter your name"
           type="text"
           id="fName"
-          name="fName"
           customStyle="bg-transparent"
           required
         />
@@ -47,7 +44,6 @@ export const ApplicationForm = () => {
           placeholder="Enter your email"
           type="email"
           id="email"
-          name="email"
           customStyle="bg-transparent"
           required
         />
@@ -56,7 +52,6 @@ export const ApplicationForm = () => {
           placeholder="Enter your phone number"
           type="text"
           id="phone"
-          name="phone"
           customStyle="bg-transparent"
           required
         />
@@ -65,7 +60,6 @@ export const ApplicationForm = () => {
           placeholder="Enter your phone number"
           type="text"
           id="phone"
-          name="phone"
           customStyle="bg-transparent"
           required
         />

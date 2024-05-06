@@ -1,11 +1,58 @@
 "use client";
+import {
+  TabFive,
+  TabFour,
+  TabOne,
+  TabSix,
+  TabThree,
+  TabTwo,
+} from "@/components/organisms";
+import { getApplicantsById } from "@/utils/auth-api-requests";
 import React, { useState } from "react";
 
-export const TabsView = () => {
+export const TabsView = ({ id }: { id: string }) => {
   const [openTab, setOpenTab] = useState(1);
+
+  const [application, setApplication] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    const getApplicant = async () => {
+      await getApplicantsById(id).then((res) => {
+        setApplication(res);
+      });
+    };
+    getApplicant();
+  }, [id]);
+
+  const SwitchTabs = () => {
+    switch (openTab) {
+      case 1:
+        return <TabOne application={application?.user} />;
+      case 2:
+        return <TabTwo application={application?.education} />;
+      case 3:
+        return <TabThree application={application?.user} />;
+      case 4:
+        return <TabFour application={application?.applications} />;
+      case 5:
+        return (
+          <TabFive application={JSON.parse(application?.enquiry?.ielts_data)} />
+        );
+      case 6:
+        return (
+          <TabSix
+            application={JSON.parse(application?.enquiry?.upload_docs_list)}
+            refused_doc={application.enquiry.refused_doc}
+          />
+        );
+      default:
+        return <TabOne />;
+    }
+  };
+
   return (
-    <div className="font-sans flex items-center justify-center">
-      <div className="mx-auto">
+    <React.Fragment>
+      <div className="flex items-center">
         <div className="mb-4 flex space-x-1 p-2 bg-white rounded-full shadow-inner border border-boxBorder">
           <button
             onClick={() => setOpenTab(1)}
@@ -45,6 +92,9 @@ export const TabsView = () => {
           </button>
         </div>
       </div>
-    </div>
+      <div className="w-full bg-white flex p-5 rounded-md shadow-md">
+        <SwitchTabs />
+      </div>
+    </React.Fragment>
   );
 };

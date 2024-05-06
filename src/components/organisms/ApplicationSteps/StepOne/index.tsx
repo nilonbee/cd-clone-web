@@ -101,7 +101,6 @@ export const StepOne = ({ countries, courseLevels, intakes }: StepOneProps) => {
               setUpFile={setUpFile}
               accept="application/pdf"
               prefix="sop"
-              id="sop"
             />
           </div>
         </div>

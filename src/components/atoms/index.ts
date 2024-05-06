@@ -16,3 +16,4 @@ export * from "./DialogBoxContainer";
 export * from "./CookieBar";
 export * from "./BackBtn";
 export * from "./StatusTag";
+export * from "./TextRow";

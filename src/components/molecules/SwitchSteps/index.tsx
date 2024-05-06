@@ -11,8 +11,7 @@ import { useApplicationStore } from "@/store";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
 import { IIntake } from "@/types/intakes";
-import { getApplicantsById } from "@/utils/auth-api-requests";
-// import { getApplicantsById } from "@/utils/auth-api-requests";
+import { getEnquiriesById } from "@/utils/auth-api-requests";
 import React from "react";
 
 interface SwitchStepsProps {
@@ -33,7 +32,7 @@ export const SwitchSteps = ({
 
   React.useEffect(() => {
     const getApplicant = async () => {
-      await getApplicantsById(id).then((res) => {
+      await getEnquiriesById(id).then((res) => {
         console.log("res", res);
         setApplicant(res);
       });
