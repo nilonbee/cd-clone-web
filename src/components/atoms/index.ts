@@ -13,3 +13,6 @@ export * from "./IconButton";
 export * from "./Divider";
 export * from "./ConfirmationDialog";
 export * from "./DialogBoxContainer";
+export * from "./CookieBar";
+export * from "./BackBtn";
+export * from "./StatusTag";

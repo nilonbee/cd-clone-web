@@ -6,20 +6,23 @@ import React from "react";
 type MenuItemProps = {
   menuName: string;
   uri: string;
+  isHomePage?: boolean;
   setMobileMenuOpen?: () => void;
 };
 
 export const MenuItem = ({
   menuName,
   uri,
+  isHomePage,
   setMobileMenuOpen,
 }: MenuItemProps) => {
   const pathname = usePathname();
-  const isActive = pathname.startsWith(`${uri}`);
+  const isActive = isHomePage
+    ? pathname === uri
+    : pathname.startsWith(`${uri}`);
   const activeClassName = isActive
     ? "text-primary font-semibold"
     : "text-textColor";
-  console.log(isActive);
   return (
     <Link
       href={uri}

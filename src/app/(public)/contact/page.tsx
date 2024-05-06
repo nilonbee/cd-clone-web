@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ContainerLayout,
   Hero,
@@ -9,11 +9,10 @@ import {
   ContactSection,
   InterestedSection,
   AddressSection,
-  ContactInfoSection
+  ContactInfoSection,
 } from "@/components/organisms";
 
 const ContactPage = () => {
-
   return (
     <>
       <Hero />
@@ -34,7 +33,6 @@ const ContactPage = () => {
           </div>
         </InnerContainer>
       </ContainerLayout>
-      <InterestedSection />
     </>
   );
 };

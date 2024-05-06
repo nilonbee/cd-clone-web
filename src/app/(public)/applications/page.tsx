@@ -1,19 +1,22 @@
 "use client";
 import {
   ContainerLayout,
+  DialogBoxContainer,
   Hero,
   InnerContainer,
   Loading,
 } from "@/components/atoms";
 import { HomeIcon } from "@/components/atoms/Icons";
-import { ApplicationRow } from "@/components/molecules";
+import { ApplicationRow, HistoryTable } from "@/components/molecules";
 import { IApplication } from "@/types/application";
-import { getApplicants } from "@/utils/api-requests";
+import { getApplicants } from "@/utils/auth-api-requests";
 import React, { useEffect, useState } from "react";
 
 const ApplicationsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [applicants, setApplicants] = useState([]);
+  const [selectedId, setSelectedId] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,7 +24,6 @@ const ApplicationsPage = () => {
       setIsLoading(false);
       setApplicants(data);
     });
-    console.log("application");
   }, []);
 
   return (
@@ -61,6 +63,8 @@ const ApplicationsPage = () => {
                     created_at={applicant.created_at}
                     id={applicant.id}
                     status={applicant.status}
+                    setSelectedId={setSelectedId}
+                    setIsOpen={setIsOpen}
                   />
                 ))}
               </div>
@@ -68,6 +72,17 @@ const ApplicationsPage = () => {
           </div>
         </InnerContainer>
       </ContainerLayout>
+      {isOpen && (
+        <DialogBoxContainer
+          isOpen={isOpen}
+          closeModal={() => setIsOpen(false)}
+          actionBtn={false}
+          customStyle="w-[800px]"
+          title="Application History"
+        >
+          <HistoryTable selectedId={selectedId} />
+        </DialogBoxContainer>
+      )}
     </React.Fragment>
   );
 };

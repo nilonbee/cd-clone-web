@@ -37,3 +37,7 @@ export * from "./FilterBtn";
 export * from "./ApplicationRow";
 export * from "./Stepper";
 export * from "./InputSelectField";
+export * from "./MediaUpload";
+export * from "./SwitchSteps";
+export * from "./HistoryTable";
+export * from "./TabsView";

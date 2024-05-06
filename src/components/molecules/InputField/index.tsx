@@ -5,7 +5,6 @@ type Props = {
   placeholder: string;
   type: string;
   id: string;
-  name: string;
   required?: boolean;
   noMargin?: boolean;
   customStyle?: string;
@@ -17,7 +16,6 @@ export const InputField = ({
   placeholder,
   type,
   id,
-  name,
   required,
   noMargin,
   customStyle,
