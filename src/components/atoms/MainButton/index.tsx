@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { MouseEventHandler } from "react";
 interface MainButtonProps {
   id?: string;
   label: string;
@@ -65,7 +64,7 @@ export const MainButton = ({
     <button
       className={`font-semibold flex justify-center items-center relative  text-center ${buttonStyles} ${sizeClasses} transition-all duration-300 ease-in-out cursor-pointer ${customStyle} leading-5 rounded-md hover:shadow-md`}
       onClick={onClick}
-      type={submit ? "submit" : "button"}
+      type={(submit && !disabled) ? "submit" : "button"}
     >
       {loading && (
         <div className="mr-2">

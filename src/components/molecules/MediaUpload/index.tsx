@@ -14,6 +14,7 @@ type Props = {
   upFile: string;
   setUpFile: (file: string) => void;
   prefix: string;
+  backgroundColor?: string;
 };
 
 export const MediaUpload = ({
@@ -24,6 +25,7 @@ export const MediaUpload = ({
   upFile,
   setUpFile,
   prefix,
+  backgroundColor,
 }: Props) => {
   const [uploading, setUploading] = useState(false);
 
@@ -48,7 +50,7 @@ export const MediaUpload = ({
     <div>
       <p className="text-xs text-gray font-semibold mb-1">{title}</p>
       {!upFile && (
-        <label className="w-[180px] h-[180px] flex flex-col items-center px-4 py-6 bg-white text-grayMedium rounded-md tracking-wide uppercase border border-dashed border-grayMedium cursor-pointer hover:text-textColor justify-center hover:border-textColor">
+        <label className={`w-[180px] h-[180px] flex flex-col items-center px-4 py-6 ${backgroundColor ? `bg-[${backgroundColor}]` : "bg-white"} text-grayMedium rounded-md tracking-wide uppercase border border-dashed border-grayMedium cursor-pointer hover:text-textColor justify-center hover:border-textColor`}>
           {uploading ? (
             <div className="border-whiteSmoke h-10 w-10 animate-spin rounded-full border-[5px] border-t-primary" />
           ) : (
