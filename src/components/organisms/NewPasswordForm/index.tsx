@@ -1,9 +1,9 @@
 "use client";
 import { MainButton } from "@/components/atoms";
 import { InputField } from "@/components/molecules";
-import { sendForgotPasswordEmail, userLogin, resetPassword } from "@/utils/api-requests";
+import { resetPassword } from "@/utils/api-requests";
 import validationSchema from "@/utils/validationSchema";
-import { useParams } from 'next/navigation';
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -20,16 +20,16 @@ export const NewPasswordForm = () => {
     control,
     handleSubmit,
     formState: { errors },
-    getValues
+    getValues,
   } = useForm<FormValues>();
 
-  console.log(params, 'pathName');
-
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log("data", data);
     setLoading(true);
-    const response = await resetPassword({ ...data, type: "WEB", code: params?.id });
-    console.log("response", response);
+    const response = await resetPassword({
+      ...data,
+      type: "WEB",
+      code: params?.id,
+    });
     setLoading(false);
     if (response?.status === "success") {
       toast.success(response.message);
@@ -70,11 +70,12 @@ export const NewPasswordForm = () => {
             name="password_confirmation"
             control={control}
             defaultValue=""
-            //check weather it's matching password field or not 
+            //check weather it's matching password field or not
             rules={{
               validate: (value) =>
                 value === getValues("password") || "The passwords do not match",
-            }} render={({ field }) => (
+            }}
+            render={({ field }) => (
               <div>
                 <InputField
                   label="Confirm Password"

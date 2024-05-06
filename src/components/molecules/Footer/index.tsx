@@ -17,6 +17,7 @@ import { useIpStore } from "@/store/useIpStore";
 import { contactInfo } from "@/mockData/contact";
 import { listItems } from "@/mockData/footer";
 import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
+import Image from "next/image";
 
 export const Footer = () => {
   const { countryCode, setCountryCode } = useIpStore();
@@ -28,6 +29,7 @@ export const Footer = () => {
       setCountryCode(countryCode);
     };
     fetchCountryCode();
+    // eslint-disable-next-line
   }, [countryCode]);
 
   let branch = "colombo";
@@ -51,9 +53,12 @@ export const Footer = () => {
       <ContainerLayout>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 xs:grid-cols-1 gap-4 pt-[120px] pb-3">
           <div className="">
-            <img
-              src="https://campusdirect.io/static/media/logo-white.35991b1b.png"
+            <Image
+              src="/images/logo-white.png"
               alt="footer-icon"
+              className="object-contain w-[200px] h-[200px]"
+              width={500}
+              height={500}
             />
           </div>
           <div className="">

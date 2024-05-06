@@ -23,6 +23,8 @@ export const ApplicationRow = ({
   course_name,
   id,
   status,
+  setSelectedId,
+  setIsOpen,
 }: IApplication) => {
   const router = useRouter();
 
@@ -72,15 +74,28 @@ export const ApplicationRow = ({
           {status}
         </div>
         <div className="flex gap-2">
-          <IconButton icon={<FaRegEye />} />
           <IconButton
-            icon={<FaPencilAlt />}
+            icon={<FaRegEye />}
             onClickHandler={() =>
-              router.push(`/applications/edit-application/${id}`)
+              router.push(`/applications/view-application/${id}`)
             }
           />
-          <IconButton icon={<ImBin />} />
-          <IconButton icon={<FaHistory />} />
+          {status !== "Deleted" && (
+            <IconButton
+              icon={<FaPencilAlt />}
+              onClickHandler={() =>
+                router.push(`/applications/edit-application/${id}`)
+              }
+            />
+          )}
+          {status !== "Deleted" && <IconButton icon={<ImBin />} />}
+          <IconButton
+            icon={<FaHistory />}
+            onClickHandler={() => {
+              setSelectedId(id);
+              setIsOpen(true);
+            }}
+          />
         </div>
       </div>
     </div>

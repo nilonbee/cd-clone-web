@@ -1,11 +1,11 @@
+"use client";
+import { useApplicationStore } from "@/store";
 import React from "react";
 import { GiCheckMark } from "react-icons/gi";
 
-interface IStep {
-  currentStep: number;
-}
+export const Stepper = () => {
+  const { currentStep, setCurrentStep } = useApplicationStore();
 
-export const Stepper = ({ currentStep }: IStep) => {
   const steps = [
     {
       step: 1,
@@ -57,6 +57,7 @@ export const Stepper = ({ currentStep }: IStep) => {
         <li
           key={index}
           className={`relative flex-1 after:content-['']  after:w-0.5 after:h-full ${step.step < currentStep ? "after:bg-primary" : "after:bg-gray/40"}  after:inline-block after:absolute after:-bottom-10 after:left-4 lg:after:left-4`}
+          onClick={() => setCurrentStep(step.step)}
         >
           <div className="flex items-center font-medium w-full cursor-pointer">
             {step.step < currentStep ? (

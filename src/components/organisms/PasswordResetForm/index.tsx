@@ -1,7 +1,7 @@
 "use client";
 import { MainButton } from "@/components/atoms";
 import { InputField } from "@/components/molecules";
-import { sendForgotPasswordEmail, userLogin } from "@/utils/api-requests";
+import { sendForgotPasswordEmail } from "@/utils/api-requests";
 import validationSchema from "@/utils/validationSchema";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -28,7 +28,6 @@ export const PasswordResetForm = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setLoading(true);
     const response = await sendForgotPasswordEmail({ ...data, type: "WEB" });
-    console.log("response", response);
     setLoading(false);
     if (response?.status === "success") {
       setIsSuccess(true);
