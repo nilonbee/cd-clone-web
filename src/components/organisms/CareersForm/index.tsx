@@ -54,7 +54,6 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
     } else {
       toast.error("Send Application failed");
     }
-    console.log(data, "DATA");
   };
 
   return (
