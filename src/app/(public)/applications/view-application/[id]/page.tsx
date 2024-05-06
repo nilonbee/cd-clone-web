@@ -8,7 +8,7 @@ import { BriefcaseIcon } from "@/components/atoms/Icons";
 import { TabsView } from "@/components/molecules";
 import React from "react";
 
-const ViewApplication = () => {
+const ViewApplication = ({ params }: any) => {
   return (
     <React.Fragment>
       <Hero />
@@ -37,8 +37,8 @@ const ViewApplication = () => {
                   />
                 </div>
               </div>
-              <div className="w-full flex gap-4 mt-5 fadeIn">
-                <TabsView />
+              <div className="w-full mt-5 fadeIn">
+                <TabsView id={params.id} />
               </div>
             </div>
           </InnerContainer>

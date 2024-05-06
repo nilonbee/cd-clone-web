@@ -17,6 +17,8 @@ export const StepTwo = () => {
           upFile={upFile}
           setUpFile={setUpFile}
           accept="application/pdf"
+          prefix="ol"
+          type="file"
         />
       </div>
 

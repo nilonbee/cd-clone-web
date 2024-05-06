@@ -28,9 +28,18 @@ export async function getApplicants() {
  * @returns - object of applicants from the API response data property
  */
 
-export async function getApplicantsById(id: string) {
+export async function getEnquiriesById(id: string) {
   try {
     const data = await fetchData(`/v1/admin/enquiries/${id}`, "GET");
+    return data.data;
+  } catch (error) {
+    console.error("Failed to fetch applicants:", error);
+  }
+}
+
+export async function getApplicantsById(id: string) {
+  try {
+    const data = await fetchData(`/v1/admin/application/${id}`, "GET");
     return data.data;
   } catch (error) {
     console.error("Failed to fetch applicants:", error);

@@ -48,7 +48,7 @@ const ApplicationsPage = () => {
           </div>
           <div className="w-full mb-10 flex flex-col gap-4">
             {isLoading && <Loading />}
-            {applicants.length === 0 && (
+            {applicants.length === 0 && !isLoading && (
               <p className="text-center text-black/60">No applications found</p>
             )}
             {applicants.length > 0 && (

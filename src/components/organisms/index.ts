@@ -20,3 +20,4 @@ export * from "./CourseViewModel";
 export * from "./CourseViewDrawer";
 export * from "./ContactInfoSection";
 export * from "./ApplicationSteps";
+export * from "./ApplicationTabs";
