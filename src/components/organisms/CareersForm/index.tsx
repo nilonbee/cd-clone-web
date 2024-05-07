@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { MainButton } from "@/components/atoms";
 import {
   InputField,
@@ -12,7 +12,6 @@ import toast from "react-hot-toast";
 import validationSchema from "@/utils/validationSchema";
 import { sendCareerApplication } from "@/utils/api-requests";
 import { useRouter } from "next/navigation";
-import { on } from "events";
 
 type FormValues = {
   first_name: string;

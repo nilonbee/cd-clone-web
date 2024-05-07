@@ -34,6 +34,9 @@ const validationSchema = {
       message: "Invalid phone number.",
     },
   },
+  intake: {
+    required: "Intake is Required",
+  },
 
   subject: {
     required: "Subject is required",
