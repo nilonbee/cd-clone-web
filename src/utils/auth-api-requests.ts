@@ -1,4 +1,4 @@
-import { IApplication } from "@/types/application";
+import { IApplication, IApplicationRequest } from "@/types/application";
 import { fetchData } from "./fetchData";
 import { BASE_URL } from "./config";
 
@@ -20,6 +20,16 @@ export async function getApplicants() {
     return data.data || ([] as IApplication[]);
   } catch (error) {
     console.error("Failed to fetch applicants:", error);
+  }
+}
+
+export async function sendApplication(data: IApplicationRequest) {
+  try {
+    const res = await fetchData(`/v1/user/user-apply-course`, "POST", JSON.stringify(data));
+
+    return res;
+  } catch (error) {
+    console.error("Failed to send application:", error);
   }
 }
 

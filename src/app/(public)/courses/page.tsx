@@ -57,7 +57,7 @@ const CoursePage = async () => {
         <div className="w-full flex md:flex-row  sm:flex-col my-10 gap-4 relative">
           <Courses initialCourseData={initialCourseData?.data ?? []} />
           <div className="w-full md:block sm:hidden xs:hidden">
-            <CourseViewModel />
+            <CourseViewModel intakes={intakes} />
           </div>
         </div>
       </ContainerLayout>

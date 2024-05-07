@@ -116,6 +116,7 @@ export const ProfileBtn = () => {
           onConfirm={logOut}
           title="Log out 🤔"
           description="Are you sure you want to log out of your account?"
+          submitText="Logout"
         />
       )}
     </div>

@@ -7,6 +7,7 @@ type Props = {
   required?: boolean;
   noMargin?: boolean;
   customStyle?: string;
+  backgroundColor?: string;
   error?: string | undefined; // Add error prop
   options?: { value: number; label: string }[]; // Add options prop
 };
@@ -19,6 +20,7 @@ export const InputSelectField = ({
   noMargin,
   customStyle,
   error,
+  backgroundColor,
   options,
   ...rest
 }: Props) => {
@@ -37,7 +39,7 @@ export const InputSelectField = ({
       )}
 
       <select
-        className={`bg-white block w-full focus:shadow-md rounded-md py-3 pl-4 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none text-sm leading-6 ${customStyle} ${errorCSS}`}
+        className={`${backgroundColor ? `bg-[${backgroundColor}]` : "bg-white"} block w-full focus:shadow-md rounded-md py-3 pl-4 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none text-sm leading-6 ${customStyle} ${errorCSS}`}
         id={id}
         required={required}
         {...rest}

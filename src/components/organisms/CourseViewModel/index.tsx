@@ -6,8 +6,13 @@ import { ApplicationForm } from "../ApplicationForm";
 import { useCourseStore } from "@/store";
 import { getCourseById } from "@/utils/api-requests";
 import { ICourse } from "@/types/courses";
+import { IIntake } from "@/types/intakes";
 
-export const CourseViewModel = () => {
+type CourseViewModalProps = {
+  intakes: IIntake[]
+}
+
+export const CourseViewModel = ({ intakes }: CourseViewModalProps) => {
   const { selectedCourseId, isCourse } = useCourseStore();
   const [data, setData] = useState<ICourse>({} as ICourse);
   const [loading, setLoading] = useState<boolean>(true);
@@ -104,7 +109,7 @@ export const CourseViewModel = () => {
         )}
       </div>
       <div className="xl:w-[25%] lg:w-[100%] relative fadeIn">
-        <ApplicationForm />
+        <ApplicationForm intakes={intakes} />
       </div>
     </div>
   );

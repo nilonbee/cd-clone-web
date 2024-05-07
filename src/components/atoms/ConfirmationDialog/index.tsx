@@ -10,6 +10,7 @@ interface ConfirmationDialogProps {
   onConfirm?: () => void;
   title?: string;
   description: string;
+  submitText: string;
 }
 
 export const ConfirmationDialog = ({
@@ -18,6 +19,7 @@ export const ConfirmationDialog = ({
   onConfirm,
   title,
   description,
+  submitText,
 }: ConfirmationDialogProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -64,7 +66,7 @@ export const ConfirmationDialog = ({
                     onClick={closeModal}
                   />
                   <MainButton
-                    label="Log out"
+                    label={submitText}
                     btnStyle="Primary"
                     btnSize="Medium"
                     onClick={onConfirm}

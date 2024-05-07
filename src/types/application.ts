@@ -12,3 +12,13 @@ export interface IApplication {
   setSelectedId: (id: string) => void;
   setIsOpen: (isOpen: boolean) => void;
 }
+
+export interface IApplicationRequest {
+  course_id: string;
+  email: string;
+  first_name: string;
+  intake_id: number;
+  last_name: string;
+  middle_name: string;
+  phone: string;
+}
