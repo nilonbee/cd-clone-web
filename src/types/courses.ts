@@ -2,7 +2,7 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export interface ICourse {
   id: string;
-  course_name?: string;
+  course_name: string;
   course_fee?: string;
   country?: string;
   level_name?: string;
@@ -34,7 +34,7 @@ export interface ICourseSingleResponse {
 
 export interface ICourseRequest {
   page: number;
-  limit: number;
+  limit?: number;
   max_fee?: number;
   min_fee?: number;
   country_id?: number;
@@ -48,4 +48,8 @@ export interface ICourseRequest {
   subject_name?: string;
   uni_id?: string;
   uni_name?: string;
+  dataTable?: boolean;
+  status?: number;
+  name?: string;
+  intake_year_id?: number;
 }

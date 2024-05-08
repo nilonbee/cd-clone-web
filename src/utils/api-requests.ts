@@ -11,7 +11,11 @@ import {
   ICourseSingleResponse,
 } from "@/types/courses";
 import { IEventResponse, IEventResponseTwo } from "@/types/events";
-import { IIntakesRequest, IIntakesResponse } from "@/types/intakes";
+import {
+  IIntakeYearsResponse,
+  IIntakesRequest,
+  IIntakesResponse,
+} from "@/types/intakes";
 import { IScholarshipRequest } from "@/types/scholarship";
 import { ISubjectsRequest, ISubjectsResponse } from "@/types/subjects";
 import {
@@ -33,6 +37,23 @@ import { BASE_URL } from "./config";
 export async function getCourses(data: ICourseRequest) {
   try {
     const res = await fetch(`${BASE_URL}/v1/user/courses`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+      body: JSON.stringify(data),
+    });
+    const courses = (await res.json()) as ICourseResponse;
+    return courses.data;
+  } catch (error) {
+    console.error("Failed to fetch courses:", error);
+  }
+}
+
+export async function getCoursesAdmin(data: ICourseRequest) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/admin/course/get-list`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,6 +113,23 @@ export async function getIntakes(data: IIntakesRequest) {
       body: JSON.stringify(data),
     });
     const intakes = (await res.json()) as IIntakesResponse;
+    return intakes.data;
+  } catch (err) {
+    console.error("Failed to fetch intakes:", err);
+  }
+}
+
+export async function getIntakeYears(data: IIntakesRequest) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/admin/intake-years`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+      body: JSON.stringify(data),
+    });
+    const intakes = (await res.json()) as IIntakeYearsResponse;
     return intakes.data;
   } catch (err) {
     console.error("Failed to fetch intakes:", err);
@@ -331,5 +369,27 @@ export async function newsletterSubscribe(email: string) {
     return response;
   } catch (error) {
     console.error("Failed to subscribe:", error);
+  }
+}
+
+export async function universitiesByCountryId(country_id: string) {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/v1/admin/university/filter-by-country?country_id=${country_id}`,
+    );
+    const universities = await res.json();
+    return universities.data;
+  } catch (error) {
+    console.error("Failed to fetch universities:", error);
+  }
+}
+
+export async function getUniversityById(id: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/admin/university/${id}`);
+    const university = await res.json();
+    return university.data;
+  } catch (error) {
+    console.error("Failed to fetch university:", error);
   }
 }

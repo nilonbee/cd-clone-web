@@ -1,4 +1,5 @@
 export interface IApplication {
+  enquiry_id: string;
   id: string;
   app_unique_id?: string;
   assigned_to?: string;

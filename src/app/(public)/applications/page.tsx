@@ -65,6 +65,7 @@ const ApplicationsPage = () => {
                     status={applicant.status}
                     setSelectedId={setSelectedId}
                     setIsOpen={setIsOpen}
+                    enquiry_id={applicant.enquiry_id}
                   />
                 ))}
               </div>
