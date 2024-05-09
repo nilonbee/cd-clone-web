@@ -21,9 +21,6 @@ export const StepOne = ({
 }: StepOneProps) => {
   const { enquiryData } = useApplicationStore();
   const [activeTab, setActiveTab] = useState(0);
-  // useEffect(() => {
-  //   // setValue("country_id", enquiryData.applications[0]?.country_id);
-  // } , [enquiryData]);
 
   return (
     <div className="w-full">
@@ -38,7 +35,7 @@ export const StepOne = ({
             setActiveTab={setActiveTab}
             activeTab={activeTab}
             index={0}
-            applications={application}
+            application={application}
             intakeYears={intakeYears}
           />
         ))}

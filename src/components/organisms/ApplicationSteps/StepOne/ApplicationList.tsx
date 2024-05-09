@@ -1,9 +1,10 @@
 "use client";
 import { MainButton } from "@/components/atoms";
 import { InputSelectField, MediaUpload } from "@/components/molecules";
+import { useApplicationStore } from "@/store";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
-import { ICourse, ICourseRequest, ICourseResponse } from "@/types/courses";
+import { ICourse, ICourseRequest } from "@/types/courses";
 import { IIntake, IIntakeYears } from "@/types/intakes";
 import { IUniversity } from "@/types/university";
 import {
@@ -33,7 +34,7 @@ interface StepOneProps {
   setActiveTab: (index: number) => void;
   activeTab: number;
   index: number;
-  applications: any;
+  application: any;
   intakeYears: IIntakeYears[];
 }
 
@@ -44,7 +45,7 @@ const ApplicationList = ({
   index,
   setActiveTab,
   activeTab,
-  applications,
+  application,
   intakeYears,
 }: StepOneProps) => {
   const [sop_doc, setSop_doc] = useState<string>("");
@@ -52,6 +53,7 @@ const ApplicationList = ({
   const [universities, setUniversities] = useState<any[]>([]);
   const [uniData, setUniData] = useState<IUniversity>();
   const [courses, setCourses] = useState<ICourse[]>([]);
+  const { setCurrentStep, enquiryData, setEnquiryData } = useApplicationStore();
 
   const {
     control,
@@ -61,7 +63,28 @@ const ApplicationList = ({
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log(data);
+    const currentApplication = enquiryData.applications.find(
+      (app) => app.app_unique_id === application.app_unique_id,
+    );
+    currentApplication.country_id = data.country_id;
+    currentApplication.uni_id = data.uni_id;
+    currentApplication.intake_month = data.intake_month;
+    currentApplication.intake_year = data.intake_year;
+    currentApplication.course_level_id = data.course_level_id;
+    currentApplication.course_id = data.course_id;
+    currentApplication.sop_doc = sop_doc;
+    currentApplication.paperbase_doc = paperbase_doc;
+
+    setEnquiryData({
+      ...enquiryData,
+      applications: enquiryData.applications.map((app) =>
+        app.app_unique_id === application.app_unique_id
+          ? currentApplication
+          : app,
+      ),
+    });
+    console.log("step1-", enquiryData);
+    setCurrentStep(2);
   };
 
   const [courseFilter, setCourseFilter] = useState<ICourseRequest>({
@@ -77,31 +100,31 @@ const ApplicationList = ({
   });
 
   useEffect(() => {
-    setValue("country_id", applications?.country_id);
-    universitiesByCountryId(applications?.country_id).then((data) =>
+    setValue("country_id", application?.country_id);
+    universitiesByCountryId(application?.country_id).then((data) =>
       setUniversities(data),
     );
-    setValue("uni_id", applications?.uni_id);
-    setValue("intake_month", applications?.intake_month);
-    setValue("intake_year", applications?.intake_year);
-    setValue("course_level_id", applications?.course_level_id);
-    getUniversityById(applications?.uni_id).then((data) => setUniData(data));
-    setSop_doc(applications.sop_doc);
-    setPaperbase_doc(applications?.paperbase_doc);
+    setValue("uni_id", application?.uni_id);
+    setValue("intake_month", application?.intake_month);
+    setValue("intake_year", application?.intake_year);
+    setValue("course_level_id", application?.course_level_id);
+    getUniversityById(application?.uni_id).then((data) => setUniData(data));
+    setSop_doc(application.sop_doc);
+    setPaperbase_doc(application?.paperbase_doc);
 
     setCourseFilter({
       ...courseFilter,
-      country_id: applications?.country_id,
-      uni_id: applications?.uni_id,
-      course_level_id: applications?.course_level_id,
-      intake_month_id: applications?.intake_month,
-      intake_year_id: applications?.intake_year,
+      country_id: application?.country_id,
+      uni_id: application?.uni_id,
+      course_level_id: application?.course_level_id,
+      intake_month_id: application?.intake_month,
+      intake_year_id: application?.intake_year,
     });
     getCoursesAdmin(courseFilter).then((data: any) => setCourses(data));
-    setValue("course_id", applications?.course_id);
+    setValue("course_id", application?.course_id);
 
     // eslint-disable-next-line
-  }, [applications, setValue]);
+  }, [application, setValue]);
 
   const UniversityDescription = () => {
     if (uniData) {
@@ -137,7 +160,7 @@ const ApplicationList = ({
       >
         <div className="flex justify-between items-center gap-2">
           <p className="font-semibold leading-[26px] text-base text-textColor">
-            {"Application ID - " + applications?.app_unique_id}
+            {"Application ID - " + application?.app_unique_id}
           </p>
           <div className="flex justify-center items-center">
             {activeTab === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -296,11 +319,6 @@ const ApplicationList = ({
               </div>
             </div>
             <div className="flex justify-end mt-1 gap-2">
-              <MainButton
-                label="Clear Form"
-                btnSize="Medium"
-                btnStyle="Secondary"
-              />
               <MainButton
                 label="Next"
                 btnSize="Medium"
