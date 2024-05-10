@@ -20,6 +20,7 @@ interface SwitchStepsProps {
   intakes: IIntake[];
   intakeYears: IIntakeYears[];
   id: string;
+  allCountries: ICountry[];
 }
 
 export const SwitchSteps = ({
@@ -28,6 +29,7 @@ export const SwitchSteps = ({
   intakes,
   intakeYears,
   id,
+  allCountries,
 }: SwitchStepsProps) => {
   const { currentStep, enquiryData, setEnquiryData, resetData } =
     useApplicationStore();
@@ -75,7 +77,7 @@ export const SwitchSteps = ({
       )}
       {currentStep === 2 && <StepTwo />}
       {currentStep === 3 && <StepThree />}
-      {currentStep === 4 && <StepFour />}
+      {currentStep === 4 && <StepFour allCountries={allCountries} />}
       {currentStep === 5 && <StepFive />}
       {currentStep === 6 && <StepSix />}
     </div>

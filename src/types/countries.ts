@@ -1,18 +1,18 @@
 export interface ICountriesResponse {
-    status: string;
-    message: string;
-    data: ICountry[]
+  status: string;
+  message: string;
+  data: ICountry[];
 }
 
 export interface ICountriesRequest {
-    status: number
+  status: number | string;
 }
 
 export type ICountry = {
-    id: number;
-    sortname: string;
-    name: string;
-    phonecode: number;
-    status: number;
-    currency: string;
-}
+  id: number;
+  sortname: string;
+  name: string;
+  phonecode: number;
+  status: number;
+  currency: string;
+};

@@ -393,3 +393,23 @@ export async function getUniversityById(id: string) {
     console.error("Failed to fetch university:", error);
   }
 }
+
+export async function getStateByCountryId(id: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/states/${id}`);
+    const university = await res.json();
+    return university.data;
+  } catch (error) {
+    console.error("Failed to fetch university:", error);
+  }
+}
+
+export async function getCityByStateId(id: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/cities/${id}`);
+    const university = await res.json();
+    return university.data;
+  } catch (error) {
+    console.error("Failed to fetch university:", error);
+  }
+}

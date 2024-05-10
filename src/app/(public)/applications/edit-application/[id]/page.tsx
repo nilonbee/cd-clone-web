@@ -22,6 +22,7 @@ const ApplicationEditPage = async ({ params }: any) => {
   const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
   const intakes = (await getIntakes({ status: 1 })) as IIntake[];
   const intakeYears = (await getIntakeYears({ status: 1 })) as IIntakeYears[];
+  const allCountries = (await getCountries({ status: "all" })) as ICountry[];
 
   return (
     <React.Fragment>
@@ -62,6 +63,7 @@ const ApplicationEditPage = async ({ params }: any) => {
                     intakes={intakes}
                     intakeYears={intakeYears}
                     id={params.id}
+                    allCountries={allCountries}
                   />
                 </div>
               </div>
