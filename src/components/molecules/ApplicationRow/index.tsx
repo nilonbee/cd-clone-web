@@ -16,6 +16,7 @@ import { IApplication } from "@/types/application";
 import { useRouter } from "next/navigation";
 
 export const ApplicationRow = ({
+  enquiry_id,
   country_name,
   uni_name,
   uni_logo,
@@ -84,7 +85,7 @@ export const ApplicationRow = ({
             <IconButton
               icon={<FaPencilAlt />}
               onClickHandler={() =>
-                router.push(`/applications/edit-application/${id}`)
+                router.push(`/applications/edit-application/${enquiry_id}`)
               }
             />
           )}

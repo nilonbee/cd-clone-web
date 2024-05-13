@@ -49,6 +49,7 @@ const config: Config = {
         boxBorder: "#e7e9eb",
         errorMsg: "#ed4337",
         amber: "#FFD700",
+        slate: "#C0C2C9",
       },
       borderRadius: {
         none: "0",

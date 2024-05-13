@@ -8,13 +8,14 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 type Props = {
   type: string;
-  title: string;
+  title?: string;
   accept?: string;
   location?: string;
   upFile: string;
   setUpFile: (file: string) => void;
   prefix: string;
   backgroundColor?: string;
+  titleHeight?: string;
 };
 
 export const MediaUpload = ({
@@ -26,6 +27,7 @@ export const MediaUpload = ({
   setUpFile,
   prefix,
   backgroundColor,
+  titleHeight,
 }: Props) => {
   const [uploading, setUploading] = useState(false);
 
@@ -48,9 +50,17 @@ export const MediaUpload = ({
 
   return (
     <div>
-      <p className="text-xs text-gray font-semibold mb-1">{title}</p>
+      {title && (
+        <p
+          className={`w-[180px] text-xs text-gray font-semibold mb-1 overflow-hidden ${titleHeight}`}
+        >
+          {title}
+        </p>
+      )}
       {!upFile && (
-        <label className={`w-[180px] h-[180px] flex flex-col items-center px-4 py-6 ${backgroundColor ? `bg-[${backgroundColor}]` : "bg-white"} text-grayMedium rounded-md tracking-wide uppercase border border-dashed border-grayMedium cursor-pointer hover:text-textColor justify-center hover:border-textColor`}>
+        <label
+          className={`w-[180px] h-[180px] flex flex-col items-center px-4 py-6 ${backgroundColor ? `bg-[${backgroundColor}]` : "bg-white"} text-grayMedium rounded-md tracking-wide uppercase border border-dashed border-grayMedium cursor-pointer hover:text-textColor justify-center hover:border-textColor`}
+        >
           {uploading ? (
             <div className="border-whiteSmoke h-10 w-10 animate-spin rounded-full border-[5px] border-t-primary" />
           ) : (

@@ -8,10 +8,11 @@ import { BriefcaseIcon } from "@/components/atoms/Icons";
 import { Stepper, SwitchSteps } from "@/components/molecules";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
-import { IIntake } from "@/types/intakes";
+import { IIntake, IIntakeYears } from "@/types/intakes";
 import {
   getCountries,
   getCourseLevels,
+  getIntakeYears,
   getIntakes,
 } from "@/utils/api-requests";
 import React from "react";
@@ -20,6 +21,8 @@ const ApplicationEditPage = async ({ params }: any) => {
   const countries = (await getCountries({ status: 1 })) as ICountry[];
   const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
   const intakes = (await getIntakes({ status: 1 })) as IIntake[];
+  const intakeYears = (await getIntakeYears({ status: 1 })) as IIntakeYears[];
+  const allCountries = (await getCountries({ status: "all" })) as ICountry[];
 
   return (
     <React.Fragment>
@@ -58,7 +61,9 @@ const ApplicationEditPage = async ({ params }: any) => {
                     countries={countries}
                     courseLevels={courseLevels}
                     intakes={intakes}
+                    intakeYears={intakeYears}
                     id={params.id}
+                    allCountries={allCountries}
                   />
                 </div>
               </div>

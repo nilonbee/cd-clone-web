@@ -69,6 +69,19 @@ export async function getApplicationStatusHistory(data: filterType) {
   }
 }
 
+export async function updateEnquiry(data: any) {
+  try {
+    const responseData = await fetchData(
+      `/v1/admin/enquiries/update`,
+      "POST",
+      JSON.stringify(data),
+    );
+    return responseData.data;
+  } catch (error) {
+    console.error("Failed to fetch applicants:", error);
+  }
+}
+
 export async function fileUploader(
   file: File | Blob,
   type: string,
