@@ -49,6 +49,13 @@
         color: #065da8 !important;
       }
     }
+
+    button:focus {
+      &:before {
+        background-color: #065da8 !important;
+        color: #065da8 !important;
+      }
+    }
   }
 }
 
