@@ -1,6 +1,10 @@
 "use client";
 import { MainButton } from "@/components/atoms";
-import { InputField, InputRadio } from "@/components/molecules";
+import {
+  InputDatePicker,
+  InputField,
+  InputRadio,
+} from "@/components/molecules";
 import { useApplicationStore } from "@/store";
 import validationSchema from "@/utils/validationSchema";
 import moment from "moment";
@@ -31,25 +35,27 @@ export const StepThree = () => {
   const { enquiryData, setCurrentStep, setEnquiryData } = useApplicationStore();
   const [gender, setGender] = React.useState<string>("");
   const [maritalStatus, setMaritalStatus] = React.useState<string>("");
+  const [dob, onChange] = React.useState<string>("");
 
   useEffect(() => {
+    console.log("enquiryData?.personalData", enquiryData?.personalData);
+
     setValue("first_name", enquiryData.personalData.first_name);
     setValue("middle_name", enquiryData.personalData.middle_name);
     setValue("last_name", enquiryData.personalData.last_name);
     setValue("email", enquiryData.personalData.email);
     setValue("phone", enquiryData.personalData.phone);
     setValue("first_language", enquiryData.personalData.first_language);
-    setValue(
-      "dob",
-      enquiryData?.personalData?.dob &&
-        moment(enquiryData?.personalData?.dob ?? "").format("YYYY-MM-DD"),
-    );
     setValue("country_citizen", enquiryData.personalData.country_citizen);
     setValue("passport_number", enquiryData.personalData.passport_number);
     setValue("gender", enquiryData.personalData.gender);
     setValue("marital_status", enquiryData.personalData.marital_status);
     setGender(enquiryData.personalData.gender);
     setMaritalStatus(enquiryData.personalData.marital_status);
+    onChange(
+      enquiryData?.personalData?.dob &&
+        moment(enquiryData?.personalData?.dob).format("YYYY-MM-DD"),
+    );
     // eslint-disable-next-line
   }, []);
   const onSubmit = (data: FormValues) => {
@@ -62,7 +68,7 @@ export const StepThree = () => {
         email: data.email,
         phone: data.phone,
         first_language: data.first_language,
-        dob: data.dob,
+        dob: dob,
         country_citizen: data.country_citizen,
         passport_number: data.passport_number,
         gender: gender,
@@ -186,22 +192,12 @@ export const StepThree = () => {
             />
           </div>
           <div className="w-1/2">
-            <Controller
-              name="dob"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <div>
-                  <InputField
-                    label="Date Of Birth"
-                    placeholder="Date Of Birth"
-                    type="text"
-                    id="dob"
-                    {...field}
-                  />
-                </div>
-              )}
+            <InputDatePicker
+              value={dob}
+              onChange={onChange}
+              label="Date Of Exam"
             />
+
             <Controller
               name="country_citizen"
               control={control}

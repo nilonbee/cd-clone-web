@@ -79,7 +79,7 @@ export const SwitchSteps = ({
       {currentStep === 3 && <StepThree />}
       {currentStep === 4 && <StepFour allCountries={allCountries} />}
       {currentStep === 5 && <StepFive />}
-      {currentStep === 6 && <StepSix />}
+      {currentStep === 6 && <StepSix id={id} />}
     </div>
   );
 };

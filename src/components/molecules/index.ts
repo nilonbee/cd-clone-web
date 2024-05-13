@@ -42,3 +42,4 @@ export * from "./SwitchSteps";
 export * from "./HistoryTable";
 export * from "./TabsView";
 export * from "./InputRadio";
+export * from "./InputDatePicker";

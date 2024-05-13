@@ -9,7 +9,7 @@ export const TabFive = ({ application }: any) => {
       </p>
       <div className="flex gap-2 flex-col">
         <TextRow label="Type of Exam" value={application?.exam_type ?? "-"} />
-        <TextRow label="Date Of Exam" value={application?.examDate ?? "-"} />
+        <TextRow label="Date Of Exam" value={application?.exam_date ?? "-"} />
         <TextRow
           label="Overall Score"
           value={application?.overall_score ?? "-"}
