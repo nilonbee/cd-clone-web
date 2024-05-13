@@ -7,11 +7,13 @@ import { getCourseById } from "@/utils/api-requests";
 import { CoursePriceBox, UniRow } from "@/components/molecules";
 import { CourseSubHeader, Loading } from "@/components/atoms";
 import { ApplicationForm } from "../ApplicationForm";
+import { IIntake } from "@/types/intakes";
 
 interface CourseViewDrawerProps {
   open: boolean;
   setOpen: (open: boolean) => void;
   side?: "right" | "left" | "top" | "bottom";
+  intakes: IIntake[];
 }
 
 const openClassNames = {
@@ -39,6 +41,7 @@ export const CourseViewDrawer = ({
   open,
   setOpen,
   side = "bottom",
+  intakes,
 }: CourseViewDrawerProps) => {
   const { selectedCourseId, isCourse } = useCourseStore();
   const [data, setData] = useState<ICourse>({} as ICourse);
@@ -132,6 +135,7 @@ export const CourseViewDrawer = ({
                       <CourseSubHeader title="Study Options" />
                       <div className="my-4">
                         <CoursePriceBox
+                          course_name={data.course_name}
                           course_fee_additional={data.course_fee_additional}
                           course_fee={data.course_fee}
                           currency={data.currency}
@@ -164,7 +168,7 @@ export const CourseViewDrawer = ({
                         185 or above. No less than 185 in each skill.
                       </p>
                     </div>
-                    <ApplicationForm />
+                    <ApplicationForm intakes={intakes} />
                   </>
                 ) : (
                   <Loading />

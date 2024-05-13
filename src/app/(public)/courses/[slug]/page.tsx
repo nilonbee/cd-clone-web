@@ -6,12 +6,14 @@ import {
 } from "@/components/atoms";
 import { CoursePriceBox, UniRow } from "@/components/molecules";
 import { ApplicationForm, InterestedSection } from "@/components/organisms";
-import { getCourseById } from "@/utils/api-requests";
+import { getCourseById, getIntakes } from "@/utils/api-requests";
 import { ICourse } from "@/types/courses";
+import { IIntake } from "@/types/intakes";
 
 const CourseSinglePage = async ({ params }: any) => {
   const response = await getCourseById(params.slug);
   const data = response as ICourse;
+  const intakes = (await getIntakes({ status: 1 })) as IIntake[];
 
   return (
     <>
@@ -49,6 +51,7 @@ const CourseSinglePage = async ({ params }: any) => {
                 <CourseSubHeader title="Study Options" />
                 <div className="my-4">
                   <CoursePriceBox
+                    course_name={data.course_name}
                     course_fee_additional={data.course_fee_additional}
                     course_fee={data.course_fee}
                     currency={data.currency}
@@ -83,7 +86,7 @@ const CourseSinglePage = async ({ params }: any) => {
               </div>
             </div>
             <div className="w-[30%] relative">
-              <ApplicationForm />
+              <ApplicationForm intakes={intakes} />
             </div>
           </div>
         </InnerContainer>
