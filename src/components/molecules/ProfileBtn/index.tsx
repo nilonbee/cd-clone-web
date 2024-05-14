@@ -2,6 +2,7 @@
 import { ConfirmationDialog } from "@/components/atoms";
 import { SettingsIcon, ProfileIcon, HomeIcon } from "@/components/atoms/Icons";
 import { useUserStore } from "@/store";
+import { rootImagePath } from "@/utils/rootImagePath";
 import { Popover, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -44,11 +45,11 @@ export const ProfileBtn = () => {
     <div>
       <Popover className="relative">
         <>
-          <Popover.Button className="flex items-center justify-center w-9 h-9 focus:ring-2 rounded-full bg-primary text-white focus-visible:ring focus-visible:ring-primary">
+          <Popover.Button className="flex items-center justify-center w-9 h-9  rounded-full text-white focus-visible:none ">
             <div className="cursor-pon">
               <Image
-                className="h-9 w-9 rounded-full ring-1 ring-primary shadow-md"
-                src={`${process.env["NEXT_PUBLIC_IMAGE_STORE"]}/ProfileMy.png`}
+                className="h-9 w-9 rounded-full shadow-md"
+                src={rootImagePath("Profile/user-placeholder.png")}
                 alt=""
                 width={36}
                 height={36}
