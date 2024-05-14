@@ -64,20 +64,24 @@ export const Header = () => {
                 Register
               </Link>
             )}
-            <MainButton
-              label="Find My Course"
-              btnStyle="Primary"
-              btnSize="Medium"
-            />
+            <Link href="/courses">
+              <MainButton
+                label="Find My Course"
+                btnStyle="Primary"
+                btnSize="Medium"
+              />
+            </Link>
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center xl:hidden">
             {authUser && <ProfileBtn />}
-            <MainButton
-              label="Find My Course"
-              btnStyle="Primary"
-              btnSize="Medium"
-            />
+            <Link href="/courses">
+              <MainButton
+                label="Find My Course"
+                btnStyle="Primary"
+                btnSize="Medium"
+              />
+            </Link>
             {!authUser && (
               <Menu as="div" className="relative inline-block text-left">
                 <div>
@@ -198,11 +202,13 @@ export const Header = () => {
                     Register
                   </Link>
                 )}
-                <div className="px-4 py-2 items-center relative h-18 bg-primary rounded shadow-md">
-                  <p className="text-base font-semibold text-white">
-                    Find My Course
-                  </p>
-                </div>
+                <Link href="/courses">
+                  <div className="px-4 py-2 items-center relative h-18 bg-primary rounded shadow-md">
+                    <p className="text-base font-semibold text-white">
+                      Find My Course
+                    </p>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
