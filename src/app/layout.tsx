@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { ChatWidgetComponent } from "@/components/atoms";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#055da8" />
+        <link rel="icon" href="/images/fave.png" />
+        <title>Campus Direct | Your Trusted Partner in Education</title>
+        <meta name="description" content="Trusted Partner in Education" />
+      </head>
       <body className={inter.className}>
+        <GoogleAnalytics gaId="G-4S389LVL9G" />
+        <ChatWidgetComponent />
         <Toaster
           position="top-center"
           reverseOrder={false}

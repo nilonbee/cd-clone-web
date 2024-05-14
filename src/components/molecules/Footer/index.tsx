@@ -18,6 +18,7 @@ import { contactInfo } from "@/mockData/contact";
 import { listItems } from "@/mockData/footer";
 import { ILocationInfo, IOpeningTime } from "@/types/contactUs";
 import Image from "next/image";
+import Script from "next/script";
 
 export const Footer = () => {
   const { countryCode, setCountryCode } = useIpStore();
@@ -60,6 +61,8 @@ export const Footer = () => {
               width={500}
               height={500}
             />
+            <span id="iasBadge" data-account-id="5286"></span>
+            <Script src="https://www.icef.com/wp-content/cache/min/1/scripts/iasbadgeid.js?ver=1714551953" />
           </div>
           <div className="">
             <h5 className="font-bold text-base text-white mb-4">

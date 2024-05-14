@@ -18,3 +18,4 @@ export * from "./BackBtn";
 export * from "./StatusTag";
 export * from "./TextRow";
 export * from "./Switch";
+export * from "./ChatWidgetComponent";
