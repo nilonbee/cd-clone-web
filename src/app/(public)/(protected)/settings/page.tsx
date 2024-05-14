@@ -25,10 +25,10 @@ const SettingsPage = () => {
               </div>
             </div>
             <ChangePasswordForm />
-          </InnerContainer >
-        </ContainerLayout >
+          </InnerContainer>
+        </ContainerLayout>
       </div>
-    </React.Fragment >
+    </React.Fragment>
   );
 };
 
