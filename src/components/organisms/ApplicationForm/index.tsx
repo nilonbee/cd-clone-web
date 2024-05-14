@@ -25,7 +25,7 @@ type FormValues = {
 }
 
 type ApplicationFormProps = {
-  intakes: IIntake[];
+  intakes?: IIntake[];
 }
 
 export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
