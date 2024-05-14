@@ -25,6 +25,12 @@ export interface IResetPasswordRequest {
   type: string;
 }
 
+export interface IChangePasswordRequest {
+  password: string;
+  current_password: string;
+  confirm_password: string;
+}
+
 export interface ILoginRequest {
   email: string;
   password: string;

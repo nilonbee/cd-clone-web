@@ -1,6 +1,7 @@
 import { IApplication, IApplicationRequest } from "@/types/application";
 import { fetchData } from "./fetchData";
 import { BASE_URL } from "./config";
+import { IChangePasswordRequest } from "@/types/users";
 
 type filterType = {
   status?: string;
@@ -26,6 +27,17 @@ export async function getApplicants() {
 export async function sendApplication(data: IApplicationRequest) {
   try {
     const res = await fetchData(`/v1/user/user-apply-course`, "POST", JSON.stringify(data));
+
+    return res;
+  } catch (error) {
+    console.error("Failed to send application:", error);
+  }
+}
+
+
+export async function changePassword(data: IChangePasswordRequest) {
+  try {
+    const res = await fetchData(`/v1/admin/user/change-password`, "POST", JSON.stringify(data));
 
     return res;
   } catch (error) {
