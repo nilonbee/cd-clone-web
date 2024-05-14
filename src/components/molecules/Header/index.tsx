@@ -10,7 +10,7 @@ import { ProfileBtn } from "..";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { authUser, user } = useUserStore();
+  const { authUser } = useUserStore();
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-10">

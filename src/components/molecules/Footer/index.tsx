@@ -61,8 +61,10 @@ export const Footer = () => {
               width={500}
               height={500}
             />
-            <span id="iasBadge" data-account-id="5286"></span>
-            <Script src="https://www.icef.com/wp-content/cache/min/1/scripts/iasbadgeid.js?ver=1714551953" />
+            <div className="ml-7 mt-4">
+              <span id="iasBadge" data-account-id="5286"></span>
+              <Script src="https://www-cdn.icef.com/scripts/iasbadgeid.js" />
+            </div>
           </div>
           <div className="">
             <h5 className="font-bold text-base text-white mb-4">
