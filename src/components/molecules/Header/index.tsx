@@ -64,7 +64,7 @@ export const Header = () => {
                 Register
               </Link>
             )}
-            <Link href="/careers">
+            <Link href="/courses">
               <MainButton
                 label="Find My Course"
                 btnStyle="Primary"
@@ -75,7 +75,7 @@ export const Header = () => {
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center xl:hidden">
             {authUser && <ProfileBtn />}
-            <Link href="/careers">
+            <Link href="/courses">
               <MainButton
                 label="Find My Course"
                 btnStyle="Primary"
@@ -202,7 +202,7 @@ export const Header = () => {
                     Register
                   </Link>
                 )}
-                <Link href="/careers">
+                <Link href="/courses">
                   <div className="px-4 py-2 items-center relative h-18 bg-primary rounded shadow-md">
                     <p className="text-base font-semibold text-white">
                       Find My Course
