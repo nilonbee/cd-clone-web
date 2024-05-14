@@ -14,11 +14,7 @@ const CareersPage = async () => {
       <CareersBanner />
       <ContainerLayout>
         <InnerContainer>
-          <CareerSection
-            careerCount={careerCount}
-            careersData={careersData}
-            careersDataLocal={careerDataLocal}
-          />
+          <CareerSection careerCount={careerCount} careersData={careersData} />
         </InnerContainer>
       </ContainerLayout>
       <InterestedSection />

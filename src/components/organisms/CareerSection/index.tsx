@@ -5,24 +5,43 @@ import { MainButton } from "@/components/atoms";
 import { LocationIcon2 } from "@/components/atoms/Icons";
 import { CareerRow } from "@/components/molecules";
 import { IResponseData, ICareer } from "@/types/careers";
+import { useIpStore } from "@/store/useIpStore";
+import { getCareers } from "@/utils/api-requests";
 
 type CareerSectionProps = {
   careerCount: string;
   careersData: IResponseData;
-  careersDataLocal: IResponseData;
 };
 
 export const CareerSection = ({
   careerCount,
   careersData,
-  careersDataLocal,
 }: CareerSectionProps) => {
   const [isLocalData, setIsLocalData] = useState(false);
   const [selectedCareers, setSelectedCareers] = useState(careersData);
+  const { countryCode } = useIpStore();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setSelectedCareers(isLocalData ? careersDataLocal : careersData);
-  }, [isLocalData]);
+    const fetchLocalCareers = async () => {
+      setLoading(true);
+      try {
+        let data;
+        if (isLocalData) {
+          data = await getCareers(countryCode);
+        } else {
+          data = careersData;
+        }
+        setSelectedCareers(data);
+      } catch (error) {
+        console.error("Error fetching local careers:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLocalCareers();
+  }, [isLocalData, countryCode, careersData]);
 
   return (
     <div className="my-14">
@@ -41,8 +60,10 @@ export const CareerSection = ({
           btnStyle={`${isLocalData ? "Primary" : "Secondary"}`}
           btnSize="Medium"
           icon={<LocationIcon2 />}
+          loading={loading}
           iconPosition="Left"
           onClick={() => setIsLocalData(true)}
+          disabled={loading}
         />
       </div>
       <div className="mt-10 flex flex-col gap-2">
