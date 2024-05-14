@@ -1,0 +1,20 @@
+export type IUniversity = {
+  id: number;
+  name: string;
+  country_id: number;
+  uni_desc: string;
+  uni_image: string | null;
+  uni_logo: string | null;
+  uni_address: string | null;
+  uni_phone: string | null;
+  uni_email: string | null;
+  uni_web: string | null;
+  paperbase_form: number;
+  paperbase_form_file: string | null;
+  status: number;
+  default_assign_emp: string | null;
+  added_by: number;
+  created_by: number;
+  created_at: string;
+  updated_at: string;
+};

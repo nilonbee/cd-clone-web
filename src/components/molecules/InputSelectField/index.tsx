@@ -9,7 +9,7 @@ type Props = {
   customStyle?: string;
   backgroundColor?: string;
   error?: string | undefined; // Add error prop
-  options?: { value: number; label: string }[]; // Add options prop
+  options?: { value: number | string; label: string }[]; // Add options prop
 };
 
 export const InputSelectField = ({

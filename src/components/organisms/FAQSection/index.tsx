@@ -1,11 +1,25 @@
 "use client";
 import { InnerContainer, SectionHeader } from "@/components/atoms";
 import { MinusIcon, PlusIcon } from "@/components/atoms/Icons";
-import { useState } from "react";
+import React, { useState } from "react";
 
-export const FAQSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const faqsList = [
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export const FAQSection: React.FC = () => {
+  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
+
+  const toggleActiveIndex = (index: number) => {
+    if (activeIndexes.includes(index)) {
+      setActiveIndexes(activeIndexes.filter((item) => item !== index));
+    } else {
+      setActiveIndexes([...activeIndexes, index]);
+    }
+  };
+
+  const faqsList: FAQ[] = [
     {
       question: "Why should we apply through Campus Direct?",
       answer:
@@ -34,6 +48,7 @@ export const FAQSection = () => {
         "Yes, Campus Direct guides both undergraduate and postgraduate studies. Our consultants support you at every academic level.",
     },
   ];
+
   return (
     <InnerContainer>
       <div className="pt-20 pb-20">
@@ -47,7 +62,7 @@ export const FAQSection = () => {
             {faqsList.map((faq, index) => (
               <div
                 key={index}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => toggleActiveIndex(index)}
                 className="rounded-[5px] p-[15px] self-stretch bg-white cursor-pointer border border-grayLight shadow"
               >
                 <div className="flex justify-between items-center gap-2">
@@ -55,15 +70,16 @@ export const FAQSection = () => {
                     {faq.question}
                   </p>
                   <div className="flex justify-center items-center">
-                    {activeIndex === index ? <MinusIcon /> : <PlusIcon />}
+                    {activeIndexes.includes(index) ? (
+                      <MinusIcon />
+                    ) : (
+                      <PlusIcon />
+                    )}
                   </div>
                 </div>
-                <p
-                  className="text-sm text-textColor pt-5"
-                  style={{ display: activeIndex === index ? "block" : "none" }}
-                >
-                  {faq.answer}
-                </p>
+                {activeIndexes.includes(index) && (
+                  <p className="text-sm text-textColor pt-5">{faq.answer}</p>
+                )}
               </div>
             ))}
           </div>

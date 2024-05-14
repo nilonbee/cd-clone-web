@@ -9,8 +9,8 @@ import { ICourse } from "@/types/courses";
 import { IIntake } from "@/types/intakes";
 
 type CourseViewModalProps = {
-  intakes: IIntake[]
-}
+  intakes: IIntake[];
+};
 
 export const CourseViewModel = ({ intakes }: CourseViewModalProps) => {
   const { selectedCourseId, isCourse } = useCourseStore();
@@ -72,6 +72,7 @@ export const CourseViewModel = ({ intakes }: CourseViewModalProps) => {
               <CourseSubHeader title="Study Options" />
               <div className="my-4">
                 <CoursePriceBox
+                  course_name={data.course_name}
                   course_fee_additional={data.course_fee_additional}
                   course_fee={data.course_fee}
                   currency={data.currency}

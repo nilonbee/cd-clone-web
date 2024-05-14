@@ -29,10 +29,6 @@ const validationSchema = {
 
   phone: {
     required: "Phone Number is required",
-    pattern: {
-      value: /^\+?[0-9]{8,13}$/,
-      message: "Invalid phone number.",
-    },
   },
   intake: {
     required: "Intake is Required",
@@ -52,6 +48,26 @@ const validationSchema = {
       value: 500,
       message: "Message must not exceed 500 characters",
     },
+  },
+  last_name: {
+    required: "Last Name is required",
+    pattern: {
+      value: /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$/,
+      message:
+        "Last Name cannot start or end with spaces and cannot contain only spaces, numbers, or symbols",
+    },
+  },
+  passport_number: {
+    required: "Passport Number is required",
+  },
+  country_id: {
+    required: "Country is required",
+  },
+  state_id: {
+    required: "State is required",
+  },
+  city_id: {
+    required: "City is required",
   },
 };
 

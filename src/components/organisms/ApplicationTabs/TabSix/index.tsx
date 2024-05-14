@@ -3,8 +3,6 @@ import { rootImagePath } from "@/utils/rootImagePath";
 import React from "react";
 
 export const TabSix = ({ application, refused_doc }: any) => {
-  console.log("application-tab-six", application);
-
   return (
     <div className="w-full">
       <p className="text-sm text-textColor font-semibold mb-4">

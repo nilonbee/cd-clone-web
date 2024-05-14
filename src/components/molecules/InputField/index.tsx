@@ -9,6 +9,8 @@ type Props = {
   noMargin?: boolean;
   customStyle?: string;
   error?: string | undefined; // Add error prop
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 };
 
 export const InputField = ({
@@ -20,6 +22,8 @@ export const InputField = ({
   noMargin,
   customStyle,
   error,
+  onChange,
+  value,
   ...rest
 }: Props) => {
   const errorCSS = error
@@ -42,6 +46,8 @@ export const InputField = ({
         type={type}
         placeholder={placeholder}
         required={required}
+        onChange={onChange}
+        value={value}
         {...rest}
       />
       {error && <span className="text-errorMsg text-xs">{error}</span>}

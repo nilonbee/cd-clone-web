@@ -6,11 +6,14 @@ import { ICourse, ICourseRequest } from "@/types/courses";
 import { getCourses } from "@/utils/api-requests";
 import { useEffect, useState } from "react";
 import { CourseViewDrawer } from "../CourseViewDrawer";
+import { IIntake } from "@/types/intakes";
 
 export const Courses = ({
   initialCourseData,
+  intakes,
 }: {
   initialCourseData: ICourse[];
+  intakes: IIntake[];
 }) => {
   const { setIsCourse, setSelectedCourseId } = useCourseStore();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
@@ -30,6 +33,7 @@ export const Courses = ({
       setSelectedCourseId(initialCourseData[0].id || "");
       setIsCourse(true);
     }
+    // eslint-disable-next-line
   }, [initialCourseData]);
 
   //choose the screen size
@@ -98,7 +102,11 @@ export const Courses = ({
       </div>
       <div className="w-full md:hidden sm:block xs:block">
         {openDrawer && isMobile && (
-          <CourseViewDrawer open={openDrawer} setOpen={setOpenDrawer} />
+          <CourseViewDrawer
+            open={openDrawer}
+            setOpen={setOpenDrawer}
+            intakes={intakes}
+          />
         )}
       </div>
     </div>

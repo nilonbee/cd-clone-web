@@ -16,5 +16,6 @@
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#4a76b3",
     "titleBar.inactiveForeground": "#e7e7e799"
-  }
+  },
+  "cSpell.words": ["paperbase", "phonecode", "sortname"]
 }

@@ -10,34 +10,59 @@ import {
 import { useApplicationStore } from "@/store";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
-import { IIntake } from "@/types/intakes";
+import { IIntake, IIntakeYears } from "@/types/intakes";
 import { getEnquiriesById } from "@/utils/auth-api-requests";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface SwitchStepsProps {
   countries: ICountry[];
   courseLevels: ICourseLevel[];
   intakes: IIntake[];
+  intakeYears: IIntakeYears[];
   id: string;
+  allCountries: ICountry[];
 }
 
 export const SwitchSteps = ({
   countries,
   courseLevels,
   intakes,
+  intakeYears,
   id,
+  allCountries,
 }: SwitchStepsProps) => {
-  const { currentStep } = useApplicationStore();
-  const [applicant, setApplicant] = React.useState<any>(null);
+  const { currentStep, enquiryData, setEnquiryData, resetData } =
+    useApplicationStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const getApplicant = async () => {
-      await getEnquiriesById(id).then((res) => {
-        console.log("res", res);
-        setApplicant(res);
+      await getEnquiriesById(id).then((enquiryById) => {
+        setEnquiryData({
+          ...enquiryData,
+          applications: enquiryById.applications,
+          uploadDocuments: JSON.parse(enquiryById.enquiry.upload_docs_list),
+          refusedDoc: enquiryById.enquiry.refused_doc,
+          personalData: enquiryById.user,
+          addressData: enquiryById.user,
+          educationData: {
+            detailsOne: JSON.parse(enquiryById.education.details_one),
+            detailsTwo: JSON.parse(enquiryById.education.details_two),
+            diplomaDetails: JSON.parse(enquiryById.education.diploma_details),
+            graduateDetails: JSON.parse(enquiryById.education.graduate_details),
+            postGraduateDetails: JSON.parse(
+              enquiryById.education.post_graduate_details,
+            ),
+            phdDetails: JSON.parse(enquiryById.education.phd_details),
+          },
+          ieltsData: JSON.parse(enquiryById.enquiry.ielts_data),
+        });
       });
     };
     getApplicant();
+    return () => {
+      resetData();
+    };
+    // eslint-disable-next-line
   }, [id]);
 
   return (
@@ -47,13 +72,14 @@ export const SwitchSteps = ({
           countries={countries}
           courseLevels={courseLevels}
           intakes={intakes}
+          intakeYears={intakeYears}
         />
       )}
       {currentStep === 2 && <StepTwo />}
       {currentStep === 3 && <StepThree />}
-      {currentStep === 4 && <StepFour />}
+      {currentStep === 4 && <StepFour allCountries={allCountries} />}
       {currentStep === 5 && <StepFive />}
-      {currentStep === 6 && <StepSix />}
+      {currentStep === 6 && <StepSix id={id} />}
     </div>
   );
 };
