@@ -26,7 +26,11 @@ export async function getApplicants() {
 
 export async function sendApplication(data: IApplicationRequest) {
   try {
-    const res = await fetchData(`/v1/user/user-apply-course`, "POST", JSON.stringify(data));
+    const res = await fetchData(
+      `/v1/user/user-apply-course`,
+      "POST",
+      JSON.stringify(data),
+    );
 
     return res;
   } catch (error) {
@@ -34,10 +38,13 @@ export async function sendApplication(data: IApplicationRequest) {
   }
 }
 
-
 export async function changePassword(data: IChangePasswordRequest) {
   try {
-    const res = await fetchData(`/v1/admin/user/change-password`, "POST", JSON.stringify(data));
+    const res = await fetchData(
+      `/v1/admin/user/change-password`,
+      "POST",
+      JSON.stringify(data),
+    );
 
     return res;
   } catch (error) {
@@ -89,6 +96,15 @@ export async function updateEnquiry(data: any) {
       JSON.stringify(data),
     );
     return responseData.data;
+  } catch (error) {
+    console.error("Failed to fetch applicants:", error);
+  }
+}
+
+export async function deleteEnquiry(id: string) {
+  try {
+    const data = await fetchData(`/v1/admin/application/delete/${id}`, "GET");
+    return data;
   } catch (error) {
     console.error("Failed to fetch applicants:", error);
   }

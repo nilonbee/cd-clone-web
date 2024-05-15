@@ -15,7 +15,6 @@ export * from "./ConfirmationDialog";
 export * from "./DialogBoxContainer";
 export * from "./CookieBar";
 export * from "./BackBtn";
-export * from "./StatusTag";
 export * from "./TextRow";
 export * from "./Switch";
 export * from "./ChatWidgetComponent";

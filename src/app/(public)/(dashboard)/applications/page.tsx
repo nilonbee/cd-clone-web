@@ -1,5 +1,6 @@
 "use client";
 import {
+  ConfirmationDialog,
   ContainerLayout,
   DialogBoxContainer,
   Hero,
@@ -9,22 +10,45 @@ import {
 import { HomeIcon } from "@/components/atoms/Icons";
 import { ApplicationRow, HistoryTable } from "@/components/molecules";
 import { IApplication } from "@/types/application";
-import { getApplicants } from "@/utils/auth-api-requests";
+import { deleteEnquiry, getApplicants } from "@/utils/auth-api-requests";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const ApplicationsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [applicants, setApplicants] = useState([]);
   const [selectedId, setSelectedId] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    getApplicationsData();
+  }, []);
+
+  const getApplicationsData = () => {
     setIsLoading(true);
     getApplicants().then((data) => {
       setIsLoading(false);
       setApplicants(data);
     });
-  }, []);
+  };
+
+  const deleteApplication = () => {
+    deleteEnquiry(selectedId).then((data) => {
+      console.log(data);
+      toast.success("Application deleted successfully");
+      setIsDeleteOpen(false);
+      getApplicationsData();
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <div className="mt-20 mb-20">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -47,7 +71,6 @@ const ApplicationsPage = () => {
             </div>
           </div>
           <div className="w-full mb-10 flex flex-col gap-4">
-            {isLoading && <Loading />}
             {applicants.length === 0 && !isLoading && (
               <p className="text-center text-black/60">No applications found</p>
             )}
@@ -66,6 +89,7 @@ const ApplicationsPage = () => {
                     setSelectedId={setSelectedId}
                     setIsOpen={setIsOpen}
                     enquiry_id={applicant.enquiry_id}
+                    setIsDeleteOpen={setIsDeleteOpen}
                   />
                 ))}
               </div>
@@ -83,6 +107,16 @@ const ApplicationsPage = () => {
         >
           <HistoryTable selectedId={selectedId} />
         </DialogBoxContainer>
+      )}
+      {isDeleteOpen && (
+        <ConfirmationDialog
+          isOpen={isDeleteOpen}
+          closeModal={() => setIsDeleteOpen(false)}
+          onConfirm={deleteApplication}
+          title="Are you sure?"
+          description="Are you sure you want to delete this application?"
+          submitText="Delete"
+        />
       )}
     </React.Fragment>
   );

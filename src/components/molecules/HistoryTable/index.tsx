@@ -1,5 +1,4 @@
 "use client";
-import { StatusTag } from "@/components/atoms";
 import { getApplicationStatusHistory } from "@/utils/auth-api-requests";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -83,10 +82,11 @@ export const HistoryTable = ({ selectedId }: Props) => {
                 <div className="text-textColor text-xs">{data.happen}</div>
               </td>
               <td className="px-6 py-2">
-                <StatusTag
-                  status={data.status}
-                  statusColor={"bg-[" + data.status_color + "]"}
-                />
+                <span
+                  className={`bg-teal-500 text-white py-1 px-4 rounded-full text-xs shadow uppercase`}
+                >
+                  {data.status}
+                </span>
               </td>
             </tr>
           ))}
