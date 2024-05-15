@@ -7,7 +7,6 @@ import {
 } from "@/components/atoms";
 import {
   ContactSection,
-  InterestedSection,
   AddressSection,
   ContactInfoSection,
 } from "@/components/organisms";

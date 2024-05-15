@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ChatWidgetComponent } from "@/components/atoms";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +47,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <Script src="https://www-cdn.icef.com/scripts/iasbadgeid.js" />
       </body>
     </html>
   );

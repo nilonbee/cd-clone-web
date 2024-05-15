@@ -1,5 +1,4 @@
 "use client";
-import { Footer, Header } from "@/components/molecules";
 import { useUserStore } from "@/store";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -23,11 +22,5 @@ export default function ProtectedLayout({
     return null; // Return null while waiting for authentication
   }
 
-  return (
-    <section>
-      <Header />
-      {children}
-      <Footer />
-    </section>
-  );
+  return <section>{children}</section>;
 }

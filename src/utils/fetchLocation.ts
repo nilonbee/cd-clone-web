@@ -1,10 +1,8 @@
-type UrlProps = {
-  url: string;
-};
+import { IP_INFO_TOKEN } from "./config";
 
-export default async function fetchLocation({ url }: UrlProps) {
+export default async function fetchLocation() {
   try {
-    const res = await fetch(url);
+    const res = await fetch(`https://ipinfo.io/?token=${IP_INFO_TOKEN}`);
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
