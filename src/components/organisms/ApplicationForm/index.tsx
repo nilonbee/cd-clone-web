@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
+"use client";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import validationSchema from "@/utils/validationSchema";
@@ -7,12 +7,15 @@ import validationSchema from "@/utils/validationSchema";
 import { useUserStore } from "@/store";
 import { ConfirmationDialog, MainButton } from "@/components/atoms";
 import { useCourseStore } from "@/store";
-import { InputField, InputSelectField, PhoneInputField } from "@/components/molecules";
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import {
+  InputField,
+  InputSelectField,
+  PhoneInputField,
+} from "@/components/molecules";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { sendApplication } from "@/utils/auth-api-requests";
 import { IIntake } from "@/types/intakes";
 import { useRouter } from "next/navigation";
-
 
 type FormValues = {
   first_name: string;
@@ -22,11 +25,11 @@ type FormValues = {
   password: string;
   phone: string;
   intake_id: number;
-}
+};
 
 type ApplicationFormProps = {
   intakes?: IIntake[];
-}
+};
 
 export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
   const router = useRouter();
@@ -42,9 +45,9 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
   const [loading, setLoading] = useState(false);
 
   const handleNavigate = () => {
-    router.push("/login")
+    router.push("/login");
     setIsOpen(false);
-  }
+  };
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     if (!authUser) {
@@ -53,8 +56,9 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
       return;
     }
     const applicationRequest = {
-      ...data, course_id: selectedCourseId
-    }
+      ...data,
+      course_id: selectedCourseId,
+    };
     setLoading(true);
     const response = await sendApplication(applicationRequest);
     setLoading(false);
@@ -63,7 +67,7 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
     } else {
       toast.error("Send Application Failed...!");
     }
-  }
+  };
 
   return (
     <>
@@ -90,7 +94,7 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
                 error={errors.first_name?.message}
                 id="first-name"
                 customStyle="bg-transparent"
-                // required
+                required
                 {...field}
               />
             )}
@@ -98,14 +102,14 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
           <Controller
             name="middle_name"
             control={control}
-            rules={validationSchema.first_name}
+            // rules={validationSchema.middle_name}
             defaultValue=""
             render={({ field }) => (
               <InputField
                 label="Middle Name"
-                placeholder="Enter your first name"
+                placeholder="Enter your middle name"
                 type="text"
-                error={errors.middle_name?.message}
+                // error={errors.middle_name?.message}
                 id="middle-name"
                 customStyle="bg-transparent"
                 // required
@@ -116,7 +120,7 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
           <Controller
             name="last_name"
             control={control}
-            rules={validationSchema.first_name}
+            rules={validationSchema.last_name}
             defaultValue=""
             render={({ field }) => (
               <InputField
@@ -126,7 +130,7 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
                 id="last-name"
                 customStyle="bg-transparent"
                 error={errors.last_name?.message}
-                // required
+                required
                 {...field}
               />
             )}
@@ -144,7 +148,7 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
                 id="email"
                 customStyle="bg-transparent"
                 error={errors.email?.message}
-                // required
+                required
                 {...field}
               />
             )}
@@ -159,7 +163,7 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
                 label="Phone Number"
                 placeholder="Enter your phone number"
                 id="phone"
-                // required
+                required
                 error={errors.phone?.message}
                 backgroundColor="#eef7ff"
                 {...field}
@@ -174,6 +178,7 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
               <InputSelectField
                 label="Intake Month"
                 id="intake_id"
+                required
                 backgroundColor="#eef7ff"
                 placeholder="Select Intake Month"
                 error={errors.intake_id?.message}

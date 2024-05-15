@@ -45,7 +45,7 @@ export const InputField = ({
         id={id}
         type={type}
         placeholder={placeholder}
-        required={required}
+        // required={required}
         onChange={onChange}
         value={value}
         {...rest}

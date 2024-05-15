@@ -16,6 +16,7 @@ type Props = {
   prefix: string;
   backgroundColor?: string;
   titleHeight?: string;
+  required?: boolean;
 };
 
 export const MediaUpload = ({
@@ -28,6 +29,7 @@ export const MediaUpload = ({
   prefix,
   backgroundColor,
   titleHeight,
+  required,
 }: Props) => {
   const [uploading, setUploading] = useState(false);
 
@@ -54,7 +56,7 @@ export const MediaUpload = ({
         <p
           className={`w-[180px] text-xs text-gray font-semibold mb-1 overflow-hidden ${titleHeight}`}
         >
-          {title}
+          {title} {required && <span className="text-red">*</span>}
         </p>
       )}
       {!upFile && (

@@ -7,6 +7,22 @@ const validationSchema = {
         "First Name cannot start or end with spaces and cannot contain only spaces, numbers, or symbols",
     },
   },
+  middle_name: {
+    required: "Middle Name is required",
+    pattern: {
+      value: /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$/,
+      message:
+        "Middle Name cannot start or end with spaces and cannot contain only spaces, numbers, or symbols",
+    },
+  },
+  last_name: {
+    required: "Last Name is required",
+    pattern: {
+      value: /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$/,
+      message:
+        "Last Name cannot start or end with spaces and cannot contain only spaces, numbers, or symbols",
+    },
+  },
   email: {
     required: "Email is required",
     pattern: {
@@ -40,6 +56,11 @@ const validationSchema = {
 
   name: {
     required: "Name is required",
+    pattern: {
+      value: /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$/,
+      message:
+        "Name cannot start or end with spaces and cannot contain only spaces, numbers, or symbols",
+    },
   },
 
   message: {
@@ -47,14 +68,6 @@ const validationSchema = {
     maxLength: {
       value: 500,
       message: "Message must not exceed 500 characters",
-    },
-  },
-  last_name: {
-    required: "Last Name is required",
-    pattern: {
-      value: /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$/,
-      message:
-        "Last Name cannot start or end with spaces and cannot contain only spaces, numbers, or symbols",
     },
   },
   passport_number: {
