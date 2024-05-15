@@ -38,7 +38,7 @@ const ApplicationEditPage = async ({ params }: any) => {
                   </div>
                   <div>
                     <p className="text-base text-textColor font-bold">
-                      ID : APL-71026555
+                      Edit Application
                     </p>
                     <p className="text-xs text-black/60">
                       Edit your application here

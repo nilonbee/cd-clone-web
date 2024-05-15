@@ -23,10 +23,10 @@ const ViewApplication = ({ params }: any) => {
                   </div>
                   <div>
                     <p className="text-base text-textColor font-bold">
-                      ID : APL-71026555
+                      View Application
                     </p>
                     <p className="text-xs text-black/60">
-                      View your application here
+                      View application details here
                     </p>
                   </div>
                 </div>

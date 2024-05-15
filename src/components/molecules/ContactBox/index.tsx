@@ -1,7 +1,11 @@
-import { IListItem } from "@/types/contactUs";
+import React from "react";
 
-export const ContactBox = ({ label, value, icon }: IListItem) => {
-
+interface IListItemProps {
+  label: string;
+  value: string;
+  icon: JSX.Element;
+}
+export const ContactBox = ({ label, value, icon }: IListItemProps) => {
   return (
     <div className="bg-lightBlue bg-opacity-40  p-6 rounded shadow border border-boxBorder">
       <div className="flex mb-3 gap-2 text-center">
