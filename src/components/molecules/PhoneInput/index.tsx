@@ -25,7 +25,6 @@ export const PhoneInputField = ({
   onChange,
   error,
   placeholder,
-  customStyle,
   backgroundColor,
 }: Props) => {
   const errorCSS = error
@@ -45,6 +44,7 @@ export const PhoneInputField = ({
       <PhoneInput
         placeholder={placeholder ? placeholder : ""}
         defaultCountry="lk"
+        forceDialCode
         onChange={(value: string) => onChange(value)}
         style={
           {

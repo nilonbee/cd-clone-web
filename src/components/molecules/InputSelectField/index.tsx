@@ -41,7 +41,7 @@ export const InputSelectField = ({
       <select
         className={`${backgroundColor ? `bg-[${backgroundColor}]` : "bg-white"} block w-full focus:shadow-md rounded-md py-3 pl-4 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none text-sm leading-6 ${customStyle} ${errorCSS}`}
         id={id}
-        required={required}
+        // required={required}
         {...rest}
       >
         <option value="" disabled>
