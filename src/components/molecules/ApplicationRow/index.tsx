@@ -5,15 +5,12 @@ import {
   TimeIcon,
   UniversityIcon,
 } from "@/components/atoms/Icons";
+import { IApplication } from "@/types/application";
 import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
-import React from "react";
-import { FaRegEye } from "react-icons/fa";
-import { FaPencilAlt } from "react-icons/fa";
-import { ImBin } from "react-icons/im";
-import { FaHistory } from "react-icons/fa";
-import { IApplication } from "@/types/application";
 import { useRouter } from "next/navigation";
+import { FaHistory, FaPencilAlt, FaRegEye } from "react-icons/fa";
+import { ImBin } from "react-icons/im";
 
 export const ApplicationRow = ({
   enquiry_id,
@@ -26,6 +23,7 @@ export const ApplicationRow = ({
   status,
   setSelectedId,
   setIsOpen,
+  setIsDeleteOpen,
 }: IApplication) => {
   const router = useRouter();
 
@@ -71,7 +69,11 @@ export const ApplicationRow = ({
         </div>
       </div>
       <div className="flex gap-5 items-center">
-        <div className="bg-red text-white py-1 px-2 rounded-md text-xs shadow uppercase">
+        <div
+          className={
+            "bg-teal-500 text-white py-1 px-4 rounded-full text-xs shadow uppercase"
+          }
+        >
           {status}
         </div>
         <div className="flex gap-2">
@@ -89,7 +91,15 @@ export const ApplicationRow = ({
               }
             />
           )}
-          {status !== "Deleted" && <IconButton icon={<ImBin />} />}
+          {status !== "Deleted" && (
+            <IconButton
+              icon={<ImBin />}
+              onClickHandler={() => {
+                setSelectedId(id);
+                setIsDeleteOpen(true);
+              }}
+            />
+          )}
           <IconButton
             icon={<FaHistory />}
             onClickHandler={() => {
