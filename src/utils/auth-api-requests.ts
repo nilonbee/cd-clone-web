@@ -1,7 +1,7 @@
 import { IApplication, IApplicationRequest } from "@/types/application";
 import { fetchData } from "./fetchData";
 import { BASE_URL } from "./config";
-import { IChangePasswordRequest } from "@/types/users";
+import { IChangePasswordRequest, IUserData } from "@/types/users";
 
 type filterType = {
   status?: string;
@@ -104,6 +104,28 @@ export async function updateEnquiry(data: any) {
 export async function deleteEnquiry(id: string) {
   try {
     const data = await fetchData(`/v1/admin/application/delete/${id}`, "GET");
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch applicants:", error);
+  }
+}
+
+export async function getUserByID(id: number) {
+  try {
+    const data = await fetchData(`/v1/admin/user-by-id/${id}`, "GET");
+    return data.data;
+  } catch (error) {
+    console.error("Failed to fetch applicants:", error);
+  }
+}
+
+export async function updateUser(userData: IUserData) {
+  try {
+    const data = await fetchData(
+      `/v1/admin/user/edit-profile`,
+      "POST",
+      JSON.stringify(userData),
+    );
     return data;
   } catch (error) {
     console.error("Failed to fetch applicants:", error);

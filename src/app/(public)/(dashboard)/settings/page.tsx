@@ -1,5 +1,4 @@
 import React from "react";
-
 import { ContainerLayout, Hero, InnerContainer } from "@/components/atoms";
 import { SettingsIcon } from "@/components/atoms/Icons";
 import { ChangePasswordForm } from "@/components/organisms/ChangePasswordForm";
