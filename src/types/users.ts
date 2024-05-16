@@ -1,21 +1,24 @@
 export type IUserData = {
   id: number;
-  full_name: string;
+  full_name?: string;
   first_name: string;
-  middle_name: string;
+  middle_name?: string;
   last_name: string;
   address: string;
   dob: string;
   email: string;
-  email_verified_at: number;
+  email_verified_at?: number;
   gender: string;
   img_url: string;
   marital_status: string;
   phone: string;
-  role: string;
-  role_id: number;
-  status: number;
-  created_at: string;
+  role?: string;
+  role_id?: number;
+  status?: number;
+  created_at?: string;
+  first_language: string;
+  country_citizen: string;
+  passport_number: string;
 };
 
 export interface IResetPasswordRequest {

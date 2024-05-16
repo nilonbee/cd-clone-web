@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { fileUploader } from "@/utils/auth-api-requests";
 import { rootImagePath } from "@/utils/rootImagePath";
@@ -87,14 +88,22 @@ export const MediaUpload = ({
           >
             <AiOutlineDelete size={20} />
           </div>
-          <Iframe
-            url={rootImagePath("uploads/local/unknown_20240502213353.pdf")}
-            className="w-full h-full rounded-md"
-            display="initial"
-            scrolling="no"
-            position="relative"
-            overflow="hidden"
-          />
+          {type === "image" ? (
+            <img
+              className="w-full h-full rounded-md"
+              src={rootImagePath(upFile)}
+              alt="up_image"
+            />
+          ) : (
+            <Iframe
+              url={rootImagePath(upFile)}
+              className="w-full h-full rounded-md"
+              display="initial"
+              scrolling="no"
+              position="relative"
+              overflow="hidden"
+            />
+          )}
         </div>
       )}
     </div>

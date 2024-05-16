@@ -86,11 +86,19 @@ export const StepFour = ({ allCountries }: { allCountries: ICountry[] }) => {
       <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex gap-5">
           <div className="w-1/2">
-            <InputTextArea
-              label="Address"
-              placeholder="Enter Address"
-              id="address"
+            <Controller
               name="address"
+              control={control}
+              render={({ field }) => (
+                <div>
+                  <InputTextArea
+                    label="Address"
+                    placeholder="Enter Address"
+                    id="address"
+                    {...field}
+                  />
+                </div>
+              )}
             />
           </div>
           <div className="w-1/2">

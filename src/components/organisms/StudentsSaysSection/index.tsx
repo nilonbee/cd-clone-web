@@ -5,6 +5,7 @@ import {
   SectionHeader,
 } from "@/components/atoms";
 import { GridWrapperTwo } from "@/components/molecules";
+import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
 import { useState } from "react";
 import ReactPlayer from "react-player/youtube";
@@ -14,23 +15,22 @@ export const StudentsSaysSection = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const uniImages = [
     {
-      imgUri: "/images/students/stu1.png",
+      imgUri: rootImagePath("/feedback/feedback1.jpg"),
       videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
     {
-      imgUri: "/images/students/stu2.png",
+      imgUri: rootImagePath("/feedback/feedback2.jpg"),
       videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
     {
-      imgUri: "/images/students/stu3.png",
+      imgUri: rootImagePath("/feedback/feedback3.jpg"),
       videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
     {
-      imgUri: "/images/students/stu4.png",
+      imgUri: rootImagePath("/feedback/feedback4.jpg"),
       videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
     },
   ];
-
   return (
     <InnerContainer>
       <div className="mt-20 mb-20">

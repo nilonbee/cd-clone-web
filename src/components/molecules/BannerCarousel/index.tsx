@@ -4,6 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { rootImagePath } from "@/utils/rootImagePath";
 
 export const BannerCarousel = () => {
   const settings = {
@@ -17,20 +18,17 @@ export const BannerCarousel = () => {
   };
   return (
     <div className="slider-container w-full">
-      <Slider
-        {...settings}
-        className="w-full object-cover overflow-hidden"
-      >
+      <Slider {...settings} className="w-full object-cover overflow-hidden">
         <div>
           <img
-            src="/images/slider/slider-1.png"
+            src={rootImagePath("/Slider/web%20images-04.jpg")}
             alt="banner1"
             className="w-full"
           />
         </div>
         <div>
           <img
-            src="/images/slider/slider-2.png"
+            src={rootImagePath("/Slider/web%20images-03.jpg")}
             alt="banner2"
             className="w-full"
           />
