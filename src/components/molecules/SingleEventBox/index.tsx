@@ -1,10 +1,7 @@
 import Image from "next/image";
 import parse from "html-react-parser";
-import Link from "next/link";
 import { SingleEventDetailBox } from "@/components/molecules";
 import { IMapLocation, IDateLocation } from "@/types/events";
-
-import { MainButton } from "@/components/atoms";
 import {
   CarbonLocationIcon,
   FormKitDateTimeIcon,
@@ -26,7 +23,6 @@ export const SingleEventBox = ({
   image,
   dates,
   mapDetails,
-  application_url,
   description,
 }: SingleEventBoxProps) => {
   return (
@@ -65,14 +61,14 @@ export const SingleEventBox = ({
             icon={<FormKitDateTimeIcon />}
           />
         </div>
-        <Link href={application_url}>
+        {/* <Link href={application_url}>
           <MainButton
             label="Register Now"
             btnStyle="Primary"
             btnSize="Medium"
             customStyle="w-[200px] mt-12"
           />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
