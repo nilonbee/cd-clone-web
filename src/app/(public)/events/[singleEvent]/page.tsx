@@ -54,6 +54,16 @@ const SingleEventPage = async ({ params }: any) => {
           <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded-md border border-boxBorder">
             <GMap mapData={mapDetails} />
           </div>
+          <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded-md border border-boxBorder">
+            <iframe
+              src={application_url}
+              width="100%"
+              height="800px"
+              title="Application"
+              id="application_form"
+              style={{ border: "none" }}
+            ></iframe>
+          </div>
         </InnerContainer>
       </ContainerLayout>
     </>
