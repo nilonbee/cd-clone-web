@@ -35,7 +35,7 @@ export const UniversitySection = () => {
       <div className="pt-20 pb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="OUR UNIVERSITY PARTNERS "
+            title="Our University Partners"
             description="Choose your preferred university from over 250 partner universities"
           />
 

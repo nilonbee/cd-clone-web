@@ -36,7 +36,7 @@ export const StudentsSaysSection = () => {
       <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative w-full">
           <SectionHeader
-            title="WHAT OUR STUDENTS SAY"
+            title="What Our Students Say"
             description="Inspiring Stories, Empowering Journeys!"
           />
           <GridWrapperTwo>

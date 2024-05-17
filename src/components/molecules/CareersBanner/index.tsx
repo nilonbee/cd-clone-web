@@ -10,7 +10,7 @@ export const CareersBanner = () => {
           <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-4 w-full">
             <div className="flex flex-col gap-4 justify-center lg:w-3/4 md:w-full sm:w-full py-10">
               <h1 className="text-3xl font-bold text-primary mb-2">
-                Careers at Campus Direct{" "}
+                Join Our Team{" "}
               </h1>
               <p className="text-textColor text-sm mb-2">
                 Join Campus Direct and embark on a fulfilling career in the

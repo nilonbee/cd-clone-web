@@ -18,7 +18,7 @@ export const CoursesSection = async () => {
       <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="TRENDING COURSES"
+            title="Trending Courses"
             description="Choose a course that will take you to your dream"
           />
           <div className="mt-10 w-full">
