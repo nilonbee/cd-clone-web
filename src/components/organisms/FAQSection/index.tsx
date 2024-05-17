@@ -54,8 +54,8 @@ export const FAQSection: React.FC = () => {
       <div className="pt-20 pb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Frequently Asked Questions"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            title="FREQUENTLY ASKED QUESTIONS"
+            description="Navigate your path with clarity and confidence "
           />
 
           <div className="flex flex-col gap-3 justify-center items-center mt-10 w-full">

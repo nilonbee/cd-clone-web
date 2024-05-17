@@ -34,8 +34,8 @@ export const CountrySection = () => {
       <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Which Country Do You Prefer?"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            title="CHOOSE YOUR DREAM DESTINATION"
+            description="Choose from a range of destinations based on your preference."
           />
 
           <GridWrapperTwo>

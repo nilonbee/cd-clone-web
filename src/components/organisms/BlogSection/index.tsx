@@ -50,8 +50,8 @@ export const BlogSection = ({ seeMoreBtn = true }: BlogSectionProps) => {
       <div className="pt-20 pb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Read Our Latest Blogs"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            title="READ OUR LATEST BLOGS"
+            description="Our blogs will help you with everything you want to know about studying abroad"
           />
           <div className="mt-10">
             <GridWrapper>

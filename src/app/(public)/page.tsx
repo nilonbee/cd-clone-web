@@ -24,7 +24,7 @@ export default function Home() {
               FIND YOUR PERFECT COURSE
             </h1>
             <h4 className="text-center lg:text-1xl md:text-base sm:text-sm xs:text-xs text-white">
-              We can help you apply and study at top Universities
+              Your Journey to the Perfect Course Starts Here!{" "}
             </h4>
           </div>
         </ContainerLayout>

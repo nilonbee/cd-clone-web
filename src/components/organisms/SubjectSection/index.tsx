@@ -14,8 +14,8 @@ export const SubjectSection = async () => {
       <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Subjects You Can Study"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            title="SUBJECTS TO CHOOSE FROM"
+            description="Discover a variety of subjects tailored to your interests and ambitions"
           />
           <div className="mt-10 w-full">
             <GridWrapper>

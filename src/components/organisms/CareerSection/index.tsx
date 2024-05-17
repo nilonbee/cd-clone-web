@@ -46,7 +46,7 @@ export const CareerSection = ({
   return (
     <div className="my-14">
       <h1 className="font-semibold text-3xl md:text-2xl sm:text-2xl xs:text-xl text-textColor text-center">
-        Our Job Openings
+        Our Current Vacancies{" "}
       </h1>
       <div className="flex flex-row justify-center items-center mt-4 gap-4">
         <MainButton

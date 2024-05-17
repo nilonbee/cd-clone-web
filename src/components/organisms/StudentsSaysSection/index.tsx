@@ -36,8 +36,8 @@ export const StudentsSaysSection = () => {
       <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative w-full">
           <SectionHeader
-            title="What Our Students Says"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            title="WHAT OUR STUDENTS SAY"
+            description="Inspiring Stories, Empowering Journeys!"
           />
           <GridWrapperTwo>
             {uniImages.map((item, index) => (

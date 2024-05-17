@@ -8,21 +8,21 @@ export const AddressSection = () => {
       branch: "Kandy Branch - Sri Lanka",
       address: "749/B/1, William Gopallawa Mawatha Kandy",
       phone: "+94 77 234 0055",
-      email: "kandy@cduk.lk",
+      email: "info@cduk.lk",
     },
     {
       branch: "Dubai Branch – UAE",
       address:
         "Bur-Dubai, Business Tower - 1312 Victor Business Center BurJuman - Al Mankhool - Dubai - United Arab Emirates",
       phone: "+971 58 546 9555",
-      email: "dubai@campusdirect.io",
+      email: "info@cduk.lk",
     },
     {
       branch: "London Branch – UK",
       address:
         "B71-75 Shelton Street Convent Garden London WC2H9JQ, United Kingdom",
       phone: "+971 58 546 9555",
-      email: "dubai@campusdirect.io",
+      email: "london@cduk.lk",
     },
   ];
   return (
