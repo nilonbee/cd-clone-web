@@ -34,7 +34,11 @@ export const BannerCarousel = () => {
           />
         </div>
         <div>
-          <img src="/images/slider/slider-3.png" alt="banner3" />
+          <img
+            src={rootImagePath("/Slider/web%20images-01.jpg")}
+            alt="banner3"
+            className="w-full"
+          />
         </div>
         <div>
           <img src="/images/slider/slider-4.png" alt="banner4" />
