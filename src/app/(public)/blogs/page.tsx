@@ -161,8 +161,8 @@ const BlogsPage = () => {
         <div className="pt-12 pb-12">
           <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
             <SectionHeader
-              title="Read Our Latest Blogs"
-              description="Welcome to Campus Direct."
+              title="READ OUR LATEST BLOGS"
+              description="Our blogs will help you with everything you want to know about studying abroad"
             />
           </div>
         </div>

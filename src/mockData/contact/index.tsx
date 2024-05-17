@@ -4,7 +4,8 @@ export const contactInfo = {
   LK: {
     phoneNumber: "+94 77 900 5555",
     email: "info@cduk.lk",
-    address: "Campus Direct Head Office Sri Lanka 36B, Gower St, Colombo 05",
+    address:
+      "Campus Direct – Head Office, 36 B, Gower Street, Colombo 05, Sri Lanka",
     openingTimes: [
       {
         branch: "Colombo Branch",
@@ -47,7 +48,7 @@ export const contactInfo = {
 
   AE: {
     phoneNumber: "+971 58 546 9555",
-    email: "dubai@campusdirect.io",
+    email: "info@cduk.lk",
     address:
       "Bur-Dubai, Business Tower - 1312 Victor Business Center BurJuman - Al Mankhool - Dubai - United Arab Emirates",
     openingTimes: [
@@ -74,7 +75,7 @@ export const contactInfo = {
 
   GB: {
     phoneNumber: "+971 58 546 9555",
-    email: "uk@campusdirect.io",
+    email: "london@cduk.lk",
     address:
       "B71-75 Shelton Street Convent Garden London WC2H9JQ, United Kingdom",
     openingTimes: [

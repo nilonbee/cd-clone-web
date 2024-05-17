@@ -21,10 +21,10 @@ export const CareersBanner = () => {
               <p className="text-textColor text-sm mb-2">
                 As part of our team, you will have the opportunity to contribute
                 to the success stories of students, work in a collaborative
-                environment, continuously learn and grow, and be part of a
+                environment, continuously learn and grow and be part of a
                 vibrant and student-centric culture. Take the next step in your
                 career journey and explore the exciting career opportunities
-                available at Campus Direct. Current Job Opportunities:
+                available at Campus Direct.
               </p>
             </div>
             <div className="flex justify-end lg:w-1/4 md:w-full sm:w-full lg:block md:hidden sm:hidden xs:hidden">

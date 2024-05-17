@@ -35,18 +35,17 @@ export const UniversitySection = () => {
       <div className="pt-20 pb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Universities We Offer"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            title="OUR UNIVERSITY PARTNERS "
+            description="Choose your preferred university from over 250 partner universities"
           />
 
           <GridWrapperTwo>
             {uniImages.map((item, index) => (
-              <div className="w-full h-[150px] sm:h-[100px] xs:h-[80px]" key={index} >
-                <img
-                  src={item.imgUri}
-                  alt="uni"
-                  className="object-content"
-                />
+              <div
+                className="w-full h-[150px] sm:h-[100px] xs:h-[80px]"
+                key={index}
+              >
+                <img src={item.imgUri} alt="uni" className="object-content" />
               </div>
             ))}
           </GridWrapperTwo>

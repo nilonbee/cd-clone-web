@@ -45,8 +45,8 @@ export const ContactSection = () => {
       <div className="pt-20 pb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Interested? Let's talk!"
-            description="Send us a message with what we can help you."
+            title="INTERESTED? LET’S TALK"
+            description="Reach out to us so that we can help you with the right information."
           />
           <form
             className="w-full mt-10 lg:px-20 md:px-0"

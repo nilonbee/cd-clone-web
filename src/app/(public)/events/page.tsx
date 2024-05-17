@@ -18,7 +18,7 @@ const EventsPage = async () => {
         <div className="my-12">
           <SectionHeader
             title="Events"
-            description="Campus Direct is passionate about empowering students"
+            description="Providing you with information and opportunities."
           />
         </div>
         <InnerContainer>
