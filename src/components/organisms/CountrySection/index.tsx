@@ -34,7 +34,7 @@ export const CountrySection = () => {
       <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="CHOOSE YOUR DREAM DESTINATION"
+            title="Choose Your Dream Destination"
             description="Choose from a range of destinations based on your preference."
           />
 

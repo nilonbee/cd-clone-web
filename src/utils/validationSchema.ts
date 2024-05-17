@@ -45,6 +45,11 @@ const validationSchema = {
 
   phone: {
     required: "Phone Number is required",
+    pattern: {
+      value: /^\+?[1-9]\d{7,14}$/,
+      message:
+        "Phone number must be a valid Phone Number with a minimum of 8 digits",
+    },
   },
   intake: {
     required: "Intake is Required",

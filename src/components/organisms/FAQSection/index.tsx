@@ -54,7 +54,7 @@ export const FAQSection: React.FC = () => {
       <div className="pt-20 pb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="FREQUENTLY ASKED QUESTIONS"
+            title="Frequently Asked Questions"
             description="Navigate your path with clarity and confidence "
           />
 
