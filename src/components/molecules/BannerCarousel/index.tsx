@@ -40,6 +40,20 @@ export const BannerCarousel = () => {
             className="w-full"
           />
         </div>
+        <div>
+          <img
+            src={rootImagePath("/Slider/slider04.jpg")}
+            alt="banner4"
+            className="w-full"
+          />
+        </div>
+        <div>
+          <img
+            src={rootImagePath("/Slider/slider05.jpg")}
+            alt="banner5"
+            className="w-full"
+          />
+        </div>
       </Slider>
     </div>
   );

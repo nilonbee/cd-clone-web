@@ -12,7 +12,7 @@ export const AboutParagraph: React.FC<AboutParagraphTypes> = ({
   return (
     <article className="w-full mb-5 flex flex-row justify-center items-center md:flex-row sm:flex-col xs:flex-col gap-6">
       <div>
-        <div className="p-5 flex flex-col gap-2.5 items-start relative sm:w-[350px] xs:w-full bg-[#f8f8f8] rounded shadow border border-boxBorder">
+        <div className="p-4 flex flex-col gap-2.5 items-start relative sm:w-[350px] xs:w-full bg-[#f8f8f8] rounded shadow border border-boxBorder">
           <img
             src={image}
             className="w-full h-full bg-[#d9d9d9] bg-cover rounded"

@@ -8,11 +8,12 @@ import { AboutParagraph, PurposeBox } from "@/components/molecules";
 import React from "react";
 import { PeopleIcon, TargetIcon, LightIcon } from "@components/atoms/Icons";
 import { InterestedSection } from "@/components/organisms";
+import { rootImagePath } from "@/utils/rootImagePath";
 
 const articles = [
   {
     id: 1,
-    image: "/images/about/about-1.png",
+    image: rootImagePath("/about-us/about-us1.jpg"),
     description: [
       "Welcome to Campus Direct, your leading career guidance, counseling and student placement service center. With over 16 years of industry experience and a proud legacy of providing world-class educational consultancy, we have been instrumental in guiding countless students towards successful placements in internationally recognized universities and institutions across the UK, USA, Canada, Australia, New Zealand, Germany, Singapore and Malaysia. We have offices conveniently located in Sri Lanka (Colombo and Kandy), United Arab Emirates (Dubai) and the United Kingdom (London), allowing us to provide personalized assistance to students from diverse regions.",
       "At Campus Direct, we understand the importance of university applications and the significance they hold in shaping students' futures. Our experienced educational consultants are dedicated to assisting and guiding students at every step of their journey. We provide quality advice and personalized guidance ensuring that each student receives comprehensive support throughout the application process.",
@@ -20,7 +21,7 @@ const articles = [
   },
   {
     id: 2,
-    image: "/images/about/about-2.png",
+    image: rootImagePath("/about-us/about-us2.jpg"),
     description: [
       "Our team's expertise is backed by extensive knowledge gained through comprehensive training programs conducted by esteemed institutions. These include the UK Agent and Counselor Training Program conducted by the British Council as well as training programs provided by ICEF, partner universities and foreign high commissions. This training ensures that our consultants stay updated with the latest industry developments, university requirements and visa processes, equipping them with the necessary skills to provide reliable guidance to our students.",
       "As a recognized center for overseas educational consultancy, we are frequently visited by institutions for spot admissions and information sessions. This provides students with unique opportunities to interact with university representatives and gain valuable insights into their desired programs.",
@@ -28,7 +29,7 @@ const articles = [
   },
   {
     id: 3,
-    image: "/images/about/about-3.png",
+    image: rootImagePath("/about-us/about-us3.jpg"),
     description: [
       "Our counseling services encompass undergraduate and postgraduate studies, covering a wide range of academic disciplines. We provide detailed overviews of available courses, tuition fees specific to the selected program, guidance on applying for scholarships, advice on English language requirements and prerequisite exams, as well as comprehensive visa guidance.",
       "As an ICEF Agency Status (IAS) accredited center and ISO 9001:2015 certified institution, we assure you of our unwavering commitment to excellence in educational consultancy. Our recognized status and certification signify our adherence to rigorous quality standards and ethical practices. With our proven expertise and dedication we are here to support you in achieving your academic aspirations and paving the way for a successful future.",
