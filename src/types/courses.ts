@@ -38,7 +38,7 @@ export interface ICourseRequest {
   limit?: number;
   max_fee?: number;
   min_fee?: number;
-  country_id?: string;
+  country_id?: number;
   country_name?: string;
   course_level_id?: number;
   course_level_name?: string;
