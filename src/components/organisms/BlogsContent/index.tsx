@@ -1,9 +1,9 @@
 'use client'
+import React, { useEffect, useState } from 'react';
 import { InnerContainer, MainButton } from '@/components/atoms'
-import { BlogPost, GridWrapper, Pagination } from '@/components/molecules'
+import { BlogPost, GridWrapper } from '@/components/molecules'
 import { IBlog, IBlogResponse } from '@/types/blogs'
 import { getBlogs } from '@/utils/api-requests';
-import React, { useEffect, useState } from 'react';
 
 type FilterDataType = {
     page: number;
@@ -34,8 +34,6 @@ const Blogs: React.FC<BlogsPropTypes> = ({ blogsData }) => {
         }
     }, [filterData]);
 
-
-    console.log(filterData, tempBlogsData, "TemlBlogDATA");
     return (
         <InnerContainer>
             <div className="mb-12">
