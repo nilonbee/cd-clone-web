@@ -65,6 +65,12 @@ export const SwitchSteps = ({
     // eslint-disable-next-line
   }, [id]);
 
+  useEffect(() => {
+    if (window !== undefined) {
+      window.scrollTo(0, 0);
+    }
+  }, [currentStep]);
+
   return (
     <div className="w-full bg-white flex p-5 rounded-md shadow-md">
       {currentStep === 1 && (

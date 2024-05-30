@@ -37,41 +37,41 @@ export const StepFive = () => {
       <p className="text-sm text-textColor font-semibold mb-5">
         Education Details
       </p>
-      <div className="flex gap-4">
-        <div className="w-[250px]">
-          <div className="flex gap-1 flex-col">
+      <div className="flex gap-4 xs:flex-col sm:flex-col md:flex-row">
+        <div className="xs:w-full sm:w-full md:w-[250px]">
+          <div className="flex gap-1 xs:flex-row sm:flex-row md:flex-col flex-wrap">
             <div
-              className={`p-2  rounded-full text-white text-center cursor-pointer ${openTab == 1 ? "bg-primary" : "bg-gray/50"} hover:bg-primary transition-all duration-300 ease-in-out`}
+              className={`p-2 px-4 rounded-full text-white text-center cursor-pointer ${openTab == 1 ? "bg-primary" : "bg-gray/50"} hover:bg-primary transition-all duration-300 ease-in-out `}
               onClick={() => setOpenTab(1)}
             >
               <p className="text-sm">OL Details</p>
             </div>
             <div
-              className={`p-2  rounded-full text-white text-center cursor-pointer ${openTab == 2 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
+              className={`p-2 px-4 rounded-full text-white text-center cursor-pointer ${openTab == 2 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
               onClick={() => setOpenTab(2)}
             >
               <p className="text-sm">AL Details</p>
             </div>
             <div
-              className={`p-2  rounded-full text-white text-center cursor-pointer ${openTab == 3 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
+              className={`p-2 px-4 rounded-full text-white text-center cursor-pointer ${openTab == 3 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
               onClick={() => setOpenTab(3)}
             >
               <p className="text-sm">Diploma Details</p>
             </div>
             <div
-              className={`p-2  rounded-full text-white text-center cursor-pointer ${openTab == 4 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
+              className={`p-2 px-4 rounded-full text-white text-center cursor-pointer ${openTab == 4 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
               onClick={() => setOpenTab(4)}
             >
               <p className="text-sm">Under-Graduate Details</p>
             </div>
             <div
-              className={`p-2  rounded-full text-white text-center cursor-pointer ${openTab == 5 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
+              className={`p-2 px-4 rounded-full text-white text-center cursor-pointer ${openTab == 5 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
               onClick={() => setOpenTab(5)}
             >
               <p className="text-sm">Post-Graduate Details</p>
             </div>
             <div
-              className={`p-2  rounded-full text-white text-center cursor-pointer ${openTab == 6 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
+              className={`p-2 px-4 rounded-full text-white text-center cursor-pointer ${openTab == 6 ? "bg-primary" : "bg-gray/50"}  hover:bg-primary transition-all duration-300 ease-in-out`}
               onClick={() => setOpenTab(6)}
             >
               <p className="text-sm">PHD/Doctorate Details</p>

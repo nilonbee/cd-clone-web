@@ -123,7 +123,7 @@ export const ProfileDetails = ({
   };
 
   return (
-    <div className="w-3/4 bg-white p-5 rounded-md shadow-md">
+    <div className="xs:w-full sm:w-full md:w-3/4 bg-white p-5 rounded-md shadow-md">
       <p className="text-sm text-textColor font-semibold">Profile Details</p>
       <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex gap-5">

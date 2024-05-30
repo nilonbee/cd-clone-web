@@ -41,7 +41,6 @@ export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
     formState: { errors },
   } = useForm<FormValues>();
   const [isOpen, setIsOpen] = useState(false);
-
   const [loading, setLoading] = useState(false);
 
   const handleNavigate = () => {

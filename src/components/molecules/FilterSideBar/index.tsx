@@ -5,8 +5,10 @@ import { IIntake } from "@/types/intakes";
 import { ISubject } from "@/types/subjects";
 import { FilterBtn, MultiSelectDropdown } from "..";
 import { SelectDropdown } from "../SelectDropDown";
-import { useCourseStore } from "@/store";
-import { useState } from "react";
+import { useCourseFilterStore } from "@/store";
+import { SORT_OPTIONS, TUITION_FEES } from "./filterData";
+import { useCallback, useEffect } from "react";
+import { getCourses } from "@/utils/api-requests";
 
 interface FilterSideBarProps {
   initCountries: ICountry[];
@@ -22,30 +24,57 @@ export const FilterSideBar = ({
   initIntakes,
 }: FilterSideBarProps) => {
   const {
-    locations,
-    programmingLevels,
-    subjects,
-    tuitionFees,
-    intakes,
-    durations,
-    setLocations,
-    setProgrammingLevels,
-    setSubjects,
-    setTuitionFees,
-    setIntakes,
-    setDurations,
-  } = useCourseStore();
-  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
-  const TUITION_FEES = [
-    "0 - 10,000 / year",
-    "10,000 - 20,000 / year",
-    "20,000 - 30,000 / year",
-    "over 30,000 / year",
-  ];
+    filter,
+    setFilter,
+    setLoadingCourseData,
+    setCourseData,
+    setTotalCourses,
+    setIsEmpty,
+    setSelectedCourseId,
+  } = useCourseFilterStore();
 
-  const DURATION = ["1-2 years", "2-3 years", "3-4 years", "4 years or above"];
+  const arrayFormatterForOptions = (array: any[], key: string) => {
+    return array.map((item: any) => {
+      return { value: item.id, label: item[key] };
+    });
+  };
 
-  const SORT_OPTIONS = ["A to Z", "Z to A", "Low to High", "High to Low"];
+  const submitFilters = () => {
+    setFilter({
+      country_ids: [],
+      course_level_ids: [],
+      subject_ids: [],
+      intake_month_ids: [],
+      min_max_tuition_fee: 0,
+      duration: 0,
+      sort_option: 0,
+    });
+  };
+
+  //  If I change the filter should call the backend API to get the data
+  const getFilteredData = useCallback(async () => {
+    console.log("Filter Changed =======");
+    setLoadingCourseData(true);
+    const courses = await getCourses({ ...filter });
+    if (courses?.data.length === 0) {
+      setLoadingCourseData(false);
+      setCourseData([]);
+      setTotalCourses(0);
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+      setCourseData(courses?.data || []);
+      setTotalCourses(courses?.total || 0);
+      setSelectedCourseId(courses?.data[0].id || "");
+      setLoadingCourseData(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
+  // Call the getFilteredData function when the filter changes not on the first render
+  useEffect(() => {
+    getFilteredData();
+  }, [filter, getFilteredData]);
 
   return (
     <div className="w-full">
@@ -53,116 +82,138 @@ export const FilterSideBar = ({
         <div className="flex gap-1 flex-wrap">
           <MultiSelectDropdown
             formFieldName={"Location"}
-            options={initCountries?.map((item: ICountry) => item.name) ?? []}
-            selectedOptions={locations}
-            setSelectedOptions={setLocations}
+            options={arrayFormatterForOptions(initCountries, "name")}
+            selectedOptions={filter.country_ids}
+            setSelectedOptions={(selectedOptions) =>
+              setFilter({ country_ids: selectedOptions })
+            }
           />
           <MultiSelectDropdown
             formFieldName={"Program Level"}
-            options={
-              initCourseLevels?.map((item: ICourseLevel) => item.level) ?? []
+            options={arrayFormatterForOptions(initCourseLevels, "level")}
+            selectedOptions={filter.course_level_ids}
+            setSelectedOptions={(selectedOptions) =>
+              setFilter({ course_level_ids: selectedOptions })
             }
-            selectedOptions={programmingLevels}
-            setSelectedOptions={setProgrammingLevels}
           />
           <MultiSelectDropdown
             formFieldName={"Subject"}
-            options={initSubjects?.map((item: ISubject) => item.name) ?? []}
-            selectedOptions={subjects}
-            setSelectedOptions={setSubjects}
-          />
-          <MultiSelectDropdown
-            formFieldName={"Tuition Fee (USD)"}
-            options={TUITION_FEES}
-            selectedOptions={tuitionFees}
-            setSelectedOptions={setTuitionFees}
+            options={arrayFormatterForOptions(initSubjects, "name")}
+            selectedOptions={filter.subject_ids}
+            setSelectedOptions={(selectedOptions) =>
+              setFilter({ subject_ids: selectedOptions })
+            }
           />
           <MultiSelectDropdown
             formFieldName={"Intakes"}
-            options={initIntakes?.map((item: IIntake) => item.months) ?? []}
-            selectedOptions={intakes}
-            setSelectedOptions={setIntakes}
+            options={arrayFormatterForOptions(initIntakes, "months")}
+            selectedOptions={filter.intake_month_ids}
+            setSelectedOptions={(selectedOptions) =>
+              setFilter({ intake_month_ids: selectedOptions })
+            }
           />
-          <MultiSelectDropdown
+          <SelectDropdown
+            formFieldName={"Tuition Fee (USD)"}
+            options={TUITION_FEES}
+            selectedOption={filter.min_max_tuition_fee}
+            setSelectedOption={(selectedOption) =>
+              setFilter({ min_max_tuition_fee: selectedOption })
+            }
+          />
+          {/* <SelectDropdown
             formFieldName={"Duration"}
             options={DURATION}
-            selectedOptions={durations}
-            setSelectedOptions={setDurations}
-          />
+            selectedOption={filter.duration}
+            setSelectedOption={(selectedOption) =>
+              setFilter({ duration: selectedOption })
+            }
+          /> */}
         </div>
         <div>
           <SelectDropdown
             formFieldName={"Sort"}
             options={SORT_OPTIONS}
-            onChange={(selectedCountries) => {
-              console.debug("selectedCountries", selectedCountries);
-            }}
+            selectedOption={filter.sort_option}
+            setSelectedOption={(selectedOption) =>
+              setFilter({ sort_option: selectedOption })
+            }
           />
         </div>
       </div>
       {/* Show Selected Filters */}
       <div className="flex gap-2 mt-4">
         <div className="flex gap-1">
-          {locations.map((location, index) => (
+          {filter.country_ids.map((item: number, index) => (
             <FilterBtn
               key={index}
-              name={location}
+              name={
+                initCountries.find((country) => country.id === item)?.name ?? ""
+              }
               handleRemove={() =>
-                setLocations(locations.filter((item) => item !== location))
+                setFilter({
+                  country_ids: filter.country_ids.filter(
+                    (countryId) => countryId !== item,
+                  ),
+                })
               }
             />
           ))}
-          {programmingLevels.map((programmingLevel, index) => (
+          {filter.course_level_ids.map((programmingLevel, index) => (
             <FilterBtn
               key={index}
-              name={programmingLevel}
+              name={
+                initCourseLevels.find(
+                  (courseLevel) => courseLevel.id === programmingLevel,
+                )?.level ?? ""
+              }
               handleRemove={() =>
-                setProgrammingLevels(
-                  programmingLevels.filter((item) => item !== programmingLevel),
-                )
+                setFilter({
+                  course_level_ids: filter.course_level_ids.filter(
+                    (courseLevel) => courseLevel !== programmingLevel,
+                  ),
+                })
               }
             />
           ))}
-          {subjects.map((subject, index) => (
+          {filter.subject_ids.map((subject, index) => (
             <FilterBtn
               key={index}
-              name={subject}
+              name={
+                initSubjects.find((subjectItem) => subjectItem.id === subject)
+                  ?.name ?? ""
+              }
               handleRemove={() =>
-                setSubjects(subjects.filter((item) => item !== subject))
+                setFilter({
+                  subject_ids: filter.subject_ids.filter(
+                    (subjectItem) => subjectItem !== subject,
+                  ),
+                })
               }
             />
           ))}
-          {tuitionFees.map((tuitionFee, index) => (
+          {filter.intake_month_ids.map((intake, index) => (
             <FilterBtn
               key={index}
-              name={tuitionFee}
-              handleRemove={() =>
-                setTuitionFees(
-                  tuitionFees.filter((item) => item !== tuitionFee),
-                )
+              name={
+                initIntakes.find((intakeItem) => intakeItem.id === intake)
+                  ?.months ?? ""
               }
-            />
-          ))}
-          {intakes.map((intake, index) => (
-            <FilterBtn
-              key={index}
-              name={intake}
               handleRemove={() =>
-                setIntakes(intakes.filter((item) => item !== intake))
-              }
-            />
-          ))}
-          {durations.map((duration, index) => (
-            <FilterBtn
-              key={index}
-              name={duration}
-              handleRemove={() =>
-                setDurations(durations.filter((item) => item !== duration))
+                setFilter({
+                  intake_month_ids: filter.intake_month_ids.filter(
+                    (intakeItem) => intakeItem !== intake,
+                  ),
+                })
               }
             />
           ))}
         </div>
-        {/* <button className="text-xs text-primary hover:underline">Clear All</button> */}
+        <button
+          className="text-xs text-primary hover:underline"
+          onClick={submitFilters}
+        >
+          Clear All
+        </button>
       </div>
     </div>
   );

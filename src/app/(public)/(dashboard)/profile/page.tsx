@@ -29,7 +29,7 @@ const ProfilePage = async () => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-4 w-full">
+            <div className="flex gap-4 w-full  xs:flex-col sm:flex-col md:flex-row">
               <ProfileImage />
               <ProfileDetails allCountries={allCountries} />
             </div>

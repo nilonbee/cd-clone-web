@@ -3,7 +3,7 @@ import { CourseSubHeader, Loading } from "@/components/atoms";
 import { CoursePriceBox, UniRow } from "@/components/molecules";
 import React, { useEffect, useState } from "react";
 import { ApplicationForm } from "../ApplicationForm";
-import { useCourseStore } from "@/store";
+import { useCourseFilterStore } from "@/store";
 import { getCourseById } from "@/utils/api-requests";
 import { ICourse } from "@/types/courses";
 import { IIntake } from "@/types/intakes";
@@ -13,7 +13,7 @@ type CourseViewModalProps = {
 };
 
 export const CourseViewModel = ({ intakes }: CourseViewModalProps) => {
-  const { selectedCourseId, isCourse } = useCourseStore();
+  const { selectedCourseId, isEmpty } = useCourseFilterStore();
   const [data, setData] = useState<ICourse>({} as ICourse);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -22,18 +22,26 @@ export const CourseViewModel = ({ intakes }: CourseViewModalProps) => {
     if (selectedCourseId === "") {
       setLoading(false);
     }
-    if (isCourse && selectedCourseId) {
+    if (!isEmpty && selectedCourseId) {
       getCourseById(selectedCourseId).then((response) => {
         setData(response as ICourse);
         setLoading(false);
       });
     }
-  }, [selectedCourseId, isCourse]);
+  }, [selectedCourseId, isEmpty]);
 
   if (selectedCourseId === "") {
     return (
       <div className="w-full h-[300px] flex justify-center items-center">
         <p className="text-textColor text-sm">Select a course to view</p>
+      </div>
+    );
+  }
+
+  if (isEmpty) {
+    return (
+      <div className="w-full h-[300px] flex justify-center items-center">
+        <p className="text-textColor text-sm">No course found</p>
       </div>
     );
   }

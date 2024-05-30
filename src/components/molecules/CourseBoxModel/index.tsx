@@ -1,7 +1,7 @@
 "use client";
 import { HatIcon, PinIcon, UniversityIcon } from "@/components/atoms/Icons";
 import { TimeIcon } from "@/components/atoms/Icons/TimeIcon";
-import { useCourseStore } from "@/store";
+import { useCourseFilterStore } from "@/store";
 import { ICourse } from "@/types/courses";
 import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
@@ -17,7 +17,7 @@ export const CourseBoxModel = ({
   currency,
   setOpenDrawer = () => {},
 }: ICourse) => {
-  const { setSelectedCourseId, selectedCourseId } = useCourseStore();
+  const { setSelectedCourseId, selectedCourseId } = useCourseFilterStore();
 
   const activeBox =
     selectedCourseId === id

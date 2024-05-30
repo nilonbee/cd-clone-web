@@ -1,16 +1,10 @@
 "use client";
 import { useApplicationStore } from "@/store";
-import React, { useEffect } from "react";
+import React from "react";
 import { GiCheckMark } from "react-icons/gi";
 
 export const Stepper = () => {
   const { currentStep } = useApplicationStore();
-
-  useEffect(() => {
-    if (window !== undefined) {
-      window.scrollTo(0, 0);
-    }
-  }, [currentStep]);
 
   const steps = [
     {
@@ -58,7 +52,7 @@ export const Stepper = () => {
   ];
 
   return (
-    <ol className=" overflow-hidden space-y-11">
+    <ol className="overflow-hidden space-y-11">
       {steps.map((step, index) => (
         <li
           key={index}

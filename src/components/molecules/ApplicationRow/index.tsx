@@ -28,12 +28,12 @@ export const ApplicationRow = ({
   const router = useRouter();
 
   return (
-    <div className="p-4 flex gap-5 items-center self-stretch relative w-full bg-[#eef7ff] rounded-md  border border-boxBorder justify-between fadeIn">
-      <div className="flex gap-5">
+    <div className="p-4 flex gap-5 items-center self-stretch relative w-full bg-[#eef7ff] rounded-md  border border-boxBorder justify-between fadeIn sm:flex-col xs:flex-col md:flex-row">
+      <div className="flex xs:gap-2 sm:gap-2 md:gap-5">
         <Image
           src={rootImagePath(uni_logo as string)}
           alt="university-logo"
-          className="h-[100px] w-[100px]  ring-1 ring-primary shadow-md object-contain rounded-md bg-white"
+          className="xs:h-[50px] xs:w-[50px] sm:h-[50px] sm:w-[50px] md:h-[100px] md:w-[100px] ring-1 ring-primary shadow-md object-contain rounded-md bg-white"
           width={200}
           height={200}
         />
@@ -68,7 +68,7 @@ export const ApplicationRow = ({
           </div>
         </div>
       </div>
-      <div className="flex gap-5 items-center">
+      <div className="flex gap-5 items-center sm:flex-col xs:flex-col md:flex-row">
         <div
           className={
             "bg-teal-500 text-white py-1 px-4 rounded-full text-xs shadow uppercase"

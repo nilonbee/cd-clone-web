@@ -3,8 +3,6 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
 interface Store {
-  selectedCourseId: string;
-  isCourse: boolean;
   locations: string[];
   programmingLevels: string[];
   subjects: string[];
@@ -14,8 +12,6 @@ interface Store {
 }
 
 interface Action {
-  setSelectedCourseId: (id: string) => void;
-  setIsCourse: (isCourse: boolean) => void;
   setLocations: (locations: string[]) => void;
   setProgrammingLevels: (programmingLevels: string[]) => void;
   setSubjects: (subjects: string[]) => void;
@@ -26,8 +22,6 @@ interface Action {
 
 export const useCourseStore = create<Store & Action>(
   devtools((set) => ({
-    selectedCourseId: "",
-    isCourse: false,
     locations: [],
     programmingLevels: [],
     subjects: [],
@@ -35,8 +29,6 @@ export const useCourseStore = create<Store & Action>(
     intakes: [],
     durations: [],
 
-    setSelectedCourseId: (id) => set({ selectedCourseId: id }),
-    setIsCourse: (isCourse) => set({ isCourse }),
     setLocations: (locations) => set({ locations }),
     setProgrammingLevels: (programmingLevels) => set({ programmingLevels }),
     setSubjects: (subjects) => set({ subjects }),
