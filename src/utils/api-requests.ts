@@ -325,6 +325,7 @@ export async function getCareers(country: string) {
   }
 }
 
+
 export async function getCareerBySlug(slug: string) {
   try {
     const res = await fetch(`${BASE_URL}/v2/admin/career/${slug}`, {
@@ -337,6 +338,41 @@ export async function getCareerBySlug(slug: string) {
     return career.data;
   } catch (error) {
     console.error("Failed to fetch career:", error);
+  }
+}
+
+export async function getBlogs(filterData: { page: number, pageSize: number }) {
+  const { pageSize, page } = filterData
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/blogs?pageSize=${pageSize ? pageSize : 10}&page=${page ? page : 1}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+    },
+    );
+    const blogs = await res.json();
+
+    return blogs.data;
+  } catch (error) {
+    console.error("Failed to fetch Blogs:", error);
+  }
+}
+
+export async function getBlogBySlug(slug: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/blog/${slug}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const blog = await res.json();
+    return blog.data;
+  } catch (error) {
+    console.error("Failed to fetch blog:", error);
   }
 }
 
