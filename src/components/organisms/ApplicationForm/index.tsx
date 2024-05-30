@@ -6,7 +6,7 @@ import validationSchema from "@/utils/validationSchema";
 
 import { useUserStore } from "@/store";
 import { ConfirmationDialog, MainButton } from "@/components/atoms";
-import { useCourseStore } from "@/store";
+import { useCourseFilterStore } from "@/store";
 import {
   InputField,
   InputSelectField,
@@ -34,7 +34,7 @@ type ApplicationFormProps = {
 export const ApplicationForm = ({ intakes }: ApplicationFormProps) => {
   const router = useRouter();
   const { authUser } = useUserStore();
-  const { selectedCourseId } = useCourseStore();
+  const { selectedCourseId } = useCourseFilterStore();
   const {
     control,
     handleSubmit,

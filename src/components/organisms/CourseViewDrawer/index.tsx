@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { clsx } from "clsx";
-import { useCourseStore } from "@/store";
+import { useCourseFilterStore } from "@/store";
 import { ICourse } from "@/types/courses";
 import { getCourseById } from "@/utils/api-requests";
 import { CoursePriceBox, UniRow } from "@/components/molecules";
@@ -43,7 +43,7 @@ export const CourseViewDrawer = ({
   side = "bottom",
   intakes,
 }: CourseViewDrawerProps) => {
-  const { selectedCourseId, isCourse } = useCourseStore();
+  const { selectedCourseId, isEmpty } = useCourseFilterStore();
   const [data, setData] = useState<ICourse>({} as ICourse);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -52,13 +52,13 @@ export const CourseViewDrawer = ({
     if (selectedCourseId === "") {
       setLoading(false);
     }
-    if (isCourse && selectedCourseId) {
+    if (!isEmpty && selectedCourseId) {
       getCourseById(selectedCourseId).then((response) => {
         setData(response as ICourse);
         setLoading(false);
       });
     }
-  }, [selectedCourseId, isCourse]);
+  }, [selectedCourseId, isEmpty]);
 
   return (
     <div
