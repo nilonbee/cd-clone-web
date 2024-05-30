@@ -119,8 +119,8 @@ const ALDetailsForm = () => {
   return (
     <div>
       <p className="text-sm text-textColor font-semibold mb-4">AL Details</p>
-      <div className="flex gap-5">
-        <div className="w-1/2">
+      <div className="flex gap-5 xs:flex-col sm:flex-col md:flex-row">
+        <div className="xs:w-full sm:w-full md:w-1/2">
           <Controller
             name="country_institution"
             control={control}
@@ -210,7 +210,7 @@ const ALDetailsForm = () => {
             )}
           />
         </div>
-        <div className="w-1/2">
+        <div className="xs:w-full sm:w-full md:w-1/2">
           <Controller
             name="name_institute"
             control={control}

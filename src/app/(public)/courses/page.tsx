@@ -20,8 +20,6 @@ import {
 const CoursePage = async () => {
   const filterData = {
     limit: 20,
-    max_fee: 0,
-    min_fee: 0,
     page: 1,
   };
   const initialCourseData = await getCourses(filterData);
@@ -57,6 +55,7 @@ const CoursePage = async () => {
         <div className="w-full flex md:flex-row  sm:flex-col my-10 gap-4 relative">
           <Courses
             initialCourseData={initialCourseData?.data ?? []}
+            initialTotalCourses={initialCourseData?.total || 0}
             intakes={intakes}
           />
           <div className="w-full md:block sm:hidden xs:hidden">

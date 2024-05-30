@@ -5,7 +5,7 @@ import {
   InnerContainer,
 } from "@/components/atoms";
 import { BriefcaseIcon } from "@/components/atoms/Icons";
-import { Stepper, SwitchSteps } from "@/components/molecules";
+import { DrawerStepper, Stepper, SwitchSteps } from "@/components/molecules";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
 import { IIntake, IIntakeYears } from "@/types/intakes";
@@ -52,11 +52,14 @@ const ApplicationEditPage = async ({ params }: any) => {
                   />
                 </div>
               </div>
-              <div className="w-full flex gap-4 mt-5">
-                <div className="py-4 rounded-md w-1/5">
+              <div className="w-full flex gap-4 mt-5 xs:flex-col sm:flex-col md:flex-col lg:flex-row">
+                <div className="w-full xs:block sm:block md:block lg:hidden">
+                  <DrawerStepper />
+                </div>
+                <div className="py-4 rounded-md xs:hidden sm:hidden md:hidden lg:block xl:block">
                   <Stepper />
                 </div>
-                <div className="w-4/5">
+                <div className="xs:w-full sm:w-full md:w-full lg:w-4/5">
                   <SwitchSteps
                     countries={countries}
                     courseLevels={courseLevels}

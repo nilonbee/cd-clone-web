@@ -7,7 +7,7 @@ export const ProfileImage = () => {
   const { user, setUser } = useUserStore();
   const [profileImage, setProfileImage] = useState(user?.img_url || "");
   return (
-    <div className="w-1/4 bg-white p-5 flex items-center justify-center rounded-md shadow-md">
+    <div className="xs:w-full sm:w-full md:w-1/4 bg-white p-5 flex items-center justify-center rounded-md shadow-md">
       <div className="flex items-center justify-center flex-col gap-1">
         <MediaUpload
           title={""}

@@ -53,7 +53,7 @@ export const TabsView = ({ id }: { id: string }) => {
   return (
     <React.Fragment>
       <div className="flex items-center">
-        <div className="mb-4 flex space-x-1 p-2 bg-white rounded-full shadow-inner border border-boxBorder">
+        <div className="mb-4 flex space-x-1 p-2 bg-white rounded-full shadow-inner border border-boxBorder flex-wrap">
           <button
             onClick={() => setOpenTab(1)}
             className={`py-1 px-4 text-sm font-semibold rounded-full focus:outline-none focus:shadow-outline-blue focus:shadow-md transition-all duration-300 ${openTab === 1 ? "bg-primary text-white" : ""}`}

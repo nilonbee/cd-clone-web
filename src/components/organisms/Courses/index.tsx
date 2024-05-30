@@ -1,8 +1,8 @@
 "use client";
-import { Loading, MainButton } from "@/components/atoms";
+import { LoadingSpinner, MainButton } from "@/components/atoms";
 import { CourseBoxModel } from "@/components/molecules";
-import { useCourseStore } from "@/store";
-import { ICourse, ICourseRequest } from "@/types/courses";
+import { useCourseFilterStore } from "@/store";
+import { ICourse } from "@/types/courses";
 import { getCourses } from "@/utils/api-requests";
 import { useEffect, useState } from "react";
 import { CourseViewDrawer } from "../CourseViewDrawer";
@@ -10,28 +10,39 @@ import { IIntake } from "@/types/intakes";
 
 export const Courses = ({
   initialCourseData,
+  initialTotalCourses,
   intakes,
 }: {
   initialCourseData: ICourse[];
+  initialTotalCourses: number;
   intakes: IIntake[];
 }) => {
-  const { setIsCourse, setSelectedCourseId } = useCourseStore();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState(false);
-
-  const [filterData, setFilterData] = useState<ICourseRequest>({
-    limit: 20,
-    max_fee: 0,
-    min_fee: 0,
-    page: 1,
-  });
-  const [courseData, setCourseData] = useState<ICourse[]>(initialCourseData);
-  const [loading, setLoading] = useState<boolean>(false);
+  const {
+    filter,
+    totalCourses,
+    courseData,
+    loadingCourseData,
+    isEmpty,
+    setFilter,
+    setCourseData,
+    setTotalCourses,
+    setIsEmpty,
+    setSelectedCourseId,
+  } = useCourseFilterStore();
+  const [loadingMore, setLoadingMore] = useState<boolean>(false);
 
   useEffect(() => {
     if (initialCourseData.length !== 0) {
+      setIsEmpty(false);
+      setCourseData(initialCourseData);
       setSelectedCourseId(initialCourseData[0].id || "");
-      setIsCourse(true);
+      setTotalCourses(initialTotalCourses);
+    } else {
+      setIsEmpty(true);
+      setCourseData([]);
+      setTotalCourses(0);
     }
     // eslint-disable-next-line
   }, [initialCourseData]);
@@ -51,17 +62,37 @@ export const Courses = ({
   });
 
   const loadMoreCourses = async () => {
-    setLoading(true);
-    const courses = await getCourses(filterData);
+    setLoadingMore(true);
+    const courses = await getCourses(filter);
     setCourseData([...courseData, ...(courses?.data ?? [])]);
-    setLoading(false);
+    setTotalCourses(courses?.total || 0);
+    setLoadingMore(false);
   };
+
+  if (loadingCourseData) {
+    return (
+      <div className="md:w-[400px] sm:w-full relative">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (isEmpty) {
+    return (
+      <div className="md:w-[400px] sm:w-full relative">
+        <div className="flex justify-center items-center">
+          <p className="text-sm text-center text-textColor">No courses found</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="md:w-[400px] sm:w-full relative">
       <p className="text-xs text-textColor mb-2">
-        <b>{courseData?.length} </b>courses found
+        <b>{totalCourses} </b>courses found
       </p>
+
       <div className="w-full sticky top-[100px] left-0 h-[1000px] overflow-y-auto">
         <div className="sm:grid sm:grid-cols-2 sm:gap-2 md:grid md:grid-cols-1 md:gap-2 fadeIn">
           {courseData?.map((item: ICourse) => (
@@ -80,22 +111,17 @@ export const Courses = ({
             </div>
           ))}
         </div>
-        {loading && (
-          <div className="flex justify-center mt-4">
-            <Loading />
-          </div>
-        )}
         {courseData?.length !== 0 && (
           <div className="flex justify-center my-4">
             <MainButton
               label="Load More"
               btnSize="Small"
               onClick={() => {
-                setFilterData({ ...filterData, page: filterData.page + 1 });
+                setFilter({ page: filter.page + 1 });
                 loadMoreCourses();
               }}
-              loading={loading}
-              disabled={loading}
+              loading={loadingMore}
+              disabled={loadingMore}
             />
           </div>
         )}
