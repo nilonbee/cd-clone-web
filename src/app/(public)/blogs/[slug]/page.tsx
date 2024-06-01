@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
+import parse from "html-react-parser";
+
 import {
   ContainerLayout,
   Hero,
@@ -5,9 +9,13 @@ import {
   SectionHeader,
 } from "@/components/atoms";
 import { BlogSection } from "@/components/organisms";
-import React from "react";
+import { getBlogBySlug } from "@/utils/api-requests";
+import { rootImagePath } from "@/utils/rootImagePath";
 
-const BlogSinglePage = () => {
+
+const BlogSinglePage = async ({ params }: any) => {
+  const blogData = await getBlogBySlug(params.slug);
+
   return (
     <>
       <Hero />
@@ -15,40 +23,28 @@ const BlogSinglePage = () => {
         <div className="pt-12 pb-12">
           <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
             <SectionHeader
-              title="Blog-post-title"
-              description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+              title={blogData.seo_title}
+              description={blogData.seo_description}
             />
           </div>
         </div>
         <InnerContainer>
-          <div className="mb-12">
-            <p className="text-justify text-gray-600 text-sm leading-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+          <div className="justify-center flex">
+            <img
+              src={rootImagePath(blogData.image_path)}
+              alt=""
+              className="object-contain rounded-sm flex w-[577px] h-[377px] mb-8"
+            />
           </div>
+          {/* <span className="font-semibold text-sm text-primary">{blogData.seo_keywords}</span> */}
+          <p className="text-justify text-gray-600 text-sm leading-6">
+            {parse(blogData.blog_description)}
+          </p>
         </InnerContainer>
         <BlogSection seeMoreBtn={false} />
       </ContainerLayout>
+
+
     </>
   );
 };
