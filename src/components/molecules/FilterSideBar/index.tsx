@@ -1,14 +1,16 @@
 "use client";
+import { useCourseFilterStore } from "@/store";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
 import { IIntake } from "@/types/intakes";
 import { ISubject } from "@/types/subjects";
+import { getCourses } from "@/utils/api-requests";
 import { FilterBtn, MultiSelectDropdown } from "..";
 import { SelectDropdown } from "../SelectDropDown";
-import { useCourseFilterStore } from "@/store";
 import { SORT_OPTIONS, TUITION_FEES } from "./filterData";
-import { useCallback, useEffect } from "react";
-import { getCourses } from "@/utils/api-requests";
+import { MainButton } from "@/components/atoms";
+import { useEffect, useState } from "react";
+import { arrayFormatterForOptions } from "@/utils/arrayFormatterForOptions";
 
 interface FilterSideBarProps {
   initCountries: ICountry[];
@@ -25,21 +27,20 @@ export const FilterSideBar = ({
 }: FilterSideBarProps) => {
   const {
     filter,
+    loadingCourseData,
+    refetch,
     setFilter,
     setLoadingCourseData,
     setCourseData,
     setTotalCourses,
     setIsEmpty,
     setSelectedCourseId,
+    setRefetch,
   } = useCourseFilterStore();
 
-  const arrayFormatterForOptions = (array: any[], key: string) => {
-    return array.map((item: any) => {
-      return { value: item.id, label: item[key] };
-    });
-  };
+  const [isClear, setIsClear] = useState<boolean>(false);
 
-  const submitFilters = () => {
+  const clearFilters = () => {
     setFilter({
       country_ids: [],
       course_level_ids: [],
@@ -49,12 +50,31 @@ export const FilterSideBar = ({
       duration: 0,
       sort_option: 0,
     });
+    setIsClear(true);
   };
 
-  //  If I change the filter should call the backend API to get the data
-  const getFilteredData = useCallback(async () => {
-    console.log("Filter Changed =======");
+  useEffect(() => {
+    if (isClear) {
+      getFilteredData();
+      setIsClear(false);
+    }
+    // eslint-disable-next-line
+  }, [isClear]);
+
+  useEffect(() => {
+    if (refetch) {
+      getFilteredData();
+    }
+    return () => {
+      setRefetch(false);
+    };
+    // eslint-disable-next-line
+  }, [refetch]);
+
+  const getFilteredData = async () => {
     setLoadingCourseData(true);
+    console.log("filter", filter);
+
     const courses = await getCourses({ ...filter });
     if (courses?.data.length === 0) {
       setLoadingCourseData(false);
@@ -68,13 +88,7 @@ export const FilterSideBar = ({
       setSelectedCourseId(courses?.data[0].id || "");
       setLoadingCourseData(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter]);
-
-  // Call the getFilteredData function when the filter changes not on the first render
-  useEffect(() => {
-    getFilteredData();
-  }, [filter, getFilteredData]);
+  };
 
   return (
     <div className="w-full">
@@ -84,9 +98,9 @@ export const FilterSideBar = ({
             formFieldName={"Location"}
             options={arrayFormatterForOptions(initCountries, "name")}
             selectedOptions={filter.country_ids}
-            setSelectedOptions={(selectedOptions) =>
-              setFilter({ country_ids: selectedOptions })
-            }
+            setSelectedOptions={(selectedOptions) => {
+              setFilter({ country_ids: selectedOptions });
+            }}
           />
           <MultiSelectDropdown
             formFieldName={"Program Level"}
@@ -120,6 +134,16 @@ export const FilterSideBar = ({
               setFilter({ min_max_tuition_fee: selectedOption })
             }
           />
+          <MainButton
+            label="Apply"
+            btnStyle="Primary"
+            btnSize="Small"
+            submit
+            loading={loadingCourseData}
+            disabled={loadingCourseData}
+            customStyle="h-[36px] w-20"
+            onClick={getFilteredData}
+          />
           {/* <SelectDropdown
             formFieldName={"Duration"}
             options={DURATION}
@@ -142,7 +166,7 @@ export const FilterSideBar = ({
       </div>
       {/* Show Selected Filters */}
       <div className="flex gap-2 mt-4">
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-wrap">
           {filter.country_ids.map((item: number, index) => (
             <FilterBtn
               key={index}
@@ -210,7 +234,7 @@ export const FilterSideBar = ({
         </div>
         <button
           className="text-xs text-primary hover:underline"
-          onClick={submitFilters}
+          onClick={clearFilters}
         >
           Clear All
         </button>

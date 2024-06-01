@@ -2,6 +2,7 @@ import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { GridWrapper, SubjectBox } from "@/components/molecules";
 import { getSubjects } from "@/utils/api-requests";
+import Link from "next/link";
 import React from "react";
 
 export const SubjectSection = async () => {
@@ -26,20 +27,23 @@ export const SubjectSection = async () => {
                     title={item.name}
                     key={item.id}
                     img={item.cover_image}
+                    id={item.id}
                   />
                 ))}
             </GridWrapper>
           </div>
           {/* See More Butn */}
-          {/* <div className="flex justify-center items-center mt-10">
-            <MainButton
-              label="See More"
-              btnStyle="Secondary"
-              btnSize="Medium"
-              icon={<RightArrowIcon />}
-              customStyle="w-[200px]"
-            />
-          </div> */}
+          <div className="flex justify-center items-center mt-10">
+            <Link href="/courses">
+              <MainButton
+                label="See More"
+                btnStyle="Secondary"
+                btnSize="Medium"
+                icon={<RightArrowIcon />}
+                customStyle="w-[200px]"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </InnerContainer>

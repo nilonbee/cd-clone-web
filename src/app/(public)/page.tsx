@@ -11,9 +11,21 @@ import {
   SubjectSection,
   UniversitySection,
 } from "@/components/organisms";
+import { ICountry } from "@/types/countries";
+import { ICourseLevel } from "@/types/courseLevels";
+import { ISubject } from "@/types/subjects";
+import {
+  getCountries,
+  getCourseLevels,
+  getSubjects,
+} from "@/utils/api-requests";
 import React from "react";
 
-export default function Home() {
+export default async function Home() {
+  const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
+  const countries = (await getCountries({ status: 1 })) as ICountry[];
+  const subjects = (await getSubjects({ status: 1 })) as ISubject[];
+
   return (
     <>
       <BannerCarousel />
@@ -30,7 +42,11 @@ export default function Home() {
         </ContainerLayout>
       </div>
       <ContainerLayout>
-        <SearchBar />
+        <SearchBar
+          initCountries={countries}
+          initCourseLevels={courseLevels}
+          initSubjects={subjects}
+        />
         <CountrySection />
         <CoursesSection />
         <SubjectSection />

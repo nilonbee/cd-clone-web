@@ -17,6 +17,7 @@ export interface ICourse {
   entry_requirements?: string;
   course_description?: string;
   setOpenDrawer?: (value: boolean) => void;
+  btnView?: boolean;
 }
 
 export interface ICourseResponse {
