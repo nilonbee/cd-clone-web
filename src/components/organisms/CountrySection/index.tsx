@@ -6,25 +6,25 @@ export const CountrySection = () => {
     {
       name: "USA",
       img: "/images/country/usa.png",
-      url: "/",
-      country_id: 12,
+      url: "/courses",
+      country_id: 231,
     },
     {
       name: "Australia",
       img: "/images/country/australia.png",
-      url: "/",
+      url: "/courses",
       country_id: 13,
     },
     {
       name: "Canada",
       img: "/images/country/canada.png",
-      url: "/",
+      url: "/courses",
       country_id: 38,
     },
     {
       name: "UK",
       img: "/images/country/uk.png",
-      url: "/",
+      url: "/courses",
       country_id: 230,
     },
   ];
@@ -44,7 +44,7 @@ export const CountrySection = () => {
                 key={index}
                 country={country.name}
                 img={country.img}
-                url={country.url}
+                countryId={country.country_id}
               />
             ))}
           </GridWrapperTwo>

@@ -3,12 +3,13 @@ import { InnerContainer, MainButton } from "@/components/atoms";
 import { SearchIcon } from "@/components/atoms/Icons";
 import { useCourseFilterStore } from "@/store";
 import { getCourses } from "@/utils/api-requests";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const MainSearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const {
     filter,
+    refetch,
     loadingCourseData,
     setFilter,
     setCourseData,
@@ -37,13 +38,22 @@ export const MainSearchBar = () => {
     }
   };
 
+  useEffect(() => {
+    if (refetch) {
+      setSearchValue(filter.course_name || "");
+    }
+    // eslint-disable-next-line
+  }, [refetch]);
+
   return (
     <InnerContainer>
       <div className=" shadow-lg rounded-md  py-[10px] -mt-10 w-full bg-white px-[10px]">
         <form className="w-full" onSubmit={(e) => handleSearch(e)}>
           <div className="flex gap-4 items-center w-full cursor-pointer ">
-            <div className="md:w-[35px] md:h-[35px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-              <SearchIcon />
+            <div>
+              <div className="md:w-[35px] md:h-[35px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+                <SearchIcon />
+              </div>
             </div>
             <input
               type="text"

@@ -4,6 +4,7 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
 interface Store {
+  refetch: boolean;
   selectedCourseId: string;
   loadingCourseData: boolean;
   isEmpty: boolean;
@@ -24,6 +25,7 @@ interface Store {
 }
 
 interface Action {
+  setRefetch: (refetch: boolean) => void;
   setSelectedCourseId: (id: string) => void;
   setFilter: (filter: Partial<Store["filter"]>) => void;
   setCourseData: (courseData: ICourse[]) => void;
@@ -34,6 +36,7 @@ interface Action {
 
 export const useCourseFilterStore = create<Store & Action>(
   devtools((set) => ({
+    refetch: false,
     selectedCourseId: "",
     loadingCourseData: false,
     courseData: [],
@@ -51,6 +54,7 @@ export const useCourseFilterStore = create<Store & Action>(
       limit: 20,
       page: 1,
     },
+    setRefetch: (refetch) => set(() => ({ refetch })),
     setSelectedCourseId: (id) => set({ selectedCourseId: id }),
     setFilter: (filter) =>
       set((state) => ({ filter: { ...state.filter, ...filter } })),

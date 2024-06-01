@@ -1,13 +1,13 @@
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
-import { CourseBox, GridWrapper } from "@/components/molecules";
+import { CourseBoxModel, GridWrapper } from "@/components/molecules";
 import { ICourse } from "@/types/courses";
 import { getCourses } from "@/utils/api-requests";
 import Link from "next/link";
 
 export const CoursesSection = async () => {
   const filterData = {
-    limit: 4,
+    limit: 8,
     max_fee: 0,
     min_fee: 0,
     page: 1,
@@ -24,16 +24,17 @@ export const CoursesSection = async () => {
           <div className="mt-10 w-full">
             <GridWrapper>
               {courseData?.data?.map((item: ICourse) => (
-                <CourseBox
+                <CourseBoxModel
+                  key={item.id}
                   id={item.id}
                   course_name={item.course_name}
                   course_fee={item.course_fee}
                   country={item.country}
                   level_name={item.level_name}
-                  rating={4.5}
-                  key={item.id}
                   uni_logo={item.uni_logo}
                   university={item.university}
+                  currency={item.currency}
+                  btnView={true}
                 />
               ))}
             </GridWrapper>

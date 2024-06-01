@@ -1,10 +1,12 @@
 "use client";
+import { MainButton } from "@/components/atoms";
 import { HatIcon, PinIcon, UniversityIcon } from "@/components/atoms/Icons";
 import { TimeIcon } from "@/components/atoms/Icons/TimeIcon";
 import { useCourseFilterStore } from "@/store";
 import { ICourse } from "@/types/courses";
 import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const CourseBoxModel = ({
   id,
@@ -15,9 +17,11 @@ export const CourseBoxModel = ({
   course_fee,
   level_name,
   currency,
+  btnView,
   setOpenDrawer = () => {},
 }: ICourse) => {
   const { setSelectedCourseId, selectedCourseId } = useCourseFilterStore();
+  const router = useRouter();
 
   const activeBox =
     selectedCourseId === id
@@ -28,14 +32,18 @@ export const CourseBoxModel = ({
     <div
       className={`flex flex-col  rounded-md p-6 shadow-sm md:p-4 sm:p-4 border  ${activeBox} hover:bg-[#eef7ff] hover:border-primary`}
       onClick={() => {
-        setSelectedCourseId(id);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        setOpenDrawer(true);
+        if (!btnView) {
+          setSelectedCourseId(id);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setOpenDrawer(true);
+        }
       }}
     >
       <div className="w-full flex gap-3">
         <Image
-          src={rootImagePath(uni_logo as string)}
+          src={rootImagePath(
+            (uni_logo as string) ?? "Placeholder/uni-placeholder.jpg",
+          )}
           alt="Logo"
           className="h-[55px] w-[55px] rounded-full ring-1 ring-primary shadow-md object-contain bg-white"
           width={300}
@@ -71,7 +79,7 @@ export const CourseBoxModel = ({
             {course_name}
           </h5>
         </div>
-        <div className="flex flex-col gap-2 items-start relative mt-1">
+        <div className="flex flex-row gap-2 relative mt-1 items-center justify-between">
           <div className="flex gap-2 items-end relative mb-2 mt-2 xs:flex-col md:flex-row ">
             <h2 className="font-bold text-sm text-primaryDark">
               {currency ? currency : "$"}
@@ -82,6 +90,17 @@ export const CourseBoxModel = ({
             </h2>
             <p className="text-xs text-grayText">(Total Amount)</p>
           </div>
+          {btnView && (
+            <MainButton
+              label="View"
+              btnStyle="Secondary"
+              btnSize="Small"
+              onClick={() => {
+                router.push(`/courses`);
+                setSelectedCourseId(id);
+              }}
+            />
+          )}
         </div>
       </div>
     </div>
