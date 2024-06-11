@@ -75,7 +75,7 @@ export const FAQSection: React.FC = () => {
                 className="rounded-[5px] p-[15px] self-stretch bg-white cursor-pointer border border-grayLight shadow"
               >
                 <div className="flex justify-between items-center gap-2">
-                  <p className="font-semibold leading-[26px] text-base text-textColor">
+                  <p className="font-semibold leading-[26px] text-textColor text-sm">
                     {faq.question}
                   </p>
                   <div className="flex justify-center items-center">
