@@ -10,9 +10,9 @@ export default function AuthLayout({
     <section>
       <Link
         href="/"
-        className="absolute right-[48px] top-[48px] w-[24px] h-[24px]"
+        className="absolute top-5 right-5 text-2xl cursor-pointer w-[24px] h-[24px]"
       >
-        <AiOutlineClose className="text-xl font-semibold" />
+        <AiOutlineClose className="font-semibold" />
       </Link>
       {children}
     </section>
