@@ -28,6 +28,7 @@ export const ContactInfoSection = () => {
           label={"Phone Number"}
           value={countryData?.phoneNumber || ""}
           icon={<CarbonPhoneIcon />}
+          isMobile
         />
       </div>
     </div>
