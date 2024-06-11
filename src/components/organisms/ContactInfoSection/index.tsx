@@ -22,11 +22,13 @@ export const ContactInfoSection = () => {
           label={"Email Address"}
           value={countryData?.email || ""}
           icon={<CarbonEmailIcon />}
+          uri="mailto"
         />
         <ContactBox
           label={"Phone Number"}
           value={countryData?.phoneNumber || ""}
           icon={<CarbonPhoneIcon />}
+          uri="tel"
         />
       </div>
     </div>
