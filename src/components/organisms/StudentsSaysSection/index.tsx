@@ -16,19 +16,19 @@ export const StudentsSaysSection = () => {
   const uniImages = [
     {
       imgUri: rootImagePath("/feedback/feedback1.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/watch?v=uTLy9N24stk",
     },
     {
       imgUri: rootImagePath("/feedback/feedback2.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/shorts/xGdjXl-RZaU",
     },
     {
       imgUri: rootImagePath("/feedback/feedback3.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/shorts/COxRrlROlDE",
     },
     {
       imgUri: rootImagePath("/feedback/feedback4.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/watch?v=mHn1sKgOjlY&t=24s",
     },
   ];
   return (
