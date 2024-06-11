@@ -24,7 +24,7 @@ const SearchBySubject = ({ setSelectedType, initSubjects }: Props) => {
         </div>
       </div>
       <MultiSelectDropdown
-        formFieldName={"Select Destination"}
+        formFieldName={"Select Subject"}
         options={arrayFormatterForOptions(initSubjects, "name")}
         selectedOptions={filter.subject_ids}
         setSelectedOptions={(selectedOptions) => {
