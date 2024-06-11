@@ -35,7 +35,7 @@ export const Footer = () => {
           if (key === configCountryCode(countryCodeID)) {
             setCountryData(
               contactInfo[
-                key as keyof typeof contactInfo
+              key as keyof typeof contactInfo
               ] as IContactInfoObject,
             );
           }
@@ -112,6 +112,9 @@ export const Footer = () => {
                   {countryData?.email}
                 </p>
               </a>
+              {/* <a href={`mailto:${contactDetails?.email}`}>
+                {contactDetails?.email}
+              </a> */}
               <div className="flex gap-2 items-center relative bg-transparent mt-4">
                 <div className="w-6 h-6">
                   <PhoneIcon />

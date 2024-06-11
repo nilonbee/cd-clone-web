@@ -22,6 +22,7 @@ export const ContactInfoSection = () => {
           label={"Email Address"}
           value={countryData?.email || ""}
           icon={<CarbonEmailIcon />}
+          isEmail
         />
         <ContactBox
           label={"Phone Number"}
