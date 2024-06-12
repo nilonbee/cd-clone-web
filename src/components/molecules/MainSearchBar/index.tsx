@@ -51,14 +51,14 @@ export const MainSearchBar = () => {
         <form className="w-full" onSubmit={(e) => handleSearch(e)}>
           <div className="flex gap-4 items-center w-full cursor-pointer ">
             <div>
-              <div className="md:w-[35px] md:h-[35px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+              <div className="xs:w-[25px] xs:h-[25px] sm:w-[30px] sm:h-[30px] md:w-[40px] md:h-[40px]">
                 <SearchIcon />
               </div>
             </div>
             <input
               type="text"
-              placeholder="Search Course Name Here..."
-              className=" w-full outline-none h-10 z-10 text-lg font-semibold text-black/80"
+              placeholder="Search Here..."
+              className=" w-full outline-none h-10 z-10 xs:text-sm sm:text-sm  md:text-lg text-black/80"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
             />
