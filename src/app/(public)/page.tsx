@@ -11,10 +11,12 @@ import {
   SubjectSection,
   UniversitySection,
 } from "@/components/organisms";
+import { IBlogResponse } from "@/types/blogs";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
 import { ISubject } from "@/types/subjects";
 import {
+  getBlogs,
   getCountries,
   getCourseLevels,
   getSubjects,
@@ -25,6 +27,7 @@ export default async function Home() {
   const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
   const countries = (await getCountries({ status: 1 })) as ICountry[];
   const subjects = (await getSubjects({ status: 1 })) as ISubject[];
+  const blogs = (await getBlogs({ page: 1, pageSize: 4 })) as IBlogResponse;
 
   return (
     <>
@@ -59,7 +62,7 @@ export default async function Home() {
       <ContainerLayout>
         <StudentsSaysSection />
         <FAQSection />
-        <BlogSection />
+        <BlogSection initBlogs={blogs} />
         <ContactSection />
         <NewsLetterSection />
       </ContainerLayout>

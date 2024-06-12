@@ -1,10 +1,6 @@
 "use client";
-import { Divider, MainButton } from "@/components/atoms";
-import {
-  InputField,
-  PhoneInputField,
-  SocialMediaAuthForm,
-} from "@/components/molecules";
+import { MainButton } from "@/components/atoms";
+import { InputField, PhoneInputField } from "@/components/molecules";
 import { userRegister } from "@/utils/api-requests";
 import validationSchema from "@/utils/validationSchema";
 import Link from "next/link";
@@ -44,8 +40,8 @@ export const RegisterForm = () => {
   return (
     <>
       <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
-        <SocialMediaAuthForm />
-        <Divider text="or" />
+        {/* <SocialMediaAuthForm />
+        <Divider text="or" /> */}
         <div className="flex justify-center items-center gap-1 sm:flex-col xs:flex-col ">
           <div className="w-full">
             <Controller

@@ -22,10 +22,10 @@ export const SubjectSection = async () => {
             <GridWrapper>
               {subjects
                 ?.slice(1, 5)
-                .map((item) => (
+                .map((item, index) => (
                   <SubjectBox
                     title={item.name}
-                    key={item.id}
+                    key={index}
                     img={item.cover_image}
                     id={item.id}
                   />

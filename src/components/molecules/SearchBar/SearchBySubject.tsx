@@ -17,14 +17,14 @@ const SearchBySubject = ({ setSelectedType, initSubjects }: Props) => {
   const { filter, setFilter, setRefetch } = useCourseFilterStore();
 
   return (
-    <div className="flex gap-4 items-center w-full cursor-pointer ">
+    <div className="flex items-center w-full cursor-pointer ">
       <div>
-        <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+        <div className="xs:w-[25px] xs:h-[25px] sm:w-[30px] sm:h-[30px] md:w-[40px] md:h-[40px]">
           <BookIcon />
         </div>
       </div>
       <MultiSelectDropdown
-        formFieldName={"Select Destination"}
+        formFieldName={"Select Subject"}
         options={arrayFormatterForOptions(initSubjects, "name")}
         selectedOptions={filter.subject_ids}
         setSelectedOptions={(selectedOptions) => {
@@ -39,7 +39,7 @@ const SearchBySubject = ({ setSelectedType, initSubjects }: Props) => {
         onClick={() => setSelectedType(null)}
         className="cursor-pointer z-10"
       >
-        <VscClose className="text-[30px] text-textColor" />
+        <VscClose className="xs:text-[25px] md:text-[30px] text-textColor/60" />
       </div>
     </div>
   );

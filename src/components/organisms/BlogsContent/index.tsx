@@ -4,6 +4,7 @@ import { InnerContainer, MainButton } from "@/components/atoms";
 import { BlogPost, GridWrapper } from "@/components/molecules";
 import { IBlog, IBlogResponse } from "@/types/blogs";
 import { getBlogs } from "@/utils/api-requests";
+import toast from "react-hot-toast";
 
 type FilterDataType = {
   page: number;
@@ -19,13 +20,17 @@ const Blogs: React.FC<BlogsPropTypes> = ({ blogsData }) => {
   const [tempBlogsData, setTempBlogsData] = useState<IBlog[]>(blogsData.data);
   const [filterData, setFilterData] = useState<FilterDataType>({
     page: 1,
-    pageSize: 10,
+    pageSize: 20,
   });
 
   useEffect(() => {
     const fetchBlogs = async () => {
       const newBlogs = await getBlogs(filterData);
-      setTempBlogsData((prevBlogs) => [...prevBlogs, ...newBlogs.data]);
+      if (newBlogs.data.length > 0) {
+        setTempBlogsData((prevBlogs) => [...prevBlogs, ...newBlogs.data]);
+      } else {
+        toast.error("No more blogs to load");
+      }
       setLoadMore(false);
     };
 
@@ -42,7 +47,7 @@ const Blogs: React.FC<BlogsPropTypes> = ({ blogsData }) => {
             <BlogPost
               key={index}
               title={item.title}
-              blog_description={item.seo_description}
+              blog_description={item.blog_description}
               createdAt={item.createdAt}
               image_path={item.image_path}
               author={item.author}
@@ -56,7 +61,7 @@ const Blogs: React.FC<BlogsPropTypes> = ({ blogsData }) => {
             label="Load More"
             btnSize="Small"
             onClick={() => {
-              setFilterData({ page: filterData.page + 1, pageSize: 10 });
+              setFilterData({ page: filterData.page + 1, pageSize: 20 });
               setLoadMore(true);
             }}
             loading={loadMore}

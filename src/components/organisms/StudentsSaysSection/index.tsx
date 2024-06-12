@@ -16,19 +16,19 @@ export const StudentsSaysSection = () => {
   const uniImages = [
     {
       imgUri: rootImagePath("/feedback/feedback1.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/watch?v=uTLy9N24stk",
     },
     {
       imgUri: rootImagePath("/feedback/feedback2.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/shorts/xGdjXl-RZaU",
     },
     {
       imgUri: rootImagePath("/feedback/feedback3.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/shorts/COxRrlROlDE",
     },
     {
       imgUri: rootImagePath("/feedback/feedback4.jpg"),
-      videoUri: "https://www.youtube.com/watch?v=zp2c-wRcQ8I",
+      videoUri: "https://www.youtube.com/watch?v=mHn1sKgOjlY&t=24s",
     },
   ];
   return (
@@ -52,7 +52,7 @@ export const StudentsSaysSection = () => {
                 <Image
                   src={item.imgUri}
                   alt="student"
-                  className="object-cover w-full h-[400px] rounded-md transition-transform duration-1000 transform hover:scale-110"
+                  className="object-cover w-full xs:h-[250px] sm:h-[300px] md:h-[400px] rounded-md transition-transform duration-1000 transform hover:scale-110"
                   width={400}
                   height={400}
                 />

@@ -45,7 +45,7 @@ export const UniversitySection = () => {
                 className="w-full h-[150px] sm:h-[100px] xs:h-[80px]"
                 key={index}
               >
-                <img src={item.imgUri} alt="uni" className="object-content" />
+                <img src={item.imgUri} alt="uni" className="object-cover" />
               </div>
             ))}
           </GridWrapperTwo>

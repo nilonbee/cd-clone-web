@@ -23,15 +23,15 @@ const SearchByName = ({ setSelectedType }: Props) => {
   return (
     <div className="flex gap-4 items-center w-full cursor-pointer ">
       <div>
-        <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+        <div className="xs:w-[25px] xs:h-[25px] sm:w-[30px] sm:h-[30px] md:w-[40px] md:h-[40px]  ">
           <SearchIcon />
         </div>
       </div>
       <form className="w-full z-10" onSubmit={(e) => handleSearch(e)}>
         <input
           type="text"
-          placeholder="Search Course Name"
-          className=" w-full outline-none h-10"
+          placeholder="Search Course"
+          className=" w-full outline-none h-10 xs:text-sm sm:text-sm md:text-base text-textColor"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
@@ -40,7 +40,7 @@ const SearchByName = ({ setSelectedType }: Props) => {
         onClick={() => setSelectedType(null)}
         className="cursor-pointer z-10"
       >
-        <VscClose className="text-[30px] text-textColor" />
+        <VscClose className="xs:text-[25px] md:text-[30px] text-textColor/60" />
       </div>
     </div>
   );

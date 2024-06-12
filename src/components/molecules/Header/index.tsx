@@ -31,7 +31,7 @@ export const Header = () => {
             </Link>
           </div>
           <div className="flex lg:hidden gap-4">
-            <ProfileDrawer />
+            {authUser && <ProfileDrawer />}
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-textColor"
@@ -104,7 +104,7 @@ export const Header = () => {
                         href="/login"
                         className="block px-4 py-2 text-sm text-primary"
                       >
-                        Login
+                        Sign in
                       </Link>
                     </Menu.Item>
                     <Menu.Item>
@@ -196,7 +196,7 @@ export const Header = () => {
                     className="text-sm text-primary"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Login
+                    Sign in
                   </Link>
                 )}
                 {!authUser && (

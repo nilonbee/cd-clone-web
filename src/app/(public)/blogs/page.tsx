@@ -1,26 +1,12 @@
-import React, { useState } from 'react'
+import React from "react";
 import Blogs from "@/components/organisms/BlogsContent";
-import {
-  ContainerLayout,
-  Hero,
-  SectionHeader,
-} from "@/components/atoms";
+import { ContainerLayout, Hero, SectionHeader } from "@/components/atoms";
 import { InterestedSection } from "@/components/organisms";
 import { IBlogResponse } from "@/types/blogs";
-import { getBlogs } from '@/utils/api-requests';
-
-type FilterDataType = {
-  page: number
-  pageSize: number
-}
+import { getBlogs } from "@/utils/api-requests";
 
 const BlogsPage = async () => {
-  // const [filterData, setFilterData] = useState<FilterDataType>({
-  //   page: 1,
-  //   pageSize: 10
-  // })
-
-  const blogs: IBlogResponse = await getBlogs({ page: 1, pageSize: 10 });
+  const blogs: IBlogResponse = await getBlogs({ page: 1, pageSize: 20 });
   return (
     <>
       <Hero />

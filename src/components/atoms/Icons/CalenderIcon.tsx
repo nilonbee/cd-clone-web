@@ -21,9 +21,9 @@ export const CalenderIcon = (): ReactElement => (
         y2="10.9822"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#1C37C1" />
-        <stop offset="0.489583" stop-color="#2F79BD" />
-        <stop offset="1" stop-color="#089EA2" />
+        <stop stopColor="#1C37C1" />
+        <stop offset="0.489583" stopColor="#2F79BD" />
+        <stop offset="1" stopColor="#089EA2" />
       </linearGradient>
     </defs>
   </svg>

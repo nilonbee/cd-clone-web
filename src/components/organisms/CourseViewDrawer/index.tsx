@@ -5,9 +5,10 @@ import { useCourseFilterStore } from "@/store";
 import { ICourse } from "@/types/courses";
 import { getCourseById } from "@/utils/api-requests";
 import { CoursePriceBox, UniRow } from "@/components/molecules";
-import { CourseSubHeader, Loading } from "@/components/atoms";
+import { CourseSubHeader, LoadingSpinner } from "@/components/atoms";
 import { ApplicationForm } from "../ApplicationForm";
 import { IIntake } from "@/types/intakes";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface CourseViewDrawerProps {
   open: boolean;
@@ -63,7 +64,7 @@ export const CourseViewDrawer = ({
   return (
     <div
       id={`dialog-${side}`}
-      className="relative z-10"
+      className="relative z-20"
       aria-labelledby="slide-over"
       role="dialog"
       aria-modal="true"
@@ -104,6 +105,10 @@ export const CourseViewDrawer = ({
               >
                 {!loading ? (
                   <>
+                    <AiOutlineClose
+                      className="absolute top-5 right-5 text-lg cursor-pointer z-20 text-black/50"
+                      onClick={() => setOpen(!open)}
+                    />
                     <UniRow
                       uni_logo={data.uni_logo}
                       course_name={data?.course_name}
@@ -171,7 +176,7 @@ export const CourseViewDrawer = ({
                     <ApplicationForm intakes={intakes} />
                   </>
                 ) : (
-                  <Loading />
+                  <LoadingSpinner />
                 )}
               </div>
             </div>
