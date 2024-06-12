@@ -1,5 +1,5 @@
 "use client";
-import { CourseSubHeader, Loading } from "@/components/atoms";
+import { CourseSubHeader, LoadingSpinner } from "@/components/atoms";
 import { CoursePriceBox, UniRow } from "@/components/molecules";
 import React, { useEffect, useState } from "react";
 import { ApplicationForm } from "../ApplicationForm";
@@ -114,7 +114,7 @@ export const CourseViewModel = ({ intakes }: CourseViewModalProps) => {
             </div>
           </div>
         ) : (
-          <Loading />
+          <LoadingSpinner />
         )}
       </div>
       <div className="xl:w-[25%] lg:w-[100%] relative fadeIn">

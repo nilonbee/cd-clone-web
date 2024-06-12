@@ -63,10 +63,10 @@ export const SearchBar = ({
               className={`flex gap-4 items-center flex-1 relative w-full cursor-pointer`}
               onClick={() => setSelectedType(type.name)}
             >
-              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+              <div className="xs:w-[25px] xs:h-[25px] sm:w-[30px] sm:h-[30px] md:w-[40px] md:h-[40px]  ">
                 {type.Icon}
               </div>
-              <p className="md:text-base sm:text-sm xs:text-sm  text-textColor">
+              <p className="xs:text-sm sm:text-sm  md:text-base  text-textColor/70">
                 {type.label}
               </p>
             </div>
@@ -74,7 +74,7 @@ export const SearchBar = ({
         </div>
       )}
       {selectedType !== null && (
-        <div className=" shadow-lg rounded-[5px]  py-[18px]  -mt-10 w-full bg-white px-5">
+        <div className=" shadow-lg rounded-md  py-[15px]  -mt-10 w-full bg-white px-5">
           {selectedType === "searchLevel1" && (
             <SearchByName setSelectedType={setSelectedType} />
           )}
