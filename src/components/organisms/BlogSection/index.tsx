@@ -14,6 +14,10 @@ export const BlogSection = async ({
   seeMoreBtn = true,
   initBlogs,
 }: BlogSectionProps) => {
+  const removeHtmlTagsAndShorten = (text: string) => {
+    return text.replace(/<[^>]*>?/gm, "").substring(0, 100);
+  };
+
   return (
     <InnerContainer>
       <div className="pt-20 pb-20">
@@ -28,11 +32,9 @@ export const BlogSection = async ({
                 <BlogPost
                   key={index}
                   title={item.title}
-                  blog_description={
-                    item.blog_description.length > 100
-                      ? item.blog_description.slice(0, 100) + "..."
-                      : item.blog_description
-                  }
+                  blog_description={removeHtmlTagsAndShorten(
+                    item.blog_description,
+                  )}
                   createdAt={item.createdAt}
                   image_path={item.image_path}
                   author={item.author}

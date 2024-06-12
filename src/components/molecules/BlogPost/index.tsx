@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import parse from "html-react-parser";
 import Link from "next/link";
 import { CardWrapper } from "..";
 import { MainButton } from "@/components/atoms";
@@ -12,6 +14,7 @@ type Props = {
   createdAt: string;
   image_path: string;
   author: string;
+  status?: number;
   slug: string;
 };
 
@@ -40,9 +43,9 @@ export const BlogPost = ({
           <div className="flex items-center mr-2">
             <Image
               src={"/images/avater.jpg"}
-              className="inline-block h-5 w-5 rounded-full ring-1 ring-black/45"
               width={20}
               height={20}
+              className="inline-block h-5 w-5 rounded-full ring-1 ring-black/45"
               alt="avatar_image"
             />
             <p className="text-xs text-gray line-clamp-1 ml-1">{author}</p>
@@ -54,10 +57,9 @@ export const BlogPost = ({
             </p>
           </div>
         </div>
-        <p
-          className="text-xs text-gray mt-2 line-clamp-2"
-          dangerouslySetInnerHTML={{ __html: blog_description }}
-        ></p>
+        <div className="text-sm mt-2 text-black/50 line-clamp-2">
+          {parse(blog_description)}
+        </div>
         <div className="flex gap-2 justify-between items-center w-full mt-4">
           <Link href={`/blogs/${slug}`} className="w-full">
             <MainButton
