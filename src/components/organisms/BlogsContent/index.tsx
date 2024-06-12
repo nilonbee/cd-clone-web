@@ -42,7 +42,7 @@ const Blogs: React.FC<BlogsPropTypes> = ({ blogsData }) => {
             <BlogPost
               key={index}
               title={item.title}
-              blog_description={item.seo_description}
+              blog_description={item.blog_description}
               createdAt={item.createdAt}
               image_path={item.image_path}
               author={item.author}

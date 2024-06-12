@@ -71,7 +71,7 @@ export const CourseBoxModel = ({
         </div>
       </div>
       <div className="flex flex-col mt-3">
-        <div className="flex gap-2.5 relative h-12">
+        <div className="flex gap-2.5 relative h-10">
           <div className="min-w-4 w-[20px] h-[20px] mt-1">
             <HatIcon />
           </div>
@@ -79,7 +79,7 @@ export const CourseBoxModel = ({
             {course_name}
           </h5>
         </div>
-        <div className="flex flex-row gap-2 relative mt-1 items-center justify-between">
+        <div className="flex flex-row gap-2 relative mt-1 items-center justify-between ">
           <div className="flex gap-2 items-end relative mb-2 mt-2 xs:flex-col md:flex-row ">
             <h2 className="font-bold text-sm text-primaryDark">
               {currency ? currency : "$"}
@@ -88,7 +88,7 @@ export const CourseBoxModel = ({
                 maximumFractionDigits: 2,
               })}
             </h2>
-            <p className="text-xs text-grayText">(Total Amount)</p>
+            {/* <p className="text-xs text-grayText">(Total Amount)</p> */}
           </div>
           {btnView && (
             <MainButton
