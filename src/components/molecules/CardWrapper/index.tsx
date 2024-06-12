@@ -13,7 +13,7 @@ export const CardWrapper = ({
 }: Props) => {
   return (
     <div
-      className={`flex flex-col rounded-md p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 md:p-4 sm:p-4 border border-boxBorder ${cssCustom} ${bgColor}`}
+      className={`flex flex-col rounded-md p-6 shadow-sm hover:shadow-lg transition-all duration-300 lg:hover:scale-105 md:p-4 sm:p-4 border border-boxBorder ${cssCustom} ${bgColor}`}
     >
       {children}
     </div>
