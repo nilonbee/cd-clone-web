@@ -32,7 +32,7 @@ export const ScholarshipsBox = ({
       <p className="text-sm font-semibold mt-3 line-clamp-2 h-10 text-textColor">
         {title}
       </p>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 mt-1">
         <div className="flex gap-2 items-center relative">
           <div className="w-[18px] h-[18px]">
             <UniversityIcon />
