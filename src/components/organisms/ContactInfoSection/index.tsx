@@ -12,7 +12,7 @@ export const ContactInfoSection = () => {
 
   return (
     <div className="w-full mt-10 lg:px-20 md:px-0">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <ContactBox
           label={"Location"}
           value={countryData?.address || ""}
