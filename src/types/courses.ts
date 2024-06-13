@@ -18,6 +18,9 @@ export interface ICourse {
   course_description?: string;
   setOpenDrawer?: (value: boolean) => void;
   btnView?: boolean;
+  isScholarship?: boolean;
+  countryId?: number;
+  course_level_id?: number;
 }
 
 export interface ICourseResponse {

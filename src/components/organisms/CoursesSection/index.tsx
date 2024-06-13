@@ -8,8 +8,6 @@ import Link from "next/link";
 export const CoursesSection = async () => {
   const filterData = {
     limit: 8,
-    max_fee: 0,
-    min_fee: 0,
     page: 1,
   };
   const courseData = await getCourses(filterData);
