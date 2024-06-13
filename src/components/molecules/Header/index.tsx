@@ -201,7 +201,7 @@ export const Header = () => {
                 )}
                 {!authUser && (
                   <Link
-                    href="/auth/register"
+                    href="/register"
                     className="text-sm text-primary"
                     onClick={() => setMobileMenuOpen(false)}
                   >
