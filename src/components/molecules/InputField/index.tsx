@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type InputFieldProps = {
   label?: string;
@@ -14,8 +14,24 @@ type InputFieldProps = {
 };
 
 export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
-  ({ placeholder, type, id, customStyle, noMargin, error, value, label, required, onChange, ...rest }, ref) => {
-    const errorCSS = error ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
+  (
+    {
+      placeholder,
+      type,
+      id,
+      customStyle,
+      noMargin,
+      error,
+      value,
+      label,
+      required,
+      onChange,
+      ...rest
+    },
+    ref,
+  ) => {
+    const errorCSS = error
+      ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
       : "";
     return (
       <div className={`mb-${noMargin ? "0" : "4"}`}>
@@ -37,11 +53,10 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           className={`block w-full focus:shadow-md rounded-md py-2 pl-4 text-gray ring-1 ring-inset ring-border placeholder:text-grayMedium focus:ring-2 focus:ring-inset focus:ring-primary focus:outline-none text-sm leading-6 ${customStyle} ${errorCSS}`}
           {...rest}
         />
-        {error && <span className="error-message">{error}</span>}
+        {error && <span className="text-errorMsg text-xs">{error}</span>}
       </div>
     );
-  }
+  },
 );
 
-InputField.displayName = 'InputField';
-
+InputField.displayName = "InputField";
