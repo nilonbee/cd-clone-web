@@ -73,7 +73,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
           defaultValue=""
           render={({ field }) => (
             <InputField
-              label="Fast Name"
+              label="First Name"
               placeholder="Enter your first name"
               type="text"
               error={errors.first_name?.message}
