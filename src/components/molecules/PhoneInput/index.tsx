@@ -18,17 +18,20 @@ type Props = {
 };
 
 export const PhoneInputField = React.forwardRef<HTMLInputElement, Props>(
-  ({
-    noMargin,
-    label,
-    id,
-    required,
-    onChange,
-    error,
-    placeholder,
-    backgroundColor,
-    ...rest
-  }, ref) => {
+  (
+    {
+      noMargin,
+      label,
+      id,
+      required,
+      onChange,
+      error,
+      placeholder,
+      backgroundColor,
+      ...rest
+    },
+    ref,
+  ) => {
     const errorCSS = error
       ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
       : "";
@@ -55,7 +58,7 @@ export const PhoneInputField = React.forwardRef<HTMLInputElement, Props>(
               "--react-international-phone-background-color": backgroundColor,
             } as React.CSSProperties
           }
-          inputStyle={{ height: "41px", border: "none", width: "100%" }}
+          inputStyle={{ height: "36px", border: "none", width: "100%" }}
           className={`block w-full focus:shadow-md py-1 pr-20  text-gray ring-1 ring-inset ring-border leading-tight focus:outline-none focus:shadow-outline rounded h-[46px] mt-2 ${errorCSS} bg-[${backgroundColor}]`}
           {...rest}
         />
@@ -63,6 +66,7 @@ export const PhoneInputField = React.forwardRef<HTMLInputElement, Props>(
         {error && <span className="text-errorMsg text-xs">{error}</span>}
       </div>
     );
-  });
+  },
+);
 
 PhoneInputField.displayName = "PhoneInputField";

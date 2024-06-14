@@ -13,18 +13,21 @@ type Props = {
 };
 
 export const InputSelectField = React.forwardRef<HTMLSelectElement, Props>(
-  ({
-    label,
-    placeholder,
-    id,
-    required,
-    noMargin,
-    customStyle,
-    error,
-    backgroundColor,
-    options,
-    ...rest
-  }, ref) => {
+  (
+    {
+      label,
+      placeholder,
+      id,
+      required,
+      noMargin,
+      customStyle,
+      error,
+      backgroundColor,
+      options,
+      ...rest
+    },
+    ref,
+  ) => {
     const errorCSS = error
       ? "ring-errorMsg text-errorMsg focus:ring-errorMsg"
       : "";
@@ -46,9 +49,7 @@ export const InputSelectField = React.forwardRef<HTMLSelectElement, Props>(
           // required={required}
           {...rest}
         >
-          <option value="" disabled>
-            {placeholder}
-          </option>
+          <option value="">{placeholder}</option>
           {options?.map((option, index: number) => (
             <option key={index} value={option.value}>
               {option.label}
@@ -58,6 +59,7 @@ export const InputSelectField = React.forwardRef<HTMLSelectElement, Props>(
         {error && <span className="text-errorMsg text-xs">{error}</span>}
       </div>
     );
-  });
+  },
+);
 
 InputSelectField.displayName = "InputSelectField";

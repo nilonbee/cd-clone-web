@@ -42,6 +42,7 @@ export const FilterSideBar = ({
 
   const clearFilters = () => {
     setFilter({
+      course_name: "",
       country_ids: [],
       course_level_ids: [],
       subject_ids: [],
@@ -51,6 +52,7 @@ export const FilterSideBar = ({
       sort_option: 0,
     });
     setIsClear(true);
+    setRefetch(!refetch);
   };
 
   useEffect(() => {
