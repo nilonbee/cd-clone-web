@@ -1,6 +1,7 @@
 import { ContainerLayout } from "@/components/atoms";
 import { FilterSideBar, MainSearchBar } from "@/components/molecules";
 import {
+  CourseViewDrawer,
   CourseViewModel,
   Courses,
   InterestedSection,
@@ -64,6 +65,7 @@ const CoursePage = async () => {
         </div>
       </ContainerLayout>
       <InterestedSection />
+      <CourseViewDrawer intakes={intakes} />
     </>
   );
 };

@@ -4,6 +4,7 @@ import {
   BlogSection,
   ContactSection,
   CountrySection,
+  CourseViewDrawer,
   CoursesSection,
   FAQSection,
   NewsLetterSection,
@@ -14,11 +15,13 @@ import {
 import { IBlogResponse } from "@/types/blogs";
 import { ICountry } from "@/types/countries";
 import { ICourseLevel } from "@/types/courseLevels";
+import { IIntake } from "@/types/intakes";
 import { ISubject } from "@/types/subjects";
 import {
   getBlogs,
   getCountries,
   getCourseLevels,
+  getIntakes,
   getSubjects,
 } from "@/utils/api-requests";
 import React from "react";
@@ -28,6 +31,7 @@ export default async function Home() {
   const countries = (await getCountries({ status: 1 })) as ICountry[];
   const subjects = (await getSubjects({ status: 1 })) as ISubject[];
   const blogs = (await getBlogs({ page: 1, pageSize: 4 })) as IBlogResponse;
+  const intakes = (await getIntakes({ status: 1 })) as IIntake[];
 
   return (
     <>
@@ -66,6 +70,7 @@ export default async function Home() {
         <ContactSection />
         <NewsLetterSection />
       </ContainerLayout>
+      <CourseViewDrawer intakes={intakes} />
     </>
   );
 }

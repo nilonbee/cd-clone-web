@@ -1,8 +1,10 @@
 import { ContainerLayout, Hero, InnerContainer } from "@/components/atoms";
 import { PinIcon, UniversityIcon } from "@/components/atoms/Icons";
 import { CourseBoxModel, GridWrapper } from "@/components/molecules";
+import { CourseViewDrawer } from "@/components/organisms";
 import { ICourse } from "@/types/courses";
-import { getScholarshipBySlug } from "@/utils/api-requests";
+import { IIntake } from "@/types/intakes";
+import { getIntakes, getScholarshipBySlug } from "@/utils/api-requests";
 import { rootImagePath } from "@/utils/rootImagePath";
 import Head from "next/head";
 import Image from "next/image";
@@ -11,6 +13,7 @@ import { FiUsers } from "react-icons/fi";
 
 const ScholarshipsPage = async ({ params }: any) => {
   const scholarshipData = await getScholarshipBySlug(params.slug);
+  const intakes = (await getIntakes({ status: 1 })) as IIntake[];
 
   return (
     <div>
@@ -108,8 +111,6 @@ const ScholarshipsPage = async ({ params }: any) => {
                       currency={item.currency}
                       btnView={true}
                       isScholarship={true}
-                      countryId={scholarshipData.country_id}
-                      course_level_id={item.course_level_id}
                     />
                   ),
                 )}
@@ -118,6 +119,7 @@ const ScholarshipsPage = async ({ params }: any) => {
           </InnerContainer>
         </div>
       </ContainerLayout>
+      <CourseViewDrawer intakes={intakes} />
     </div>
   );
 };

@@ -11,8 +11,6 @@ import { IIntake } from "@/types/intakes";
 import { AiOutlineClose } from "react-icons/ai";
 
 interface CourseViewDrawerProps {
-  open: boolean;
-  setOpen: (open: boolean) => void;
   side?: "right" | "left" | "top" | "bottom";
   intakes: IIntake[];
 }
@@ -39,12 +37,11 @@ const classNames = {
 };
 
 export const CourseViewDrawer = ({
-  open,
-  setOpen,
   side = "bottom",
   intakes,
 }: CourseViewDrawerProps) => {
-  const { selectedCourseId, isEmpty } = useCourseFilterStore();
+  const { selectedCourseId, isEmpty, openDrawer, setOpenDrawer } =
+    useCourseFilterStore();
   const [data, setData] = useState<ICourse>({} as ICourse);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -68,18 +65,18 @@ export const CourseViewDrawer = ({
       aria-labelledby="slide-over"
       role="dialog"
       aria-modal="true"
-      onClick={() => setOpen(!open)}
+      onClick={() => setOpenDrawer(!openDrawer)}
     >
       <div
         className={clsx(
           "fixed inset-0 bg-black/70 transition-all",
           {
-            "opacity-100 duration-500 ease-in-out visible": open,
+            "opacity-100 duration-500 ease-in-out visible": openDrawer,
           },
-          { "opacity-0 duration-500 ease-in-out invisible": !open },
+          { "opacity-0 duration-500 ease-in-out invisible": !openDrawer },
         )}
       ></div>
-      <div className={clsx({ "fixed inset-0": open })}>
+      <div className={clsx({ "fixed inset-0": openDrawer })}>
         <div className="absolute inset-0">
           <div
             className={clsx(
@@ -90,8 +87,8 @@ export const CourseViewDrawer = ({
             <div
               className={clsx(
                 "pointer-events-auto relative w-full h-full transform transition ease-in-out duration-500",
-                { [closeClassNames[side]]: !open },
-                { [openClassNames[side]]: open },
+                { [closeClassNames[side]]: !openDrawer },
+                { [openClassNames[side]]: openDrawer },
               )}
               onClick={(event) => {
                 event.preventDefault();
@@ -107,73 +104,76 @@ export const CourseViewDrawer = ({
                   <>
                     <AiOutlineClose
                       className="absolute top-5 right-5 text-lg cursor-pointer z-20 text-black/50"
-                      onClick={() => setOpen(!open)}
+                      onClick={() => setOpenDrawer(!openDrawer)}
                     />
-                    <UniRow
-                      uni_logo={data.uni_logo}
-                      course_name={data?.course_name}
-                      university={data?.university}
-                      uni_address={data?.uni_address}
-                      country={data?.country}
-                      id={data.id ?? 0}
-                    />
-                    <div className="mt-5">
-                      <CourseSubHeader title="What will I learn?" />
-                      <p className="font-semibold text-textColor text-sm my-4">
-                        Overview of the course
-                      </p>
-                      <p className="text-textColor text-sm my-4 leading-6">
-                        {data.course_description}
-                      </p>
-                      <p className="font-semibold text-textColor text-sm my-5">
-                        Further study
-                      </p>
-                      <p className="text-textColor text-sm my-5 leading-6"></p>
-                      <CourseSubHeader title="Which department am I in?" />
-                      <p className="text-textColor text-sm my-4 leading-6">
-                        School of Nursing and Midwifery
-                      </p>
-                      <CourseSubHeader title="CRICOS" />
-                      <p className="text-textColor text-sm my-4 leading-6">
-                        111902E
-                      </p>
-                      <CourseSubHeader title="Study Options" />
-                      <div className="my-4">
-                        <CoursePriceBox
-                          course_name={data.course_name}
-                          course_fee_additional={data.course_fee_additional}
-                          course_fee={data.course_fee}
-                          currency={data.currency}
-                          uni_address={data.uni_address}
-                          created_at={data.created_at}
-                          id={data.id ?? 0}
-                        />
+                    <div className="md:px-0 lg:px-20 mb-10">
+                      <UniRow
+                        uni_logo={data.uni_logo}
+                        course_name={data?.course_name}
+                        university={data?.university}
+                        uni_address={data?.uni_address}
+                        country={data?.country}
+                        id={data.id ?? 0}
+                      />
+                      <div className="mt-5">
+                        <CourseSubHeader title="What will I learn?" />
+                        <p className="font-semibold text-textColor text-sm my-4">
+                          Overview of the course
+                        </p>
+                        <p className="text-textColor text-sm my-4 leading-6">
+                          {data.course_description}
+                        </p>
+                        <p className="font-semibold text-textColor text-sm my-5">
+                          Further study
+                        </p>
+                        <p className="text-textColor text-sm my-5 leading-6"></p>
+                        <CourseSubHeader title="Which department am I in?" />
+                        <p className="text-textColor text-sm my-4 leading-6">
+                          School of Nursing and Midwifery
+                        </p>
+                        <CourseSubHeader title="CRICOS" />
+                        <p className="text-textColor text-sm my-4 leading-6">
+                          111902E
+                        </p>
+                        <CourseSubHeader title="Study Options" />
+                        <div className="my-4">
+                          <CoursePriceBox
+                            course_name={data.course_name}
+                            course_fee_additional={data.course_fee_additional}
+                            course_fee={data.course_fee}
+                            currency={data.currency}
+                            uni_address={data.uni_address}
+                            created_at={data.created_at}
+                            id={data.id ?? 0}
+                          />
+                        </div>
+                        <CourseSubHeader title="Entry requirements" />
+                        <p className="font-semibold text-textColor text-sm my-4">
+                          For students from Sri Lanka
+                        </p>
+                        <p className="text-textColor text-sm my-4 leading-6">
+                          {data.entry_requirements}
+                        </p>
+                        <p className="font-semibold text-textColor text-sm my-4">
+                          For international students
+                        </p>
+                        <p className="text-textColor text-sm my-4 leading-6">
+                          IELTS (Academic only) - 7.0 (or better) (no component
+                          lower than 7.0); TOEFL (paper based) - 600 (or better)
+                          (with a minimum Test of Written English Score of TWE
+                          5); TOEFL (electronic or computer based) - 250 (or
+                          better) (with essay rating of at least 5); TOEFL
+                          (internet based) - 95 (or better) (with 22 minimum in
+                          all bands); Pearson (PTE Academic) - 65 (or better)
+                          (with no communicative score less than 65); Cambridge
+                          English Scale Scores for FCE, CAE and CPE - Cambridge
+                          English Advanced (CAE) and Cambridge English
+                          Proficiency (CPE)/ 185 or above. No less than 185 in
+                          each skill.
+                        </p>
                       </div>
-                      <CourseSubHeader title="Entry requirements" />
-                      <p className="font-semibold text-textColor text-sm my-4">
-                        For students from Sri Lanka
-                      </p>
-                      <p className="text-textColor text-sm my-4 leading-6">
-                        {data.entry_requirements}
-                      </p>
-                      <p className="font-semibold text-textColor text-sm my-4">
-                        For international students
-                      </p>
-                      <p className="text-textColor text-sm my-4 leading-6">
-                        IELTS (Academic only) - 7.0 (or better) (no component
-                        lower than 7.0); TOEFL (paper based) - 600 (or better)
-                        (with a minimum Test of Written English Score of TWE 5);
-                        TOEFL (electronic or computer based) - 250 (or better)
-                        (with essay rating of at least 5); TOEFL (internet
-                        based) - 95 (or better) (with 22 minimum in all bands);
-                        Pearson (PTE Academic) - 65 (or better) (with no
-                        communicative score less than 65); Cambridge English
-                        Scale Scores for FCE, CAE and CPE - Cambridge English
-                        Advanced (CAE) and Cambridge English Proficiency (CPE)/
-                        185 or above. No less than 185 in each skill.
-                      </p>
+                      <ApplicationForm intakes={intakes} />
                     </div>
-                    <ApplicationForm intakes={intakes} />
                   </>
                 ) : (
                   <LoadingSpinner />

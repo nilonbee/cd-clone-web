@@ -64,6 +64,7 @@ export const FilterSideBar = ({
   useEffect(() => {
     if (refetch) {
       getFilteredData();
+      setSelectedCourseId("");
     }
     return () => {
       setRefetch(false);
@@ -73,7 +74,6 @@ export const FilterSideBar = ({
 
   const getFilteredData = async () => {
     setLoadingCourseData(true);
-    console.log("filter", filter);
 
     const courses = await getCourses({ ...filter });
     if (courses?.data.length === 0) {
@@ -85,7 +85,7 @@ export const FilterSideBar = ({
       setIsEmpty(false);
       setCourseData(courses?.data || []);
       setTotalCourses(courses?.total || 0);
-      setSelectedCourseId(courses?.data[0].id || "");
+      // setSelectedCourseId(courses?.data[0].id || "");
       setLoadingCourseData(false);
     }
   };

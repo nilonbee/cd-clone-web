@@ -10,6 +10,7 @@ interface Store {
   isEmpty: boolean;
   courseData: ICourse[];
   totalCourses: number;
+  openDrawer: boolean;
   filter: {
     course_name: string;
     country_ids: number[];
@@ -32,6 +33,7 @@ interface Action {
   setLoadingCourseData: (loading: boolean) => void;
   setTotalCourses: (totalCourses: number) => void;
   setIsEmpty: (isEmpty: boolean) => void;
+  setOpenDrawer: (openDrawer: boolean) => void;
 }
 
 export const useCourseFilterStore = create<Store & Action>(
@@ -42,6 +44,7 @@ export const useCourseFilterStore = create<Store & Action>(
     courseData: [],
     totalCourses: 0,
     isEmpty: false,
+    openDrawer: false,
     filter: {
       course_name: "",
       country_ids: [],
@@ -63,5 +66,6 @@ export const useCourseFilterStore = create<Store & Action>(
     setCourseData: (courseData) => set(() => ({ courseData })),
     setTotalCourses: (totalCourses) => set(() => ({ totalCourses })),
     setIsEmpty: (isEmpty) => set(() => ({ isEmpty })),
+    setOpenDrawer: (openDrawer) => set(() => ({ openDrawer })),
   })) as StateCreator<Store & Action, [], []>,
 );
