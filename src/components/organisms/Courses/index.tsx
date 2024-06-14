@@ -5,19 +5,16 @@ import { useCourseFilterStore } from "@/store";
 import { ICourse } from "@/types/courses";
 import { getCourses } from "@/utils/api-requests";
 import { useEffect, useState } from "react";
-import { CourseViewDrawer } from "../CourseViewDrawer";
 import { IIntake } from "@/types/intakes";
 
 export const Courses = ({
   initialCourseData,
   initialTotalCourses,
-  intakes,
 }: {
   initialCourseData: ICourse[];
   initialTotalCourses: number;
   intakes: IIntake[];
 }) => {
-  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState(false);
   const {
     filter,
@@ -31,6 +28,7 @@ export const Courses = ({
     setIsEmpty,
     setSelectedCourseId,
   } = useCourseFilterStore();
+
   const [loadingMore, setLoadingMore] = useState<boolean>(false);
 
   useEffect(() => {
@@ -106,12 +104,12 @@ export const Courses = ({
                 uni_logo={item.uni_logo}
                 university={item.university}
                 currency={item.currency}
-                setOpenDrawer={setOpenDrawer}
+                isMobile={isMobile}
               />
             </div>
           ))}
         </div>
-        {courseData?.length !== 0 && (
+        {courseData?.length !== 0 && totalCourses > 20 && (
           <div className="flex justify-center my-4">
             <MainButton
               label="Load More"
@@ -124,15 +122,6 @@ export const Courses = ({
               disabled={loadingMore}
             />
           </div>
-        )}
-      </div>
-      <div className="w-full md:hidden sm:block xs:block">
-        {openDrawer && isMobile && (
-          <CourseViewDrawer
-            open={openDrawer}
-            setOpen={setOpenDrawer}
-            intakes={intakes}
-          />
         )}
       </div>
     </div>

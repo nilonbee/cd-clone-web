@@ -16,11 +16,9 @@ export interface ICourse {
   rating?: number | undefined;
   entry_requirements?: string;
   course_description?: string;
-  setOpenDrawer?: (value: boolean) => void;
   btnView?: boolean;
   isScholarship?: boolean;
-  countryId?: number;
-  course_level_id?: number;
+  isMobile?: boolean;
 }
 
 export interface ICourseResponse {

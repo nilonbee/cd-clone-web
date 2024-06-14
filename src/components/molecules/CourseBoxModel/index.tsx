@@ -6,7 +6,6 @@ import { useCourseFilterStore } from "@/store";
 import { ICourse } from "@/types/courses";
 import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 export const CourseBoxModel = ({
   id,
@@ -19,18 +18,10 @@ export const CourseBoxModel = ({
   currency,
   btnView,
   isScholarship,
-  countryId,
-  course_level_id,
-  setOpenDrawer = () => {},
+  isMobile = false,
 }: ICourse) => {
-  const {
-    setSelectedCourseId,
-    selectedCourseId,
-    refetch,
-    setFilter,
-    setRefetch,
-  } = useCourseFilterStore();
-  const router = useRouter();
+  const { setSelectedCourseId, selectedCourseId, setOpenDrawer } =
+    useCourseFilterStore();
 
   const activeBox =
     selectedCourseId === id
@@ -43,8 +34,8 @@ export const CourseBoxModel = ({
       onClick={() => {
         if (!btnView) {
           setSelectedCourseId(id);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          setOpenDrawer(true);
+          !isMobile && window.scrollTo({ top: 0, behavior: "smooth" });
+          isMobile && setOpenDrawer(true);
         }
       }}
     >
@@ -107,15 +98,8 @@ export const CourseBoxModel = ({
               btnStyle="Secondary"
               btnSize="Small"
               onClick={() => {
-                alert(course_level_id);
                 setSelectedCourseId(id);
-                setFilter({
-                  course_name: course_name,
-                  country_ids: [countryId ?? 0],
-                  course_level_ids: [course_level_id ?? 0],
-                });
-                setRefetch(!refetch);
-                router.push(`/courses`);
+                setOpenDrawer(true);
               }}
             />
           )}
