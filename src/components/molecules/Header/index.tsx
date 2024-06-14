@@ -208,7 +208,7 @@ export const Header = () => {
                     Register
                   </Link>
                 )}
-                <Link href="/courses">
+                <Link onClick={() => setMobileMenuOpen(false)} href="/courses">
                   <div className="px-4 py-2 items-center relative h-18 bg-primary rounded shadow-md">
                     <p className="text-base font-semibold text-white">
                       Find My Course
