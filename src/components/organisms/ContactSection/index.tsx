@@ -42,10 +42,10 @@ export const ContactSection = () => {
 
   return (
     <InnerContainer>
-      <div className="pt-20 pb-20">
+      <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Interested? Let&apos;s Talk!"
+            title="Interested? Let's Talk!"
             description="Reach out to us so that we can help you with the right information."
           />
           <form

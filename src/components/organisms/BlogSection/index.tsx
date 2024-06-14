@@ -20,7 +20,7 @@ export const BlogSection = async ({
 
   return (
     <InnerContainer>
-      <div className="pt-20 pb-20">
+      <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
             title="Read Our Latest Blogs"
