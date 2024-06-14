@@ -18,9 +18,18 @@ export const CourseBoxModel = ({
   level_name,
   currency,
   btnView,
+  isScholarship,
+  countryId,
+  course_level_id,
   setOpenDrawer = () => {},
 }: ICourse) => {
-  const { setSelectedCourseId, selectedCourseId } = useCourseFilterStore();
+  const {
+    setSelectedCourseId,
+    selectedCourseId,
+    refetch,
+    setFilter,
+    setRefetch,
+  } = useCourseFilterStore();
   const router = useRouter();
 
   const activeBox =
@@ -30,7 +39,7 @@ export const CourseBoxModel = ({
 
   return (
     <div
-      className={`flex flex-col  rounded-md p-6 shadow-sm md:p-4 sm:p-4 border  ${activeBox} hover:bg-[#eef7ff] hover:border-primary`}
+      className={`flex flex-col  rounded-md p-6 shadow-sm md:p-4 sm:p-4 border  ${activeBox} hover:bg-[#eef7ff] hover:border-primary relative`}
       onClick={() => {
         if (!btnView) {
           setSelectedCourseId(id);
@@ -39,6 +48,8 @@ export const CourseBoxModel = ({
         }
       }}
     >
+      {isScholarship && <div className="ribbon-2">Scholarship</div>}
+
       <div className="w-full flex gap-3">
         <Image
           src={rootImagePath(
@@ -96,8 +107,15 @@ export const CourseBoxModel = ({
               btnStyle="Secondary"
               btnSize="Small"
               onClick={() => {
-                router.push(`/courses`);
+                alert(course_level_id);
                 setSelectedCourseId(id);
+                setFilter({
+                  course_name: course_name,
+                  country_ids: [countryId ?? 0],
+                  course_level_ids: [course_level_id ?? 0],
+                });
+                setRefetch(!refetch);
+                router.push(`/courses`);
               }}
             />
           )}

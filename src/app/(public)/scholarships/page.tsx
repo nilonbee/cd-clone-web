@@ -27,18 +27,25 @@ const Scholarships = async () => {
         <InnerContainer>
           <div className="mb-20 mt-20">
             <GridWrapper>
-              {scholarships?.map((item: any) => (
+              {scholarships?.map((item: any, index: number) => (
                 <ScholarshipsBox
-                  key={item.id}
+                  key={index}
                   title={item.title}
                   image={rootImagePath(item.cover_url as string)}
-                  id={item.slug}
                   university={item.uni_name}
                   quantity={item.quantity}
                   country={item.country_name}
+                  slug={item.slug}
                 />
               ))}
             </GridWrapper>
+            {scholarships.length === 0 && (
+              <div className="flex justify-center items-center h-[100px]">
+                <p className="text-base text-textColor/80">
+                  - No Scholarships Found -
+                </p>
+              </div>
+            )}
           </div>
         </InnerContainer>
       </ContainerLayout>
