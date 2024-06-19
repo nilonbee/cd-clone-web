@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { clsx } from "clsx";
 import { useCourseFilterStore } from "@/store";
 import { ICourse } from "@/types/courses";
 import { getCourseById } from "@/utils/api-requests";
