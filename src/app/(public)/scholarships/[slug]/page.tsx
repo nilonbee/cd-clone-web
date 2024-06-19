@@ -14,7 +14,6 @@ import { FiUsers } from "react-icons/fi";
 const ScholarshipsPage = async ({ params }: any) => {
   const scholarshipData = await getScholarshipBySlug(params.slug);
   const intakes = (await getIntakes({ status: 1 })) as IIntake[];
-
   return (
     <div>
       <Head>
@@ -94,7 +93,6 @@ const ScholarshipsPage = async ({ params }: any) => {
                 </div>
               </div>
             </div>
-
             <div className="mt-10 w-full mb-10">
               <GridWrapper>
                 {scholarshipData?.course?.map(
@@ -115,11 +113,11 @@ const ScholarshipsPage = async ({ params }: any) => {
                   ),
                 )}
               </GridWrapper>
+              <CourseViewDrawer intakes={intakes} />
             </div>
           </InnerContainer>
         </div>
       </ContainerLayout>
-      <CourseViewDrawer intakes={intakes} />
     </div>
   );
 };
