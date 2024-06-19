@@ -16,7 +16,7 @@ const ProfilePage = async () => {
           <InnerContainer>
             <div className="mb-8 fadeIn flex gap-2 items-center justify-between">
               <div className="flex gap-2 items-center mt-8">
-                <div className="w-12 h-12">
+                <div className="w-12 h-12 mt-3">
                   <Avatar />
                 </div>
                 <div>

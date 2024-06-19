@@ -1,5 +1,5 @@
 "use client";
-import { ConfirmationDialog } from "@/components/atoms";
+import { Avatar, ConfirmationDialog } from "@/components/atoms";
 import { HomeIcon, ProfileIcon, SettingsIcon } from "@/components/atoms/Icons";
 import { useUserStore } from "@/store";
 import { rootImagePath } from "@/utils/rootImagePath";
@@ -46,13 +46,7 @@ export const ProfileDrawer = () => {
         className="flex items-center justify-center w-9 h-9 hover:ring-0.5 ring-white/20 rounded-full text-white focus-visible:none cursor-pointer"
         onClick={() => setOpenDrawer(!openDrawer)}
       >
-        <Image
-          className="h-9 w-9 rounded-full shadow-md object-contain"
-          src={rootImagePath(user.img_url)}
-          alt="Avatar"
-          width={36}
-          height={36}
-        />
+        <Avatar />
       </div>
       <div
         className={`${openDrawer ? "block" : "hidden"
