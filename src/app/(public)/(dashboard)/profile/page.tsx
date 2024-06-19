@@ -1,5 +1,4 @@
 import { ContainerLayout, Hero, InnerContainer } from "@/components/atoms";
-import { Avatar } from "@/components/atoms";
 import { ProfileDetails, ProfileImage } from "@/components/molecules";
 import { ICountry } from "@/types/countries";
 import { getCountries } from "@/utils/api-requests";
@@ -18,7 +17,12 @@ const ProfilePage = async () => {
             <div className="mb-8 fadeIn flex gap-2 items-center justify-between">
               <div className="flex gap-2 items-center mt-8">
                 <div className="w-12 h-12 mt-3">
-                  <Avatar />
+                  <Image
+                    src={"/images/icons/profile.png"}
+                    alt="Profile"
+                    width={50}
+                    height={50}
+                  />
                 </div>
                 <div>
                   <p className="text-base text-textColor font-bold">

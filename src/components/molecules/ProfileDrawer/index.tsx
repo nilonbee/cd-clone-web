@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 export const ProfileDrawer = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
-  const { reset, user } = useUserStore();
+  const { reset } = useUserStore();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const drawerRef = useRef(null);
@@ -70,8 +70,9 @@ export const ProfileDrawer = () => {
       </div>
       <div
         ref={drawerRef}
-        className={`${openDrawer ? "block" : "hidden"
-          } absolute top-0 right-1 w-[300px] h-auto bg-white z-20 mt-[90px] rounded-lg shadow-lg ring-1 ring-black/5`}
+        className={`${
+          openDrawer ? "block" : "hidden"
+        } absolute top-0 right-1 w-[300px] h-auto bg-white z-20 mt-[90px] rounded-lg shadow-lg ring-1 ring-black/5`}
       >
         <div className="overflow-hidden m-2 relative">
           <div className=" grid gap-1 bg-white">
