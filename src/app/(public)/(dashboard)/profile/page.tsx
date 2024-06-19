@@ -3,6 +3,7 @@ import { Avatar } from "@/components/atoms";
 import { ProfileDetails, ProfileImage } from "@/components/molecules";
 import { ICountry } from "@/types/countries";
 import { getCountries } from "@/utils/api-requests";
+import Image from "next/image";
 import React from "react";
 
 const ProfilePage = async () => {

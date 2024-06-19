@@ -2,6 +2,7 @@ import React from "react";
 import { ContainerLayout, Hero, InnerContainer } from "@/components/atoms";
 import { SettingsIcon } from "@/components/atoms/Icons";
 import { ChangePasswordForm } from "@/components/organisms/ChangePasswordForm";
+import Image from "next/image";
 
 const SettingsPage = () => {
   return (
@@ -13,7 +14,12 @@ const SettingsPage = () => {
             <div className="mb-8 fadeIn flex gap-2 items-center justify-between">
               <div className="flex gap-2 items-center mt-8">
                 <div className="w-12 h-12">
-                  <SettingsIcon />
+                  <Image
+                    src={"/images/icons/setting.svg"}
+                    alt="Profile"
+                    width={50}
+                    height={50}
+                  />
                 </div>
                 <div>
                   <p className="text-base text-textColor font-bold">Settings</p>

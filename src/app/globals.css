@@ -198,3 +198,9 @@ html {
   color: white;
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  .slider-container .slick-dots {
+    display: none !important;
+  }
+}

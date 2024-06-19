@@ -47,3 +47,4 @@ export * from "./ProfileImage";
 export * from "./ProfileDetails";
 export * from "./DrawerStepper";
 export * from "./ProfileDrawer";
+export * from "./Drawer";
