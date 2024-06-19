@@ -126,8 +126,8 @@ export const ProfileDetails = ({
     <div className="xs:w-full sm:w-full md:w-3/4 bg-white p-5 rounded-md shadow-md">
       <p className="text-sm text-textColor font-semibold">Profile Details</p>
       <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-5">
-          <div className="w-1/2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="w-full">
             <Controller
               name="first_name"
               control={control}
@@ -248,7 +248,7 @@ export const ProfileDetails = ({
               )}
             />
           </div>
-          <div className="w-1/2">
+          <div className="w-full">
             <InputDatePicker
               value={dob}
               onChange={onChange}
