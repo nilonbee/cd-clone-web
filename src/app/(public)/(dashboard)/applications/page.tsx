@@ -7,10 +7,10 @@ import {
   InnerContainer,
   Loading,
 } from "@/components/atoms";
-import { HomeIcon } from "@/components/atoms/Icons";
 import { ApplicationRow, HistoryTable } from "@/components/molecules";
 import { IApplication } from "@/types/application";
 import { deleteEnquiry, getApplicants } from "@/utils/auth-api-requests";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -59,7 +59,12 @@ const ApplicationsPage = () => {
             <div className="mt-8 mb-8 fadeIn flex gap-2 items-center justify-between">
               <div className="flex gap-2 items-center">
                 <div className="w-12 h-12">
-                  <HomeIcon />
+                  <Image
+                    src={"/images/icons/application.svg"}
+                    alt="application"
+                    width={50}
+                    height={50}
+                  />
                 </div>
                 <div>
                   <p className="text-base text-textColor font-bold">
@@ -73,7 +78,9 @@ const ApplicationsPage = () => {
             </div>
             <div className="w-full mb-10 flex flex-col">
               {applicants.length === 0 && !isLoading && (
-                <p className="text-center text-black/60">No applications found</p>
+                <p className="text-center text-black/60">
+                  No applications found
+                </p>
               )}
               {applicants.length > 0 && (
                 <div className="flex flex-col gap-4">
