@@ -1,7 +1,6 @@
 "use client";
-import { ConfirmationDialog } from "@/components/atoms";
+import { Avatar, ConfirmationDialog } from "@/components/atoms";
 import { useUserStore } from "@/store";
-import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
@@ -9,7 +8,7 @@ import toast from "react-hot-toast";
 
 export const ProfileDrawer = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
-  const { reset } = useUserStore();
+  const { reset, user } = useUserStore();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const drawerRef = useRef(null);
@@ -67,19 +66,12 @@ export const ProfileDrawer = () => {
         className="flex items-center justify-center w-9 h-9 rounded-full text-white focus-visible:none cursor-pointer relative"
         onClick={() => setOpenDrawer(!openDrawer)}
       >
-        <Image
-          className="h-9 w-9 rounded-full shadow-md"
-          src={rootImagePath("Profile/user-placeholder.png")}
-          alt=""
-          width={36}
-          height={36}
-        />
+        <Avatar />
       </div>
       <div
         ref={drawerRef}
-        className={`${
-          openDrawer ? "block" : "hidden"
-        } absolute top-0 right-1 w-[300px] h-auto bg-white z-20 mt-[90px] rounded-lg shadow-lg ring-1 ring-black/5`}
+        className={`${openDrawer ? "block" : "hidden"
+          } absolute top-0 right-1 w-[300px] h-auto bg-white z-20 mt-[90px] rounded-lg shadow-lg ring-1 ring-black/5`}
       >
         <div className="overflow-hidden m-2 relative">
           <div className=" grid gap-1 bg-white">
