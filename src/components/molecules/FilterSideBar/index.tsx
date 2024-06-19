@@ -87,7 +87,7 @@ export const FilterSideBar = ({
       setIsEmpty(false);
       setCourseData(courses?.data || []);
       setTotalCourses(courses?.total || 0);
-      // setSelectedCourseId(courses?.data[0].id || "");
+      setSelectedCourseId(courses?.data[0].id || "");
       setLoadingCourseData(false);
     }
   };

@@ -40,6 +40,7 @@ export const Courses = ({
     } else {
       setIsEmpty(true);
       setCourseData([]);
+      setSelectedCourseId("");
       setTotalCourses(0);
     }
     // eslint-disable-next-line
