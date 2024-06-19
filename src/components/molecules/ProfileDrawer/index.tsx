@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 
 export const ProfileDrawer = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
-  const { reset } = useUserStore();
+  const { reset, user } = useUserStore();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
@@ -43,21 +43,20 @@ export const ProfileDrawer = () => {
   return (
     <React.Fragment>
       <div
-        className="flex items-center justify-center w-9 h-9  rounded-full text-white focus-visible:none cursor-pointer"
+        className="flex items-center justify-center w-9 h-9 hover:ring-0.5 ring-white/20 rounded-full text-white focus-visible:none cursor-pointer"
         onClick={() => setOpenDrawer(!openDrawer)}
       >
         <Image
-          className="h-9 w-9 rounded-full shadow-md"
-          src={rootImagePath("Profile/user-placeholder.png")}
-          alt=""
+          className="h-9 w-9 rounded-full shadow-md object-contain"
+          src={rootImagePath(user.img_url)}
+          alt="Avatar"
           width={36}
           height={36}
         />
       </div>
       <div
-        className={`${
-          openDrawer ? "block" : "hidden"
-        } absolute top-0 right-1 w-[300px] h-auto bg-white z-20  mt-[90px] rounded-lg shadow-lg ring-1 ring-black/5`}
+        className={`${openDrawer ? "block" : "hidden"
+          } absolute top-0 right-1 w-[300px] h-auto bg-white z-20  mt-[90px] rounded-lg shadow-lg ring-1 ring-black/5`}
       >
         <div className="overflow-hidden m-2">
           <div className="relative grid gap-1 bg-white">
