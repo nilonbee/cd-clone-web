@@ -203,7 +203,6 @@ export const ProfileDetails = ({
               name="phone"
               control={control}
               defaultValue=""
-              rules={validationSchema.phone}
               render={({ field }) => (
                 <div>
                   <InputField

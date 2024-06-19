@@ -1,7 +1,6 @@
 "use client";
-import { ConfirmationDialog } from "@/components/atoms";
+import { Avatar, ConfirmationDialog } from "@/components/atoms";
 import { useUserStore } from "@/store";
-import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
@@ -67,13 +66,7 @@ export const ProfileDrawer = () => {
         className="flex items-center justify-center w-9 h-9 rounded-full text-white focus-visible:none cursor-pointer relative"
         onClick={() => setOpenDrawer(!openDrawer)}
       >
-        <Image
-          className="h-9 w-9 rounded-full shadow-md"
-          src={rootImagePath("Profile/user-placeholder.png")}
-          alt=""
-          width={36}
-          height={36}
-        />
+        <Avatar />
       </div>
       <div
         ref={drawerRef}
