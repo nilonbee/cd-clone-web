@@ -9,6 +9,8 @@ import { InterestedSection } from "@/components/organisms";
 import { IEvent } from "@/types/events";
 import { getEvents } from "@/utils/api-requests";
 
+export const revalidate = 10;
+
 const EventsPage = async () => {
   const events = await getEvents();
   return (

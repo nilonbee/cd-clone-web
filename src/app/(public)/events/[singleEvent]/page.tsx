@@ -45,12 +45,12 @@ const SingleEventPage = async ({ params }: any) => {
             mapDetails={mapDetails}
             description={description}
           />
-          <div className="my-12">
+          {/* <div className="my-12">
             <SectionHeader
               title={map_locations[0].location_name}
-              description={meta_keywords}
+              description={""}
             />
-          </div>
+          </div> */}
           <div className="p-4 mx-auto my-12 bg-lightBlue bg-opacity-40 rounded-md border border-boxBorder">
             <GMap mapData={mapDetails} />
           </div>

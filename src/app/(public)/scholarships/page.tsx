@@ -1,4 +1,9 @@
-import { ContainerLayout, Hero, InnerContainer } from "@/components/atoms";
+import {
+  ContainerLayout,
+  EmptyState,
+  Hero,
+  InnerContainer,
+} from "@/components/atoms";
 import {
   GridWrapper,
   ScholarshipsBanner,
@@ -8,6 +13,8 @@ import { InterestedSection } from "@/components/organisms";
 import { getScholarships } from "@/utils/api-requests";
 import { rootImagePath } from "@/utils/rootImagePath";
 import React from "react";
+
+export const revalidate = 10;
 
 const Scholarships = async () => {
   const filterOptions = {
@@ -39,13 +46,7 @@ const Scholarships = async () => {
                 />
               ))}
             </GridWrapper>
-            {scholarships.length === 0 && (
-              <div className="flex justify-center items-center h-[100px]">
-                <p className="text-base text-textColor/80">
-                  - No Scholarships Found -
-                </p>
-              </div>
-            )}
+            {scholarships.length === 0 && <EmptyState />}
           </div>
         </InnerContainer>
       </ContainerLayout>

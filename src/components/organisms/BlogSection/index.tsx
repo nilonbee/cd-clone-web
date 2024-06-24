@@ -18,6 +18,10 @@ export const BlogSection = async ({
     return text.replace(/<[^>]*>?/gm, "").substring(0, 100);
   };
 
+  if (initBlogs.total === 0) {
+    return;
+  }
+
   return (
     <InnerContainer>
       <div className="mt-20 mb-20">

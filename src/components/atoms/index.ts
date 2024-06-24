@@ -19,3 +19,4 @@ export * from "./TextRow";
 export * from "./Switch";
 export * from "./LoadingSpinner";
 export * from "./Avatar";
+export * from "./EmptyState";
