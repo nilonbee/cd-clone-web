@@ -1,12 +1,20 @@
 import React from "react";
 import Blogs from "@/components/organisms/BlogsContent";
-import { ContainerLayout, Hero, SectionHeader } from "@/components/atoms";
+import {
+  ContainerLayout,
+  EmptyState,
+  Hero,
+  SectionHeader,
+} from "@/components/atoms";
 import { InterestedSection } from "@/components/organisms";
 import { IBlogResponse } from "@/types/blogs";
 import { getBlogs } from "@/utils/api-requests";
 
+export const revalidate = 10;
+
 const BlogsPage = async () => {
   const blogs: IBlogResponse = await getBlogs({ page: 1, pageSize: 20 });
+
   return (
     <>
       <Hero />
@@ -19,7 +27,7 @@ const BlogsPage = async () => {
             />
           </div>
         </div>
-        <Blogs blogsData={blogs} />
+        {blogs.total !== 0 ? <Blogs blogsData={blogs} /> : <EmptyState />}
       </ContainerLayout>
       <InterestedSection />
     </>

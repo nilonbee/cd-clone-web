@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useState, useEffect } from "react";
-import { MainButton } from "@/components/atoms";
+import { EmptyState, MainButton } from "@/components/atoms";
 import { LocationIcon2 } from "@/components/atoms/Icons";
 import { CareerRow } from "@/components/molecules";
 import { IResponseData, ICareer } from "@/types/careers";
@@ -9,7 +9,7 @@ import { useIpStore } from "@/store/useIpStore";
 import { getCareers } from "@/utils/api-requests";
 
 type CareerSectionProps = {
-  careerCount: string;
+  careerCount: number;
   careersData: IResponseData;
 };
 
@@ -67,16 +67,20 @@ export const CareerSection = ({
         />
       </div>
       <div className="mt-10 flex flex-col gap-2">
-        {selectedCareers?.data.map((item: ICareer) => (
-          <CareerRow
-            title={item.title}
-            end_date={item.end_date}
-            key={item.id}
-            created_at={item.created_at}
-            description={item.description}
-            slug={item.slug}
-          />
-        ))}
+        {careerCount !== 0 ? (
+          selectedCareers?.data.map((item: ICareer) => (
+            <CareerRow
+              title={item.title}
+              end_date={item.end_date}
+              key={item.id}
+              created_at={item.created_at}
+              description={item.description}
+              slug={item.slug}
+            />
+          ))
+        ) : (
+          <EmptyState />
+        )}
       </div>
     </div>
   );

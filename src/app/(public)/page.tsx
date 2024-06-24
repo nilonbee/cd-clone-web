@@ -26,6 +26,8 @@ import {
 } from "@/utils/api-requests";
 import React from "react";
 
+export const revalidate = 10;
+
 export default async function Home() {
   const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
   const countries = (await getCountries({ status: 1 })) as ICountry[];
