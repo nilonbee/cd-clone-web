@@ -5,15 +5,12 @@ import {
   TimeIcon,
   UniversityIcon,
 } from "@/components/atoms/Icons";
+import { IApplication } from "@/types/application";
 import { rootImagePath } from "@/utils/rootImagePath";
 import Image from "next/image";
-import React from "react";
-import { FaRegEye } from "react-icons/fa";
-import { FaPencilAlt } from "react-icons/fa";
-import { ImBin } from "react-icons/im";
-import { FaHistory } from "react-icons/fa";
-import { IApplication } from "@/types/application";
 import { useRouter } from "next/navigation";
+import { FaHistory, FaPencilAlt, FaRegEye } from "react-icons/fa";
+import { ImBin } from "react-icons/im";
 
 export const ApplicationRow = ({
   enquiry_id,
@@ -26,16 +23,17 @@ export const ApplicationRow = ({
   status,
   setSelectedId,
   setIsOpen,
+  setIsDeleteOpen,
 }: IApplication) => {
   const router = useRouter();
 
   return (
-    <div className="p-4 flex gap-5 items-center self-stretch relative w-full bg-[#eef7ff] rounded-md  border border-boxBorder justify-between fadeIn">
-      <div className="flex gap-5">
+    <div className="p-4 flex gap-5 items-center self-stretch relative w-full bg-[#eef7ff] rounded-md  border border-boxBorder justify-between fadeIn sm:flex-col xs:flex-col md:flex-row">
+      <div className="flex xs:gap-2 sm:gap-2 md:gap-5">
         <Image
           src={rootImagePath(uni_logo as string)}
           alt="university-logo"
-          className="h-[100px] w-[100px]  ring-1 ring-primary shadow-md object-contain rounded-md bg-white"
+          className="xs:h-[50px] xs:w-[50px] sm:h-[50px] sm:w-[50px] md:h-[100px] md:w-[100px] ring-1 ring-primary shadow-md object-contain rounded-md bg-white"
           width={200}
           height={200}
         />
@@ -70,8 +68,12 @@ export const ApplicationRow = ({
           </div>
         </div>
       </div>
-      <div className="flex gap-5 items-center">
-        <div className="bg-red text-white py-1 px-2 rounded-md text-xs shadow uppercase">
+      <div className="flex gap-5 items-center sm:flex-col xs:flex-col md:flex-row">
+        <div
+          className={
+            "bg-teal-500 text-white py-1 px-4 rounded-full text-xs shadow uppercase"
+          }
+        >
           {status}
         </div>
         <div className="flex gap-2">
@@ -89,7 +91,15 @@ export const ApplicationRow = ({
               }
             />
           )}
-          {status !== "Deleted" && <IconButton icon={<ImBin />} />}
+          {status !== "Deleted" && (
+            <IconButton
+              icon={<ImBin />}
+              onClickHandler={() => {
+                setSelectedId(id);
+                setIsDeleteOpen(true);
+              }}
+            />
+          )}
           <IconButton
             icon={<FaHistory />}
             onClickHandler={() => {

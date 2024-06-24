@@ -1,6 +1,7 @@
 import { ContainerLayout } from "@/components/atoms";
 import { FilterSideBar, MainSearchBar } from "@/components/molecules";
 import {
+  CourseViewDrawer,
   CourseViewModel,
   Courses,
   InterestedSection,
@@ -20,8 +21,6 @@ import {
 const CoursePage = async () => {
   const filterData = {
     limit: 20,
-    max_fee: 0,
-    min_fee: 0,
     page: 1,
   };
   const initialCourseData = await getCourses(filterData);
@@ -36,10 +35,10 @@ const CoursePage = async () => {
         <ContainerLayout>
           <div className="flex flex-col gap-2 justify-center items-center self-stretch relative xs:h-[180px]  md:h-[200px] ">
             <h1 className="text-center font-semibold lg:text-4xl md:text-3xl sm:text-2xl xs:text-2xl text-white">
-              FIND YOUR PERFECT COURSE
+              Find Your Perfect Course
             </h1>
             <h4 className="text-center lg:text-1xl md:text-base sm:text-sm xs:text-xs text-white">
-              We can help you apply and study at top Universities
+              Your Journey to the Perfect Course Starts Here!
             </h4>
           </div>
         </ContainerLayout>
@@ -57,6 +56,7 @@ const CoursePage = async () => {
         <div className="w-full flex md:flex-row  sm:flex-col my-10 gap-4 relative">
           <Courses
             initialCourseData={initialCourseData?.data ?? []}
+            initialTotalCourses={initialCourseData?.total || 0}
             intakes={intakes}
           />
           <div className="w-full md:block sm:hidden xs:hidden">
@@ -65,6 +65,7 @@ const CoursePage = async () => {
         </div>
       </ContainerLayout>
       <InterestedSection />
+      <CourseViewDrawer intakes={intakes} />
     </>
   );
 };

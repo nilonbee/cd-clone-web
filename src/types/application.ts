@@ -10,8 +10,10 @@ export interface IApplication {
   uni_logo: string;
   uni_name: string;
   status: string;
+  status_color?: string;
   setSelectedId: (id: string) => void;
   setIsOpen: (isOpen: boolean) => void;
+  setIsDeleteOpen: (isOpen: boolean) => void;
 }
 
 export interface IApplicationRequest {

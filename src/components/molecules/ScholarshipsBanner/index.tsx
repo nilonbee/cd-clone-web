@@ -30,11 +30,11 @@ export const ScholarshipsBanner = () => {
               <p className="text-textColor text-sm mb-2">
                 At Campus Direct, we offer a comprehensive approach to
                 scholarships. Our curated selection includes scholarships from
-                universities, ensuring that you have access to a wide range of
-                opportunities. We continually update our scholarship database to
-                provide you with the latest information, so you can explore and
-                apply for scholarships that align with your goals and
-                aspirations.
+                universities, corporates and governments ensuring that you have
+                access to a wide range of opportunities. We continuously update
+                our scholarship database to provide you with the latest
+                information, so you can explore and apply for scholarships that
+                align with your goals and aspirations.
               </p>
             </div>
             <div className="flex justify-end lg:w-1/4 md:w-full sm:w-full lg:block md:hidden sm:hidden xs:hidden">

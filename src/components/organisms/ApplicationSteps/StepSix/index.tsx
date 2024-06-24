@@ -80,8 +80,8 @@ export const StepSix = ({ id }: { id: string }) => {
         IELTS / PTE Details
       </p>
       <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-5">
-          <div className="w-1/2">
+        <div className="flex gap-5 xs:flex-col sm:flex-col md:flex-row">
+          <div className="xs:w-full sm:w-full md:w-1/2">
             <Controller
               name="exam_type"
               defaultValue=""
@@ -150,7 +150,7 @@ export const StepSix = ({ id }: { id: string }) => {
               )}
             />
           </div>
-          <div className="w-1/2">
+          <div className="xs:w-full sm:w-full md:w-1/2">
             <InputDatePicker
               value={examDate}
               onChange={onChange}

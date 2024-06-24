@@ -6,14 +6,14 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import Image from "next/image";
 import { useUserStore } from "@/store";
-import { ProfileBtn } from "..";
+import { ProfileDrawer } from "..";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { authUser, user } = useUserStore();
+  const { authUser } = useUserStore();
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-10">
+    <header className="bg-white shadow-md sticky top-0 z-20">
       <ContainerLayout>
         <nav
           className="mx-auto flex w-full justify-between items-center  py-3"
@@ -30,14 +30,19 @@ export const Header = () => {
               />
             </Link>
           </div>
-          <div className="flex lg:hidden">
+          <div className="flex lg:hidden gap-4">
+            {authUser && <ProfileDrawer />}
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-textColor"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-8 w-8" aria-hidden="true" />
+              {mobileMenuOpen ? (
+                <XMarkIcon className="h-8 w-8" aria-hidden="true" />
+              ) : (
+                <Bars3Icon className="h-8 w-8" aria-hidden="true" />
+              )}
             </button>
           </div>
           <div className="hidden lg:flex gap-8">
@@ -52,7 +57,7 @@ export const Header = () => {
           </div>
           <div className="hidden xl:flex xl:flex-1 lg:justify-end gap-4 items-center">
             {authUser ? (
-              <ProfileBtn />
+              <ProfileDrawer />
             ) : (
               <Link href="/login" className="text-sm text-primary">
                 Sign in
@@ -64,20 +69,24 @@ export const Header = () => {
                 Register
               </Link>
             )}
-            <MainButton
-              label="Find My Course"
-              btnStyle="Primary"
-              btnSize="Medium"
-            />
+            <Link href="/courses">
+              <MainButton
+                label="Find My Course"
+                btnStyle="Primary"
+                btnSize="Medium"
+              />
+            </Link>
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center xl:hidden">
-            {authUser && <ProfileBtn />}
-            <MainButton
-              label="Find My Course"
-              btnStyle="Primary"
-              btnSize="Medium"
-            />
+            {authUser && <ProfileDrawer />}
+            <Link href="/courses">
+              <MainButton
+                label="Find My Course"
+                btnStyle="Primary"
+                btnSize="Medium"
+              />
+            </Link>
             {!authUser && (
               <Menu as="div" className="relative inline-block text-left">
                 <div>
@@ -95,7 +104,7 @@ export const Header = () => {
                         href="/login"
                         className="block px-4 py-2 text-sm text-primary"
                       >
-                        Login
+                        Sign in
                       </Link>
                     </Menu.Item>
                     <Menu.Item>
@@ -118,7 +127,7 @@ export const Header = () => {
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
-        <div className="fixed inset-0 z-100 w-full" />
+        <div className="fixed inset-0 z-10 w-full" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10  w-full bg-white px-4 py-4 ">
           <div className="flex items-center justify-between w-full">
             <a href="#" className="-m-1.5 p-1.5">
@@ -147,6 +156,7 @@ export const Header = () => {
                   menuName="Home"
                   uri={"/"}
                   setMobileMenuOpen={() => setMobileMenuOpen(false)}
+                  isHomePage
                 />
                 <MenuItem
                   menuName="About Us"
@@ -186,23 +196,25 @@ export const Header = () => {
                     className="text-sm text-primary"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Login
+                    Sign in
                   </Link>
                 )}
                 {!authUser && (
                   <Link
-                    href="/auth/register"
+                    href="/register"
                     className="text-sm text-primary"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Register
                   </Link>
                 )}
-                <div className="px-4 py-2 items-center relative h-18 bg-primary rounded shadow-md">
-                  <p className="text-base font-semibold text-white">
-                    Find My Course
-                  </p>
-                </div>
+                <Link onClick={() => setMobileMenuOpen(false)} href="/courses">
+                  <div className="px-4 py-2 items-center relative h-18 bg-primary rounded shadow-md">
+                    <p className="text-base font-semibold text-white">
+                      Find My Course
+                    </p>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,82 +1,63 @@
+import React from "react";
 import { InnerContainer, MainButton, SectionHeader } from "@/components/atoms";
 import { RightArrowIcon } from "@/components/atoms/Icons";
 import { BlogPost, GridWrapper } from "@/components/molecules";
+import { IBlog, IBlogResponse } from "@/types/blogs";
+import Link from "next/link";
 
 interface BlogSectionProps {
   seeMoreBtn?: boolean;
+  initBlogs: IBlogResponse;
 }
 
-export const BlogSection = ({ seeMoreBtn = true }: BlogSectionProps) => {
-  const blogPost = [
-    {
-      title: "The Evolution of Higher Education: Trends in Modern Universities",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit hendrerit eget est.",
-      date: "12th May 2021",
-      image: "/images/blogs/blog1.png",
-      author: "John Doe",
-      viewCount: 100,
-    },
-    {
-      title: "The Best University in the UK",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit hendrerit eget est.",
-      date: "12th May 2021",
-      image: "/images/blogs/blog2.png",
-      author: "John Doe",
-      viewCount: 100,
-    },
-    {
-      title: "The Best University in the UK",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit hendrerit eget est.",
-      date: "12th May 2021",
-      image: "/images/blogs/blog3.png",
-      author: "John Doe",
-      viewCount: 100,
-    },
-    {
-      title: "The Best University in the UK",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit hendrerit eget est.",
-      date: "12th May 2021",
-      image: "/images/blogs/blog4.png",
-      author: "John Doe",
-      viewCount: 100,
-    },
-  ];
+export const BlogSection = async ({
+  seeMoreBtn = true,
+  initBlogs,
+}: BlogSectionProps) => {
+  const removeHtmlTagsAndShorten = (text: string) => {
+    return text.replace(/<[^>]*>?/gm, "").substring(0, 100);
+  };
+
+  if (initBlogs.total === 0) {
+    return;
+  }
+
   return (
     <InnerContainer>
-      <div className="pt-20 pb-20">
+      <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
             title="Read Our Latest Blogs"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            description="Our blogs will help you with everything you want to know about studying abroad"
           />
           <div className="mt-10">
             <GridWrapper>
-              {blogPost.map((item, index) => (
+              {initBlogs?.data.map((item: IBlog, index: number) => (
                 <BlogPost
                   key={index}
                   title={item.title}
-                  description={item.description}
-                  date={item.date}
-                  image={item.image}
+                  blog_description={removeHtmlTagsAndShorten(
+                    item.blog_description,
+                  )}
+                  createdAt={item.createdAt}
+                  image_path={item.image_path}
                   author={item.author}
-                  viewCount={item.viewCount}
+                  slug={item.slug}
                 />
               ))}
             </GridWrapper>
           </div>
           {seeMoreBtn && (
             <div className="flex justify-center items-center mt-10">
-              <MainButton
-                label="See More"
-                btnStyle="Secondary"
-                btnSize="Medium"
-                icon={<RightArrowIcon />}
-                customStyle="w-[200px]"
-              />
+              <Link href={"/blogs"}>
+                <MainButton
+                  label="See More"
+                  btnStyle="Secondary"
+                  btnSize="Medium"
+                  icon={<RightArrowIcon />}
+                  customStyle="w-[200px]"
+                />
+              </Link>
             </div>
           )}
         </div>

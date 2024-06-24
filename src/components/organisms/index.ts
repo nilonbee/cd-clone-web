@@ -21,3 +21,5 @@ export * from "./CourseViewDrawer";
 export * from "./ContactInfoSection";
 export * from "./ApplicationSteps";
 export * from "./ApplicationTabs";
+export * from "./CareerSection";
+export * from "./BlogsContent";

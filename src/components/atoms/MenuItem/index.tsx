@@ -7,7 +7,7 @@ type MenuItemProps = {
   menuName: string;
   uri: string;
   isHomePage?: boolean;
-  setMobileMenuOpen?: () => void;
+  setMobileMenuOpen?: (value: boolean) => void;
 };
 
 export const MenuItem = ({
@@ -23,6 +23,19 @@ export const MenuItem = ({
   const activeClassName = isActive
     ? "text-primary font-semibold"
     : "text-textColor";
+
+  if (setMobileMenuOpen) {
+    return (
+      <Link
+        href={uri}
+        className={`text-sm ${activeClassName} hover:text-primary`}
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        {menuName}
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={uri}

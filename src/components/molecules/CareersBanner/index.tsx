@@ -10,7 +10,7 @@ export const CareersBanner = () => {
           <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-4 w-full">
             <div className="flex flex-col gap-4 justify-center lg:w-3/4 md:w-full sm:w-full py-10">
               <h1 className="text-3xl font-bold text-primary mb-2">
-                Careers at Campus Direct{" "}
+                Join Our Team{" "}
               </h1>
               <p className="text-textColor text-sm mb-2">
                 Join Campus Direct and embark on a fulfilling career in the
@@ -21,10 +21,10 @@ export const CareersBanner = () => {
               <p className="text-textColor text-sm mb-2">
                 As part of our team, you will have the opportunity to contribute
                 to the success stories of students, work in a collaborative
-                environment, continuously learn and grow, and be part of a
+                environment, continuously learn and grow and be part of a
                 vibrant and student-centric culture. Take the next step in your
                 career journey and explore the exciting career opportunities
-                available at Campus Direct. Current Job Opportunities:
+                available at Campus Direct.
               </p>
             </div>
             <div className="flex justify-end lg:w-1/4 md:w-full sm:w-full lg:block md:hidden sm:hidden xs:hidden">

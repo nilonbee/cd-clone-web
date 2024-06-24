@@ -4,6 +4,7 @@ import {
   CarbonLocationIcon,
 } from "@/components/atoms/Icons";
 import { ICourse } from "@/types/courses";
+import moment from "moment";
 
 export const CoursePriceBox = ({
   created_at,
@@ -13,7 +14,7 @@ export const CoursePriceBox = ({
   course_fee_additional,
   id,
 }: ICourse) => {
-  const startDate = created_at?.toString().split(" ")[0];
+  const startDate = moment().format("YYYY");
 
   return (
     <div className="p-4 items-start self-stretch relative w-full bg-[#eef7ff] rounded">

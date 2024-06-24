@@ -42,11 +42,11 @@ export const ContactSection = () => {
 
   return (
     <InnerContainer>
-      <div className="pt-20 pb-20">
+      <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Interested? Let's talk!"
-            description="Send us a message with what we can help you."
+            title="Interested? Let's Talk!"
+            description="Reach out to us so that we can help you with the right information."
           />
           <form
             className="w-full mt-10 lg:px-20 md:px-0"
@@ -66,6 +66,7 @@ export const ContactSection = () => {
                         placeholder="Enter your name"
                         type="text"
                         error={errors.name?.message}
+                        required
                         id="name"
                         {...field}
                       />
@@ -86,6 +87,7 @@ export const ContactSection = () => {
                         placeholder="Enter your email"
                         type="email"
                         id="email"
+                        required
                         error={errors.email?.message}
                         {...field}
                       />
@@ -100,14 +102,14 @@ export const ContactSection = () => {
                   name="subject"
                   control={control}
                   defaultValue=""
-                  rules={validationSchema.subject}
+                  // rules={validationSchema.subject}
                   render={({ field }) => (
                     <div>
                       <InputField
                         label="Subject"
                         placeholder="Enter your subject"
                         type="text"
-                        error={errors.subject?.message}
+                        // error={errors.subject?.message}
                         id="subject"
                         {...field}
                       />
@@ -125,6 +127,7 @@ export const ContactSection = () => {
                       <PhoneInputField
                         label="Phone Number"
                         placeholder="Enter your phone number"
+                        required
                         id="phone"
                         error={errors.phone?.message}
                         {...field}
@@ -148,6 +151,7 @@ export const ContactSection = () => {
                         placeholder="Enter your message"
                         id="message"
                         error={errors.message?.message}
+                        required
                         {...field}
                       />
                     </div>

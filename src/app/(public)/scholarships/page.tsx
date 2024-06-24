@@ -1,4 +1,9 @@
-import { ContainerLayout, Hero, InnerContainer } from "@/components/atoms";
+import {
+  ContainerLayout,
+  EmptyState,
+  Hero,
+  InnerContainer,
+} from "@/components/atoms";
 import {
   GridWrapper,
   ScholarshipsBanner,
@@ -8,6 +13,8 @@ import { InterestedSection } from "@/components/organisms";
 import { getScholarships } from "@/utils/api-requests";
 import { rootImagePath } from "@/utils/rootImagePath";
 import React from "react";
+
+export const revalidate = 10;
 
 const Scholarships = async () => {
   const filterOptions = {
@@ -27,18 +34,19 @@ const Scholarships = async () => {
         <InnerContainer>
           <div className="mb-20 mt-20">
             <GridWrapper>
-              {scholarships?.map((item: any) => (
+              {scholarships?.map((item: any, index: number) => (
                 <ScholarshipsBox
-                  key={item.id}
+                  key={index}
                   title={item.title}
                   image={rootImagePath(item.cover_url as string)}
-                  id={item.slug}
                   university={item.uni_name}
                   quantity={item.quantity}
                   country={item.country_name}
+                  slug={item.slug}
                 />
               ))}
             </GridWrapper>
+            {scholarships.length === 0 && <EmptyState />}
           </div>
         </InnerContainer>
       </ContainerLayout>

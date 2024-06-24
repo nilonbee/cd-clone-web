@@ -9,6 +9,8 @@ import { InterestedSection } from "@/components/organisms";
 import { IEvent } from "@/types/events";
 import { getEvents } from "@/utils/api-requests";
 
+export const revalidate = 10;
+
 const EventsPage = async () => {
   const events = await getEvents();
   return (
@@ -18,7 +20,7 @@ const EventsPage = async () => {
         <div className="my-12">
           <SectionHeader
             title="Events"
-            description="Campus Direct is passionate about empowering students"
+            description="Providing you with information and opportunities."
           />
         </div>
         <InnerContainer>

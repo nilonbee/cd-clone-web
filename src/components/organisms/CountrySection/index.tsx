@@ -6,25 +6,25 @@ export const CountrySection = () => {
     {
       name: "USA",
       img: "/images/country/usa.png",
-      url: "/",
-      country_id: 12,
+      url: "/courses",
+      country_id: 231,
     },
     {
       name: "Australia",
       img: "/images/country/australia.png",
-      url: "/",
+      url: "/courses",
       country_id: 13,
     },
     {
       name: "Canada",
       img: "/images/country/canada.png",
-      url: "/",
+      url: "/courses",
       country_id: 38,
     },
     {
       name: "UK",
       img: "/images/country/uk.png",
-      url: "/",
+      url: "/courses",
       country_id: 230,
     },
   ];
@@ -34,8 +34,8 @@ export const CountrySection = () => {
       <div className="mt-20 mb-20">
         <div className="flex flex-col justify-center items-center relative bg-transparent w-full">
           <SectionHeader
-            title="Which Country Do You Prefer?"
-            description="Lorem ipsum dolor sit amet consectetur. Sit hendrerit eget est."
+            title="Choose Your Dream Destination"
+            description="Choose from a range of destinations based on your preference."
           />
 
           <GridWrapperTwo>
@@ -44,7 +44,7 @@ export const CountrySection = () => {
                 key={index}
                 country={country.name}
                 img={country.img}
-                url={country.url}
+                countryId={country.country_id}
               />
             ))}
           </GridWrapperTwo>

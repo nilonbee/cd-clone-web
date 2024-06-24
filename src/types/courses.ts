@@ -16,13 +16,16 @@ export interface ICourse {
   rating?: number | undefined;
   entry_requirements?: string;
   course_description?: string;
-  setOpenDrawer?: (value: boolean) => void;
+  btnView?: boolean;
+  isScholarship?: boolean;
+  isMobile?: boolean;
 }
 
 export interface ICourseResponse {
   current_page: number;
   data: {
     data: ICourse[];
+    total?: number;
   };
 }
 

@@ -1,14 +1,14 @@
 "use client";
+import { MainButton } from "@/components/atoms";
+import { InputField } from "@/components/molecules";
+import { useUserStore } from "@/store";
+import { userLogin } from "@/utils/api-requests";
 import validationSchema from "@/utils/validationSchema";
 import Link from "next/link";
-import { Divider, MainButton } from "@/components/atoms";
-import { InputField, SocialMediaAuthForm } from "@/components/molecules";
-import { userLogin } from "@/utils/api-requests";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useUserStore } from "@/store";
-import { useState } from "react";
 
 type FormValues = {
   email: string;
@@ -114,8 +114,8 @@ export const LoginForm = () => {
         loading={loading}
         disabled={loading}
       />
-      <Divider text="or" />
-      <SocialMediaAuthForm />
+      {/* <Divider text="or" /> */}
+      {/* <SocialMediaAuthForm /> */}
       <p className="text-textColor text-center my-5 text-xs font-medium ">
         DON&apos;T HAVE AN ACCOUNT?
       </p>

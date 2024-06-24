@@ -16,6 +16,12 @@ export interface ICareer {
 export interface IResponseData {
   current_page: number;
   data: ICareer[];
+  next_page_url: null;
+  path: string;
+  per_page: string;
+  prev_page_url: null;
+  to: number;
+  total: number;
 }
 
 export interface IApiResponse {

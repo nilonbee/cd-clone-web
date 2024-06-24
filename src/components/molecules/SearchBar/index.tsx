@@ -7,9 +7,25 @@ import {
   SearchIcon,
 } from "@/components/atoms/Icons";
 import React, { useState } from "react";
-import { VscClose } from "react-icons/vsc";
+import SearchByName from "./SearchByName";
+import SearchByStudyLevel from "./SearchByStudyLevel";
+import { ICountry } from "@/types/countries";
+import { ICourseLevel } from "@/types/courseLevels";
+import { ISubject } from "@/types/subjects";
+import SearchByDestination from "./SearchByDestination";
+import SearchBySubject from "./SearchBySubject";
 
-export const SearchBar = () => {
+interface SearchBarProps {
+  initCountries: ICountry[];
+  initCourseLevels: ICourseLevel[];
+  initSubjects: ISubject[];
+}
+
+export const SearchBar = ({
+  initCountries,
+  initCourseLevels,
+  initSubjects,
+}: SearchBarProps) => {
   const searchTypes = [
     {
       id: 1,
@@ -47,10 +63,10 @@ export const SearchBar = () => {
               className={`flex gap-4 items-center flex-1 relative w-full cursor-pointer`}
               onClick={() => setSelectedType(type.name)}
             >
-              <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
+              <div className="xs:w-[25px] xs:h-[25px] sm:w-[30px] sm:h-[30px] md:w-[40px] md:h-[40px]  ">
                 {type.Icon}
               </div>
-              <p className="md:text-base sm:text-sm xs:text-sm  text-textColor">
+              <p className="xs:text-sm sm:text-sm  md:text-base  text-textColor/70">
                 {type.label}
               </p>
             </div>
@@ -58,86 +74,27 @@ export const SearchBar = () => {
         </div>
       )}
       {selectedType !== null && (
-        <div className=" shadow-lg rounded-[5px]  py-[18px]  -mt-10 w-full bg-white px-5">
+        <div className=" shadow-lg rounded-md  py-[15px]  -mt-10 w-full bg-white px-5">
           {selectedType === "searchLevel1" && (
-            <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div>
-                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                  <SearchIcon />
-                </div>
-              </div>
-              <input
-                type="text"
-                placeholder="Search Course Name"
-                className=" w-full outline-none h-10 z-10"
-              />
-              <div
-                onClick={() => setSelectedType(null)}
-                className="cursor-pointer z-10"
-              >
-                <VscClose className="text-[30px] text-textColor" />
-              </div>
-            </div>
+            <SearchByName setSelectedType={setSelectedType} />
           )}
           {selectedType === "searchLevel2" && (
-            <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div>
-                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                  <HatIcon />
-                </div>
-              </div>
-              <input
-                type="text"
-                placeholder="Select Study Level"
-                className=" w-full outline-none h-10 z-10"
-              />
-              <div
-                onClick={() => setSelectedType(null)}
-                className="cursor-pointer z-10"
-              >
-                <VscClose className="text-[30px] text-textColor" />
-              </div>
-            </div>
+            <SearchByStudyLevel
+              setSelectedType={setSelectedType}
+              initCourseLevels={initCourseLevels}
+            />
           )}
           {selectedType === "searchLevel3" && (
-            <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div>
-                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                  <LocationIcon />
-                </div>
-              </div>
-              <input
-                type="text"
-                placeholder="Select Destination"
-                className=" w-full outline-none h-10 z-10"
-              />
-              <div
-                onClick={() => setSelectedType(null)}
-                className="cursor-pointer z-10"
-              >
-                <VscClose className="text-[30px] text-textColor" />
-              </div>
-            </div>
+            <SearchByDestination
+              setSelectedType={setSelectedType}
+              initCountries={initCountries}
+            />
           )}
           {selectedType === "searchLevel4" && (
-            <div className="flex gap-4 items-center w-full cursor-pointer ">
-              <div>
-                <div className="md:w-[40px] md:h-[40px] sm:w-[30px] sm:h-[30px] xs:w-[30px] xs:h-[30px]">
-                  <BookIcon />
-                </div>
-              </div>
-              <input
-                type="text"
-                placeholder="Select Subject"
-                className=" w-full outline-none h-10 z-10"
-              />
-              <div
-                onClick={() => setSelectedType(null)}
-                className="cursor-pointer z-10"
-              >
-                <VscClose className="text-[30px] text-textColor" />
-              </div>
-            </div>
+            <SearchBySubject
+              setSelectedType={setSelectedType}
+              initSubjects={initSubjects}
+            />
           )}
         </div>
       )}

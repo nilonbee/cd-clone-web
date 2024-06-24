@@ -4,6 +4,7 @@ import {
   BlogSection,
   ContactSection,
   CountrySection,
+  CourseViewDrawer,
   CoursesSection,
   FAQSection,
   NewsLetterSection,
@@ -11,9 +12,29 @@ import {
   SubjectSection,
   UniversitySection,
 } from "@/components/organisms";
+import { IBlogResponse } from "@/types/blogs";
+import { ICountry } from "@/types/countries";
+import { ICourseLevel } from "@/types/courseLevels";
+import { IIntake } from "@/types/intakes";
+import { ISubject } from "@/types/subjects";
+import {
+  getBlogs,
+  getCountries,
+  getCourseLevels,
+  getIntakes,
+  getSubjects,
+} from "@/utils/api-requests";
 import React from "react";
 
-export default function Home() {
+export const revalidate = 10;
+
+export default async function Home() {
+  const courseLevels = (await getCourseLevels({ status: 1 })) as ICourseLevel[];
+  const countries = (await getCountries({ status: 1 })) as ICountry[];
+  const subjects = (await getSubjects({ status: 1 })) as ISubject[];
+  const blogs = (await getBlogs({ page: 1, pageSize: 4 })) as IBlogResponse;
+  const intakes = (await getIntakes({ status: 1 })) as IIntake[];
+
   return (
     <>
       <BannerCarousel />
@@ -21,16 +42,20 @@ export default function Home() {
         <ContainerLayout>
           <div className="flex flex-col gap-2 justify-center items-center self-stretch relative xs:h-[180px]  md:h-[200px] ">
             <h1 className="text-center font-semibold lg:text-4xl md:text-3xl sm:text-2xl xs:text-2xl text-white">
-              FIND YOUR PERFECT COURSE
+              Find Your Perfect Course
             </h1>
             <h4 className="text-center lg:text-1xl md:text-base sm:text-sm xs:text-xs text-white">
-              We can help you apply and study at top Universities
+              Your Journey to the Perfect Course Starts Here!{" "}
             </h4>
           </div>
         </ContainerLayout>
       </div>
       <ContainerLayout>
-        <SearchBar />
+        <SearchBar
+          initCountries={countries}
+          initCourseLevels={courseLevels}
+          initSubjects={subjects}
+        />
         <CountrySection />
         <CoursesSection />
         <SubjectSection />
@@ -43,10 +68,11 @@ export default function Home() {
       <ContainerLayout>
         <StudentsSaysSection />
         <FAQSection />
-        <BlogSection />
+        <BlogSection initBlogs={blogs} />
         <ContactSection />
         <NewsLetterSection />
       </ContainerLayout>
+      <CourseViewDrawer intakes={intakes} />
     </>
   );
 }

@@ -73,13 +73,13 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
           defaultValue=""
           render={({ field }) => (
             <InputField
-              label="Fast Name"
+              label="First Name"
               placeholder="Enter your first name"
               type="text"
               error={errors.first_name?.message}
               id="first-name"
               customStyle="bg-transparent"
-              // required
+              required
               {...field}
             />
           )}
@@ -87,7 +87,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
         <Controller
           name="last_name"
           control={control}
-          rules={validationSchema.first_name}
+          rules={validationSchema.last_name}
           defaultValue=""
           render={({ field }) => (
             <InputField
@@ -97,7 +97,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
               id="last-name"
               customStyle="bg-transparent"
               error={errors.last_name?.message}
-              // required
+              required
               {...field}
             />
           )}
@@ -115,7 +115,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
               id="email"
               customStyle="bg-transparent"
               error={errors.email?.message}
-              // required
+              required
               {...field}
             />
           )}
@@ -130,7 +130,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
               label="Phone Number"
               placeholder="Enter your phone number"
               id="phone"
-              // required
+              required
               error={errors.phone?.message}
               backgroundColor="#eef7ff"
               {...field}
@@ -141,6 +141,7 @@ export const CareersForm = ({ slug }: CareerFormProps) => {
           type="file"
           title="Upload CV"
           upFile={upFile}
+          required
           setUpFile={setUpFile}
           accept="application/pdf"
           prefix="CV"

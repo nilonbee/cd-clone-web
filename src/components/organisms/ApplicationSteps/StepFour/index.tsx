@@ -84,16 +84,24 @@ export const StepFour = ({ allCountries }: { allCountries: ICountry[] }) => {
         Address Detail
       </p>
       <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-5">
-          <div className="w-1/2">
-            <InputTextArea
-              label="Address"
-              placeholder="Enter Address"
-              id="address"
+        <div className="flex gap-5 xs:flex-col sm:flex-col md:flex-row">
+          <div className="xs:w-full sm:w-full md:w-1/2">
+            <Controller
               name="address"
+              control={control}
+              render={({ field }) => (
+                <div>
+                  <InputTextArea
+                    label="Address"
+                    placeholder="Enter Address"
+                    id="address"
+                    {...field}
+                  />
+                </div>
+              )}
             />
           </div>
-          <div className="w-1/2">
+          <div className="xs:w-full sm:w-full md:w-1/2">
             <Controller
               name="country_id"
               control={control}

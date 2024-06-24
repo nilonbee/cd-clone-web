@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { fileUploader } from "@/utils/auth-api-requests";
 import { rootImagePath } from "@/utils/rootImagePath";
@@ -16,6 +17,7 @@ type Props = {
   prefix: string;
   backgroundColor?: string;
   titleHeight?: string;
+  required?: boolean;
 };
 
 export const MediaUpload = ({
@@ -28,6 +30,7 @@ export const MediaUpload = ({
   prefix,
   backgroundColor,
   titleHeight,
+  required,
 }: Props) => {
   const [uploading, setUploading] = useState(false);
 
@@ -54,7 +57,7 @@ export const MediaUpload = ({
         <p
           className={`w-[180px] text-xs text-gray font-semibold mb-1 overflow-hidden ${titleHeight}`}
         >
-          {title}
+          {title} {required && <span className="text-red">*</span>}
         </p>
       )}
       {!upFile && (
@@ -85,14 +88,22 @@ export const MediaUpload = ({
           >
             <AiOutlineDelete size={20} />
           </div>
-          <Iframe
-            url={rootImagePath("uploads/local/unknown_20240502213353.pdf")}
-            className="w-full h-full rounded-md"
-            display="initial"
-            scrolling="no"
-            position="relative"
-            overflow="hidden"
-          />
+          {type === "image" ? (
+            <img
+              className="w-full h-full rounded-md"
+              src={rootImagePath(upFile)}
+              alt="up_image"
+            />
+          ) : (
+            <Iframe
+              url={rootImagePath(upFile)}
+              className="w-full h-full rounded-md"
+              display="initial"
+              scrolling="no"
+              position="relative"
+              overflow="hidden"
+            />
+          )}
         </div>
       )}
     </div>

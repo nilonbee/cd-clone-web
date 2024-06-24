@@ -3,18 +3,24 @@ import React, { useState, useEffect, useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 
+type Option = {
+  value: number;
+  label: string;
+};
+
 type SelectDropdownProps = {
   formFieldName: string;
-  options: string[];
-  onChange: (selectedOption: string) => void;
+  options: Option[];
+  selectedOption: number;
+  setSelectedOption: (selectedOption: number) => void;
 };
 
 export const SelectDropdown = ({
   formFieldName,
   options,
-  onChange,
+  selectedOption,
+  setSelectedOption,
 }: SelectDropdownProps) => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -38,9 +44,8 @@ export const SelectDropdown = ({
     setIsOpen(!isOpen);
   };
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (option: number) => {
     setSelectedOption(option);
-    onChange(option);
     setIsOpen(false);
   };
 
@@ -51,7 +56,8 @@ export const SelectDropdown = ({
         className="relative w-full py-2 pl-4 pr-20 text-left text-gray bg-white ring-1 ring-inset ring-border rounded-md focus:shadow-md focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer text-sm"
         onClick={toggleDropdown}
       >
-        {selectedOption || formFieldName}
+        {options?.find((option) => option.value === selectedOption)?.label ||
+          formFieldName}
         {isOpen ? (
           <IoIosArrowUp className="absolute top-1/2 right-3 transform -translate-y-1/2" />
         ) : (
@@ -63,11 +69,13 @@ export const SelectDropdown = ({
           <ul className="py-1">
             {options.map((option) => (
               <li
-                key={option}
+                key={option.value}
                 className="px-4 py-2 hover:bg-grayLight cursor-pointer"
-                onClick={() => handleOptionClick(option)}
+                onClick={() => handleOptionClick(option.value)}
               >
-                <span className="text-gray text-sm">{option}</span>
+                <span className="text-gray text-sm text-nowrap">
+                  {option.label}
+                </span>
               </li>
             ))}
           </ul>

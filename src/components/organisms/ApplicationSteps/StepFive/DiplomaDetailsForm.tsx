@@ -128,8 +128,8 @@ const DiplomaDetailsForm = () => {
       <p className="text-sm text-textColor font-semibold mb-4">
         Diploma Details
       </p>
-      <div className="flex gap-5">
-        <div className="w-1/2">
+      <div className="flex gap-5 xs:flex-col sm:flex-col md:flex-row">
+        <div className="xs:w-full sm:w-full md:w-1/2">
           <Controller
             name="course_name"
             control={control}
@@ -235,7 +235,7 @@ const DiplomaDetailsForm = () => {
             )}
           />
         </div>
-        <div className="w-1/2">
+        <div className="xs:w-full sm:w-full md:w-1/2">
           <Controller
             name="name_institute"
             control={control}

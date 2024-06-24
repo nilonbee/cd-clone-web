@@ -43,3 +43,8 @@ export * from "./HistoryTable";
 export * from "./TabsView";
 export * from "./InputRadio";
 export * from "./InputDatePicker";
+export * from "./ProfileImage";
+export * from "./ProfileDetails";
+export * from "./DrawerStepper";
+export * from "./ProfileDrawer";
+export * from "./Drawer";

@@ -1,26 +1,20 @@
-export interface IOpeningTime {
-    text: string;
-    icon?: JSX.Element;
+export interface IContactInfoJson {
+  [key: string]: IContactInfoObject;
 }
 
-export interface IListItem {
-    label: string;
-    value: string;
-    icon?: React.ReactElement;
+export interface IContactInfoObject {
+  phoneNumber: string;
+  email: string;
+  address: string;
+  openingTimes: IOpeningTimes[];
 }
 
-
-export interface ILocationInfo {
-    phoneNumber?: string;
-    email?: string;
-    address?: string;
-    openingTimes: IOpeningTime[];
-    listItems?: IListItem[];
+export interface IOpeningTimes {
+  branch: string;
+  times: ITimes[];
 }
 
-export interface IContactInfo {
-    kandy: ILocationInfo;
-    london: ILocationInfo;
-    dubai: ILocationInfo;
-    colombo: ILocationInfo;
+export interface ITimes {
+  text: string;
+  icon?: JSX.Element;
 }

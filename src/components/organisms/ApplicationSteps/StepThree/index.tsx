@@ -84,8 +84,8 @@ export const StepThree = () => {
         Personal Information
       </p>
       <form className="w-full mt-5" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-5">
-          <div className="w-1/2">
+        <div className="flex gap-5 xs:flex-col sm:flex-col md:flex-row">
+          <div className="xs:w-full sm:w-full md:w-1/2">
             <Controller
               name="first_name"
               control={control}
@@ -150,6 +150,7 @@ export const StepThree = () => {
                     placeholder="Enter Your Email Address"
                     type="text"
                     id="email"
+                    disabled={true}
                     error={errors.email?.message}
                     {...field}
                   />
@@ -160,7 +161,6 @@ export const StepThree = () => {
               name="phone"
               control={control}
               defaultValue=""
-              rules={validationSchema.phone}
               render={({ field }) => (
                 <div>
                   <InputField
@@ -168,7 +168,6 @@ export const StepThree = () => {
                     placeholder="Enter Your Contact Number"
                     type="text"
                     id="email"
-                    error={errors.phone?.message}
                     {...field}
                   />
                 </div>
@@ -191,7 +190,7 @@ export const StepThree = () => {
               )}
             />
           </div>
-          <div className="w-1/2">
+          <div className="xs:w-full sm:w-full md:w-1/2">
             <InputDatePicker
               value={dob}
               onChange={onChange}

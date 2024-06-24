@@ -258,6 +258,7 @@ export async function getCourseById(id: string) {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 10 }, // 10 seconds
       body: JSON.stringify({ id }),
     });
     const course = (await res.json()) as ICourseSingleResponse;
@@ -281,7 +282,9 @@ export async function getEvents() {
 
 export async function getEventBySlug(slug: string) {
   try {
-    const res = await fetch(`${BASE_URL}/v1/user/event-contents/${slug}`);
+    const res = await fetch(`${BASE_URL}/v1/user/event-contents/${slug}`, {
+      next: { revalidate: 10 }, // 10 seconds
+    });
     const event = (await res.json()) as IEventResponseTwo;
     return event.data;
   } catch (error) {
@@ -332,11 +335,65 @@ export async function getCareerBySlug(slug: string) {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 10 }, // 10 seconds
     });
     const career = await res.json();
     return career.data;
   } catch (error) {
     console.error("Failed to fetch career:", error);
+  }
+}
+
+export async function getBlogs(filterData: { page: number; pageSize: number }) {
+  const { pageSize, page } = filterData;
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/blogs?pageSize=${pageSize ? pageSize : 10}&page=${page ? page : 1}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
+      },
+    );
+    const blogs = await res.json();
+
+    return blogs.data;
+  } catch (error) {
+    console.error("Failed to fetch Blogs:", error);
+  }
+}
+
+export async function getBlogBySlug(slug: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/blog/${slug}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+    });
+    const blog = await res.json();
+    return blog.data;
+  } catch (error) {
+    console.error("Failed to fetch blog:", error);
+  }
+}
+
+export async function getScholarshipBySlug(slug: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/web/scholarship/${slug}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+    });
+    const scholarship = await res.json();
+    return scholarship.data;
+  } catch (error) {
+    console.error("Failed to fetch scholarship:", error);
   }
 }
 
@@ -347,6 +404,7 @@ export async function sendCareerApplication(data: ICareerApplicationRequest) {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 10 }, // 10 seconds
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -376,6 +434,13 @@ export async function universitiesByCountryId(country_id: string) {
   try {
     const res = await fetch(
       `${BASE_URL}/v1/admin/university/filter-by-country?country_id=${country_id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 10 }, // 10 seconds
+      },
     );
     const universities = await res.json();
     return universities.data;
@@ -386,7 +451,13 @@ export async function universitiesByCountryId(country_id: string) {
 
 export async function getUniversityById(id: string) {
   try {
-    const res = await fetch(`${BASE_URL}/v1/admin/university/${id}`);
+    const res = await fetch(`${BASE_URL}/v1/admin/university/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+    });
     const university = await res.json();
     return university.data;
   } catch (error) {
@@ -396,7 +467,13 @@ export async function getUniversityById(id: string) {
 
 export async function getStateByCountryId(id: string) {
   try {
-    const res = await fetch(`${BASE_URL}/v1/states/${id}`);
+    const res = await fetch(`${BASE_URL}/v1/states/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+    });
     const university = await res.json();
     return university.data;
   } catch (error) {
@@ -406,7 +483,13 @@ export async function getStateByCountryId(id: string) {
 
 export async function getCityByStateId(id: string) {
   try {
-    const res = await fetch(`${BASE_URL}/v1/cities/${id}`);
+    const res = await fetch(`${BASE_URL}/v1/cities/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 10 }, // 10 seconds
+    });
     const university = await res.json();
     return university.data;
   } catch (error) {
