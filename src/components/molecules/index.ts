@@ -48,3 +48,4 @@ export * from "./ProfileDetails";
 export * from "./DrawerStepper";
 export * from "./ProfileDrawer";
 export * from "./Drawer";
+export * from "./EligibilityMain";
