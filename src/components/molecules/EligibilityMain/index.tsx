@@ -4,11 +4,11 @@ import { NavigationButton, Writer } from "@/components/atoms";
 
 export const EligibilityBanner = () => {
   return (
-    <div className="bg-[url('/images/surway.png')] bg-cover bg-center bg-no-repeat w-screen h-screen">
+    <div className="bg-[url('/images/surway.png')] bg-cover bg-center bg-no-repeat w-screen max-h-min">
       {/* Container for logo and writer text */}
       <div className="flex justify-center items-center flex-col">
         {/* Logo Image */}
-        <div className="pt-[10%]">
+        <div className="pt-[5%]">
           <Image
             src="/images/logo-white.png"
             alt="logo-white"
@@ -18,7 +18,7 @@ export const EligibilityBanner = () => {
           />
         </div>
         {/* Writer component for text */}
-        <div className="text-center my-6 h-12">
+        <div className="text-center my-3 h-12">
           <Writer text="Navigate Your Future: Personalized Course Insights!" />
         </div>
         {/* text */}

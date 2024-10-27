@@ -1,4 +1,5 @@
 "use client";
+import { MainButton } from "@/components/atoms";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -26,14 +27,14 @@ export const MultiStepForm = () => {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <div className="max-w-md mx-auto p-6 bg-white rounded-md">
+      <div className="mx-auto p-6 bg-white rounded-md">
         {/* Step Indicators */}
-        <div className="flex justify-between mb-6">
+        <div className="static flex justify-between top-[10%] mb-6">
           <div
-            className={`h-2 flex-1 mx-1 ${step >= 1 ? "bg-primary" : "bg-gray-300"}`}
+            className={`h-2 flex-1 mx-1 ${step >= 1 ? "bg-primary" : "bg-gray-500"}`}
           ></div>
           <div
-            className={`h-2 flex-1 mx-1 ${step >= 2 ? "bg-primary" : "bg-gray-300"}`}
+            className={`h-2 flex-1 mx-1 ${step >= 2 ? "bg-primary" : "bg-gray-500"}`}
           ></div>
         </div>
 
@@ -69,13 +70,20 @@ export const MultiStepForm = () => {
               />
             </div>
 
-            <button
+            {/* <button
+                            onClick={nextStep}
+                            className="w-full bg-primary text-whiteGray py-2 rounded-none"
+                            type="button"
+                        >
+                            
+                        </button> */}
+            <MainButton
               onClick={nextStep}
-              className="w-full bg-primary text-whiteGray py-2 rounded-none"
-              type="button"
-            >
-              Next Question
-            </button>
+              fullWith
+              btnSize="Large"
+              btnStyle="Primary"
+              label="Next Question"
+            />
           </div>
         )}
 
@@ -116,20 +124,27 @@ export const MultiStepForm = () => {
             </div>
 
             <div className="flex justify-between items-center">
-              <button
+              {/* <button
+                                onClick={prevStep}
+                                className="w-1/2 bg-gray-500 text-primary py-2 rounded-md mr-2"
+                                type="button"
+                            >
+                                Back
+                            </button> */}
+              <MainButton
+                btnSize="Large"
+                btnStyle="Secondary"
+                label="Back"
                 onClick={prevStep}
-                className="w-1/2 bg-gray-500 text-primary py-2 rounded-md mr-2"
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                onClick={handleSubmit(onSubmit)}
-                className="w-full bg-primary text-whiteGray py-2 rounded-none"
-                type="button"
-              >
-                Submit
-              </button>
+              />
+              {/* <button
+                                onClick={handleSubmit(onSubmit)}
+                                className="w-full bg-primary text-whiteGray py-2 rounded-none"
+                                type="submit"
+                            >
+                                Submit
+                            </button> */}
+              <MainButton btnSize="Large" btnStyle="Primary" label="Submit" />
             </div>
           </div>
         )}
