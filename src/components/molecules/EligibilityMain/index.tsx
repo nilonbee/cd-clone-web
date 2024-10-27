@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { NavigationButton, Writer } from "@/components/atoms";
+import { ArrowRightIcon } from "@/components/atoms/Icons";
 
 export const EligibilityBanner = () => {
   return (
@@ -33,6 +34,7 @@ export const EligibilityBanner = () => {
           text="Continue"
           bgColor="white"
           textColor="primary"
+          icon={<ArrowRightIcon />}
         />
       </div>
     </div>
