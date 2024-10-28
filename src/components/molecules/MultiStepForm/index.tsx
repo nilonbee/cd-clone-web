@@ -124,19 +124,19 @@ export const MultiStepForm = () => {
             </div>
 
             <div className="flex justify-between items-center">
-              {/* <button
-                                onClick={prevStep}
-                                className="w-1/2 bg-gray-500 text-primary py-2 rounded-md mr-2"
-                                type="button"
-                            >
-                                Back
-                            </button> */}
-              <MainButton
+              <button
+                onClick={prevStep}
+                className="w-1/2 bg-gray-500 text-primary py-2 rounded-md mr-2 border-2"
+                type="button"
+              >
+                Back
+              </button>
+              {/* <MainButton
                 btnSize="Large"
                 btnStyle="Secondary"
                 label="Back"
                 onClick={prevStep}
-              />
+              /> */}
               {/* <button
                                 onClick={handleSubmit(onSubmit)}
                                 className="w-full bg-primary text-whiteGray py-2 rounded-none"
@@ -144,7 +144,12 @@ export const MultiStepForm = () => {
                             >
                                 Submit
                             </button> */}
-              <MainButton btnSize="Large" btnStyle="Primary" label="Submit" />
+              <MainButton
+                fullWith
+                btnSize="Large"
+                btnStyle="Primary"
+                label="Submit"
+              />
             </div>
           </div>
         )}
