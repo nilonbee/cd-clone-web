@@ -39,3 +39,4 @@ export * from "./BriefcaseIcon";
 export * from "./HomeIcon";
 export * from "./SettingsIcon";
 export * from "./ProfileIcon";
+export * from "./ArrowRightIcon";
